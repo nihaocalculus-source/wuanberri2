@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Position, velocity, acceleration — Wuanberri Physics</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="physics.html">← Back to Physics</a>
+      <h1>Position, velocity, acceleration.</h1>
+      <p class="lede">The three functions that describe motion along a line, and how each is the time-derivative of the one before it.</p>
+
+      <div class="lesson-card">
+        <h2>The vocabulary</h2>
+        <p>Along a straight line, every object's motion can be described by three time-dependent functions:</p>
+        <span class="math">x(t) — position (meters)</span>
+        <span class="math">v(t) = dx/dt — velocity (meters per second)</span>
+        <span class="math">a(t) = dv/dt = d²x/dt² — acceleration (m/s²)</span>
+        <p>Each is the time-derivative of the previous. This is no accident — calculus was invented to describe motion, and these are the primitive concepts it was built on.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Constant acceleration — the SUVAT equations</h2>
+        <p>When acceleration is constant, the integrals collapse to four equations that cover nearly every introductory mechanics problem. They relate five quantities: displacement (s), initial velocity (u), final velocity (v), acceleration (a), and time (t).</p>
+        <span class="math">v = u + at</span>
+        <span class="math">s = ut + ½ a t²</span>
+        <span class="math">v² = u² + 2as</span>
+        <span class="math">s = ½ (u + v) t</span>
+        <p>Pick the equation that contains the three quantities you know and the one you want — the missing fourth is what you solve for.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>A car starts from rest (u = 0) and accelerates uniformly at 2 m/s² for 5 seconds. How far does it travel?</p>
+        <span class="math">s = ut + ½ a t²</span>
+        <span class="math">s = (0)(5) + ½ (2)(5)²</span>
+        <span class="math">s = 0 + ½ · 2 · 25 = 25 m</span>
+        <p>The car travels 25 m in those 5 seconds. The initial velocity was zero, so the first term vanishes — only the acceleration term contributes.</p>
+      </div>
+
+      <!-- Working flashcard -->
+      <div class="q-flashcard" data-lesson-flip='[
+        {"glyph":"F = m · a","meaning":"A net force on a mass produces acceleration in the same direction.","explain":"Newton's second law. A 4 kg object with a 12 N net force on it accelerates at a = F/m = 12/4 = 3 m/s². If multiple forces act, use the net (sum) force — not any single one."},
+        {"glyph":"p = m · v","meaning":"Linear momentum is mass times velocity — a vector.","explain":"Momentum p is conserved in any closed system (no external forces). That single fact is enough to solve most 1D collision problems: m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂."},
+        {"glyph":"KE = ½ m v²","meaning":"Kinetic energy grows with the square of speed.","explain":"Doubling your speed quadruples your kinetic energy. This is why high-speed collisions are so much more destructive than low-speed ones, and why speed limits drop sharply near schools."}
+      ]'>
+        <p class="hint">Flashcard · Unit 2</p>
+        <div class="q" data-flip-glyph>F = m · a</div>
+        <p data-flip-meaning>A net force on a mass produces acceleration in the same direction.</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>A ball is dropped from rest. After 3 seconds (ignoring air resistance), what is its velocity? Take g = 9.8 m/s².</p>
+        <form class="mcq" data-mcq="c" data-right-explain="v = u + at = 0 + (9.8)(3) = 29.4 m/s, downward." data-wrong-explain="From rest, u = 0. Acceleration is g (positive downward). Use v = u + at.">
+          <button type="button" data-choice="a">9.8 m/s</button>
+          <button type="button" data-choice="b">3 m/s</button>
+          <button type="button" data-choice="c">29.4 m/s</button>
+          <button type="button" data-choice="d">3 × 9.8² m/s</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Privacy Notice</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

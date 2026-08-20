@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Study Partners — Wuanberri</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .partner-hero { padding: 64px 0 24px; text-align: center; }
+    .partner-hero h1 { font-family: var(--font-display); font-size: clamp(32px, 5vw, 48px); margin: 8px 0 12px; font-weight: 600; letter-spacing: -0.01em; }
+    .partner-hero p { color: var(--ink-soft); max-width: 580px; margin: 0 auto; }
+
+    .partner-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 24px;
+      max-width: 980px;
+      margin: 32px auto 0;
+      align-items: start;
+    }
+    .partner-list {
+      display: flex; flex-direction: column; gap: 8px;
+      position: sticky; top: 88px;
+    }
+    .partner-card {
+      display: flex; gap: 12px; align-items: center;
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 14px;
+      cursor: pointer; transition: border-color 0.12s ease, background 0.12s ease;
+      text-align: left; font: inherit; color: inherit; width: 100%;
+    }
+    .partner-card:hover { border-color: var(--accent); }
+    .partner-card[aria-selected="true"] { border-color: var(--accent); background: var(--accent-soft); }
+    .partner-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-display); font-size: 18px; font-weight: 600;
+      color: #fff; flex-shrink: 0;
+    }
+    .partner-card .info { flex: 1; min-width: 0; }
+    .partner-card .name { font-size: 14px; font-weight: 600; color: var(--ink); }
+    .partner-card .role { font-size: 12px; color: var(--ink-muted); }
+    .partner-card .status { font-size: 10px; color: var(--accent); letter-spacing: 0.1em; text-transform: uppercase; }
+
+    .chat-large {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); box-shadow: var(--shadow);
+      overflow: hidden; display: flex; flex-direction: column;
+      height: 600px;
+    }
+    .chat-large .head {
+      display: flex; align-items: center; gap: 12px;
+      padding: 14px 20px; border-bottom: 1px solid var(--line);
+    }
+    .chat-large .head .name { font-weight: 600; font-size: 15px; }
+    .chat-large .head .role { font-size: 12px; color: var(--ink-muted); }
+    .chat-large .body {
+      flex: 1; padding: 20px; overflow-y: auto; display: flex; flex-direction: column; gap: 12px;
+    }
+    .chat-large .body .bubble {
+      max-width: 80%; padding: 12px 16px; border-radius: 14px; font-size: 14px; line-height: 1.5;
+    }
+    .chat-large .body .bubble.bot {
+      background: var(--bg); border: 1px solid var(--line);
+      align-self: flex-start; border-bottom-left-radius: 4px;
+    }
+    .chat-large .body .bubble.user {
+      background: var(--accent); color: #fff;
+      align-self: flex-end; border-bottom-right-radius: 4px;
+    }
+    .chat-large .body .bubble .math {
+      font-family: "Cambria Math", "STIX Two Math", ui-serif, Georgia, serif;
+    }
+    .chat-large .body .bubble strong { color: var(--accent-ink); }
+    .chat-large .body .typing {
+      background: var(--bg); border: 1px solid var(--line);
+      align-self: flex-start; border-bottom-left-radius: 4px;
+      border-radius: 14px; padding: 12px 16px;
+      display: flex; gap: 4px; align-items: center;
+    }
+    .chat-large .body .typing span {
+      width: 6px; height: 6px; border-radius: 50%; background: var(--ink-muted);
+      animation: bounce 1.2s infinite;
+    }
+    .chat-large .body .typing span:nth-child(2) { animation-delay: 0.15s; }
+    .chat-large .body .typing span:nth-child(3) { animation-delay: 0.3s; }
+    @keyframes bounce {
+      0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+      30% { transform: translateY(-4px); opacity: 1; }
+    }
+    .chat-large .chips {
+      display: flex; gap: 8px; flex-wrap: wrap;
+      padding: 10px 20px; border-top: 1px solid var(--line);
+      background: #fcfaf6;
+    }
+    .chat-large .form {
+      display: flex; gap: 8px; padding: 12px 20px; border-top: 1px solid var(--line);
+    }
+    .chat-large .form input {
+      flex: 1; border: 1px solid var(--line-strong); background: var(--surface);
+      border-radius: 999px; padding: 10px 16px; font: inherit; font-size: 14px; outline: none;
+    }
+    .chat-large .form input:focus { border-color: var(--accent); }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="partner-hero">
+      <div class="wrap">
+        <span class="eyebrow">Study Partners</span>
+        <h1>Talk it through. Out loud, or in writing.</h1>
+        <p>Each partner has a teaching style. Pick the one that matches how you think. They ask, hint, and check your reasoning — they don't just hand you the answer.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap">
+        <div class="partner-grid">
+          <div class="partner-list" id="partnerList">
+            <button class="partner-card" aria-selected="true" data-pid="ada">
+              <div class="partner-avatar" style="background:#7a2a08">A</div>
+              <div class="info">
+                <div class="name">Ada</div>
+                <div class="role">Calculus · step-by-step</div>
+              </div>
+              <div class="status">● Live</div>
+            </button>
+            <button class="partner-card" aria-selected="false" data-pid="isaac">
+              <div class="partner-avatar" style="background:#2f5d6e">I</div>
+              <div class="info">
+                <div class="name">Isaac</div>
+                <div class="role">Physics · intuition first</div>
+              </div>
+              <div class="status">● Live</div>
+            </button>
+            <button class="partner-card" aria-selected="false" data-pid="noor">
+              <div class="partner-avatar" style="background:#5a4a8a">N</div>
+              <div class="info">
+                <div class="name">Noor</div>
+                <div class="role">Problem-solving · Socratic</div>
+              </div>
+              <div class="status">● Live</div>
+            </button>
+            <button class="partner-card" aria-selected="false" data-pid="kofi">
+              <div class="partner-avatar" style="background:#3a6e3f">K</div>
+              <div class="info">
+                <div class="name">Kofi</div>
+                <div class="role">Exam prep · drill sergeant</div>
+              </div>
+              <div class="status">● Live</div>
+            </button>
+          </div>
+
+          <div class="chat-large" data-partner-chat>
+            <div class="head">
+              <div class="partner-avatar" style="background:#7a2a08" id="chatAvatar">A</div>
+              <div>
+                <div class="name" id="chatName">Ada</div>
+                <div class="role" id="chatRole">Calculus · step-by-step</div>
+              </div>
+            </div>
+            <div class="body" id="chatBody">
+              <div class="bubble bot">Hi — I'm Ada. Let's work on something together. Try one of the prompts below, or tell me what you're stuck on.</div>
+            </div>
+            <div class="chips" id="chatChips">
+              <button class="chip" data-chip>I'm stuck on chain rule</button>
+              <button class="chip" data-chip>Quiz me on derivatives</button>
+              <button class="chip" data-chip>Walk me through a problem</button>
+            </div>
+            <form class="form" id="chatForm">
+              <input type="text" placeholder="Type your message…" aria-label="Message" />
+              <button type="submit" class="btn btn-accent">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Privacy Notice</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/llm.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    (function () {
+      const partners = {
+        ada:   { name: 'Ada',   role: 'Calculus · step-by-step',         color: '#7a2a08' },
+        isaac: { name: 'Isaac', role: 'Physics · intuition first',        color: '#2f5d6e' },
+        noor:  { name: 'Noor',  role: 'Problem-solving · Socratic',       color: '#5a4a8a' },
+        kofi:  { name: 'Kofi',  role: 'Exam prep · drill sergeant',       color: '#3a6e3f' },
+      };
+
+      const greetings = {
+        ada:   "Hi — I'm Ada. I like to take things one step at a time. What's the problem you're working on?",
+        isaac: "Hey — Isaac here. Before we get to the math, I want to make sure you can picture what's happening. What problem are you looking at?",
+        noor:  "Hello. I'm Noor. I won't give you the answer — I'll ask you questions until you find it yourself. Ready?",
+        kofi:  "Let's go. I'm Kofi. Tell me the exam, the date, and what you've covered. We'll get you there.",
+      };
+
+      const chips = {
+        ada:   ["I'm stuck on chain rule", "Quiz me on derivatives", "Walk me through a problem"],
+        isaac: ["Why does F = ma make sense?", "Quiz me on kinematics", "Help me with free-body diagrams"],
+        noor:  ["I want to be questioned", "Solve something with me", "I don't know where to start"],
+        kofi:  ["Build me a 2-week plan", "Drill me on integrals", "Mock exam, now"],
+      };
+
+      const responses = {
+        ada: {
+          'chain': "Okay, chain rule. The rule says: <span class='math'>d/dx f(g(x)) = f'(g(x)) · g'(x)</span>. Before I show you an example — can you tell me, in your own words, what the <em>inside</em> and the <em>outside</em> of <span class='math'>(3x+1)⁵</span> are?",
+          'deriv': "Good. Let me give you a small one: <span class='math'>d/dx (x⁴)</span> — what's your first move?",
+          'walk':  "Sure. Try this: find the derivative of <span class='math'>f(x) = (2x² + 1)³</span>. Tell me which function you treat as the 'outside' and which as the 'inside'.",
+          'default': "Good question. Walk me through what you've tried so far — I want to see your thinking before I weigh in.",
+        },
+        isaac: {
+          'force': "Before the equation — picture a hockey puck on ice. Someone shoves it. What's happening to the puck's velocity over time? <em>That's</em> what <span class='math'>F = ma</span> is saying in plain English.",
+          'kin':   "Try this: a ball is thrown straight up at 20 m/s. Before you compute anything — at the very top of its arc, what's its velocity? What about its acceleration?",
+          'fbd':   "Okay, free-body diagram. Tell me the object. Then I want you to list every force on it. <em>Every</em> one. Don't worry about magnitude yet — just names.",
+          'default': "Hmm. Let's back up — what's the physical setup? Tell me what's moving, what's pushing it, and what you're trying to find.",
+        },
+        noor: {
+          'question': "Good. What do you think the first step is?",
+          'solve': "I like that. Walk me through your reasoning. Why that step?",
+          'default': "Interesting. Why do you think that?",
+        },
+        kofi: {
+          'plan': "Two weeks. Got it. Question 1: how many hours a day can you realistically put in? I won't build a plan you'll quit on day 3.",
+          'drill': "Alright. No warmup. <span class='math'>∫ x · e^(x²) dx = ?</span>. Clock's running. 30 seconds.",
+          'exam': "Mock exam. Three problems, 20 minutes. Go.",
+          'default': "Be specific. What topic, what date, what's still shaky?",
+        },
+      };
+
+      const list = document.getElementById('partnerList');
+      const avatar = document.getElementById('chatAvatar');
+      const name = document.getElementById('chatName');
+      const role = document.getElementById('chatRole');
+      const body = document.getElementById('chatBody');
+      const chipsRow = document.getElementById('chatChips');
+      const form = document.getElementById('chatForm');
+      const input = form.querySelector('input');
+      let current = 'ada';
+      const history = { ada: [], isaac: [], noor: [], kofi: [] };
+
+      // LLM mode banner
+      if (window.LLM && LLM.activeProvider()) {
+        const sub = document.createElement('div');
+        sub.style.cssText = 'font-size:12px;color:#2f7a3e;padding:8px 20px;background:#f4faf5;border-bottom:1px solid #e3efe5';
+        sub.textContent = `LLM mode: talking to ${LLM.activeProvider()}. Manage in Settings.`;
+        document.querySelector('.chat-large .body').parentNode.insertBefore(sub, document.querySelector('.chat-large .body'));
+      } else {
+        const sub = document.createElement('div');
+        sub.style.cssText = 'font-size:12px;color:var(--ink-muted);padding:8px 20px;background:#fcfaf6;border-bottom:1px solid var(--line)';
+        sub.innerHTML = `Keyword mode. <a href="settings.html" style="color:var(--accent)">Add an API key</a> to talk to a real LLM.`;
+        document.querySelector('.chat-large .body').parentNode.insertBefore(sub, document.querySelector('.chat-large .body'));
+      }
+
+      const match = (msg, partner) => {
+        const m = msg.toLowerCase();
+        const r = responses[partner];
+        if (partner === 'ada') {
+          if (/chain/.test(m)) return r['chain'];
+          if (/quiz|deriv/.test(m)) return r['deriv'];
+          if (/walk|through|example/.test(m)) return r['walk'];
+          return r['default'];
+        }
+        if (partner === 'isaac') {
+          if (/f=ma|force|newton/.test(m)) return r['force'];
+          if (/kin|velocity|accel|motion/.test(m)) return r['kin'];
+          if (/fbd|free.body|diagram/.test(m)) return r['fbd'];
+          return r['default'];
+        }
+        if (partner === 'noor') {
+          if (/question|quiz/.test(m)) return r['question'];
+          if (/solve|help|walk|through/.test(m)) return r['solve'];
+          return r['default'];
+        }
+        if (partner === 'kofi') {
+          if (/plan|study|week|schedule/.test(m)) return r['plan'];
+          if (/drill|integral|quiz|practice/.test(m)) return r['drill'];
+          if (/exam|mock/.test(m)) return r['exam'];
+          return r['default'];
+        }
+      };
+
+      const addBubble = (text, who) => {
+        const b = document.createElement('div');
+        b.className = 'bubble ' + who;
+        b.innerHTML = text;
+        body.appendChild(b);
+        body.scrollTop = body.scrollHeight;
+      };
+
+      const showTyping = () => {
+        const t = document.createElement('div');
+        t.className = 'typing';
+        t.id = '__typing';
+        t.innerHTML = '<span></span><span></span><span></span>';
+        body.appendChild(t);
+        body.scrollTop = body.scrollHeight;
+        return t;
+      };
+
+      const send = async (text) => {
+        if (!text.trim()) return;
+        addBubble(text, 'user');
+        input.value = '';
+        const typing = showTyping();
+        const provider = window.LLM ? LLM.activeProvider() : null;
+        if (provider) {
+          try {
+            const reply = await LLM.send({
+              provider,
+              userMessage: text,
+              context: `Study partner: ${partners[current].name} (${partners[current].role}). Style: Socratic, ask first, hint second, answer only when stuck.`,
+              history: history[current],
+            });
+            history[current].push({ role: 'user', content: text });
+            history[current].push({ role: 'assistant', content: reply });
+            typing.remove();
+            addBubble(reply, 'bot');
+          } catch (e) {
+            typing.remove();
+            addBubble('(LLM call failed: ' + e.message + ' — falling back to keyword router.)', 'bot');
+            addBubble(match(text, current), 'bot');
+          }
+        } else {
+          setTimeout(() => {
+            typing.remove();
+            addBubble(match(text, current), 'bot');
+          }, 600);
+        }
+      };
+
+      const switchPartner = (pid) => {
+        current = pid;
+        const p = partners[pid];
+        avatar.textContent = p.name[0];
+        avatar.style.background = p.color;
+        name.textContent = p.name;
+        role.textContent = p.role;
+        body.innerHTML = '';
+        addBubble(greetings[pid], 'bot');
+        chipsRow.innerHTML = chips[pid].map(c => `<button class="chip" data-chip>${c}</button>`).join('');
+        chipsRow.querySelectorAll('[data-chip]').forEach(c => c.addEventListener('click', () => send(c.textContent)));
+        list.querySelectorAll('.partner-card').forEach(c => c.setAttribute('aria-selected', c.dataset.pid === pid ? 'true' : 'false'));
+      };
+
+      list.querySelectorAll('.partner-card').forEach(c => c.addEventListener('click', () => switchPartner(c.dataset.pid)));
+      chipsRow.querySelectorAll('[data-chip]').forEach(c => c.addEventListener('click', () => send(c.textContent)));
+      form.addEventListener('submit', (e) => { e.preventDefault(); send(input.value); });
+
+      // initial chips wired
+      chipsRow.querySelectorAll('[data-chip]').forEach(c => c.addEventListener('click', () => send(c.textContent)));
+    })();
+  </script>
+</body>
+</html>

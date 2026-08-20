@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Momentum and collisions — Wuanberri Physics</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="physics.html">← Back to Physics</a>
+      <h1>Momentum and collisions.</h1>
+      <p class="lede">Momentum is mass in motion. It's conserved in every closed system — which is what makes collision problems solvable from a single equation, no matter how messy the geometry.</p>
+
+      <div class="lesson-card">
+        <h2>Linear momentum</h2>
+        <p>A vector quantity: mass times velocity.</p>
+        <span class="math">p = m · v</span>
+        <p>Units: kg · m/s. The direction of p matches the direction of v. A 1500 kg car moving at 20 m/s has p = 30,000 kg·m/s, eastward. Slow it down to 10 m/s and p drops to 15,000 — the impulse (change in momentum) is 15,000 kg·m/s.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Impulse</h2>
+        <p>A force applied over a time changes momentum. The change is the impulse.</p>
+        <span class="math">J = F · Δt = Δp</span>
+        <p>Why airbags save lives: a crash that would change momentum by 30,000 kg·m/s in 0.1 s needs 300,000 N of force. Spread it over 0.5 s and the force drops to 60,000 N — survivable. The momentum change is the same; only the time and the force change.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Conservation of momentum</h2>
+        <p>In a closed system — no external forces — total momentum is constant. This is one of the deepest facts in physics, and it works whether the objects stick together, bounce apart, explode, or do anything in between.</p>
+        <span class="math">m₁u₁ + m₂u₂ = m₁v₁ + m₂v₂</span>
+        <p>The u's are initial velocities; the v's are final. One equation, two unknowns, and you can solve the whole collision.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>A 2 kg cart moving at 3 m/s collides with a stationary 1 kg cart and they stick together. What's their final velocity?</p>
+        <span class="math">(2)(3) + (1)(0) = (2 + 1) v<sub>f</sub></span>
+        <span class="math">6 = 3 v<sub>f</sub></span>
+        <span class="math">v<sub>f</sub> = 2 m/s</span>
+        <p>Total mass tripled; velocity dropped by a third. Momentum in = momentum out: 6 = 6. ✓</p>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[
+        {"glyph":"p = m·v","meaning":"Linear momentum — mass times velocity.","explain":"A vector, in the direction of v. Doubling the mass doubles p; doubling the speed also doubles p. The product is what matters."},
+        {"glyph":"J = F·Δt","meaning":"Impulse equals force times the time over which it acts.","explain":"Impulse is also the change in momentum: J = Δp. Same quantity, two ways to think about it. The airbag is the canonical impulse example."},
+        {"glyph":"Σp = const","meaning":"Total momentum of a closed system is conserved.","explain":"In any interaction with no external forces, total momentum is constant. This is the law that lets you solve collision problems from a single equation — no matter how many objects are involved."}
+      ]'>
+        <p class="hint">Flashcard · Unit 4</p>
+        <div class="q" data-flip-glyph>p = m·v</div>
+        <p data-flip-meaning>Linear momentum — mass times velocity.</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>A 0.5 kg ball moving at 8 m/s hits a wall and bounces back at 6 m/s. What is the magnitude of the impulse on the ball?</p>
+        <form class="mcq" data-mcq="d" data-right-explain="Δp = m(v_f - v_i) = 0.5(-6 - 8) = -7. Magnitude is 7 kg·m/s. The negative sign just says the impulse pointed opposite to the original motion." data-wrong-explain="Impulse equals change in momentum: Δp = m(v_f − v_i). Don't forget the direction flip on a bounce.">
+          <button type="button" data-choice="a">1 kg·m/s</button>
+          <button type="button" data-choice="b">2 kg·m/s</button>
+          <button type="button" data-choice="c">4 kg·m/s</button>
+          <button type="button" data-choice="d">7 kg·m/s</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Privacy Notice</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What is a derivative? — Wuanberri Calculus</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>What is a derivative?</h1>
+      <p class="lede">The instantaneous rate of change of a function — the slope of the curve at a single point, with no averaging.</p>
+
+      <div class="lesson-card">
+        <h2>The idea</h2>
+        <p>If a function tells you <em>where</em> something is, the derivative tells you <em>how fast it's moving</em>. For a position function s(t), the derivative s'(t) is velocity. For a population P(t), P'(t) is growth rate.</p>
+        <p>The clever part: at any single instant, "rate of change" is meaningless in everyday language — nothing has elapsed. Calculus solves this by averaging over a tiny interval, then asking what happens as the interval shrinks to zero.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>The definition</h2>
+        <p>The derivative of f at the point x is the limit of the average rate of change over intervals that shrink to zero:</p>
+        <span class="math">f'(x) = lim<sub>h → 0</sub> [ f(x + h) − f(x) ] / h</span>
+        <p>If this limit exists, f is said to be <em>differentiable</em> at x. Geometrically, f'(x) is the slope of the tangent line to the graph of f at the point (x, f(x)).</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>Find the derivative of f(x) = x².</p>
+        <span class="math">f(x + h) = (x + h)² = x² + 2xh + h²</span>
+        <span class="math">f(x + h) − f(x) = 2xh + h²</span>
+        <span class="math">[f(x + h) − f(x)] / h = 2x + h</span>
+        <span class="math">lim<sub>h → 0</sub> (2x + h) = 2x</span>
+        <p>So f'(x) = 2x. At x = 3 the tangent slope is 6. At x = 0 the slope is 0 — the curve momentarily flattens at the origin, just as the parabola does.</p>
+      </div>
+
+      <!-- Working flashcard -->
+      <div class="q-flashcard" data-lesson-flip='[
+        {"glyph":"d/dx (x³)","meaning":"Use the power rule: bring the exponent down, subtract one.","explain":"d/dx (xⁿ) = n·xⁿ⁻¹. For n = 3: 3·x³⁻¹ = 3x². The power rule is the single most-used derivative rule you will learn — it covers every polynomial term at once."},
+        {"glyph":"d/dx (sin x)","meaning":"The derivative of sin is cos.","explain":"d/dx (sin x) = cos x. This is one of a small set of facts worth memorizing cold. Its partner: d/dx (cos x) = −sin x."},
+        {"glyph":"d/dx (eˣ)","meaning":"eˣ is its own derivative.","explain":"The exponential with base e is the unique function equal to its own derivative: d/dx (eˣ) = eˣ. That self-similarity is exactly what makes e the natural base for growth and decay."}
+      ]'>
+        <p class="hint">Flashcard · Unit 2</p>
+        <div class="q" data-flip-glyph>d/dx (x³)</div>
+        <p data-flip-meaning>Bring the exponent down, subtract one.</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>If f(x) = 5x² + 3x, what is f'(x)?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="Apply the power rule term by term: 5·2x = 10x, and 3·1 = 3." data-wrong-explain="Recall d/dx (xⁿ) = n·xⁿ⁻¹, applied to each term separately.">
+          <button type="button" data-choice="a">f'(x) = 5x + 3</button>
+          <button type="button" data-choice="b">f'(x) = 10x + 3</button>
+          <button type="button" data-choice="c">f'(x) = 10x² + 3</button>
+          <button type="button" data-choice="d">f'(x) = 5x²</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Privacy Notice</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What is a differential equation? — Wuanberri Differential Equations</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="differential-equations.html">← Back to Differential Equations</a>
+      <h1>What is a differential equation?</h1>
+      <p class="lede">An equation that relates a function to its own rates of change. Most physical laws are written this way.</p>
+
+      <div class="lesson-card">
+        <h2>The idea</h2>
+        <p>An algebraic equation says "this equals that." A differential equation says "this rate of change equals that." In symbols: instead of solving for a number, you solve for a function y(t), and the equation involves y, dy/dt, d²y/dt², or higher derivatives.</p>
+        <p>If you know how fast a population is growing at every moment — that's a differential equation. If you know how fast something cools, how a spring stretches, how a charge flows through a wire — all differential equations.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Order and initial conditions</h2>
+        <p>The <em>order</em> is the highest derivative that appears. <span class="math">dy/dt = ky</span> is first order; <span class="math">d²y/dt² = −ω²y</span> is second order. A first-order ODE typically needs one initial condition (the value of y at t = 0); a second-order ODE typically needs two.</p>
+        <p>Initial conditions pin down which of the equation's many solutions you actually mean — without them, the answer is a whole family.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>Solve <span class="math">dy/dt = 2y</span> with <span class="math">y(0) = 5</span>.</p>
+        <span class="math">dy / y = 2 dt</span>
+        <span class="math">∫ (1/y) dy = ∫ 2 dt</span>
+        <span class="math">ln |y| = 2t + C</span>
+        <span class="math">y(t) = A · e^(2t)</span>
+        <span class="math">y(0) = A = 5 ⟹ y(t) = 5 e^(2t)</span>
+        <p>The solution is exponential growth at rate 2. That isn't a guess — it's the unique function whose rate of change equals 2 times itself.</p>
+      </div>
+
+      <!-- Working flashcard -->
+      <div class="q-flashcard" data-lesson-flip='[
+        {"glyph":"dy/dt = ky","meaning":"Exponential — growth if k > 0, decay if k &lt; 0.","explain":"Solution: y(t) = y₀ · eᵏᵗ. The constant k is the rate; eᵏᵗ doubles roughly every 0.69/k units of time. This single ODE models compound interest, radioactive decay, and unchecked population growth."},
+        {"glyph":"d²y/dt² = −ω²y","meaning":"Simple harmonic motion — oscillation at angular frequency ω.","explain":"Solution: y(t) = A cos(ωt) + B sin(ωt). Two constants because it's second-order. This equation governs the undamped spring, the pendulum in the small-angle limit, and AC circuits in the lossless limit."},
+        {"glyph":"dP/dt = rP(1 − P/K)","meaning":"Logistic growth — saturates at carrying capacity K.","explain":"Solution isn't elementary, but the qualitative behavior is clear: P grows exponentially when small, then levels off at K. The logistic equation is the simplest ODE that captures finite-resources dynamics."}
+      ]'>
+        <p class="hint">Flashcard · Unit 1</p>
+        <div class="q" data-flip-glyph>dy/dt = ky</div>
+        <p data-flip-meaning>Exponential — growth or decay.</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>What is the order of <span class="math">d³y/dt³ + 4 d²y/dt² + y = sin(t)</span>?</p>
+        <form class="mcq" data-mcq="d" data-right-explain="The highest derivative is the third derivative, so the order is 3." data-wrong-explain="Order is determined by the highest derivative present, not by counting terms.">
+          <button type="button" data-choice="a">First</button>
+          <button type="button" data-choice="b">Second</button>
+          <button type="button" data-choice="c">Fourth</button>
+          <button type="button" data-choice="d">Third</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="#">Privacy Notice</a></li><li><a href="#">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

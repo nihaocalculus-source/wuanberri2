@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What is a proof? — Wuanberri Discrete Math</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="discrete-math.html">← Back to Discrete Math</a>
+      <h1>What is a proof?</h1>
+      <p class="lede">A step-by-step argument that starts from accepted facts and ends at the statement you want to establish — with every step visible.</p>
+
+      <div class="lesson-card">
+        <h2>The shape</h2>
+        <p>A proof is a finite sequence of statements, each one of which is either an assumption (a hypothesis or a definition) or a logical consequence of earlier statements. The last statement is the conclusion. If every step holds, the proof is valid; if any step is unjustified, the proof fails.</p>
+        <p>The point isn't ceremony — it's that a proof compresses an unbounded number of cases into a single checkable argument.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Direct proof</h2>
+        <p>To prove "if P then Q" directly, you assume P and derive Q with a chain of justified steps. Example: <em>If n is even, then n² is even.</em> Assume n = 2k. Then n² = 4k² = 2(2k²), which is even. QED.</p>
+        <p>Most proofs you'll meet are direct — until they aren't.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Proof by induction</h2>
+        <p>For statements indexed by the natural numbers (1, 2, 3, ...), induction is the workhorse. Two steps:</p>
+        <span class="math">1. Base case: the statement holds for n = 1.</span>
+        <span class="math">2. Inductive step: if it holds for n, it holds for n + 1.</span>
+        <p>Those two together prove it for every natural number. The base case starts the chain; the inductive step is the rule that keeps it going forever.</p>
+      </div>
+
+      <!-- Working flashcard -->
+      <div class="q-flashcard" data-lesson-flip='[
+        {"glyph":"P → Q","meaning":"If P is true, then Q must also be true.","explain":"The most common connective in proofs. To prove P → Q by direct proof, assume P and derive Q. To disprove it, find one P that is true while Q is false."},
+        {"glyph":"¬(P ∧ Q) ≡ ¬P ∨ ¬Q","meaning":"De Morgan: not (both) = either not.","explain":"Negating a conjunction gives a disjunction of negations: ¬(P ∧ Q) is equivalent to ¬P ∨ ¬Q. Symmetrically, ¬(P ∨ Q) ≡ ¬P ∧ ¬Q. These two rules alone unlock most logic puzzles."},
+        {"glyph":"P ↔ Q","meaning":"P if and only if Q — each implies the other.","explain":"To prove P ↔ Q, you prove P → Q and Q → P separately. Equivalences (a = b ↔ a² = b² when a, b ≥ 0) are the heart of 'if and only if' arguments."}
+      ]'>
+        <p class="hint">Flashcard · Unit 1</p>
+        <div class="q" data-flip-glyph>P → Q</div>
+        <p data-flip-meaning>If P is true, then Q must be true.</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>Which of the following is a valid proof technique for "if P then Q"?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="Proof by contrapositive assumes ¬Q and derives ¬P — logically equivalent to P → Q." data-wrong-explain="Contradiction assumes P ∧ ¬Q and derives a contradiction. Both are valid; only one option listed a real technique.">
+          <button type="button" data-choice="a">Assume Q and derive P</button>
+          <button type="button" data-choice="b">Assume ¬Q and derive ¬P (contrapositive)</button>
+          <button type="button" data-choice="c">Assume P is false</button>
+          <button type="button" data-choice="d">Prove Q directly without assuming anything</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="#">Privacy Notice</a></li><li><a href="#">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

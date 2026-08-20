@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What is probability? — Wuanberri Statistics</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="statistics.html">← Back to Statistics</a>
+      <h1>What is probability?</h1>
+      <p class="lede">A number between 0 and 1 that measures how likely an event is — and the rules that govern how those numbers combine.</p>
+
+      <div class="lesson-card">
+        <h2>The three axioms</h2>
+        <p>Probability is built on three rules. For any probability P:</p>
+        <span class="math">1. P(A) ≥ 0 for every event A.</span>
+        <span class="math">2. P(Ω) = 1, where Ω is the whole sample space.</span>
+        <span class="math">3. If A and B are disjoint, P(A ∪ B) = P(A) + P(B).</span>
+        <p>Everything else — conditional probability, independence, Bayes' rule — is a consequence of these three. The axioms are what turn "probability" from a vague feeling into a precise tool.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Conditional probability</h2>
+        <p>The probability of A given that B has happened:</p>
+        <span class="math">P(A | B) = P(A ∩ B) / P(B),  provided P(B) > 0.</span>
+        <p>Conditional probability is how you update: knowing something (B happened) changes what you should believe about something else (A).</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>A fair die is rolled twice. What is the probability that both rolls are 4 or greater, given that the first roll was at least 4?</p>
+        <span class="math">Sample space (given first ≥ 4): {4, 5, 6} for the second roll.</span>
+        <span class="math">Favorable outcomes: both rolls in {4, 5, 6} → 3 × 3 = 9 outcomes.</span>
+        <span class="math">Total outcomes with first ≥ 4: 3 × 6 = 18.</span>
+        <span class="math">P(both ≥ 4 | first ≥ 4) = 9 / 18 = 0.5.</span>
+        <p>Knowing the first roll was ≥ 4 cuts the sample space in half — and the second roll is then exactly a 50/50 question.</p>
+      </div>
+
+      <!-- Working flashcard -->
+      <div class="q-flashcard" data-lesson-flip='[
+        {"glyph":"P(A ∪ B) = P(A) + P(B) − P(A ∩ B)","meaning":"Inclusion–exclusion: add the parts, subtract the overlap.","explain":"If A and B are disjoint, P(A ∪ B) = P(A) + P(B). If they overlap, you subtract the overlap counted twice. This generalizes to any number of events — alternate add and subtract the intersections of every k-tuple."},
+        {"glyph":"P(A | B) = P(A ∩ B) / P(B)","meaning":"Update your belief about A once you know B happened.","explain":"P(A ∩ B) = P(A | B) · P(B) is the multiplication rule. Bayes' rule is just this equation rearranged: P(B | A) = P(A | B) · P(B) / P(A) — the formula that powers most of modern statistics and machine learning."},
+        {"glyph":"E[X] = Σ x · P(X = x)","meaning":"Expected value: the probability-weighted average.","explain":"For a fair six-sided die, E[X] = (1+2+3+4+5+6)/6 = 3.5. Expectation is linear — E[aX + bY] = a E[X] + b E[Y] — even when X and Y depend on each other."}
+      ]'>
+        <p class="hint">Flashcard · Unit 2</p>
+        <div class="q" data-flip-glyph>P(A | B) = P(A ∩ B) / P(B)</div>
+        <p data-flip-meaning>Update your belief about A given B.</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>A bag has 3 red and 2 blue marbles. You draw one without looking. What is the probability it is red?</p>
+        <form class="mcq" data-mcq="a" data-right-explain="3 red out of 5 total marbles: P(red) = 3/5 = 0.6." data-wrong-explain="Probability of an event is (favorable outcomes) / (total outcomes). There are 3 red out of 5 marbles.">
+          <button type="button" data-choice="a">3/5</button>
+          <button type="button" data-choice="b">2/5</button>
+          <button type="button" data-choice="c">3/2</button>
+          <button type="button" data-choice="d">1/3</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="#">Privacy Notice</a></li><li><a href="#">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

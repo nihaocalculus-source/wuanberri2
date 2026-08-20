@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Coulomb's law and the electric field — Wuanberri Physics</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="physics.html">← Back to Physics</a>
+      <h1>Coulomb's law and the electric field.</h1>
+      <p class="lede">The electric force between two charges is the gravitational force's stronger, more interesting cousin. Same 1/r² shape, much larger constant, and — crucially — it can attract or repel.</p>
+
+      <div class="lesson-card">
+        <h2>Coulomb's law</h2>
+        <p>The magnitude of the electrostatic force between two point charges:</p>
+        <span class="math">F = k · |q₁ q₂| / r²</span>
+        <p>where k ≈ 8.99 × 10⁹ N·m²/C². The direction is along the line between the charges: attractive if they have opposite signs, repulsive if the same sign. Note the 1/r² — same shape as gravity, but the constant is about 10²⁰ times larger.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>The electric field</h2>
+        <p>A single charge modifies the space around it. Other charges placed in that space feel a force. The electric field E is force per unit positive test charge:</p>
+        <span class="math">E = F / q<sub>test</sub> = k · Q / r²</span>
+        <p>Units: N/C (or equivalently V/m). E is a vector field — it has a value and direction at every point in space, even when no test charge is there.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Superposition</h2>
+        <p>When multiple charges contribute, the total field at a point is the vector sum of each charge's contribution. The fields don't interfere or merge — they just add.</p>
+        <span class="math">E<sub>total</sub> = E₁ + E₂ + E₃ + ⋯</span>
+        <p>This is what makes field problems tractable: break them into single-charge contributions, compute each, then add vectors.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>Two charges, +3 μC and −1 μC, are 0.2 m apart. What is the magnitude of the force between them?</p>
+        <span class="math">F = (8.99 × 10⁹) · (3 × 10⁻⁶)(1 × 10⁻⁶) / (0.2)²</span>
+        <span class="math">F = (8.99 × 10⁹) · (3 × 10⁻¹²) / 0.04</span>
+        <span class="math">F ≈ 0.67 N</span>
+        <p>Attractive — opposite signs pull together. Tiny charges, tiny distance, but a force you can feel. Compare with gravity: the electric force between these charges exceeds the gravitational force between the protons and electrons by a factor of about 10³⁹.</p>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[
+        {"glyph":"F = k q₁q₂/r²","meaning":"Coulomb's law — the magnitude of the electrostatic force.","explain":"Like gravity, but the constant k is 8.99 × 10⁹ N·m²/C², and the force can repel (same sign) or attract (opposite sign). The 1/r² falloff is exactly Newton’s shape."},
+        {"glyph":"E = F/q","meaning":"The electric field is force per unit positive test charge.","explain":"E exists whether or not a test charge is there. It’s a property of the configuration of source charges. At a point, E points in the direction a positive test charge would feel pushed."},
+        {"glyph":"E_total = ΣEᵢ","meaning":"Fields superpose — the total is the vector sum of contributions.","explain":"When many source charges are present, compute each field separately, then add them as vectors. This is what makes complicated charge distributions tractable."}
+      ]'>
+        <p class="hint">Flashcard · Unit 7</p>
+        <div class="q" data-flip-glyph>F = k q₁q₂/r²</div>
+        <p data-flip-meaning>Coulomb's law — the magnitude of the electrostatic force.</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>You double the distance between two point charges. By what factor does the force change?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="F ∝ 1/r². Doubling r means 1/(2)² = 1/4 the force." data-wrong-explain="Coulomb's law has 1/r². So r → 2r means F → F/4.">
+          <button type="button" data-choice="a">Doubles</button>
+          <button type="button" data-choice="b">Drops to 1/4</button>
+          <button type="button" data-choice="c">Drops to 1/2</button>
+          <button type="button" data-choice="d">Drops to 1/8</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Privacy Notice</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

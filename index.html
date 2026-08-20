@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Wuanberri — your personal academic coach</title>
+  <meta name="description" content="Wuanberri maps your exact level in calculus and physics and generates personalized practice, decks, and study plans." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="#why">Why Wuanberri</a>
+        <a href="#features">Features</a>
+        <a href="#coach">The Coach</a>
+        <a href="#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main id="top">
+
+    <!-- Hero -->
+    <section class="hero">
+      <div class="wrap">
+        <h1>Your personal<br/>academic coach.</h1>
+        <p class="sub">Welcome to the <em>adaptive era</em> of learning. Wuanberri maps your exact level in calculus and physics and generates practice calibrated to you — not to a textbook.</p>
+        <div class="ctas">
+          <a href="placement.html" class="btn btn-accent">Start learning</a>
+          <a href="#why" class="btn btn-ghost">See how it works</a>
+        </div>
+
+        <div class="card flashcard" data-flashcard>
+          <div class="glyph" data-glyph>d/dx</div>
+          <div class="meta" data-meta>calculus · derivative operator</div>
+          <div class="meaning" data-meaning>The derivative — instantaneous rate of change.</div>
+          <div class="example" data-example>Applied to f(x) = x², it returns 2x — the slope of the curve at any point.</div>
+          <div class="decomp" data-decomp><strong>d</strong> = "an infinitesimal change in" &nbsp;·&nbsp; <strong>dx</strong> = "with respect to x". The whole notation asks: as x moves by an infinitely small amount, by how much does f move?</div>
+          <div class="actions">
+            <button class="btn btn-ghost" data-explain>Explain</button>
+            <button class="btn btn-accent" data-next>Next card</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- What sets us apart -->
+    <section id="why">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">What sets us apart</span>
+          <h2>An education that adjusts to you — not the other way around.</h2>
+        </div>
+        <div class="points">
+          <div class="point">
+            <h3>Map you from day one</h3>
+            <p>A short adaptive placement identifies exactly what you know, what you half-remember, and what's missing. No wasted review.</p>
+          </div>
+          <div class="point">
+            <h3>Calibrate every problem</h3>
+            <p>Every flashcard, example, and problem is generated to sit just past your current level — the zone where learning actually happens.</p>
+          </div>
+          <div class="point">
+            <h3>Track the whole arc</h3>
+            <p>From Calc I limits to multivariable, from Newtonian mechanics to E&amp;M. Your profile grows with you, semester after semester.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subject profile -->
+    <section>
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Your subject profile</span>
+          <h2>A skill-by-skill map of where you are — and what's next.</h2>
+        </div>
+        <div class="profile-card" data-tabs='{
+          "limits":   {"title":"Limits & continuity",   "note":"Next problem set will target epsilon-delta intuition.", "bars":[{"label":"Definition of limit","pct":82},{"label":"One-sided limits","pct":71},{"label":"Continuity","pct":64},{"label":"Asymptotes","pct":48}]},
+          "deriv":    {"title":"Derivatives",            "note":"Next deck is calibrated to your chain-rule gaps.",    "bars":[{"label":"Power & sum rules","pct":88},{"label":"Product & quotient","pct":62},{"label":"Chain rule","pct":51},{"label":"Implicit diff.","pct":39}]},
+          "integrals":{"title":"Integrals",              "note":"You're ready for u-substitution drills.",             "bars":[{"label":"Antiderivatives","pct":74},{"label":"u-substitution","pct":58},{"label":"Integration by parts","pct":30},{"label":"Definite integrals","pct":67}]},
+          "series":   {"title":"Series",                 "note":"Convergence tests are queued.",                      "bars":[{"label":"Geometric series","pct":70},{"label":"Convergence tests","pct":42},{"label":"Taylor series","pct":25},{"label":"Power series","pct":33}]},
+          "mechanics":{"title":"Mechanics",              "note":"Free-body diagrams are your strongest area.",         "bars":[{"label":"Kinematics","pct":76},{"label":"Newton\'s laws","pct":81},{"label":"Work & energy","pct":58},{"label":"Momentum","pct":49}]},
+          "em":       {"title":"E&M",                    "note":"Gauss\'s law unlocked, circuits next.",               "bars":[{"label":"Coulomb\'s law","pct":55},{"label":"Electric fields","pct":48},{"label":"Gauss\'s law","pct":40},{"label":"Circuits","pct":22}]}
+        }'>
+          <div class="tabs" role="tablist">
+            <button class="tab" aria-selected="false" data-key="limits">Limits</button>
+            <button class="tab" aria-selected="true"  data-key="deriv">Derivatives</button>
+            <button class="tab" aria-selected="false" data-key="integrals">Integrals</button>
+            <button class="tab" aria-selected="false" data-key="series">Series</button>
+            <button class="tab" aria-selected="false" data-key="mechanics">Mechanics</button>
+            <button class="tab" aria-selected="false" data-key="em">E&amp;M</button>
+          </div>
+          <div class="profile-body" data-panel></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features grid -->
+    <section id="features">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Four ways to progress</span>
+          <h2>Different tools, calibrated to the same goal: fluency.</h2>
+        </div>
+        <div class="features">
+          <div class="feature">
+            <h3>AI Decks</h3>
+            <p>Spaced-repetition flashcards generated on any topic, in any quantity.</p>
+            <div class="preview">
+              <span class="chip">Generator</span>
+              <span class="math">"chain rule" → 8 cards</span>
+            </div>
+          </div>
+          <div class="feature">
+            <h3>Quick Practice</h3>
+            <p>Five-minute problem capsules generated fresh, scored, logged.</p>
+            <div class="preview">
+              <span class="chip">5 min</span>
+              <span class="math">5 questions · scored</span>
+            </div>
+          </div>
+          <div class="feature">
+            <h3>Worked Examples</h3>
+            <p>Walkthroughs, derivations, proofs — on demand, calibrated to your level.</p>
+            <div class="preview">
+              <span class="chip">Long-form</span>
+              <span>step-by-step</span>
+            </div>
+          </div>
+          <div class="feature">
+            <h3>Study Partners</h3>
+            <p>Socratic AI tutors that ask, hint, and check your reasoning.</p>
+            <div class="preview">
+              <span class="chip">Live</span>
+              <span>Ada · Isaac · Noor · Kofi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- The Coach -->
+    <section id="coach">
+      <div class="wrap">
+        <div class="coach">
+          <div class="coach-copy">
+            <span class="eyebrow">The Coach</span>
+            <h2>An expert tutor who sees your screen and takes action.</h2>
+            <p>Ask anything. Build a plan. Generate a deck on the topic you're stuck on. The Coach has full context on what you're working on — and it doesn't just answer, it acts.</p>
+            <ul>
+              <li>Answers questions in plain language with worked math.</li>
+              <li>Sees your current screen and adapts to where you are.</li>
+              <li>Takes action — builds decks, assigns problems, plans your week.</li>
+            </ul>
+          </div>
+
+          <div class="chat" data-chat>
+            <div class="chat-head"><span>Context · Calculus · Derivatives</span></div>
+            <div class="chat-body">
+              <div class="bubble bot">Hi! I'm your study coach. I can see you're on the Derivatives tab. Want me to explain a concept, build you a deck, or sketch a study plan?</div>
+            </div>
+            <div class="chips">
+              <button class="chip" data-chip>Explain derivatives</button>
+              <button class="chip" data-chip>Make me a study plan</button>
+              <button class="chip" data-chip>Give me a deck on chain rule</button>
+            </div>
+            <form class="chat-input">
+              <input type="text" placeholder="Ask the coach anything…" aria-label="Message" />
+              <button type="submit" class="btn btn-accent">Send</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pull quote -->
+    <section class="tight">
+      <div class="wrap">
+        <div class="pullquote">
+          <blockquote>"The textbook is a map. The student is the explorer. The job of the app is to follow the explorer — not drag them along a fixed route."</blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- Subjects availability -->
+    <section class="tight">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Available now</span>
+          <h2>Six subjects. More on the way.</h2>
+        </div>
+        <div class="subjects" aria-hidden="true">
+          <span>🧮</span><span>⚛️</span><span>📐</span><span>∫</span><span>🔢</span><span>📊</span>
+        </div>
+        <p class="note" style="text-align:center;color:var(--ink-muted);margin:0">Calculus, Physics, Linear Algebra, Differential Equations, Discrete Math, and Statistics are live. Chemistry is added monthly.</p>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing">
+      <div class="wrap">
+        <div class="section-head">
+          <span class="eyebrow">Pricing</span>
+          <h2>Start free. Upgrade when you're hooked.</h2>
+        </div>
+        <div class="pricing">
+          <div class="plan featured">
+            <h3>Wuanberri Pro</h3>
+            <div class="price">$9.99 <small>/ month</small></div>
+            <div class="trial">7-day free trial · cancel anytime</div>
+            <ul>
+              <li>Unlimited AI-generated decks</li>
+              <li>Quick Practice &amp; Workouts</li>
+              <li>The Coach, full context</li>
+              <li>Study Partners</li>
+              <li>Full reference &amp; worked examples</li>
+            </ul>
+            <a href="placement.html" class="btn btn-accent">Start 7-day trial</a>
+          </div>
+          <div class="plan">
+            <h3>Standard</h3>
+            <div class="price">Free <small>forever</small></div>
+            <div class="trial">No card required</div>
+            <ul>
+              <li>Flashcards &amp; spaced repetition</li>
+              <li>Three decks at a time</li>
+              <li>Progress tracking</li>
+              <li>The full interface</li>
+            </ul>
+            <a href="placement.html" class="btn btn-ghost">Start free</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Closing -->
+    <section class="closing">
+      <div class="wrap">
+        <h2>Your subject. Your level. Your pace.</h2>
+        <a href="placement.html" class="btn btn-accent">Start learning</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="#why">Why Wuanberri</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#coach">The Coach</a></li>
+          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Privacy Notice</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/llm.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    // Landing-page coach: upgrade to LLM if a key is set.
+    (function () {
+      if (!window.LLM) return;
+      const chat = document.querySelector('[data-chat]');
+      if (!chat) return;
+      const body = chat.querySelector('.chat-body');
+      const form = chat.querySelector('form');
+      const input = chat.querySelector('input');
+      const chips = chat.querySelector('.chips');
+      const provider = LLM.activeProvider();
+
+      const history = [];
+      const banner = document.createElement('div');
+      banner.style.cssText = 'font-size:11px;padding:8px 16px;border-bottom:1px solid var(--line);background:' + (provider ? '#f4faf5;color:#2f7a3e' : '#fcfaf6;color:var(--ink-muted)');
+      banner.innerHTML = provider
+        ? `LLM mode: ${provider}. <a href="settings.html" style="color:#2f7a3e;text-decoration:underline">Settings</a>`
+        : `Keyword mode. <a href="settings.html" style="color:var(--accent)">Add an API key</a> for real-time answers.`;
+      chat.insertBefore(banner, body);
+
+      const send = async (text) => {
+        if (!text.trim()) return;
+        const u = document.createElement('div');
+        u.className = 'bubble user';
+        u.textContent = text;
+        body.appendChild(u);
+        body.scrollTop = body.scrollHeight;
+        input.value = '';
+        history.push({ role: 'user', content: text });
+
+        if (provider) {
+          const typing = document.createElement('div');
+          typing.className = 'bubble bot';
+          typing.textContent = '…';
+          body.appendChild(typing);
+          body.scrollTop = body.scrollHeight;
+          try {
+            const reply = await LLM.send({
+              provider,
+              history: history.slice(0, -1),
+              userMessage: text,
+              context: 'Landing-page coach. Short answers, one actionable suggestion at a time.',
+            });
+            history.push({ role: 'assistant', content: reply });
+            typing.innerHTML = reply;
+          } catch (e) {
+            typing.innerHTML = '(LLM call failed: ' + e.message + ')';
+          }
+        }
+        // When no provider, the keyword router in app.js handles it (on submit).
+      };
+      form.addEventListener('submit', (e) => { e.preventDefault(); if (provider) { send(input.value); } else { /* app.js handles */ } });
+      chips?.querySelectorAll('[data-chip]').forEach(c => c.addEventListener('click', () => { if (provider) send(c.textContent); }));
+    })();
+  </script>
+</body>
+</html>

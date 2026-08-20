@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Study Plan — Wuanberri</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .gen-wrap { max-width: 880px; margin: 0 auto; padding: 48px 24px 96px; }
+    .gen-wrap h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 36px); margin: 0 0 8px; font-weight: 600; letter-spacing: -0.01em; }
+    .gen-wrap .lede { color: var(--ink-soft); margin: 0 0 28px; font-size: 15px; }
+    .gen-form { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: grid; gap: 16px; box-shadow: var(--shadow); }
+    .gen-form .field label { display: block; font-size: 12px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 6px; }
+    .gen-form input, .gen-form select {
+      width: 100%; box-sizing: border-box;
+      border: 1px solid var(--line-strong); background: var(--surface);
+      border-radius: var(--radius-sm); padding: 10px 14px; font: inherit; font-size: 14px; outline: none;
+    }
+    .gen-form .row { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr auto; gap: 12px; align-items: end; }
+    .gen-form .btn { padding: 10px 20px; }
+    .status { font-size: 13px; color: var(--ink-muted); min-height: 1.4em; }
+    .status.err { color: #7a2a1f; }
+    .no-key { background: var(--accent-soft); color: var(--accent-ink); padding: 16px 20px; border-radius: var(--radius); margin-bottom: 16px; }
+    .no-key a { color: var(--accent-ink); text-decoration: underline; font-weight: 600; }
+
+    .plan-head { text-align: center; margin: 32px 0 24px; }
+    .plan-head h2 { font-family: var(--font-display); font-size: 28px; margin: 0 0 4px; font-weight: 600; }
+    .plan-head .sub { color: var(--ink-muted); font-size: 14px; }
+
+    .week { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; margin-bottom: 16px; }
+    .week-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 12px; }
+    .week-head h3 { font-family: var(--font-display); font-size: 22px; margin: 0; font-weight: 600; }
+    .week-head .theme { color: var(--accent); font-size: 13px; font-weight: 500; }
+    .goals { margin: 12px 0 16px; }
+    .goals h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--ink-muted); margin: 0 0 6px; font-weight: 600; }
+    .goals ul { margin: 0; padding-left: 20px; color: var(--ink-soft); font-size: 14px; }
+    .day-grid { display: grid; grid-template-columns: repeat(7, 1fr); gap: 8px; margin: 12px 0; }
+    .day { background: var(--bg); border: 1px solid var(--line); border-radius: var(--radius-sm); padding: 10px 8px; min-height: 80px; }
+    .day .dow { font-size: 10px; text-transform: uppercase; color: var(--ink-muted); letter-spacing: 0.1em; font-weight: 600; }
+    .day .task { font-size: 12px; color: var(--ink); margin-top: 4px; line-height: 1.4; }
+    .day .min { font-size: 10px; color: var(--ink-muted); margin-top: 4px; }
+    .milestones { background: var(--accent-soft); color: var(--accent-ink); padding: 12px 16px; border-radius: var(--radius-sm); margin-top: 12px; font-size: 14px; }
+    .milestones strong { display: block; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 4px; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="settings.html" class="btn btn-ghost">Settings</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="gen-wrap">
+      <span class="eyebrow">Study Plan</span>
+      <h1>A plan for the next exam, the next month, the next semester.</h1>
+      <p class="lede">Tell the generator what you're working toward. Get a week-by-week plan with daily tasks, hours, and milestones.</p>
+
+      <div id="noKey" class="no-key" style="display:none">
+        <strong>No API key set.</strong> Add one in <a href="settings.html">Settings</a>.
+      </div>
+
+      <form class="gen-form" id="genForm">
+        <div class="field">
+          <label for="goal">Goal</label>
+          <input type="text" id="goal" placeholder="e.g. Ace the Calc II midterm on Nov 15" />
+        </div>
+        <div class="row">
+          <div class="field"><label for="level">Level</label>
+            <select id="level">
+              <option value="Calc I">Calc I</option>
+              <option value="Calc II" selected>Calc II</option>
+              <option value="Calc III">Calc III</option>
+              <option value="Physics I">Physics I</option>
+              <option value="Physics II">Physics II</option>
+              <option value="E&M">E&amp;M</option>
+            </select>
+          </div>
+          <div class="field"><label for="weeks">Weeks</label><input type="number" id="weeks" min="1" max="12" value="4" /></div>
+          <div class="field"><label for="hours">Hours / week</label><input type="number" id="hours" min="1" max="40" value="5" /></div>
+          <button type="submit" class="btn btn-accent" id="goBtn">Generate plan</button>
+        </div>
+        <div class="status" id="status"></div>
+      </form>
+
+      <div id="plan"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Generators</h5>
+        <ul>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="#">Privacy Notice</a></li><li><a href="#">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/llm.js"></script>
+  <script src="assets/generators.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    (function () {
+      if (!window.Store || !Store.isAuthed()) { window.location.href = 'auth.html'; return; }
+      const hasKey = LLM && LLM.activeProvider();
+      document.getElementById('noKey').style.display = hasKey ? 'none' : 'block';
+
+      const form = document.getElementById('genForm');
+      const goal = document.getElementById('goal');
+      const level = document.getElementById('level');
+      const weeks = document.getElementById('weeks');
+      const hours = document.getElementById('hours');
+      const status = document.getElementById('status');
+      const goBtn = document.getElementById('goBtn');
+      const out = document.getElementById('plan');
+      const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+      const render = (plan) => {
+        if (!plan || !plan.weeks) { status.className = 'status err'; status.textContent = 'Unexpected response.'; return; }
+        const dows = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+        out.innerHTML = `
+          <div class="plan-head">
+            <h2>${esc(plan.title || 'Your study plan')}</h2>
+            <div class="sub">${plan.weeks.length} weeks · ${hours.value} hours/week</div>
+          </div>
+          ${plan.weeks.map(w => {
+            const tasksByDay = {};
+            (w.dailyTasks || []).forEach(t => { tasksByDay[t.day] = t; });
+            return `
+              <div class="week">
+                <div class="week-head">
+                  <h3>Week ${w.week}</h3>
+                  <span class="theme">${esc(w.theme || '')}</span>
+                </div>
+                ${w.goals && w.goals.length ? `<div class="goals"><h4>Goals</h4><ul>${w.goals.map(g => `<li>${esc(g)}</li>`).join('')}</ul></div>` : ''}
+                <div class="day-grid">
+                  ${dows.map(d => {
+                    const t = tasksByDay[d];
+                    return `<div class="day"><div class="dow">${d}</div>${t ? `<div class="task">${esc(t.task)}</div><div class="min">${t.minutes || 30} min</div>` : '<div class="task" style="color:var(--ink-muted)">rest or review</div>'}</div>`;
+                  }).join('')}
+                </div>
+                ${w.milestones && w.milestones.length ? `<div class="milestones"><strong>Milestones</strong>${w.milestones.map(m => esc(m)).join(' · ')}</div>` : ''}
+              </div>
+            `;
+          }).join('')}
+        `;
+        const libs = Store.get('library', []);
+        libs.unshift({ kind: 'plan', topic: plan.title, createdAt: new Date().toISOString(), plan });
+        Store.set('library', libs.slice(0, 20));
+      };
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!LLM || !LLM.activeProvider()) { status.className = 'status err'; status.textContent = 'Add an API key in Settings first.'; return; }
+        if (!goal.value.trim()) { status.className = 'status err'; status.textContent = 'Type a goal.'; return; }
+        status.className = 'status'; status.textContent = 'Generating…'; goBtn.disabled = true; out.innerHTML = '';
+        try {
+          const result = await Generators.generateStudyPlan({
+            goal: goal.value.trim(),
+            weeks: parseInt(weeks.value, 10),
+            hoursPerWeek: parseInt(hours.value, 10),
+            level: level.value,
+          });
+          render(result.plan);
+          status.textContent = 'Done. Saved to your library.';
+        } catch (err) {
+          status.className = 'status err'; status.textContent = 'Failed: ' + err.message;
+        } finally { goBtn.disabled = false; }
+      });
+    })();
+  </script>
+</body>
+</html>

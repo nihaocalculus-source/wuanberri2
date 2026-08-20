@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Placement — Wuanberri</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .placement-wrap { max-width: 680px; margin: 0 auto; padding: 56px 24px 96px; }
+    .placement-wrap h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 36px); margin: 0 0 8px; font-weight: 600; letter-spacing: -0.01em; }
+    .placement-wrap .lede { color: var(--ink-soft); font-size: 16px; margin-bottom: 32px; }
+    .progress {
+      display: flex; align-items: center; gap: 12px; margin-bottom: 24px;
+    }
+    .progress .track { flex: 1; height: 6px; background: var(--line); border-radius: 999px; overflow: hidden; }
+    .progress .fill { height: 100%; background: var(--accent); width: 0%; transition: width 0.4s ease; }
+    .progress .count { font-size: 13px; color: var(--ink-muted); font-variant-numeric: tabular-nums; }
+    .q-card {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 32px; box-shadow: var(--shadow);
+    }
+    .q-card .q-tag { font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+    .q-card .q-text { font-family: var(--font-display); font-size: 22px; line-height: 1.35; margin: 0 0 8px; font-weight: 600; }
+    .q-card .q-hint { color: var(--ink-muted); font-size: 14px; margin-bottom: 20px; }
+    .q-card .math { font-family: "Cambria Math", "STIX Two Math", ui-serif, Georgia, serif; }
+
+    .q-options { display: grid; gap: 8px; margin-top: 8px; }
+    .q-options button {
+      text-align: left; background: var(--bg); border: 1px solid var(--line);
+      border-radius: var(--radius-sm); padding: 14px 16px; font: inherit; font-size: 15px;
+      color: var(--ink); transition: border-color 0.12s ease, background 0.12s ease;
+    }
+    .q-options button:hover { border-color: var(--accent); background: var(--surface); }
+    .q-options button.correct { background: #e9f5ec; border-color: #2f7a3e; color: #1f5028; }
+    .q-options button.wrong { background: #fbe9e6; border-color: #b53d2a; color: #7a2a1f; }
+    .q-options button:disabled { cursor: default; }
+
+    .q-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 20px; }
+    .q-footer .skip { background: none; border: 0; color: var(--ink-muted); font-size: 13px; cursor: pointer; }
+    .q-footer .skip:hover { color: var(--ink); }
+
+    .result {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 40px 32px; text-align: center;
+    }
+    .result h2 { font-family: var(--font-display); font-size: 32px; margin: 0 0 8px; font-weight: 600; letter-spacing: -0.01em; }
+    .result p { color: var(--ink-soft); margin: 0 0 24px; }
+    .level-card {
+      display: inline-flex; align-items: baseline; gap: 12px; background: var(--accent-soft);
+      border-radius: var(--radius); padding: 16px 24px; margin: 16px 0 24px;
+    }
+    .level-card .label { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent-ink); font-weight: 600; }
+    .level-card .value { font-family: var(--font-display); font-size: 28px; color: var(--accent-ink); font-weight: 600; }
+    .result .ctas { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .result .summary { text-align: left; max-width: 460px; margin: 24px auto 0; }
+    .result .summary h3 { font-size: 14px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 12px; }
+    .result .bars { display: grid; gap: 8px; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="index.html" class="btn btn-ghost">Exit</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="placement-wrap">
+      <div id="intro">
+        <span class="eyebrow">Step 1 of 2</span>
+        <h1>Let's see where you are.</h1>
+        <p class="lede">Five questions, mixed across calculus and physics. We use this to seed your profile so your first deck is already calibrated to you. No scores are saved — this is a demo.</p>
+        <div class="card" style="max-width:520px;margin:24px 0 32px">
+          <p style="margin:0;color:var(--ink-soft);font-size:14px">The questions start easy and get harder. If a question is past your level, skip it — that's signal too.</p>
+        </div>
+        <button class="btn btn-accent" id="startBtn">Begin placement</button>
+      </div>
+
+      <div id="quiz" style="display:none">
+        <div class="progress">
+          <span class="count" id="count">Question 1 of 5</span>
+          <div class="track"><div class="fill" id="fill"></div></div>
+        </div>
+        <div class="q-card" id="qcard">
+          <div class="q-tag" id="qtag"></div>
+          <div class="q-text" id="qtext"></div>
+          <div class="q-hint" id="qhint"></div>
+          <div class="q-options" id="qopts"></div>
+          <div class="q-footer">
+            <button class="skip" id="skipBtn">Skip this question</button>
+            <button class="btn btn-accent" id="nextBtn" style="display:none">Next</button>
+          </div>
+        </div>
+      </div>
+
+      <div id="result" style="display:none">
+        <div class="result">
+          <span class="eyebrow">Your starting profile</span>
+          <h2>You're ready for the next step.</h2>
+          <p>Based on your answers, here's where we recommend you begin. Your decks, practice, and study plan will all be calibrated to this.</p>
+          <div class="level-card">
+            <span class="label">Starting level</span>
+            <span class="value" id="level">Calc I · Unit 1</span>
+          </div>
+          <div class="summary">
+            <h3>Your initial strengths &amp; gaps</h3>
+            <div class="bars" id="summaryBars"></div>
+          </div>
+          <div class="ctas" style="margin-top:28px">
+            <a href="dashboard.html" class="btn btn-accent">Go to my dashboard</a>
+            <a href="lesson-calc-demo.html" class="btn btn-ghost">Try a sample lesson</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    // Placement test logic — kept inline for clarity, no backend.
+    (function () {
+      const questions = [
+        { tag: 'Calculus · Limits', text: 'What is <span class="math">lim<sub>x→2</sub> (x² − 4) / (x − 2)</span>?', options: ['0', '2', '4', 'undefined'], correct: 2, skill: 'limits', weight: 1 },
+        { tag: 'Calculus · Derivatives', text: 'What is <span class="math">d/dx (x³)</span>?', options: ['x²', '3x²', '3x', 'x³ ln x'], correct: 1, skill: 'deriv', weight: 1 },
+        { tag: 'Calculus · Chain rule', text: 'If <span class="math">f(x) = (3x + 1)⁵</span>, what is f′(x)?', options: ['5(3x + 1)⁴', '15(3x + 1)⁴', '3(3x + 1)⁴', '5(3x + 1)⁶'], correct: 1, skill: 'deriv', weight: 2 },
+        { tag: 'Physics · Kinematics', text: 'A car accelerates from rest at 3 m/s² for 4 seconds. How far has it traveled?', options: ['12 m', '24 m', '48 m', '6 m'], correct: 1, skill: 'mechanics', weight: 1, hint: 's = ½ a t²' },
+        { tag: 'Physics · Newton\'s laws', text: 'A 4 kg object experiences a net force of 12 N. What is its acceleration?', options: ['0.33 m/s²', '3 m/s²', '8 m/s²', '48 m/s²'], correct: 1, skill: 'mechanics', weight: 1, hint: 'a = F / m' },
+      ];
+
+      const intro = document.getElementById('intro');
+      const quiz = document.getElementById('quiz');
+      const result = document.getElementById('result');
+      const startBtn = document.getElementById('startBtn');
+      const count = document.getElementById('count');
+      const fill = document.getElementById('fill');
+      const qtag = document.getElementById('qtag');
+      const qtext = document.getElementById('qtext');
+      const qhint = document.getElementById('qhint');
+      const qopts = document.getElementById('qopts');
+      const skipBtn = document.getElementById('skipBtn');
+      const nextBtn = document.getElementById('nextBtn');
+      const levelEl = document.getElementById('level');
+      const summaryBars = document.getElementById('summaryBars');
+
+      let i = 0;
+      const skillScores = { limits: 0, deriv: 0, integrals: 0, mechanics: 0, em: 0 };
+      const skillMax = { limits: 1, deriv: 3, integrals: 0, mechanics: 2, em: 0 };
+
+      // If we already have a placement, jump straight to results.
+      const prior = Store.getPlacement();
+      if (prior) {
+        for (const k of Object.keys(prior.scores || {})) skillScores[k] = prior.scores[k];
+        finish(/*skipAnimation*/ true);
+      }
+
+      const start = () => { intro.style.display = 'none'; quiz.style.display = 'block'; render(); };
+      const finish = (skipAnimation) => {
+        quiz.style.display = 'none';
+        result.style.display = 'block';
+
+        // Decide level
+        const calcScore = skillScores.limits + skillScores.deriv;
+        const physScore = skillScores.mechanics;
+        let level = 'Calc I · Unit 1';
+        if (calcScore >= 3 && physScore >= 1) level = 'Calc II · Unit 5';
+        else if (calcScore >= 2) level = 'Calc I · Unit 2 (Derivatives)';
+        levelEl.textContent = level;
+
+        // Persist
+        Store.savePlacement({ level, scores: { ...skillScores }, skillMax: { ...skillMax } });
+        Store.bumpStreak();
+
+        // Render bars
+        const allSkills = [
+          { key: 'limits', label: 'Limits' },
+          { key: 'deriv', label: 'Derivatives' },
+          { key: 'integrals', label: 'Integrals' },
+          { key: 'mechanics', label: 'Mechanics' },
+          { key: 'em', label: 'E&M' },
+        ];
+        summaryBars.innerHTML = allSkills.map(s => {
+          const pct = skillMax[s.key] ? Math.round((skillScores[s.key] / skillMax[s.key]) * 100) : 0;
+          return `
+            <div class="bar-row">
+              <span class="label">${s.label}</span>
+              <div class="track"><div class="fill" style="width:${pct}%"></div></div>
+              <span class="val">${pct}</span>
+            </div>
+          `;
+        }).join('');
+        if (skipAnimation) {
+          result.style.animation = 'none';
+        }
+      };
+
+      const render = () => {
+        const q = questions[i];
+        count.textContent = `Question ${i + 1} of ${questions.length}`;
+        fill.style.width = ((i) / questions.length) * 100 + '%';
+        qtag.textContent = q.tag;
+        qtext.innerHTML = q.text;
+        qhint.textContent = q.hint || '';
+        qhint.style.display = q.hint ? 'block' : 'none';
+        qopts.innerHTML = q.options.map((o, idx) => `<button data-idx="${idx}">${o}</button>`).join('');
+        nextBtn.style.display = 'none';
+        qopts.querySelectorAll('button').forEach(b => {
+          b.addEventListener('click', () => answer(parseInt(b.dataset.idx, 10), b));
+        });
+      };
+
+      const answer = (idx, btn) => {
+        const q = questions[i];
+        qopts.querySelectorAll('button').forEach(x => x.disabled = true);
+        const wasRight = idx === q.correct;
+        if (wasRight) {
+          btn.classList.add('correct');
+          skillScores[q.skill] = (skillScores[q.skill] || 0) + q.weight;
+        } else {
+          btn.classList.add('wrong');
+          qopts.querySelectorAll('button').forEach(x => { if (parseInt(x.dataset.idx, 10) === q.correct) x.classList.add('correct'); });
+        }
+        Store.addReview(q.tag.split(' · ')[0].toLowerCase(), wasRight);
+        nextBtn.style.display = 'inline-flex';
+        nextBtn.textContent = (i === questions.length - 1) ? 'See my profile' : 'Next question';
+        skipBtn.style.display = 'none';
+      };
+
+      const next = () => {
+        if (i === questions.length - 1) { finish(); return; }
+        i++;
+        render();
+        skipBtn.style.display = 'inline-block';
+      };
+
+      const skip = () => {
+        i++;
+        if (i >= questions.length) { finish(); return; }
+        render();
+      };
+
+      startBtn.addEventListener('click', start);
+      nextBtn.addEventListener('click', next);
+      skipBtn.addEventListener('click', skip);
+    })();
+  </script>
+</body>
+</html>

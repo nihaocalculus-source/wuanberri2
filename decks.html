@@ -1,0 +1,218 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Decks — Wuanberri</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .gen-wrap { max-width: 880px; margin: 0 auto; padding: 48px 24px 96px; }
+    .gen-wrap h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 36px); margin: 0 0 8px; font-weight: 600; letter-spacing: -0.01em; }
+    .gen-wrap .lede { color: var(--ink-soft); margin: 0 0 28px; font-size: 15px; }
+    .gen-form { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: grid; gap: 16px; box-shadow: var(--shadow); }
+    .gen-form .row { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 12px; align-items: end; }
+    .gen-form .field label { display: block; font-size: 12px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 6px; }
+    .gen-form input, .gen-form select {
+      width: 100%; box-sizing: border-box;
+      border: 1px solid var(--line-strong); background: var(--surface);
+      border-radius: var(--radius-sm); padding: 10px 14px; font: inherit; font-size: 14px; outline: none;
+    }
+    .gen-form input:focus, .gen-form select:focus { border-color: var(--accent); }
+    .gen-form .btn { padding: 10px 20px; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chips .chip { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 12px; color: var(--ink-soft); cursor: pointer; }
+    .chips .chip:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-ink); }
+
+    .status { font-size: 13px; color: var(--ink-muted); min-height: 1.4em; }
+    .status.err { color: #7a2a1f; }
+
+    .deck-area { margin-top: 32px; }
+    .deck-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+    .deck-head h2 { font-family: var(--font-display); font-size: 24px; margin: 0; font-weight: 600; }
+    .deck-head .meta { color: var(--ink-muted); font-size: 13px; }
+
+    .flash-stack { display: grid; gap: 12px; }
+    .card-row {
+      background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius);
+      padding: 20px; display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: center;
+    }
+    .card-row .face { font-family: "Cambria Math", "STIX Two Math", ui-serif, Georgia, serif; font-size: 17px; color: var(--ink); }
+    .card-row .back-text { color: var(--ink-soft); font-size: 14px; margin-top: 6px; }
+    .card-row .actions { display: flex; gap: 8px; }
+    .card-row .actions .btn { padding: 6px 12px; font-size: 12px; }
+    .card-row .hint, .card-row .expl { display: none; margin-top: 8px; padding: 10px 12px; border-radius: var(--radius-sm); font-size: 13px; }
+    .card-row .hint { background: var(--bg); color: var(--ink-soft); }
+    .card-row .expl { background: var(--accent-soft); color: var(--accent-ink); }
+    .card-row .hint.show, .card-row .expl.show { display: block; }
+
+    .no-key { background: var(--accent-soft); color: var(--accent-ink); padding: 16px 20px; border-radius: var(--radius); margin-bottom: 16px; }
+    .no-key a { color: var(--accent-ink); text-decoration: underline; font-weight: 600; }
+
+    .math { font-family: "Cambria Math", "STIX Two Math", ui-serif, Georgia, serif; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="settings.html" class="btn btn-ghost">Settings</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="gen-wrap">
+      <span class="eyebrow">AI Decks</span>
+      <h1>Generate a deck on anything.</h1>
+      <p class="lede">Type a topic. Get a real, studied deck — definitions, formulas, applied questions — calibrated to your level. Built fresh every time.</p>
+
+      <div id="noKey" class="no-key" style="display:none">
+        <strong>No API key set.</strong> Add one in <a href="settings.html">Settings</a> to use AI generators. (You can still browse, but generation needs a key.)
+      </div>
+
+      <form class="gen-form" id="genForm">
+        <div>
+          <div class="field" style="margin-bottom:8px"><label for="topic">Topic</label></div>
+          <input type="text" id="topic" placeholder="e.g. chain rule, free-body diagrams, Gauss's law" />
+        </div>
+        <div class="chips">
+          <button type="button" class="chip" data-topic="chain rule">chain rule</button>
+          <button type="button" class="chip" data-topic="u-substitution">u-substitution</button>
+          <button type="button" class="chip" data-topic="Newton's laws">Newton's laws</button>
+          <button type="button" class="chip" data-topic="free-body diagrams">free-body diagrams</button>
+          <button type="button" class="chip" data-topic="Coulomb's law">Coulomb's law</button>
+          <button type="button" class="chip" data-topic="Taylor series">Taylor series</button>
+        </div>
+        <div class="row">
+          <div class="field"><label for="count">Cards</label><input type="number" id="count" min="3" max="20" value="8" /></div>
+          <div class="field"><label for="difficulty">Difficulty</label>
+            <select id="difficulty">
+              <option value="intro">Intro</option>
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+          <div></div>
+          <button type="submit" class="btn btn-accent" id="goBtn">Generate deck</button>
+        </div>
+        <div class="status" id="status"></div>
+      </form>
+
+      <div class="deck-area" id="deckArea"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Generators</h5>
+        <ul>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="#">Privacy Notice</a></li><li><a href="#">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/llm.js"></script>
+  <script src="assets/generators.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    (function () {
+      if (!window.Store || !Store.isAuthed()) { window.location.href = 'auth.html'; return; }
+      const hasKey = LLM && LLM.activeProvider();
+      document.getElementById('noKey').style.display = hasKey ? 'none' : 'block';
+
+      const form = document.getElementById('genForm');
+      const topic = document.getElementById('topic');
+      const count = document.getElementById('count');
+      const diff = document.getElementById('difficulty');
+      const status = document.getElementById('status');
+      const goBtn = document.getElementById('goBtn');
+      const deckArea = document.getElementById('deckArea');
+
+      document.querySelectorAll('[data-topic]').forEach(c => c.addEventListener('click', () => { topic.value = c.dataset.topic; topic.focus(); }));
+
+      const escape = (s) => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+      const renderDeck = (deck) => {
+        if (!deck || !deck.cards) { status.className = 'status err'; status.textContent = 'Generation returned an unexpected shape.'; return; }
+        deckArea.innerHTML = `
+          <div class="deck-head">
+            <h2>${escape(deck.topic || topic.value)}</h2>
+            <span class="meta">${deck.cards.length} cards · ${diff.value}</span>
+          </div>
+          <div class="flash-stack">
+            ${deck.cards.map((c, i) => `
+              <div class="card-row" data-idx="${i}">
+                <div>
+                  <div class="face">${escape(c.front)}</div>
+                  <div class="back-text">${escape(c.back)}</div>
+                  <div class="hint">${escape(c.hint || '')}</div>
+                  <div class="expl">${escape(c.explanation || '')}</div>
+                </div>
+                <div class="actions">
+                  <button type="button" class="btn btn-ghost" data-toggle="hint">Hint</button>
+                  <button type="button" class="btn btn-ghost" data-toggle="expl">Explain</button>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        `;
+        deckArea.querySelectorAll('.card-row').forEach(row => {
+          row.querySelector('[data-toggle="hint"]').addEventListener('click', () => row.querySelector('.hint').classList.toggle('show'));
+          row.querySelector('[data-toggle="expl"]').addEventListener('click', () => row.querySelector('.expl').classList.toggle('show'));
+        });
+        // Save to local library
+        const libs = Store.get('library', []);
+        libs.unshift({ kind: 'deck', topic: deck.topic, createdAt: new Date().toISOString(), cards: deck.cards });
+        Store.set('library', libs.slice(0, 20));
+        // Log it
+        Store.addReview('generator', true);
+      };
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!LLM || !LLM.activeProvider()) { status.className = 'status err'; status.textContent = 'Add an API key in Settings first.'; return; }
+        if (!topic.value.trim()) { status.className = 'status err'; status.textContent = 'Type a topic.'; return; }
+        status.className = 'status';
+        status.textContent = 'Generating…';
+        goBtn.disabled = true;
+        try {
+          const result = await Generators.generateDeck({ topic: topic.value.trim(), count: parseInt(count.value, 10), difficulty: diff.value });
+          renderDeck(result.deck);
+          status.textContent = 'Done. Saved to your library.';
+        } catch (err) {
+          status.className = 'status err';
+          status.textContent = 'Failed: ' + err.message;
+        } finally {
+          goBtn.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

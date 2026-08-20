@@ -1,0 +1,27 @@
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+npm-debug.log*
+
+# Env / secrets — never commit these
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+.vercel/
+
+# Python (only used for the local dev server, never deployed)
+__pycache__/
+*.pyc

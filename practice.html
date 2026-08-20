@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Quick Practice — Wuanberri</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .gen-wrap { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; }
+    .gen-wrap h1 { font-family: var(--font-display); font-size: clamp(28px, 4vw, 36px); margin: 0 0 8px; font-weight: 600; letter-spacing: -0.01em; }
+    .gen-wrap .lede { color: var(--ink-soft); margin: 0 0 28px; font-size: 15px; }
+    .gen-form { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; display: grid; gap: 16px; box-shadow: var(--shadow); }
+    .gen-form .field label { display: block; font-size: 12px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em; font-weight: 600; margin-bottom: 6px; }
+    .gen-form input, .gen-form select {
+      width: 100%; box-sizing: border-box;
+      border: 1px solid var(--line-strong); background: var(--surface);
+      border-radius: var(--radius-sm); padding: 10px 14px; font: inherit; font-size: 14px; outline: none;
+    }
+    .gen-form input:focus, .gen-form select:focus { border-color: var(--accent); }
+    .gen-form .row { display: grid; grid-template-columns: 1fr 1fr 1fr auto; gap: 12px; align-items: end; }
+    .gen-form .btn { padding: 10px 20px; }
+    .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chips .chip { background: var(--bg); border: 1px solid var(--line); border-radius: 999px; padding: 6px 12px; font-size: 12px; color: var(--ink-soft); cursor: pointer; }
+    .chips .chip:hover { background: var(--accent-soft); border-color: var(--accent); color: var(--accent-ink); }
+    .status { font-size: 13px; color: var(--ink-muted); min-height: 1.4em; }
+    .status.err { color: #7a2a1f; }
+    .no-key { background: var(--accent-soft); color: var(--accent-ink); padding: 16px 20px; border-radius: var(--radius); margin-bottom: 16px; }
+    .no-key a { color: var(--accent-ink); text-decoration: underline; font-weight: 600; }
+
+    .q-block { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; margin-top: 16px; }
+    .q-block .q-num { font-size: 12px; color: var(--ink-muted); letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+    .q-block .q-text { font-family: var(--font-display); font-size: 19px; margin: 6px 0 16px; font-weight: 500; line-height: 1.4; }
+    .q-block .choices { display: grid; gap: 8px; }
+    .q-block .choices button {
+      text-align: left; background: var(--bg); border: 1px solid var(--line);
+      border-radius: var(--radius-sm); padding: 12px 16px; font: inherit; font-size: 15px; color: var(--ink);
+    }
+    .q-block .choices button:hover { border-color: var(--accent); background: var(--surface); }
+    .q-block .choices button.correct { background: #e9f5ec; border-color: #2f7a3e; color: #1f5028; }
+    .q-block .choices button.wrong { background: #fbe9e6; border-color: #b53d2a; color: #7a2a1f; }
+    .q-block .feedback { font-size: 14px; margin-top: 12px; min-height: 1.3em; color: var(--ink-soft); }
+
+    .score-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px; margin-top: 24px; text-align: center; }
+    .score-card .big { font-family: var(--font-display); font-size: 48px; color: var(--accent); font-weight: 600; line-height: 1; }
+    .score-card .label { color: var(--ink-muted); font-size: 13px; margin-top: 4px; }
+    .math { font-family: "Cambria Math", "STIX Two Math", ui-serif, Georgia, serif; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="settings.html" class="btn btn-ghost">Settings</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="gen-wrap">
+      <span class="eyebrow">Quick Practice</span>
+      <h1>A 5-minute problem set, on anything.</h1>
+      <p class="lede">Short. Generated. Scored. Logged to your accuracy automatically.</p>
+
+      <div id="noKey" class="no-key" style="display:none">
+        <strong>No API key set.</strong> Add one in <a href="settings.html">Settings</a>.
+      </div>
+
+      <form class="gen-form" id="genForm">
+        <div>
+          <div class="field" style="margin-bottom:8px"><label for="topic">Topic</label></div>
+          <input type="text" id="topic" placeholder="e.g. related rates, momentum conservation" />
+        </div>
+        <div class="chips">
+          <button type="button" class="chip" data-topic="related rates">related rates</button>
+          <button type="button" class="chip" data-topic="integration by parts">integration by parts</button>
+          <button type="button" class="chip" data-topic="momentum conservation">momentum</button>
+          <button type="button" class="chip" data-topic="electric fields">electric fields</button>
+        </div>
+        <div class="row">
+          <div class="field"><label for="count">Questions</label><input type="number" id="count" min="3" max="10" value="5" /></div>
+          <div class="field"><label for="difficulty">Difficulty</label>
+            <select id="difficulty">
+              <option value="easy">Easy</option>
+              <option value="medium" selected>Medium</option>
+              <option value="hard">Hard</option>
+            </select>
+          </div>
+          <div></div>
+          <button type="submit" class="btn btn-accent" id="goBtn">Generate set</button>
+        </div>
+        <div class="status" id="status"></div>
+      </form>
+
+      <div id="quiz"></div>
+      <div id="score" class="score-card" style="display:none"></div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Generators</h5>
+        <ul>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="#">Privacy Notice</a></li><li><a href="#">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/llm.js"></script>
+  <script src="assets/generators.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    (function () {
+      if (!window.Store || !Store.isAuthed()) { window.location.href = 'auth.html'; return; }
+      const hasKey = LLM && LLM.activeProvider();
+      document.getElementById('noKey').style.display = hasKey ? 'none' : 'block';
+
+      const form = document.getElementById('genForm');
+      const topic = document.getElementById('topic');
+      const count = document.getElementById('count');
+      const diff = document.getElementById('difficulty');
+      const status = document.getElementById('status');
+      const goBtn = document.getElementById('goBtn');
+      const quiz = document.getElementById('quiz');
+      const score = document.getElementById('score');
+      const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+
+      document.querySelectorAll('[data-topic]').forEach(c => c.addEventListener('click', () => { topic.value = c.dataset.topic; topic.focus(); }));
+
+      const renderQuiz = (questions) => {
+        if (!questions || !questions.length) { status.className = 'status err'; status.textContent = 'No questions returned.'; return; }
+        let correct = 0;
+        let answered = 0;
+        score.style.display = 'none';
+        quiz.innerHTML = questions.map((q, i) => `
+          <div class="q-block" data-i="${i}">
+            <div class="q-num">Question ${i + 1} of ${questions.length}</div>
+            <div class="q-text">${esc(q.prompt)}</div>
+            <div class="choices">
+              ${q.choices.map((ch, j) => `<button data-j="${j}">${esc(ch)}</button>`).join('')}
+            </div>
+            <div class="feedback"></div>
+          </div>
+        `).join('');
+        quiz.querySelectorAll('.q-block').forEach((block) => {
+          const i = parseInt(block.dataset.i, 10);
+          const q = questions[i];
+          block.querySelectorAll('button').forEach(b => {
+            b.addEventListener('click', () => {
+              block.querySelectorAll('button').forEach(x => { x.disabled = true; x.classList.remove('correct', 'wrong'); });
+              const j = parseInt(b.dataset.j, 10);
+              const ok = j === q.answerIndex;
+              b.classList.add(ok ? 'correct' : 'wrong');
+              if (!ok) block.querySelectorAll('button').forEach(x => { if (parseInt(x.dataset.j, 10) === q.answerIndex) x.classList.add('correct'); });
+              block.querySelector('.feedback').textContent = (ok ? 'Correct. ' : 'Not quite. ') + (q.explain || '');
+              if (ok) correct++;
+              answered++;
+              Store.addReview('practice', ok);
+              if (answered === questions.length) {
+                const pct = Math.round((correct / questions.length) * 100);
+                score.style.display = 'block';
+                score.innerHTML = `<div class="big">${correct} / ${questions.length}</div><div class="label">${pct}% accuracy · logged to your review history</div>`;
+              }
+            });
+          });
+        });
+      };
+
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (!LLM || !LLM.activeProvider()) { status.className = 'status err'; status.textContent = 'Add an API key in Settings first.'; return; }
+        if (!topic.value.trim()) { status.className = 'status err'; status.textContent = 'Type a topic.'; return; }
+        status.className = 'status';
+        status.textContent = 'Generating…';
+        goBtn.disabled = true;
+        quiz.innerHTML = '';
+        score.style.display = 'none';
+        try {
+          const result = await Generators.generateQuickPractice({ topic: topic.value.trim(), count: parseInt(count.value, 10), difficulty: diff.value });
+          renderQuiz(result.practice?.questions || []);
+          status.textContent = 'Set ready. Good luck.';
+        } catch (err) {
+          status.className = 'status err';
+          status.textContent = 'Failed: ' + err.message;
+        } finally {
+          goBtn.disabled = false;
+        }
+      });
+    })();
+  </script>
+</body>
+</html>

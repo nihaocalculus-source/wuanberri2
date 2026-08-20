@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What is a vector? — Wuanberri Linear Algebra</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="linear-algebra.html">← Back to Linear Algebra</a>
+      <h1>What is a vector?</h1>
+      <p class="lede">An arrow with a length and a direction — or, equivalently, a list of numbers that transforms the way everything else does.</p>
+
+      <div class="lesson-card">
+        <h2>Two views, same object</h2>
+        <p>Geometrically, a vector in the plane is an arrow — it has a magnitude (how long) and a direction (which way). It doesn't have a position; if you slide it without rotating or stretching, it is still the same vector.</p>
+        <p>Algebraically, the same vector is just an ordered list of numbers: <span class="math">(3, −2)</span> means "3 right, 2 down." The two views are equivalent — the arrow and the list carry the same information, and the right translation between them is what makes linear algebra work.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Operations</h2>
+        <p>You can add vectors componentwise: <span class="math">(a, b) + (c, d) = (a + c, b + d)</span>. You can scale them by a number: <span class="math">k · (a, b) = (ka, kb)</span>. Together, addition and scaling are the two operations that make a vector space a vector space.</p>
+        <p>Geometrically, addition puts arrows tip-to-tail; scaling stretches or shrinks them, and flips direction if k is negative.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>Let u = (1, 2) and v = (3, −1). Compute 2u − v.</p>
+        <span class="math">2u = (2, 4)</span>
+        <span class="math">2u − v = (2 − 3, 4 − (−1)) = (−1, 5)</span>
+        <p>The result is the vector (−1, 5) — one unit left, five units up. Notice how every step is componentwise; vectors never mix across their slots.</p>
+      </div>
+
+      <!-- Working flashcard -->
+      <div class="q-flashcard" data-lesson-flip='[
+        {"glyph":"u · v = Σ uᵢvᵢ","meaning":"The dot product multiplies matching components and sums.","explain":"For u = (1, 2, 3) and v = (4, −1, 2): u·v = 1·4 + 2·(−1) + 3·2 = 4 − 2 + 6 = 8. The dot product equals zero exactly when the vectors are perpendicular — a fact you will use again and again."},
+        {"glyph":"‖v‖ = √(Σ vᵢ²)","meaning":"The length (norm) of a vector is the square root of the sum of its squared components.","explain":"For v = (3, 4): ‖v‖ = √(9 + 16) = √25 = 5. The norm is what makes a vector a length — and it's the bridge from algebraic coordinates back to geometric distance."},
+        {"glyph":"span{v, w}","meaning":"Every linear combination of v and w — all points you can reach with av + bw.","explain":"If v and w are not parallel, their span is the whole plane. If they are parallel, their span collapses to a single line. The span tells you what your two vectors can build together."}
+      ]'>
+        <p class="hint">Flashcard · Unit 1</p>
+        <div class="q" data-flip-glyph>u · v = Σ uᵢvᵢ</div>
+        <p data-flip-meaning>Multiply matching components, then sum.</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>Given u = (2, −1) and v = (1, 3), what is u + v?</p>
+        <form class="mcq" data-mcq="c" data-right-explain="Add componentwise: (2+1, −1+3) = (3, 2)." data-wrong-explain="Vector addition is componentwise — first components together, second components together.">
+          <button type="button" data-choice="a">(2, −1)</button>
+          <button type="button" data-choice="b">(1, 2)</button>
+          <button type="button" data-choice="c">(3, 2)</button>
+          <button type="button" data-choice="d">(2, 3)</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="#">Privacy Notice</a></li><li><a href="#">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

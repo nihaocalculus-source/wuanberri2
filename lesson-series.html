@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Convergence of series — Wuanberri Calculus</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Convergence of series.</h1>
+      <p class="lede">An infinite sum can either approach a finite number (converge) or grow without bound (diverge). A few tests let you tell which — without summing the whole thing.</p>
+
+      <div class="lesson-card">
+        <h2>Geometric series</h2>
+        <p>The cleanest infinite series. Start with a first term a, multiply by r each step.</p>
+        <span class="math">a + ar + ar² + ar³ + ⋯</span>
+        <p>Converges to a / (1 − r) when |r| &lt; 1. Diverges otherwise. That's the whole story for geometric series — and it's the model every other convergence test compares against.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>The n-th term test (the easy one)</h2>
+        <p>If the terms don't approach zero, the sum can't converge. So if lim<sub>n→∞</sub> a<sub>n</sub> ≠ 0, the series diverges.</p>
+        <p>This is a necessary condition, not sufficient: terms can shrink to zero and the series can still diverge (the harmonic series is the classic example).</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Ratio test</h2>
+        <p>For series with factorials or exponentials, the ratio of consecutive terms often simplifies.</p>
+        <span class="math">L = lim<sub>n→∞</sub> |a<sub>n+1</sub> / a<sub>n</sub>|</span>
+        <p>If L &lt; 1, the series converges absolutely. If L &gt; 1 (or infinity), it diverges. If L = 1, the test is inconclusive — try another.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>Does ∑ n! / 5ⁿ converge?</p>
+        <span class="math">a<sub>n</sub> = n! / 5ⁿ</span>
+        <span class="math">|a<sub>n+1</sub> / a<sub>n</sub>| = (n+1)! / 5ⁿ⁺¹ · 5ⁿ / n! = (n+1) / 5</span>
+        <span class="math">lim<sub>n→∞</sub> (n+1) / 5 = ∞</span>
+        <p>Since L = ∞ &gt; 1, the series diverges. The factorials outpace the exponentials.</p>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[
+        {"glyph":"∑ 1/2ⁿ","meaning":"Geometric, r = 1/2. Converges to 1.","explain":"First term a = 1, ratio r = 1/2. Sum = a / (1-r) = 1 / (1 - 1/2) = 1 / (1/2) = 2. Note: starts at n=1; if it started at n=0, the sum would be 2."},
+        {"glyph":"∑ 1/n","meaning":"The harmonic series. Diverges.","explain":"The terms shrink to zero, but they don't shrink fast enough. The partial sums grow like ln(n) and never settle. It is the canonical example of a series that passes the n-th term test but still diverges."},
+        {"glyph":"∑ 1/n²","meaning":"The p-series with p = 2. Converges.","explain":"A p-series ∑ 1/nᵖ converges when p > 1 and diverges when p ≤ 1. The case p = 2 sums to π²/6 — a famous result first shown by Euler."}
+      ]'>
+        <p class="hint">Flashcard · Unit 7</p>
+        <div class="q" data-flip-glyph>∑ 1/2ⁿ</div>
+        <p data-flip-meaning>Geometric, r = 1/2. Converges to 1.</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>Does the series ∑ n / 3ⁿ converge?</p>
+        <form class="mcq" data-mcq="a" data-right-explain="Use the ratio test: |a_{n+1}/a_n| = (n+1)/3n → 1/3. Since 1/3 < 1, the series converges." data-wrong-explain="Try the ratio test — that's the right tool when n appears in a numerator against an exponential.">
+          <button type="button" data-choice="a">Yes, it converges</button>
+          <button type="button" data-choice="b">No, it diverges</button>
+          <button type="button" data-choice="c">Inconclusive from given info</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Privacy Notice</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

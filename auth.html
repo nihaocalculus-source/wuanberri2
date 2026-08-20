@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sign in — Wuanberri</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .auth-wrap {
+      max-width: 440px; margin: 0 auto; padding: 80px 24px 96px;
+    }
+    .auth-wrap h1 { font-family: var(--font-display); font-size: 32px; margin: 0 0 8px; font-weight: 600; letter-spacing: -0.01em; }
+    .auth-wrap .lede { color: var(--ink-soft); margin: 0 0 28px; font-size: 15px; }
+    .auth-card {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow);
+    }
+    .tabs-row { display: flex; gap: 4px; margin-bottom: 24px; border-bottom: 1px solid var(--line); }
+    .tabs-row button {
+      flex: 1; background: transparent; border: 0;
+      padding: 12px; font: inherit; font-size: 14px; font-weight: 500;
+      color: var(--ink-soft); border-bottom: 2px solid transparent;
+      cursor: pointer; margin-bottom: -1px;
+    }
+    .tabs-row button[aria-selected="true"] { color: var(--accent); border-bottom-color: var(--accent); }
+    .field { display: block; margin-bottom: 16px; }
+    .field label { display: block; font-size: 12px; color: var(--ink-muted); text-transform: uppercase; letter-spacing: 0.08em; margin-bottom: 6px; font-weight: 600; }
+    .field input {
+      width: 100%; border: 1px solid var(--line-strong); background: var(--surface);
+      border-radius: var(--radius-sm); padding: 11px 14px; font: inherit; font-size: 15px;
+      outline: none; box-sizing: border-box;
+    }
+    .field input:focus { border-color: var(--accent); }
+    .auth-card .btn { width: 100%; margin-top: 8px; }
+    .auth-error { color: #7a2a1f; font-size: 13px; margin-top: 8px; min-height: 1em; }
+    .auth-foot { text-align: center; font-size: 13px; color: var(--ink-muted); margin-top: 20px; }
+    .auth-foot a { color: var(--accent); }
+    .demo-note {
+      background: var(--accent-soft); color: var(--accent-ink);
+      padding: 12px 14px; border-radius: var(--radius-sm);
+      font-size: 13px; margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="index.html" class="btn btn-ghost">Back to home</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="auth-wrap">
+      <h1 id="authTitle">Create your account.</h1>
+      <p class="lede" id="authLede">A few details and you're in. We'll save your progress across sessions.</p>
+
+      <div class="auth-card">
+        <div class="demo-note">
+          <strong>Demo mode.</strong> Nothing here is sent to a server. Accounts are stored only in your browser's localStorage. You can sign out any time and everything disappears.
+        </div>
+
+        <div class="tabs-row" role="tablist">
+          <button id="tabSignup" aria-selected="true" data-tab="signup">Sign up</button>
+          <button id="tabLogin"  aria-selected="false" data-tab="login">Log in</button>
+        </div>
+
+        <form id="authForm">
+          <div class="field" id="nameField">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" autocomplete="name" placeholder="Sam" />
+          </div>
+          <div class="field">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" autocomplete="email" required placeholder="you@example.com" />
+          </div>
+          <div class="field">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" autocomplete="current-password" required minlength="4" placeholder="At least 4 characters" />
+          </div>
+          <button type="submit" class="btn btn-accent" id="submitBtn">Create account</button>
+          <div class="auth-error" id="authError"></div>
+        </form>
+
+        <p class="auth-foot">
+          <span id="footText">Already have an account?</span>
+          <a href="#" id="footToggle">Log in</a>
+        </p>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    (function () {
+      const form = document.getElementById('authForm');
+      const nameField = document.getElementById('nameField');
+      const tabSignup = document.getElementById('tabSignup');
+      const tabLogin = document.getElementById('tabLogin');
+      const title = document.getElementById('authTitle');
+      const lede = document.getElementById('authLede');
+      const submitBtn = document.getElementById('submitBtn');
+      const footText = document.getElementById('footText');
+      const footToggle = document.getElementById('footToggle');
+      const err = document.getElementById('authError');
+
+      // Redirect if already signed in
+      if (Store.isAuthed()) { window.location.href = 'dashboard.html'; return; }
+
+      let mode = 'signup';
+      const setMode = (m) => {
+        mode = m;
+        const signup = m === 'signup';
+        tabSignup.setAttribute('aria-selected', String(signup));
+        tabLogin.setAttribute('aria-selected', String(!signup));
+        nameField.style.display = signup ? 'block' : 'none';
+        title.textContent = signup ? 'Create your account.' : 'Welcome back.';
+        lede.textContent = signup
+          ? 'A few details and you’re in. We’ll save your progress across sessions.'
+          : 'Enter your email and password to continue where you left off.';
+        submitBtn.textContent = signup ? 'Create account' : 'Log in';
+        footText.textContent = signup ? 'Already have an account?' : 'New here?';
+        footToggle.textContent = signup ? 'Log in' : 'Create one';
+        err.textContent = '';
+        form.reset();
+      };
+      tabSignup.addEventListener('click', (e) => { e.preventDefault(); setMode('signup'); });
+      tabLogin.addEventListener('click',  (e) => { e.preventDefault(); setMode('login');  });
+      footToggle.addEventListener('click', (e) => { e.preventDefault(); setMode(mode === 'signup' ? 'login' : 'signup'); });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        err.textContent = '';
+        const name = form.name.value.trim();
+        const email = form.email.value.trim();
+        const password = form.password.value;
+        if (!email || !password) { err.textContent = 'Email and password are required.'; return; }
+        if (password.length < 4)  { err.textContent = 'Password must be at least 4 characters.'; return; }
+        if (mode === 'signup' && !name) { err.textContent = 'Please enter a name.'; return; }
+
+        // Demo "auth" — look up by email in the local users map, otherwise create.
+        const users = Store.get('users', {});
+        if (mode === 'login') {
+          if (!users[email] || users[email].password !== password) {
+            err.textContent = 'No matching account. Try signing up first.';
+            return;
+          }
+          Store.signIn({ name: users[email].name, email, joined: users[email].joined });
+        } else {
+          if (users[email]) { err.textContent = 'An account with that email already exists. Try logging in.'; return; }
+          users[email] = { name, password, joined: new Date().toISOString() };
+          Store.set('users', users);
+          Store.signIn({ name, email, joined: users[email].joined });
+        }
+        // Send them on — placement if they haven't taken it, dashboard otherwise.
+        const next = Store.getPlacement() ? 'dashboard.html' : 'placement.html';
+        window.location.href = next;
+      });
+    })();
+  </script>
+</body>
+</html>

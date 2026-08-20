@@ -1,0 +1,13 @@
+{
+  "name": "wuanberri",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Wuanberri — your personal academic coach for calculus and physics.",
+  "scripts": {
+    "dev": "python -m http.server 8000",
+    "start": "python -m http.server 8000"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}

@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>What is an integral? — Wuanberri Calculus</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>What is an integral?</h1>
+      <p class="lede">The integral reverses the derivative. It accumulates infinitely many infinitesimal pieces of a quantity — and the result is often a meaningful whole: area, distance, total cost.</p>
+
+      <div class="lesson-card">
+        <h2>The geometric idea</h2>
+        <p>If the derivative answers "what's the rate?", the integral answers "what's the total?" The classic example: a velocity curve v(t). The area under that curve, between two times, is the distance traveled.</p>
+        <p>To compute that area, slice the time axis into many small intervals. On each interval, approximate the distance as v(t) · Δt. Sum the slices. The integral is the limit of that sum as the slices get infinitely thin.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>The notation</h2>
+        <span class="math">∫<sub>a</sub><sup>b</sup> f(x) dx</span>
+        <p>Read as: "the integral of f from a to b." The ∫ is an elongated S for "sum." dx marks what variable is being sliced.</p>
+        <p>The result is a number — the signed area between the curve and the x-axis. "Signed" means area below the axis counts negative.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>The Fundamental Theorem of Calculus</h2>
+        <p>Differentiation and integration are inverse operations. If F is an antiderivative of f (so F′ = f), then:</p>
+        <span class="math">∫<sub>a</sub><sup>b</sup> f(x) dx = F(b) − F(a)</span>
+        <p>This is what makes integrals computable. Without it, every integral would be a long Riemann sum. With it, you can often find an antiderivative in closed form and just subtract.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>Find ∫<sub>0</sub><sup>3</sup> 2x dx.</p>
+        <span class="math">F(x) = x² &nbsp; (since d/dx x² = 2x)</span>
+        <span class="math">F(3) − F(0) = 9 − 0 = 9</span>
+        <p>The signed area under y = 2x from x = 0 to x = 3 is 9. Geometrically, it's a triangle with base 3 and height 6, area = ½ · 3 · 6 = 9. ✓</p>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[
+        {"glyph":"∫ xⁿ dx","meaning":"Add 1 to the exponent, divide by the new exponent, add C.","explain":"∫ xⁿ dx = xⁿ⁺¹ / (n+1) + C, valid when n ≠ -1. The +C is the constant of integration — an indefinite integral is a family of antiderivatives, not a single function."},
+        {"glyph":"∫ eˣ dx","meaning":"The integral of eˣ is eˣ.","explain":"Just like its derivative, eˣ is its own integral: ∫ eˣ dx = eˣ + C. No other function in basic calculus behaves this way."},
+        {"glyph":"∫ 1/x dx","meaning":"The natural log. (The exceptional case for the power rule.)","explain":"∫ x⁻¹ dx = ln|x| + C. The exponent rule ∫ xⁿ dx = xⁿ⁺¹/(n+1) breaks at n = -1 because you'd divide by zero. The natural log is the fix."}
+      ]'>
+        <p class="hint">Flashcard · Unit 4</p>
+        <div class="q" data-flip-glyph>∫ xⁿ dx</div>
+        <p data-flip-meaning>Add 1 to the exponent, divide by the new exponent, add C.</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>What is the antiderivative of f(x) = 3x²?</p>
+        <form class="mcq" data-mcq="c" data-right-explain="Use the power rule: ∫ 3x² dx = 3 · x³/3 + C = x³ + C." data-wrong-explain="Reverse the power rule: add 1 to the exponent, divide by the new exponent. Don't forget +C.">
+          <button type="button" data-choice="a">6x + C</button>
+          <button type="button" data-choice="b">3x³ + C</button>
+          <button type="button" data-choice="c">x³ + C</button>
+          <button type="button" data-choice="d">3x² + C</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Privacy Notice</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

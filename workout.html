@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Workout · Projectile motion — Wuanberri</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    .workout-wrap { max-width: 1100px; margin: 0 auto; padding: 32px 24px 96px; }
+    .workout-head { margin-bottom: 24px; }
+    .workout-head .back { font-size: 13px; color: var(--ink-muted); }
+    .workout-head h1 { font-family: var(--font-display); font-size: 32px; margin: 8px 0 4px; font-weight: 600; letter-spacing: -0.01em; }
+    .workout-head p { color: var(--ink-soft); margin: 0; }
+    .workout-head .meta { display: flex; gap: 16px; margin-top: 12px; font-size: 13px; color: var(--ink-muted); }
+
+    .workout-grid {
+      display: grid;
+      grid-template-columns: 1fr 320px;
+      gap: 24px;
+      align-items: start;
+    }
+    .part-list { display: grid; gap: 12px; }
+    .part {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 24px;
+      transition: border-color 0.15s ease, opacity 0.2s ease;
+    }
+    .part.locked { opacity: 0.55; pointer-events: none; }
+    .part.done { border-color: #2f7a3e; background: linear-gradient(0deg, #f4faf5, #fff); }
+    .part.active { border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
+    .part .step {
+      display: flex; align-items: center; gap: 10px; margin-bottom: 12px;
+      font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); font-weight: 600;
+    }
+    .part .step .num {
+      width: 22px; height: 22px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--bg); color: var(--ink-soft); font-size: 12px; font-weight: 600;
+    }
+    .part.done .step .num { background: #2f7a3e; color: #fff; }
+    .part.active .step .num { background: var(--accent); color: #fff; }
+    .part h3 { font-family: var(--font-display); font-size: 20px; margin: 0 0 8px; font-weight: 600; }
+    .part p { color: var(--ink-soft); margin: 0 0 16px; }
+    .part .math {
+      font-family: "Cambria Math", "STIX Two Math", ui-serif, Georgia, serif;
+      background: var(--bg); padding: 12px 16px; border-radius: var(--radius-sm);
+      color: var(--accent-ink); font-size: 16px; display: block; margin: 8px 0;
+    }
+    .part .input-row { display: flex; gap: 8px; align-items: stretch; margin-top: 8px; }
+    .part .input-row input {
+      flex: 1; border: 1px solid var(--line-strong); background: var(--surface);
+      border-radius: var(--radius-sm); padding: 10px 14px; font: inherit; font-size: 15px; outline: none;
+    }
+    .part .input-row input:focus { border-color: var(--accent); }
+    .part .input-row .unit { display: flex; align-items: center; color: var(--ink-muted); font-size: 14px; padding: 0 8px; }
+    .part .feedback { font-size: 14px; margin-top: 10px; min-height: 1.3em; }
+    .part .feedback.ok { color: #1f5028; }
+    .part .feedback.bad { color: #7a2a1f; }
+    .part .actions { display: flex; gap: 8px; margin-top: 12px; }
+    .part .hint {
+      display: none; margin-top: 12px; padding: 12px 16px;
+      background: var(--accent-soft); border-radius: var(--radius-sm); color: var(--accent-ink); font-size: 14px;
+    }
+    .part .hint.show { display: block; }
+    .part .final { display: none; margin-top: 16px; padding: 16px; background: #f4faf5; border-radius: var(--radius-sm); color: #1f5028; }
+    .part .final.show { display: block; }
+
+    .coach-side {
+      background: var(--surface); border: 1px solid var(--line);
+      border-radius: var(--radius); padding: 20px;
+      position: sticky; top: 88px;
+    }
+    .coach-side h4 { font-family: var(--font-display); font-size: 16px; margin: 0 0 4px; font-weight: 600; }
+    .coach-side .sub { color: var(--ink-muted); font-size: 12px; margin-bottom: 16px; }
+    .coach-side .body { font-size: 14px; color: var(--ink-soft); line-height: 1.55; max-height: 280px; overflow-y: auto; padding-right: 4px; }
+    .coach-side .body p { margin: 0 0 10px; }
+    .coach-side .body p strong { color: var(--accent-ink); }
+    .coach-side .form { display: flex; gap: 8px; margin-top: 12px; }
+    .coach-side .form input {
+      flex: 1; border: 1px solid var(--line-strong); background: var(--surface);
+      border-radius: 999px; padding: 8px 14px; font: inherit; font-size: 13px; outline: none;
+    }
+    .coach-side .form input:focus { border-color: var(--accent); }
+    .coach-side .form button { padding: 8px 14px; font-size: 12px; }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="workout-wrap">
+      <div class="workout-head">
+        <a class="back" href="physics.html">← Physics · Unit 1</a>
+        <h1>Projectile motion — three parts.</h1>
+        <p>A ball is launched from ground level at 20 m/s, angled 30° above the horizontal. Find the answers in order. Each part unlocks the next.</p>
+        <div class="meta"><span>3 parts</span><span>~12 min</span><span>Physics · Kinematics</span></div>
+      </div>
+
+      <div class="workout-grid">
+        <div class="part-list">
+          <div class="part active" data-part="1" data-answer="17.32" data-tolerance="0.2">
+            <div class="step"><span class="num">1</span><span>Initial velocity components</span></div>
+            <h3>What is the initial horizontal velocity, v<sub>x</sub>?</h3>
+            <p>Break the launch velocity into x and y components. v<sub>x</sub> = v cos θ.</p>
+            <span class="math">v = 20 m/s, θ = 30°. Find v<sub>x</sub> in m/s.</span>
+            <div class="input-row">
+              <input type="text" inputmode="decimal" placeholder="e.g. 17.32" aria-label="v_x in m/s" />
+              <span class="unit">m/s</span>
+              <button class="btn btn-accent" data-check>Check</button>
+            </div>
+            <div class="actions">
+              <button class="btn btn-ghost" data-hint>Hint</button>
+            </div>
+            <div class="hint" data-hint-text>cos(30°) = √3 / 2 ≈ 0.866. Multiply 20 by 0.866.</div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="part locked" data-part="2" data-answer="1.02" data-tolerance="0.1">
+            <div class="step"><span class="num">2</span><span>Time of flight</span></div>
+            <h3>How long is the ball in the air?</h3>
+            <p>The ball lands at the same height it was launched from. Total time = 2 v<sub>y</sub> / g.</p>
+            <span class="math">v<sub>y</sub> = v sin θ. Find total time in seconds, g = 9.8 m/s².</span>
+            <div class="input-row">
+              <input type="text" inputmode="decimal" placeholder="e.g. 2.04" aria-label="time in s" />
+              <span class="unit">s</span>
+              <button class="btn btn-accent" data-check>Check</button>
+            </div>
+            <div class="actions">
+              <button class="btn btn-ghost" data-hint>Hint</button>
+            </div>
+            <div class="hint" data-hint-text>v<sub>y</sub> = 20 · sin(30°) = 10. Time of flight = 2·10 / 9.8 ≈ 2.04 s.</div>
+            <div class="feedback"></div>
+          </div>
+
+          <div class="part locked" data-part="3" data-answer="35.3" data-tolerance="0.5">
+            <div class="step"><span class="num">3</span><span>Range</span></div>
+            <h3>How far does the ball travel horizontally?</h3>
+            <p>Range = v<sub>x</sub> · total time. Use the v<sub>x</sub> from part 1 and the time from part 2.</p>
+            <span class="math">Range = v<sub>x</sub> · t. Find the answer in meters.</span>
+            <div class="input-row">
+              <input type="text" inputmode="decimal" placeholder="e.g. 35.3" aria-label="range in m" />
+              <span class="unit">m</span>
+              <button class="btn btn-accent" data-check>Check</button>
+            </div>
+            <div class="actions">
+              <button class="btn btn-ghost" data-hint>Hint</button>
+            </div>
+            <div class="hint" data-hint-text>v<sub>x</sub> ≈ 17.32, t ≈ 2.04. Multiply them.</div>
+            <div class="feedback"></div>
+            <div class="final" data-final>Nice. You just solved a full projectile problem in three structured steps — exactly how it works on an exam. <a href="dashboard.html">Back to dashboard →</a></div>
+          </div>
+        </div>
+
+        <aside class="coach-side">
+          <h4>Workout Coach</h4>
+          <div class="sub">I see your current step. Ask me anything.</div>
+          <div class="body" id="sideBody">
+            <p>You're on <strong>Part 1 — horizontal velocity</strong>. Remember, you split the launch velocity into its x and y components. The horizontal one stays constant (no horizontal force). The vertical one is what changes due to gravity.</p>
+            <p>Click <em>Hint</em> if you want a nudge, or just type your answer.</p>
+          </div>
+          <form class="form" id="sideForm">
+            <input type="text" placeholder="Ask a question…" aria-label="Coach question" />
+            <button type="submit" class="btn btn-accent">Send</button>
+          </form>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">hello@wuanberri.app</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul>
+          <li><a href="#">Privacy Notice</a></li>
+          <li><a href="#">Terms &amp; Conditions</a></li>
+        </ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js"></script>
+  <script src="assets/app.js"></script>
+  <script>
+    (function () {
+      const parts = document.querySelectorAll('.part');
+      const sideBody = document.getElementById('sideBody');
+      const sideForm = document.getElementById('sideForm');
+
+      const addSide = (text) => {
+        const p = document.createElement('p');
+        p.innerHTML = text;
+        sideBody.appendChild(p);
+        sideBody.scrollTop = sideBody.scrollHeight;
+      };
+
+      parts.forEach((part) => {
+        const check = part.querySelector('[data-check]');
+        const hintBtn = part.querySelector('[data-hint]');
+        const hintText = part.querySelector('[data-hint-text]');
+        const input = part.querySelector('input');
+        const feedback = part.querySelector('.feedback');
+        const final = part.querySelector('[data-final]');
+        const target = parseFloat(part.dataset.answer);
+        const tol = parseFloat(part.dataset.tolerance || '0.01');
+
+        check.addEventListener('click', () => {
+          const v = parseFloat(input.value);
+          if (isNaN(v)) {
+            feedback.className = 'feedback bad';
+            feedback.textContent = 'Enter a number to check.';
+            return;
+          }
+          if (Math.abs(v - target) <= tol) {
+            feedback.className = 'feedback ok';
+            feedback.textContent = 'Correct.';
+            part.classList.remove('active');
+            part.classList.add('done');
+            if (final) final.classList.add('show');
+            // unlock next
+            const next = document.querySelector(`.part[data-part="${parseInt(part.dataset.part) + 1}"]`);
+            if (next) {
+              next.classList.remove('locked');
+              next.classList.add('active');
+              addSide(`Nice — part ${part.dataset.part} is done. The next step just unlocked. <strong>${next.querySelector('h3').textContent}</strong>`);
+              next.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              setTimeout(() => next.querySelector('input')?.focus(), 400);
+            } else {
+              addSide('Workout complete. You finished all three parts.');
+            }
+          } else {
+            feedback.className = 'feedback bad';
+            feedback.textContent = `Not quite. The expected answer is around ${target}.`;
+          }
+        });
+
+        hintBtn.addEventListener('click', () => {
+          hintText.classList.toggle('show');
+          hintBtn.textContent = hintText.classList.contains('show') ? 'Hide hint' : 'Hint';
+        });
+
+        input.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); check.click(); } });
+      });
+
+      // Side coach — quick keyword replies
+      const reply = (msg) => {
+        const m = msg.toLowerCase();
+        if (!m) return "Type a question and I'll do my best.";
+        if (/hint|stuck/.test(m)) return "Click the <strong>Hint</strong> button under the part you're on. I'll walk you through it.";
+        if (/component|break|split/.test(m)) return "Use <strong>v<sub>x</sub> = v cos θ</strong> for the horizontal and <strong>v<sub>y</sub> = v sin θ</strong> for the vertical.";
+        if (/range|how far|horizontal/.test(m)) return "Once you have v<sub>x</sub> and total time t, the range is just <strong>v<sub>x</sub> · t</strong>.";
+        if (/time|how long|air/.test(m)) return "For launch and land at the same height, total time is <strong>2 v<sub>y</sub> / g</strong>.";
+        if (/why|intuition|meaning/.test(m)) return "Think of motion as two independent stories: <strong>horizontal</strong> is constant velocity, <strong>vertical</strong> is free fall. They don't affect each other.";
+        return "Good question. Try clicking the Hint button — or take a guess and I'll tell you how close you are.";
+      };
+
+      sideForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const msg = sideForm.querySelector('input').value;
+        if (!msg.trim()) return;
+        addSide(`<em>You:</em> ${msg}`);
+        sideForm.querySelector('input').value = '';
+        setTimeout(() => addSide(reply(msg)), 400);
+      });
+    })();
+  </script>
+</body>
+</html>
