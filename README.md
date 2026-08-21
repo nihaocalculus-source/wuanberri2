@@ -77,3 +77,6 @@ The 5 generator pages use `assets/generators.js`, which wraps the LLM call in a 
 ## License
 
 Personal project. All rights reserved.
+
+<!-- deploy trigger 2026-08-20 -->
+
