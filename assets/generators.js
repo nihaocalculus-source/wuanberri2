@@ -156,6 +156,33 @@ Return ONLY the JSON.`;
     );
   };
 
+  // ---------- Pop quiz (used by the dashboard "Take a pop quiz" button) ----------
+  // A short MCQ set tailored to a topic — usually the user's weakest
+  // subjects based on Store.getReviews() and Store.getPlacement(). Same
+  // shape as generateQuickPractice but tuned for a "quick catch-up"
+  // rather than a full practice session.
+  const generatePopQuiz = async ({ topics, count = 5, difficulty = 'medium' }) => {
+    const schema = {
+      quiz: {
+        topic: 'string (the overall topic the quiz covers)',
+        questions: [
+          {
+            prompt: 'string (the question — clear and self-contained)',
+            choices: ['A', 'B', 'C', 'D'],
+            answerIndex: 0,
+            explain: 'string (1-2 sentence explanation of the correct answer)',
+          },
+        ],
+      },
+    };
+    const topicList = (Array.isArray(topics) && topics.length ? topics : ['calculus', 'physics']).join(', ');
+    return callJSON(
+      LLM.activeProvider(),
+      buildSystem('pop quiz', schema),
+      `Generate a pop quiz of exactly ${count} multiple-choice questions (4 choices each) covering these subjects: ${topicList}. Mix ${difficulty} difficulty. Each question tests a different concept. The first choice must be the correct answer in at least 2 of the 5 questions so users can't just always click "A". Return STRICT JSON only.`
+    );
+  };
+
   // ---------- Public API ----------
 
   global.Generators = {
@@ -164,5 +191,6 @@ Return ONLY the JSON.`;
     generateWorkout,
     generateStudyPlan,
     generateWorkedExample,
+    generatePopQuiz,
   };
 })(window);

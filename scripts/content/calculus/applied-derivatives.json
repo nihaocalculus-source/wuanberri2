@@ -1,0 +1,155 @@
+[
+  {
+    "topic": "Maximum and minimum values",
+    "title": "Maxima, minima, critical numbers",
+    "lede": "Optimization starts with a fact from geometry: at a smooth peak, the curve is momentarily flat, so the derivative is zero.",
+    "cards": [
+      {
+        "heading": "Extrema defined",
+        "body": "A function has a local maximum at c if every nearby point gives a value no larger than f(c), and a local minimum if no smaller. A value that is largest or smallest over the entire domain is an absolute maximum or minimum. On a closed interval the Extreme Value Theorem guarantees both an absolute max and an absolute min exist for any continuous function.",
+        "math": "f(c) \\geq f(x) \\text{ for all } x \\text{ near } c"
+      },
+      {
+        "heading": "Critical numbers",
+        "body": "A critical number of f is an interior point c where f'(c) = 0 or where f' does not exist. Fermat's theorem says every local extremum of a differentiable function happens at a critical number, so these points are the only candidates. You must still test them, since a critical number can also be a plateau like x = 0 for x^3.",
+        "math": "f'(c) = 0 \\quad \\text{or} \\quad f'(c) \\text{ undefined}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "Find the absolute extrema of f(x) = x^3 - 3x on the closed interval from -2 to 3. The derivative 3x^2 - 3 is zero at x = -1 and x = 1. Comparing f(-2) = -2, f(-1) = 2, f(1) = -2, and f(3) = 18, the absolute maximum is 18 at x = 3 and the absolute minimum is -2 at both endpoints and x = 1.",
+        "math": "f'(x) = 3x^2 - 3 = 0 \\implies x = \\pm 1"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "f'(c) = 0",
+        "meaning": "Stationary point, candidate for local extremum",
+        "explain": "Where a differentiable function has a local max or min, its derivative must be zero by Fermat's theorem. The converse fails: a zero derivative can also sit on a level stretch like x cubed at zero."
+      },
+      {
+        "glyph": "c \\text{ is a critical number}",
+        "meaning": "Interior point where f' is zero or undefined",
+        "explain": "Critical numbers collect every candidate for a local extremum, including sharp corners where the derivative does not exist. Evaluating f at these points plus the endpoints finds absolute extrema on a closed interval."
+      },
+      {
+        "glyph": "f(c) = f(-1) = 2",
+        "meaning": "Local max of x cubed minus 3x at x equals -1",
+        "explain": "For f(x) = x^3 - 3x, the critical numbers are plus and minus one. The derivative changes from positive to negative at x = -1, so f reaches a local maximum value of 2 there."
+      }
+    ],
+    "mcq": {
+      "prompt": "For f(x) = x^2 - 4x + 5, where is the local minimum and what is its value?",
+      "choices": [
+        "Minimum value 1 at x = 2",
+        "Minimum value 9 at x = -2",
+        "Minimum value 5 at x = 0",
+        "No minimum, since f is unbounded below"
+      ],
+      "answerIndex": 0,
+      "rightExplain": "The derivative 2x - 4 vanishes at x = 2, and the parabola opens upward, so f(2) = 1 is the minimum.",
+      "wrongExplain": "Set 2x - 4 = 0 to find the single critical number x = 2, then evaluate f(2) = 4 - 8 + 5 = 1. A parabola opening upward has its vertex as the absolute minimum."
+    }
+  },
+  {
+    "topic": "Optimization problems",
+    "title": "Setting up optimization problems",
+    "lede": "Word problems become calculus problems through one discipline: one objective function, one constraint, one derivative set to zero.",
+    "cards": [
+      {
+        "heading": "Four-step setup",
+        "body": "First name the variables and draw a picture. Second, write the quantity to maximize or minimize as a function of one variable, using the constraint to eliminate the extra variable. Third, differentiate and set the derivative to zero to find critical numbers. Fourth, verify the answer with a test or the problem's context, then state it in words.",
+        "math": "A = x y, \\quad \\text{constraint: } 2x + y = 120"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A farmer has 120 meters of fence for a rectangular pen along a river, needing no fence on the river side. With x the two widths and y the length, the constraint is 2x + y = 120, so y = 120 - 2x. The area A(x) = x(120 - 2x) = 120x - 2x^2 has derivative 120 - 4x, zero at x = 30. Then y = 60 and the largest area is 1800 square meters.",
+        "math": "A(x) = 120x - 2x^2, \\quad A'(x) = 120 - 4x = 0"
+      },
+      {
+        "heading": "Confirming the optimum",
+        "body": "A critical number is only a candidate, so confirm it is the extremum you want. The second derivative test works here: A'' = -4 is negative, so x = 30 is a maximum. Context also helps, since area is zero at the fence running out, so the single interior critical point must be the peak.",
+        "math": "A''(x) = -4 < 0"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "A'(x) = 0",
+        "meaning": "Critical condition for the objective function",
+        "explain": "The optimum of a smooth objective on an open interval occurs where its derivative vanishes. Solve this equation, then use the second derivative or a sign chart to confirm it is a maximum or minimum."
+      },
+      {
+        "glyph": "A''(x) < 0",
+        "meaning": "Second derivative test confirms a maximum",
+        "explain": "If the second derivative is negative at the critical point, the objective is concave down there, so the critical point is a local maximum. Positive means a local minimum instead."
+      },
+      {
+        "glyph": "A = x(120 - 2x)",
+        "meaning": "Area after eliminating y with the constraint",
+        "explain": "The fence constraint 2x + y = 120 expresses y in terms of x, turning the two-variable area into one function of x. Reducing to a single variable is the key move before differentiating."
+      }
+    ],
+    "mcq": {
+      "prompt": "Two positive numbers have product 36. What is their smallest possible sum, and when does it occur?",
+      "choices": [
+        "Sum 13 when the numbers are 4 and 9",
+        "Sum 12 when both numbers are 6",
+        "Sum 15 when the numbers are 3 and 12",
+        "No smallest sum exists"
+      ],
+      "answerIndex": 1,
+      "rightExplain": "Minimizing x + 36/x gives derivative 1 - 36/x^2 = 0, so x = 6, and both numbers equal 6 for a sum of 12.",
+      "wrongExplain": "Write the sum as x + 36/x and set its derivative 1 - 36/x^2 to zero, giving x = 6. The second derivative is positive there, confirming a minimum."
+    }
+  },
+  {
+    "topic": "Related rates",
+    "title": "Related rates problems",
+    "lede": "When two quantities change together, differentiating their relationship with respect to time connects their rates.",
+    "cards": [
+      {
+        "heading": "Strategy",
+        "body": "Write an equation relating the variables themselves, using only variables at this stage, not the given rates. Differentiate both sides with respect to time t, applying the chain rule so every term picks up its own rate. Finally substitute the specific values and the known rates, then solve for the unknown rate.",
+        "math": "\\frac{d}{dt}[x^2] = 2x \\frac{dx}{dt}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A 10-foot ladder leans against a wall with its base sliding away at 1 foot per second. Let x be the base distance and y the height, so x^2 + y^2 = 100. Differentiating gives 2x (dx/dt) + 2y (dy/dt) = 0. When x = 6, y = 8, so 6(1) + 8 (dy/dt) = 0 and the top slides down at 0.75 feet per second.",
+        "math": "6(1) + 8 \\frac{dy}{dt} = 0 \\implies \\frac{dy}{dt} = -0.75"
+      },
+      {
+        "heading": "Reading the sign",
+        "body": "A negative rate means the quantity is decreasing, not that a mistake was made. In the ladder problem the height y shrinks as the base x grows, so dy/dt comes out negative. Always answer the question asked: a speed is the absolute value of the rate.",
+        "math": "\\frac{dy}{dt} < 0 \\text{ means } y \\text{ is decreasing}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "x^2 + y^2 = 100",
+        "meaning": "Pythagorean link between ladder base and height",
+        "explain": "The ladder forms the hypotenuse of a right triangle, so base and height satisfy this equation at every instant. Differentiating it with respect to time ties dx/dt to dy/dt."
+      },
+      {
+        "glyph": "2x \\frac{dx}{dt} + 2y \\frac{dy}{dt} = 0",
+        "meaning": "Time derivative of the Pythagorean relation",
+        "explain": "Differentiating x squared plus y squared with respect to t uses the chain rule on each term. The result connects the two rates, letting you solve for whichever one is unknown."
+      },
+      {
+        "glyph": "\\frac{dV}{dt} = 4 \\pi r^2 \\frac{dr}{dt}",
+        "meaning": "Rate relation from differentiating sphere volume",
+        "explain": "Differentiating V = (4/3) pi r^3 with respect to time gives this relation between volume rate and radius rate. It is the standard setup for inflating balloon and melting snowball problems."
+      }
+    ],
+    "mcq": {
+      "prompt": "A spherical balloon inflates so its radius grows at 2 cm/s. How fast is the volume increasing when the radius is 3 cm?",
+      "choices": [
+        "8\\pi cm^3/s",
+        "72\\pi cm^3/s",
+        "36\\pi cm^3/s",
+        "24\\pi cm^3/s"
+      ],
+      "answerIndex": 1,
+      "rightExplain": "Since dV/dt = 4 pi r^2 dr/dt, substituting r = 3 and dr/dt = 2 gives 4 pi (9)(2) = 72 pi cubic centimeters per second.",
+      "wrongExplain": "Differentiate the volume formula with respect to time to get dV/dt = 4 pi r^2 dr/dt, then plug in r = 3 and dr/dt = 2. The rate grows with the square of the radius."
+    }
+  }
+]

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sequences quiz — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Five-question quiz on Sequences — Wuanberri Calculus." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Sequences quiz</h1>
+      <p class="lede">Five questions on Sequences. Answer all 5 to see your score.</p>
+      <p id="quiz-score" class="meta" style="font-variant-numeric: tabular-nums">0 of 5 answered</p>
+
+      <div class="lesson-card">
+        <h2>Question 1 of 5</h2>
+        <p>Let a_n = \frac{3n^2 + 2n}{5n^2 - 1} for n \ge 1. What is \lim_{n \to \infty} a_n?</p>
+        <form class="mcq" data-mcq="c" data-right-explain="Divide numerator and denominator by n^2: the leading terms give 3/5, and the lower-order terms 2n and -1 vanish as n grows." data-wrong-explain="0 would require the numerator to grow more slowly than the denominator, and 5/3 flips the ratio of leading coefficients; the limit of a rational sequence is the ratio of leading coefficients.">
+          <button type="button" data-choice="a">0</button>
+          <button type="button" data-choice="b">\frac{5}{3}</button>
+          <button type="button" data-choice="c">\frac{3}{5}</button>
+          <button type="button" data-choice="d">The limit does not exist</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 2 of 5</h2>
+        <p>Use the integral test on \sum_{n=2}^{\infty} \frac{1}{n \ln n}. What does it show?</p>
+        <form class="mcq" data-mcq="a" data-right-explain="f(x) = 1/(x \ln x) is positive, continuous, and decreasing for x \ge 2, and the substitution u = \ln x gives an antiderivative \ln(\ln x), which is unbounded. So the series diverges." data-wrong-explain="For large n we have n \ln n &lt; n^2, so 1/(n \ln n) is larger than 1/n^2 and no comparison with a convergent p-series can work; a ratio-test limit of 1 is inconclusive, not convergent; and the terms do approach 0, so the divergence test does not apply.">
+          <button type="button" data-choice="a">Diverges, because \int_2^{\infty} \frac{dx}{x \ln x} = \ln(\ln x) \to \infty</button>
+          <button type="button" data-choice="b">Converges, because the terms 1/(n \ln n) eventually fall below 1/n^2</button>
+          <button type="button" data-choice="c">Converges, because the ratio test gives a limit of 1</button>
+          <button type="button" data-choice="d">Diverges by the divergence test, since the terms fail to approach 0</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 3 of 5</h2>
+        <p>Determine the behavior of \sum_{n=1}^{\infty} \frac{\sqrt{n}}{n^2 + 1}.</p>
+        <form class="mcq" data-mcq="d" data-right-explain="The terms behave like \sqrt{n}/n^2 = 1/n^{3/2} for large n, and the limit of the ratio a_n/(1/n^{3/2}) is 1, so the series converges because p = 3/2 &gt; 1." data-wrong-explain="The terms are bounded above by 1/n^{3/2}, so any comparison with the larger harmonic series goes the wrong way; the integral test would be far harder to run here; and all terms are positive, so the alternating series test never applies.">
+          <button type="button" data-choice="a">Diverges by comparison with the harmonic series</button>
+          <button type="button" data-choice="b">Diverges by the integral test</button>
+          <button type="button" data-choice="c">Converges by the alternating series test</button>
+          <button type="button" data-choice="d">Converges by limit comparison with \sum \frac{1}{n^{3/2}}</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 4 of 5</h2>
+        <p>Classify the series \sum_{n=1}^{\infty} (-1)^n \frac{n}{n^2 + 1}.</p>
+        <form class="mcq" data-mcq="b" data-right-explain="b_n = n/(n^2 + 1) is eventually decreasing and approaches 0, so the alternating series converges; but \sum n/(n^2 + 1) diverges like the harmonic series, so the convergence is only conditional." data-wrong-explain="Absolute convergence fails because the absolute-value series behaves like \sum 1/n; the divergence test is inconclusive here since the terms do approach 0; and the ratio test gives a limit of 1, which decides nothing.">
+          <button type="button" data-choice="a">Absolutely convergent</button>
+          <button type="button" data-choice="b">Conditionally convergent</button>
+          <button type="button" data-choice="c">Divergent by the divergence test</button>
+          <button type="button" data-choice="d">Convergent by the ratio test</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 5 of 5</h2>
+        <p>The power series \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!} is the Taylor series at 0 of a familiar function. What is its radius of convergence?</p>
+        <form class="mcq" data-mcq="c" data-right-explain="This is the Taylor series of \cos x. By the ratio test the term ratio is |x|^2/((2n+1)(2n+2)), which tends to 0 for every fixed x, so the series converges everywhere." data-wrong-explain="R = 1 belongs to geometric-type series like \sum (-1)^n x^n, but factorials in the denominator eventually dominate any power of x, so there is no finite boundary; R = 0 would mean the series converges only at x = 0.">
+          <button type="button" data-choice="a">R = 1</button>
+          <button type="button" data-choice="b">R = \pi</button>
+          <button type="button" data-choice="c">R = \infty — it converges for every real x</button>
+          <button type="button" data-choice="d">R = 0</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-ghost" href="calculus.html">Back to all units</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/quiz.js"></script>
+</body>
+</html>

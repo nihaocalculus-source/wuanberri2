@@ -1,0 +1,37 @@
+[
+  {
+    "prompt": "Evaluate \\int x e^{3x}\\,dx using integration by parts.",
+    "choices": ["\\frac{x}{3}e^{3x} - \\frac{1}{9}e^{3x} + C", "\\frac{x^2}{2}e^{3x} + C", "\\frac{1}{3}e^{3x} + C", "\\frac{x}{3}e^{3x} + C"],
+    "answerIndex": 0,
+    "rightExplain": "Take u = x and dv = e^{3x}dx, so v = \\frac{1}{3}e^{3x}. Then \\int x e^{3x}dx = \\frac{x}{3}e^{3x} - \\frac{1}{3}\\int e^{3x}dx = \\frac{x}{3}e^{3x} - \\frac{1}{9}e^{3x} + C.",
+    "wrongExplain": "\\frac{x}{3}e^{3x} + C stops after the first by-parts step and never subtracts the remaining integral, while \\frac{x^2}{2}e^{3x} + C wrongly treats xe^{3x} as if it differentiated to a single term."
+  },
+  {
+    "prompt": "Evaluate \\int \\sin^3 x \\cos^2 x\\,dx.",
+    "choices": ["\\frac{\\sin^4 x}{4}\\cos x + C", "\\frac{\\cos^3 x}{3} - \\frac{\\cos^5 x}{5} + C", "-\\frac{\\cos^3 x}{3} + \\frac{\\cos^5 x}{5} + C", "-\\frac{\\cos^4 x}{4} + C"],
+    "answerIndex": 2,
+    "rightExplain": "Split off \\sin x and use \\sin^2 x = 1 - \\cos^2 x, then substitute u = \\cos x with du = -\\sin x\\,dx: the integral becomes -\\int (1 - u^2)u^2\\,du = -\\frac{\\cos^3 x}{3} + \\frac{\\cos^5 x}{5} + C.",
+    "wrongExplain": "The answer with the opposite signs comes from forgetting the minus sign in du = -\\sin x\\,dx, and mixing a leftover \\cos x with a power of \\sin x leaves an integral that was never actually finished."
+  },
+  {
+    "prompt": "Evaluate \\int \\frac{dx}{\\sqrt{9 - x^2}}.",
+    "choices": ["\\frac{1}{3}\\arcsin\\left(\\frac{x}{3}\\right) + C", "\\arcsin\\left(\\frac{x}{3}\\right) + C", "\\arctan\\left(\\frac{x}{3}\\right) + C", "\\ln\\left|9 - x^2\\right| + C"],
+    "answerIndex": 1,
+    "rightExplain": "Substitute x = 3\\sin\\theta so that dx = 3\\cos\\theta\\,d\\theta and \\sqrt{9 - x^2} = 3\\cos\\theta; the integral collapses to \\int d\\theta = \\theta = \\arcsin\\left(\\frac{x}{3}\\right) + C.",
+    "wrongExplain": "The extra \\frac{1}{3} comes from mishandling the substitution (the 3 from dx cancels the 3 from the square root, leaving no factor), and \\arctan belongs to the form \\frac{dx}{a^2 + x^2}, not \\frac{dx}{\\sqrt{a^2 - x^2}}."
+  },
+  {
+    "prompt": "Evaluate \\int \\frac{dx}{x^2 - 1} using partial fractions.",
+    "choices": ["\\ln\\left|x^2 - 1\\right| + C", "\\frac{1}{2}\\ln\\left|x^2 - 1\\right| + C", "\\ln\\left|x + 1\\right| - \\ln\\left|x - 1\\right| + C", "\\frac{1}{2}\\ln\\left|x - 1\\right| - \\frac{1}{2}\\ln\\left|x + 1\\right| + C"],
+    "answerIndex": 3,
+    "rightExplain": "Decompose \\frac{1}{x^2 - 1} = \\frac{1/2}{x - 1} - \\frac{1/2}{x + 1}, which integrates to \\frac{1}{2}\\ln|x - 1| - \\frac{1}{2}\\ln|x + 1| + C.",
+    "wrongExplain": "Writing \\ln|x^2 - 1| (with or without the \\frac{1}{2}) confuses this with the derivative of the denominator; the partial fraction with the terms reversed corresponds to \\frac{1}{1 - x^2}, the opposite integrand."
+  },
+  {
+    "prompt": "Evaluate the improper integral \\int_1^{\\infty} \\frac{1}{x^2}\\,dx.",
+    "choices": ["1", "The integral diverges", "2", "\\frac{1}{2}"],
+    "answerIndex": 0,
+    "rightExplain": "By definition \\int_1^{\\infty} x^{-2}dx = \\lim_{b \\to \\infty}\\left[-\\frac{1}{x}\\right]_1^b = \\lim_{b \\to \\infty}\\left(1 - \\frac{1}{b}\\right) = 1, so the integral converges to 1.",
+    "wrongExplain": "The p-test says \\int_1^{\\infty} \\frac{dx}{x^p} converges only for p > 1, and here p = 2 does converge; \\frac{1}{2} is the value of the related integral \\int_1^{\\infty} \\frac{dx}{x^3}."
+  }
+]

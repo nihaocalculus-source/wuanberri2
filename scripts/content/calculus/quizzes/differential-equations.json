@@ -1,0 +1,62 @@
+[
+  {
+    "prompt": "A 90°C cup of coffee sits in a 70°C room. Newton's law of cooling says the temperature changes at a rate proportional to the difference between the coffee and the room. Which ODE models the coffee temperature T(t), with k > 0?",
+    "choices": [
+      "\\frac{dT}{dt} = k(T - 70)",
+      "\\frac{dT}{dt} = -k(T - 70)",
+      "\\frac{dT}{dt} = -kT",
+      "\\frac{dT}{dt} = k(90 - T)"
+    ],
+    "answerIndex": 1,
+    "rightExplain": "While T > 70 the coffee must be cooling, so dT/dt must be negative; -k(T - 70) is the only option with the correct sign and the correct ambient target of 70.",
+    "wrongExplain": "k(T - 70) has the sign backwards and would warm the coffee; -kT drives the temperature toward 0 instead of the room temperature; k(90 - T) wrongly uses the initial temperature where the ambient temperature belongs."
+  },
+  {
+    "prompt": "Sketching the direction field for \\frac{dP}{dt} = P(2 - P), what can you conclude about the equilibrium solutions P = 0 and P = 2?",
+    "choices": [
+      "Both P = 0 and P = 2 are stable equilibria",
+      "P = 0 is stable and P = 2 is unstable",
+      "P = 2 is stable and P = 0 is unstable",
+      "Neither value is an equilibrium, because dP/dt is never zero"
+    ],
+    "answerIndex": 2,
+    "rightExplain": "For 0 < P < 2 the slopes are positive and for P > 2 they are negative, so nearby solutions are pushed toward P = 2; below 0 the slopes are negative, pushing solutions away from P = 0.",
+    "wrongExplain": "The sign of P(2 - P) flips at each root, so the two equilibria cannot share the same stability; a quick sign chart on the intervals (-\\infty, 0), (0, 2), and (2, \\infty) shows P = 2 attracts and P = 0 repels."
+  },
+  {
+    "prompt": "Solve the separable initial-value problem \\frac{dy}{dx} = y^2 e^x with y(0) = 1.",
+    "choices": [
+      "y = \\frac{1}{2 - e^x}",
+      "y = \\frac{1}{e^x - 2}",
+      "y = 2 - e^x",
+      "y = \\frac{1}{2 + e^x}"
+    ],
+    "answerIndex": 0,
+    "rightExplain": "Separating gives \\int y^{-2} \\, dy = \\int e^x \\, dx, so -1/y = e^x + C; the condition y(0) = 1 forces C = -2, hence y = 1/(2 - e^x).",
+    "wrongExplain": "The e^x - 2 version solves the equation but fails the initial condition, giving y(0) = -1; y = 2 - e^x drops the reciprocal entirely; 1/(2 + e^x) comes from mis-signing the constant."
+  },
+  {
+    "prompt": "Use an integrating factor to solve \\frac{dy}{dx} + 2y = e^{-2x}. What is the general solution?",
+    "choices": [
+      "y = x e^{-2x} + C",
+      "y = (x + C)e^{2x}",
+      "y = C e^{-2x} - x",
+      "y = (x + C)e^{-2x}"
+    ],
+    "answerIndex": 3,
+    "rightExplain": "The integrating factor is \\mu = e^{2x}, so (y e^{2x})' = 1 and y e^{2x} = x + C, giving y = (x + C)e^{-2x}.",
+    "wrongExplain": "x e^{-2x} + C forgets that the constant gets multiplied by the integrating factor too; (x + C)e^{2x} uses \\mu = e^{-2x} backwards; C e^{-2x} - x has the sign of the particular part flipped."
+  },
+  {
+    "prompt": "For the logistic population model \\frac{dP}{dt} = 0.5 P \\left(1 - \\frac{P}{100}\\right), at what population does P grow fastest, and what is the carrying capacity?",
+    "choices": [
+      "Growth is fastest at P = 50, and the carrying capacity is 100",
+      "Growth is fastest at P = 100, and the carrying capacity is 50",
+      "Growth is fastest at P = 0, and the carrying capacity is 100",
+      "Growth is fastest at P = 25, and the carrying capacity is 200"
+    ],
+    "answerIndex": 0,
+    "rightExplain": "The right side is a downward-opening quadratic in P with roots at 0 and 100, so it peaks halfway between them at P = K/2 = 50, while growth stops entirely at K = 100.",
+    "wrongExplain": "At P = 100 the growth rate is exactly zero, so nothing grows fastest there; P = 0 also gives zero growth; P = 25 with capacity 200 comes from halving and doubling the wrong constants."
+  }
+]

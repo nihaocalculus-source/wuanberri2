@@ -1,0 +1,154 @@
+[
+  {
+    "topic": "Sequences and series",
+    "title": "Sequences and Infinite Sums",
+    "lede": "An infinite sum is really just a limit of partial sums, and that single idea explains when adding forever can still land on a finite number.",
+    "cards": [
+      {
+        "heading": "Sequence limits",
+        "body": "A sequence is an infinite list of numbers written as a_n, and it converges to L if the terms get arbitrarily close to L as n grows large. For example, a_n = 1/n approaches 0, so the sequence converges to 0. If the terms grow without bound or oscillate, the sequence diverges, and any series built from its terms diverges too.",
+        "math": "a_n = \\frac{1}{n} \\to 0"
+      },
+      {
+        "heading": "From list to sum",
+        "body": "A series is what you get when you add the terms of a sequence, written as the sum of a_n from n equal 1 to infinity. The key object is the nth partial sum s_n, an ordinary finite sum of the first n terms. The series converges to S exactly when the sequence of partial sums converges to S.",
+        "math": "s_n = \\sum_{k=1}^{n} a_k"
+      },
+      {
+        "heading": "Partial sums example",
+        "body": "Take the series 1/2 + 1/4 + 1/8 + dots, where each term is half the one before it. The partial sums run 1/2, 3/4, 7/8, and so on, each step closing in on 1. Since s_n = 1 - (1/2)^n, the partial sums approach 1, so the infinite sum equals exactly 1. You can halve the remaining gap forever, and the gap shrinks to nothing."
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "a_n \\to L",
+        "meaning": "The sequence converges to the limit L",
+        "explain": "Convergence means that for any tolerance you pick, all terms far enough out in the list stay within that tolerance of L. The early terms do not matter; only the tail behavior decides the limit."
+      },
+      {
+        "glyph": "s_n = \\sum_{k=1}^{n} a_k",
+        "meaning": "The nth partial sum of the series",
+        "explain": "Partial sums turn an infinite question into a finite one. Each s_n is a regular sum you can compute, and the series converges precisely when this new sequence of running totals has a limit."
+      },
+      {
+        "glyph": "\\sum_{n=1}^{\\infty} ar^{n-1} = \\frac{a}{1-r}",
+        "meaning": "Geometric series sum valid when r is between -1 and 1",
+        "explain": "A geometric series adds terms that shrink by a fixed factor r each time. When the factor has absolute value below 1, the partial sums approach a divided by one minus r, and the example above is the case a = 1/2 and r = 1/2."
+      }
+    ],
+    "mcq": {
+      "prompt": "What is the value of the infinite series 1/2 + 1/4 + 1/8 + dots, where each term is half the previous one?",
+      "choices": [
+        "1",
+        "It diverges to infinity",
+        "2",
+        "It has no value, because partial sums never actually reach 1"
+      ],
+      "answerIndex": 0,
+      "rightExplain": "The partial sums are 1 - (1/2)^n, which converge to 1, so the series sums to exactly 1.",
+      "wrongExplain": "Partial sums stay below 1, but a series is defined by the limit of its partial sums, and that limit is exactly 1. Divergence would require the totals to grow or oscillate, which they do not."
+    }
+  },
+  {
+    "topic": "Convergence tests",
+    "title": "Choosing a Convergence Test",
+    "lede": "A small toolkit of tests turns the vague question of whether a sum settles down into a routine you can run in a few lines.",
+    "cards": [
+      {
+        "heading": "Divergence test first",
+        "body": "Always start here: if the terms a_n do not approach 0, the series must diverge. For example, the terms of n divided by (n+1) approach 1, so that series diverges immediately. The catch is that the test is one-way, since the harmonic series has terms approaching 0 and still diverges.",
+        "math": "\\lim_{n \\to \\infty} a_n \\neq 0 \\implies \\sum a_n \\text{ diverges}"
+      },
+      {
+        "heading": "Ratio and comparison",
+        "body": "The ratio test computes the limit of the absolute ratio of consecutive terms, call it L, and converges when L is below 1. For the series with terms n^2 divided by 2^n, the ratio limit is 1/2, so it converges. Comparison tests let you borrow a verdict from a simpler series with terms of similar size.",
+        "math": "L = \\lim_{n \\to \\infty} \\left| \\frac{a_{n+1}}{a_n} \\right|"
+      },
+      {
+        "heading": "p-series benchmark",
+        "body": "A p-series adds up 1 over n to the power p, and it converges exactly when p is greater than 1. The harmonic series is the p-series with p equal to 1, and the integral test shows its totals grow like the natural log, so it diverges. Memorizing the p-series cutoff gives you a reliable yardstick for comparison.",
+        "math": "\\sum_{n=1}^{\\infty} \\frac{1}{n^p} \\text{ converges iff } p > 1"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\lim_{n \\to \\infty} a_n \\neq 0",
+        "meaning": "Term test forces divergence of the series",
+        "explain": "A sum of terms that do not shrink to zero cannot settle down, because every term keeps contributing a nonzero amount. Passing this test does not prove convergence, as the harmonic series shows."
+      },
+      {
+        "glyph": "\\left| \\frac{a_{n+1}}{a_n} \\right| \\to L < 1",
+        "meaning": "Ratio test guarantees absolute convergence",
+        "explain": "If each term is eventually a fixed fraction of the one before, the terms decay geometrically fast. When the limit L exceeds 1 the terms grow and the series diverges, and L equal to 1 leaves the test inconclusive."
+      },
+      {
+        "glyph": "\\sum \\frac{1}{n^p}",
+        "meaning": "p-series converges exactly when p is greater than 1",
+        "explain": "This family is the standard benchmark for comparison. Powers above 1 shrink fast enough to sum to something finite, while p equal to 1 or less diverges, including the famous harmonic series at p equal to 1."
+      }
+    ],
+    "mcq": {
+      "prompt": "What does the ratio test tell you about the series whose nth term is n^2 divided by 2^n?",
+      "choices": [
+        "It diverges because the terms do not approach zero",
+        "It diverges by comparison with the harmonic series",
+        "It is inconclusive because the ratio limit equals 1",
+        "It converges, since the ratio limit equals 1/2"
+      ],
+      "answerIndex": 3,
+      "rightExplain": "The ratio of consecutive terms simplifies to (1/2)(1 + 1/n)^2, whose limit is 1/2, below 1, so the series converges absolutely.",
+      "wrongExplain": "The terms do approach zero, and the ratio limit is 1/2, not 1, so the test actually decides the question. Comparison with the harmonic series also fails, since 2^n grows much faster than n^2 in the denominator."
+    }
+  },
+  {
+    "topic": "Power series and Taylor series",
+    "title": "Taylor Series and Approximation",
+    "lede": "A power series is a polynomial with infinitely many terms, and Taylor's formula tells you exactly which coefficients make it copy a function at a point.",
+    "cards": [
+      {
+        "heading": "Power series basics",
+        "body": "A power series centered at a has the form sum of c_n times (x - a) to the n, and it converges inside a radius R and diverges outside it. For example, the geometric-style series sum x^n has R equal to 1, working only between -1 and 1. Endpoints often need a separate check, since the interior test says nothing there.",
+        "math": "\\sum_{n=0}^{\\infty} c_n (x-a)^n"
+      },
+      {
+        "heading": "Taylor coefficients",
+        "body": "Taylor's insight is that the coefficient matching a function f at the point a is the nth derivative of f at a, divided by n factorial. The resulting polynomial agrees with f in value and in every derivative at that point, which is the strongest possible local match. When a is 0 the series is called a Maclaurin series.",
+        "math": "c_n = \\frac{f^{(n)}(a)}{n!}"
+      },
+      {
+        "heading": "Famous expansions",
+        "body": "Three expansions cover most homework: e to the x is sum x to the n over n factorial, sine is x minus x cubed over 6, and 1 over (1 - x) is sum x to the n for |x| below 1. Try approximating e with the first three terms of the exponential series: 1 + 1 + 1/2 gives 2.5, already close to the true value near 2.718.",
+        "math": "e^x = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "c_n = \\frac{f^{(n)}(a)}{n!}",
+        "meaning": "Taylor coefficient from the nth derivative",
+        "explain": "Matching value, slope, curvature, and higher derivatives one by one forces exactly these coefficients. Dividing by n factorial keeps the derivatives from overcounting, since each differentiation of a power brings down a factor of n."
+      },
+      {
+        "glyph": "\\frac{1}{R} = \\lim_{n \\to \\infty} \\left| \\frac{c_{n+1}}{c_n} \\right|",
+        "meaning": "Formula for the radius of convergence",
+        "explain": "Apply the ratio test to the series as a series in x. The radius R is the distance from the center within which the series converges absolutely, and it can come out zero, finite, or infinite."
+      },
+      {
+        "glyph": "e^x = \\sum_{n=0}^{\\infty} \\frac{x^n}{n!}",
+        "meaning": "Maclaurin series for the exponential function",
+        "explain": "Every derivative of e to the x is itself, so all coefficients at 0 are 1 over n factorial. The series converges for every real x, which is why partial sums like 2.5 already approximate e well."
+      }
+    ],
+    "mcq": {
+      "prompt": "What is the radius of convergence of the power series whose nth term is x to the n divided by n factorial?",
+      "choices": [
+        "R = 1",
+        "R = e",
+        "R = 0",
+        "R is infinite, so it converges for every x"
+      ],
+      "answerIndex": 3,
+      "rightExplain": "The ratio of consecutive terms is x divided by (n + 1), which tends to 0 for every fixed x, so the ratio test passes everywhere and R is infinite.",
+      "wrongExplain": "The n factorial in the denominator makes the terms decay super fast, faster than any geometric series, so the radius is not a small finite number. A radius of 0 would mean convergence only at the center x equal to 0, which is far too restrictive here."
+    }
+  }
+]

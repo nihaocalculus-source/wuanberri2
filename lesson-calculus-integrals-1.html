@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estimating Area with Slices — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="When a quantity changes, slicing it into thin rectangles turns a hard question into arithmetic." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Estimating Area with Slices</h1>
+      <p class="lede">When a quantity changes, slicing it into thin rectangles turns a hard question into arithmetic.</p>
+
+
+      <div class="lesson-card">
+        <h2>The Question</h2>
+        <p>How much area sits between a curve and the x-axis over an interval? For a constant height it is just length times width, but a curve changes height at every point. The fix is to freeze the curve for a moment, treat that height as constant over a tiny slice, and add the slices up.</p>
+        <span class="math">A \approx \sum f(x_i^*)\,\Delta x</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Riemann Sums</h2>
+        <p>Cut the interval from a to b into n equal pieces, so each has width Delta x = (b-a)/n. On each piece pick a sample point, draw a rectangle of that height, and add all n rectangles. Left endpoints undershoot an increasing curve and overshoot a decreasing one; more, thinner rectangles shrink the error either way.</p>
+        <span class="math">\Delta x = \frac{b-a}{n}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>A Worked Slice</h2>
+        <p>Estimate the area under f(x) = x^2 on [0, 2] using 4 rectangles with right endpoints. Delta x = 0.5 and the sample heights are 0.25, 1, 2.25, and 4, giving a sum of 3.75. The exact answer is 8/3, about 2.67, so the overestimate is already shrinking as rectangles get thinner.</p>
+        <span class="math">S_4 = 0.5(0.25 + 1 + 2.25 + 4) = 3.75</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\sum_{i=1}^{n} f(x_i^*)\\,\\Delta x&quot;,&quot;meaning&quot;:&quot;A Riemann sum approximating area&quot;,&quot;explain&quot;:&quot;Adds n rectangle areas of width Delta x and heights sampled from the curve. As n grows the sum approaches the exact area under the curve between a and b.&quot;},{&quot;glyph&quot;:&quot;\\Delta x = \\frac{b-a}{n}&quot;,&quot;meaning&quot;:&quot;Width of each equal subinterval&quot;,&quot;explain&quot;:&quot;Dividing the interval length by n gives equal slice widths. Smaller Delta x means thinner rectangles and a tighter approximation of the curved region.&quot;},{&quot;glyph&quot;:&quot;\\lim_{n\\to\\infty} \\sum f(x_i^*)\\,\\Delta x&quot;,&quot;meaning&quot;:&quot;The limit that defines the integral&quot;,&quot;explain&quot;:&quot;Letting the number of rectangles go to infinity while each width goes to zero removes the sampling error. That limit is exactly what the definite integral computes.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\sum_{i=1}^{n} f(x_i^*)\,\Delta x</div>
+        <p data-flip-meaning>A Riemann sum approximating area</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Adds n rectangle areas of width Delta x and heights sampled from the curve. As n grows the sum approaches the exact area under the curve between a and b.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>Using right endpoints to approximate an increasing function with rectangles always produces what kind of estimate?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="On each slice an increasing function is highest at its right edge, so the rectangle covers a little extra area and the sum overshoots." data-wrong-explain="Left endpoints undershoot increasing curves, and positivity affects the sign of the sum but not whether right endpoints run high on a rising curve.">
+          <button type="button" data-choice="a">An underestimate, because the curve rises after each sample point</button>
+          <button type="button" data-choice="b">An overestimate, because the curve rises after each sample point</button>
+          <button type="button" data-choice="c">An exact value, since right endpoints capture the trend</button>
+          <button type="button" data-choice="d">It depends on whether the function is positive</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-integrals.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

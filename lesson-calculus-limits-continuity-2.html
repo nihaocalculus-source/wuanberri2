@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Limit laws and one-sided limits — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Once you know a limit exists, a short list of algebra rules lets you compute almost any limit without touching the definition." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Limit laws and one-sided limits</h1>
+      <p class="lede">Once you know a limit exists, a short list of algebra rules lets you compute almost any limit without touching the definition.</p>
+
+
+      <div class="lesson-card">
+        <h2>The limit laws</h2>
+        <p>Limits respect the usual algebra: the limit of a sum is the sum of the limits, and the same holds for differences, products, and quotients as long as the denominator&#39;s limit is not zero. Constants pull outside, and powers and roots pass through. These laws let you evaluate limits of polynomials essentially by plugging in.</p>
+        <span class="math">\lim_{x \to a} [f(x)g(x)] = \lim_{x \to a} f(x) \cdot \lim_{x \to a} g(x)</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>One-sided limits</h2>
+        <p>A one-sided limit only watches x approach a from the left (values below a) or from the right (values above a). The full limit exists exactly when both one-sided limits exist and agree. Piecewise-defined functions are the main place this check matters, because the formula changes at the boundary.</p>
+        <span class="math">\lim_{x \to a} f(x) = L \iff \lim_{x \to a^-} f(x) = \lim_{x \to a^+} f(x) = L</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>Evaluate the limit of (x^2 - 9)/(x - 3) as x approaches 3. Plugging in gives 0/0, so factor first: the top is (x - 3)(x + 3). Canceling the common factor leaves x + 3, which is continuous, so the limit is 3 + 3 = 6.</p>
+        <span class="math">\lim_{x \to 3} \frac{x^2 - 9}{x - 3} = \lim_{x \to 3} (x + 3) = 6</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\frac{\\lim f}{\\lim g}&quot;,&quot;meaning&quot;:&quot;Quotient law, valid when denominator limit is nonzero&quot;,&quot;explain&quot;:&quot;The limit of a quotient equals the quotient of the limits, provided the limit of the denominator is not zero. If that limit is zero, other tools such as factoring are needed.&quot;},{&quot;glyph&quot;:&quot;x \\to a^-&quot;,&quot;meaning&quot;:&quot;x approaches a from the left side&quot;,&quot;explain&quot;:&quot;The superscript minus means x takes values slightly less than a while moving toward it. The corresponding left-hand limit uses only those values, ignoring everything to the right of a.&quot;},{&quot;glyph&quot;:&quot;\\frac{0}{0}&quot;,&quot;meaning&quot;:&quot;Indeterminate form requiring algebra before plugging in&quot;,&quot;explain&quot;:&quot;Getting zero over zero does not mean the limit fails or equals one. It means the direct substitution was inconclusive, so factor, cancel, or rewrite before evaluating.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\lim_{x \to a} \frac{f(x)}{g(x)} = \frac{\lim f}{\lim g}</div>
+        <p data-flip-meaning>Quotient law, valid when denominator limit is nonzero</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>The limit of a quotient equals the quotient of the limits, provided the limit of the denominator is not zero. If that limit is zero, other tools such as factoring are needed.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>Let f(x) = x + 1 for x &lt; 2 and f(x) = (x - 2)^2 + 3 for x at least 2. Does the limit of f(x) as x approaches 2 exist?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="The left-hand limit is 2 + 1 = 3 and the right-hand limit is 0 + 3 = 3, so the two sides agree and the limit is 3." data-wrong-explain="Evaluate each piece as x approaches 2: the left piece gives 3 and the right piece gives 3. Matching one-sided limits mean the limit exists even though the formulas differ.">
+          <button type="button" data-choice="a">No, because the pieces do not match</button>
+          <button type="button" data-choice="b">Yes, and it equals 3</button>
+          <button type="button" data-choice="c">Yes, and it equals 4</button>
+          <button type="button" data-choice="d">No, because f is not defined at x = 2</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-limits-continuity.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

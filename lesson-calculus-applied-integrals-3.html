@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Integrals Beyond Area — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="The same slicing logic measures physical work, typical values, and the length of a curve." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Integrals Beyond Area</h1>
+      <p class="lede">The same slicing logic measures physical work, typical values, and the length of a curve.</p>
+
+
+      <div class="lesson-card">
+        <h2>Work Done</h2>
+        <p>Work is force times distance, but when force varies with position you slice the path instead. Each small stretch contributes force times dx, and the integral sums them. Pumping water out of a tank uses the same idea, with force replaced by the weight of each thin layer of water.</p>
+        <span class="math">W = \int_a^b F(x)\,dx</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Average Value</h2>
+        <p>The average of a function over an interval is its integral divided by the interval&#39;s width. It is the constant height with the same total accumulation, so it answers what the function is typically doing. Stretching a spring from 0 to a meters by Hooke&#39;s law averages the force at half its final value, which is why the work is k a squared over 2.</p>
+        <span class="math">f_{\text{avg}} = \frac{1}{b-a}\int_a^b f(x)\,dx</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Arc Length</h2>
+        <p>Approximate a curve by tiny straight segments, each with length the square root of one plus the slope squared times dx. The integral of that expression is the exact arc length. For y = x to the two thirds from 0 to 1, the antiderivative works out to 27 over 40 plus the square root of 9 over 4, a finite and tidy length.</p>
+        <span class="math">L = \int_a^b \sqrt{1 + \bigl(f&#39;(x)\bigr)^2}\,dx</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;W = \\int F(x)\\,dx&quot;,&quot;meaning&quot;:&quot;Work under a variable force&quot;,&quot;explain&quot;:&quot;Force times a small displacement is one slice of work. Integrating over the path handles forces that change with position, like springs.&quot;},{&quot;glyph&quot;:&quot;\\frac{1}{b-a}\\int_a^b f\\,dx&quot;,&quot;meaning&quot;:&quot;Mean value of a function on an interval&quot;,&quot;explain&quot;:&quot;Total accumulated value divided by interval length gives the constant function with equal area underneath. It is the function&#39;s fair, typical height.&quot;},{&quot;glyph&quot;:&quot;\\sqrt{1+(f&#39;)^2}\\,dx&quot;,&quot;meaning&quot;:&quot;Arc length element along a curve&quot;,&quot;explain&quot;:&quot;The Pythagorean theorem on a tiny segment gives its length from the slope. Integrating these elements adds up the curve&#39;s true length.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>W = \int F(x)\,dx</div>
+        <p data-flip-meaning>Work under a variable force</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Force times a small displacement is one slice of work. Integrating over the path handles forces that change with position, like springs.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>A spring follows Hooke&#39;s law with force kx. Why does stretching it a meters require k a squared over 2 of work rather than k a squared?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="The force rises linearly from 0 to k a, so its average over the stretch is k a over 2, and multiplying by the distance a gives k a squared over 2." data-wrong-explain="Mass and friction play no role in the ideal spring model, and k a is already the final force, not a work quantity to halve afterward.">
+          <button type="button" data-choice="a">Because the spring&#39;s mass absorbs half the energy</button>
+          <button type="button" data-choice="b">Because the force grows from zero, so its average is k a over 2</button>
+          <button type="button" data-choice="c">Because work must always be halved to account for friction</button>
+          <button type="button" data-choice="d">Because k a squared over 2 is the spring&#39;s maximum force</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-applied-integrals.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

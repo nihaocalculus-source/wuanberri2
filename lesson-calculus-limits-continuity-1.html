@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tangent lines and velocity — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Before derivatives exist, two concrete questions — steepness of a curve and speed of a moving object — force you to invent the limit." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Tangent lines and velocity</h1>
+      <p class="lede">Before derivatives exist, two concrete questions — steepness of a curve and speed of a moving object — force you to invent the limit.</p>
+
+
+      <div class="lesson-card">
+        <h2>The tangent problem</h2>
+        <p>The slope of a curve at a point cannot be computed from two points the way a line&#39;s slope can, so we approximate. A secant line through the point and a nearby point has a computable slope, and as the nearby point slides closer, those secant slopes settle toward a single value. The tangent slope is defined as the limit of the secant slopes.</p>
+        <span class="math">m_{\text{tan}} = \lim_{h \to 0} \frac{f(a+h) - f(a)}{h}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Instantaneous velocity</h2>
+        <p>Velocity asks the same question in motion language. Average velocity over a time interval is distance traveled divided by elapsed time, which is exactly a secant slope on a position graph. Shrinking the time interval to zero turns average velocity into instantaneous velocity at that instant.</p>
+        <span class="math">v(a) = \lim_{h \to 0} \frac{s(a+h) - s(a)}{h}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>Let s(t) = 3t^2 give position in meters after t seconds. The average velocity from t = 2 to t = 2 + h is (3(2+h)^2 - 12)/h, which simplifies to 12 + 3h. As h shrinks to 0, this approaches 12, so the instantaneous velocity at t = 2 is 12 meters per second.</p>
+        <span class="math">v(2) = \lim_{h \to 0} (12 + 3h) = 12</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\frac{f(a+h)-f(a)}{h}&quot;,&quot;meaning&quot;:&quot;Slope of the secant line through two points&quot;,&quot;explain&quot;:&quot;This quotient is the average rate of change of f over the interval from a to a+h. It is the rise over run using the two points (a, f(a)) and (a+h, f(a+h)) on the curve.&quot;},{&quot;glyph&quot;:&quot;\\lim_{h \\to 0} \\frac{f(a+h)-f(a)}{h}&quot;,&quot;meaning&quot;:&quot;Tangent slope, the derivative at a&quot;,&quot;explain&quot;:&quot;This limit is the instantaneous rate of change of f at a. Geometrically it is the slope of the tangent line touching the curve at the point (a, f(a)).&quot;},{&quot;glyph&quot;:&quot;v(a) = s&#39;(a)&quot;,&quot;meaning&quot;:&quot;Instantaneous velocity is the derivative of position&quot;,&quot;explain&quot;:&quot;Velocity is the rate of change of position with respect to time. Computing it with a limit of difference quotients gives the speed at one exact instant rather than an average over an interval.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\frac{f(a+h)-f(a)}{h}</div>
+        <p data-flip-meaning>Slope of the secant line through two points</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>This quotient is the average rate of change of f over the interval from a to a+h. It is the rise over run using the two points (a, f(a)) and (a+h, f(a+h)) on the curve.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>A ball&#39;s height is s(t) = t^2 meters after t seconds. What is its instantaneous velocity at t = 3?</p>
+        <form class="mcq" data-mcq="c" data-right-explain="The difference quotient simplifies to 6 + h, and as h goes to 0 the velocity approaches 6 m/s." data-wrong-explain="The average velocity over a shrinking interval [3, 3+h] equals 6 + h, and only the limit as h goes to 0 gives the instantaneous value.">
+          <button type="button" data-choice="a">3 m/s</button>
+          <button type="button" data-choice="b">6 m/s</button>
+          <button type="button" data-choice="c">9 m/s</button>
+          <button type="button" data-choice="d">18 m/s</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-limits-continuity.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

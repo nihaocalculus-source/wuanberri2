@@ -1,0 +1,218 @@
+{
+  "subjects": {
+    "calculus": {
+      "hub": "calculus.html",
+      "demo": "lesson-calc-demo.html",
+      "total": 30,
+      "units": [
+        { "title": "Limits & continuity", "topics": [
+          "Tangent and velocity problems",
+          "Limit laws and one-sided limits",
+          "Continuity, limits at infinity, and l'Hospital's rule"
+        ] },
+        { "title": "Derivatives", "topics": [
+          "Derivatives and rates of change",
+          "Derivative rules for polynomials, exponentials, and trig functions",
+          "Product and quotient rules",
+          "Chain rule and implicit differentiation"
+        ] },
+        { "title": "Applied derivatives", "topics": [
+          "Maximum and minimum values",
+          "Optimization problems",
+          "Related rates"
+        ] },
+        { "title": "Integrals", "topics": [
+          "The area and distance problem",
+          "The definite integral and the Fundamental Theorem of Calculus",
+          "Indefinite integrals and u-substitution"
+        ] },
+        { "title": "Integration techniques", "topics": [
+          "Integration by parts",
+          "Trig integrals and trigonometric substitution",
+          "Partial fractions and improper integrals"
+        ] },
+        { "title": "Applied integrals", "topics": [
+          "Areas between curves",
+          "Volumes of revolution and cross-sections",
+          "Work, average value, and arc length"
+        ] },
+        { "title": "Series & convergence", "topics": [
+          "Sequences and series",
+          "Convergence tests",
+          "Power series and Taylor series"
+        ] },
+        { "title": "Multivariable calculus", "topics": [
+          "Vectors and the geometry of space",
+          "Partial derivatives",
+          "Gradient and directional derivatives",
+          "Double integrals"
+        ] },
+        { "title": "Differential equations", "topics": [
+          "Modeling with differential equations",
+          "Separable equations",
+          "Linear first-order equations",
+          "Population models and predator-prey systems"
+        ] }
+      ]
+    },
+    "physics": {
+      "hub": "physics.html",
+      "demo": "lesson-phys-demo.html",
+      "total": 30,
+      "units": [
+        { "title": "Kinematics", "weight": 3 },
+        { "title": "Newton's laws", "weight": 4 },
+        { "title": "Work & energy", "weight": 3 },
+        { "title": "Momentum", "weight": 3 },
+        { "title": "Rotational motion", "weight": 3 },
+        { "title": "Gravitation", "weight": 3 },
+        { "title": "Oscillations & waves", "weight": 3 },
+        { "title": "Thermodynamics", "weight": 4 },
+        { "title": "Electricity & magnetism", "weight": 4 }
+      ]
+    },
+    "linear-algebra": {
+      "hub": "linear-algebra.html",
+      "demo": "lesson-linalg-demo.html",
+      "total": 30,
+      "units": [
+        { "title": "Vectors & spaces", "weight": 3 },
+        { "title": "Systems of equations", "weight": 3 },
+        { "title": "Matrix algebra", "weight": 4 },
+        { "title": "Determinants", "weight": 3 },
+        { "title": "Subspaces & basis", "weight": 3 },
+        { "title": "Linear maps", "weight": 3 },
+        { "title": "Inner product spaces", "weight": 3 },
+        { "title": "Eigenvalues & eigenvectors", "weight": 4 },
+        { "title": "Matrix decompositions", "weight": 4 }
+      ]
+    },
+    "differential-equations": {
+      "hub": "differential-equations.html",
+      "demo": "lesson-diff-eq-demo.html",
+      "total": 30,
+      "units": [
+        { "title": "First-order ODEs", "weight": 4 },
+        { "title": "Second-order linear ODEs", "weight": 4 },
+        { "title": "Higher-order ODEs", "weight": 3 },
+        { "title": "Series solutions", "weight": 3 },
+        { "title": "Laplace transforms", "weight": 3 },
+        { "title": "Systems of ODEs", "weight": 4 },
+        { "title": "Nonlinear systems & stability", "weight": 3 },
+        { "title": "Partial differential equations", "weight": 3 },
+        { "title": "Numerical methods", "weight": 3 }
+      ]
+    },
+    "discrete-math": {
+      "hub": "discrete-math.html",
+      "demo": "lesson-discrete-demo.html",
+      "total": 30,
+      "units": [
+        { "title": "Logic & proofs", "weight": 4 },
+        { "title": "Sets & functions", "weight": 3 },
+        { "title": "Induction & recursion", "weight": 4 },
+        { "title": "Combinatorics", "weight": 3 },
+        { "title": "Probability (discrete)", "weight": 3 },
+        { "title": "Graph theory", "weight": 4 },
+        { "title": "Trees", "weight": 3 },
+        { "title": "Relations", "weight": 3 },
+        { "title": "Number theory", "weight": 3 }
+      ]
+    },
+    "statistics": {
+      "hub": "statistics.html",
+      "demo": "lesson-stats-demo.html",
+      "total": 30,
+      "units": [
+        { "title": "Descriptive statistics", "weight": 3 },
+        { "title": "Probability foundations", "weight": 4 },
+        { "title": "Random variables", "weight": 4 },
+        { "title": "Common distributions", "weight": 3 },
+        { "title": "Sampling & estimation", "weight": 3 },
+        { "title": "Hypothesis testing", "weight": 4 },
+        { "title": "Confidence intervals", "weight": 3 },
+        { "title": "Linear regression", "weight": 3 },
+        { "title": "Bayesian inference", "weight": 3 }
+      ]
+    }
+  },
+  "new_subjects": {
+    "chemistry": { "hub": "chemistry.html", "demo": "lesson-chem-demo.html", "units": [
+      { "title": "Atomic structure", "weight": 1 },
+      { "title": "Bonding", "weight": 1 },
+      { "title": "Stoichiometry", "weight": 1 },
+      { "title": "Reactions", "weight": 1 },
+      { "title": "States of matter", "weight": 1 },
+      { "title": "Acids & bases", "weight": 1 },
+      { "title": "Thermodynamics", "weight": 1 },
+      { "title": "Kinetics", "weight": 1 },
+      { "title": "Equilibrium", "weight": 1 }
+    ] },
+    "biology": { "hub": "biology.html", "demo": "lesson-bio-demo.html", "units": [
+      { "title": "Cell biology", "weight": 1 },
+      { "title": "Genetics", "weight": 1 },
+      { "title": "Evolution", "weight": 1 },
+      { "title": "Ecology", "weight": 1 },
+      { "title": "Human biology", "weight": 1 },
+      { "title": "Microbiology", "weight": 1 },
+      { "title": "Plant biology", "weight": 1 },
+      { "title": "Molecular biology", "weight": 1 },
+      { "title": "Bioinformatics", "weight": 1 }
+    ] },
+    "anatomy-physiology": { "hub": "anatomy-physiology.html", "demo": "lesson-ap-demo.html", "units": [
+      { "title": "Tissues", "weight": 1 },
+      { "title": "Skeletal", "weight": 1 },
+      { "title": "Muscular", "weight": 1 },
+      { "title": "Nervous", "weight": 1 },
+      { "title": "Endocrine", "weight": 1 },
+      { "title": "Cardiovascular", "weight": 1 },
+      { "title": "Respiratory", "weight": 1 },
+      { "title": "Digestive", "weight": 1 },
+      { "title": "Reproductive", "weight": 1 }
+    ] },
+    "microeconomics": { "hub": "microeconomics.html", "demo": "lesson-micro-demo.html", "units": [
+      { "title": "Supply & demand", "weight": 1 },
+      { "title": "Elasticity", "weight": 1 },
+      { "title": "Consumer theory", "weight": 1 },
+      { "title": "Producer theory", "weight": 1 },
+      { "title": "Market structures", "weight": 1 },
+      { "title": "Game theory", "weight": 1 },
+      { "title": "Market failure", "weight": 1 },
+      { "title": "Externalities", "weight": 1 },
+      { "title": "Trade", "weight": 1 }
+    ] },
+    "macroeconomics": { "hub": "macroeconomics.html", "demo": "lesson-macro-demo.html", "units": [
+      { "title": "National income", "weight": 1 },
+      { "title": "Inflation", "weight": 1 },
+      { "title": "Unemployment", "weight": 1 },
+      { "title": "Fiscal policy", "weight": 1 },
+      { "title": "Monetary policy", "weight": 1 },
+      { "title": "Open economy", "weight": 1 },
+      { "title": "Growth", "weight": 1 },
+      { "title": "Business cycles", "weight": 1 },
+      { "title": "Financial system", "weight": 1 }
+    ] },
+    "english-composition": { "hub": "english-composition.html", "demo": "lesson-eng-demo.html", "units": [
+      { "title": "Rhetorical situation", "weight": 1 },
+      { "title": "Thesis & argument", "weight": 1 },
+      { "title": "Evidence & analysis", "weight": 1 },
+      { "title": "Structure", "weight": 1 },
+      { "title": "Style", "weight": 1 },
+      { "title": "Revision", "weight": 1 },
+      { "title": "Research", "weight": 1 },
+      { "title": "Citation", "weight": 1 },
+      { "title": "Genres", "weight": 1 }
+    ] },
+    "electrical-engineering": { "hub": "electrical-engineering.html", "demo": "lesson-ee-demo.html", "units": [
+      { "title": "Circuit fundamentals", "weight": 1 },
+      { "title": "Circuit analysis", "weight": 1 },
+      { "title": "Resistive networks", "weight": 1 },
+      { "title": "Capacitors & inductors", "weight": 1 },
+      { "title": "AC circuits", "weight": 1 },
+      { "title": "Electronics", "weight": 1 },
+      { "title": "Digital systems", "weight": 1 },
+      { "title": "Electromagnetics", "weight": 1 },
+      { "title": "Power & machines", "weight": 1 }
+    ] }
+  }
+}

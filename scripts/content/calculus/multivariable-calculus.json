@@ -1,0 +1,184 @@
+[
+  {
+    "topic": "Vectors and the geometry of space",
+    "title": "Vectors in Three Dimensions",
+    "lede": "Vectors are arrows with length and direction, and two products called dot and cross turn geometric questions into simple arithmetic.",
+    "cards": [
+      {
+        "heading": "Components and magnitude",
+        "body": "A vector in space is a triple (a, b, c) giving its reach along each axis, and its length is the square root of a squared plus b squared plus c squared. For example, the vector (1, 2, 2) has length equal to 3 by the Pythagorean theorem in three dimensions. Dividing a vector by its own length gives a unit vector pointing the same way, here (1/3, 2/3, 2/3).",
+        "math": "\\|\\mathbf{v}\\| = \\sqrt{v_1^2 + v_2^2 + v_3^2}"
+      },
+      {
+        "heading": "The dot product",
+        "body": "The dot product multiplies matching components and adds them, producing a single number. Geometrically it equals the product of both lengths times the cosine of the angle between them, so it measures alignment. A zero dot product means the vectors are perpendicular, for example (1, 0, 0) dotted with (0, 1, 0) gives 0.",
+        "math": "\\mathbf{u} \\cdot \\mathbf{v} = |\\mathbf{u}|\\,|\\mathbf{v}|\\cos\\theta"
+      },
+      {
+        "heading": "The cross product",
+        "body": "The cross product of two vectors is a new vector perpendicular to both, computed from a determinant of the components. Its length equals the area of the parallelogram the two vectors span, so it also measures how far out of line the inputs are. The basic pattern is i cross j equals k, cycling through the three axes.",
+        "math": "\\mathbf{u} \\times \\mathbf{v}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\|\\mathbf{v}\\| = \\sqrt{v_1^2 + v_2^2 + v_3^2}",
+        "meaning": "Length of a vector from its components",
+        "explain": "This is the Pythagorean theorem applied twice, once in the base plane and once up the vertical axis. It gives the distance from the origin to the point the vector reaches."
+      },
+      {
+        "glyph": "\\mathbf{u} \\cdot \\mathbf{v} = 0",
+        "meaning": "Dot product test for perpendicular vectors",
+        "explain": "Cosine of 90 degrees is zero, so perpendicular vectors have zero dot product. This test works for any number of dimensions and is the standard way to check orthogonality in practice."
+      },
+      {
+        "glyph": "\\mathbf{u} \\times \\mathbf{v}",
+        "meaning": "Cross product vector perpendicular to both inputs",
+        "explain": "The result points along the normal direction given by the right-hand rule, and its magnitude is the parallelogram area. Swapping the two inputs flips the sign, so order matters here unlike the dot product."
+      }
+    ],
+    "mcq": {
+      "prompt": "Compute the dot product of the vectors (2, 1, 0) and (-1, 3, 4).",
+      "choices": ["0", "-2", "7", "1"],
+      "answerIndex": 3,
+      "rightExplain": "Multiply matching components: 2 times -1 plus 1 times 3 plus 0 times 4 equals -2 + 3 + 0, which is 1.",
+      "wrongExplain": "The products are -2, 3, and 0, and they must be added with signs, giving 1 rather than 0 or 7. A dot product of 0 would require all three products to cancel, which they nearly do here but do not."
+    }
+  },
+  {
+    "topic": "Partial derivatives",
+    "title": "Derivatives in Several Variables",
+    "lede": "When a function has several inputs, you differentiate by freezing all but one variable and asking how fast the output moves.",
+    "cards": [
+      {
+        "heading": "One variable at a time",
+        "body": "The partial derivative with respect to x treats y as a constant and differentiates normally, using a limit with a small h added to x alone. For the function x squared times y, the x derivative is 2xy and the y derivative is x squared. Each partial measures the slope of the surface along one axis direction.",
+        "math": "\\frac{\\partial f}{\\partial x} = \\lim_{h \\to 0} \\frac{f(x+h,\\, y) - f(x,\\, y)}{h}"
+      },
+      {
+        "heading": "Reading the rates",
+        "body": "Evaluate the example function x squared y at the point (3, 2): the x derivative 2xy gives 12, and the y derivative x squared gives 9. So nudging x up by a tiny amount raises the output about 12 times the nudge, while the same nudge in y raises it about 9 times that amount. The two slopes are generally different, which is why the surface tilts differently along each axis."
+      },
+      {
+        "heading": "Tangent plane",
+        "body": "Both partials together build the tangent plane, the flat sheet that best hugs the surface near a point. Its formula is the value at the point plus the x slope times the x offset plus the y slope times the y offset. Mixed partials like fxy also commute when they are continuous, so order of differentiation does not matter in that case.",
+        "math": "L(x,y) = f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b)"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\frac{\\partial f}{\\partial x}",
+        "meaning": "Rate of change of f in the x direction",
+        "explain": "You differentiate with respect to x while every other variable is held fixed, as if it were a constant. The curly d signals that other variables are present but frozen during this derivative."
+      },
+      {
+        "glyph": "f_{xy}",
+        "meaning": "Differentiate first in x, then in y",
+        "explain": "Mixed partials stack: take the x derivative, then differentiate that result with respect to y. When the mixed partials are continuous, fxy equals fyx, so the order can be swapped freely."
+      },
+      {
+        "glyph": "L(x,y) = f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b)",
+        "meaning": "Tangent plane approximation near the point",
+        "explain": "This is the multivariable version of the tangent line, combining both partial slopes into one flat estimate. Plugging in nearby points gives a quick linear approximation of the function without evaluating the full formula."
+      }
+    ],
+    "mcq": {
+      "prompt": "If f(x, y) = x cubed times y squared, what is the partial derivative of f with respect to x?",
+      "choices": ["6x squared y", "3x squared y squared", "2x y cubed", "3x y squared"],
+      "answerIndex": 1,
+      "rightExplain": "Holding y fixed, x cubed differentiates to 3x squared and the y squared factor comes along untouched, giving 3x squared y squared.",
+      "wrongExplain": "The 6x squared y result would come from differentiating with respect to y, and the other options either drop the y factor or differentiate the wrong variable. Only the x derivative treats y squared as a constant multiplier."
+    }
+  },
+  {
+    "topic": "Gradient and directional derivatives",
+    "title": "The Gradient Points Uphill",
+    "lede": "The gradient packs all the partial derivatives into one vector that points in the direction of fastest increase.",
+    "cards": [
+      {
+        "heading": "The gradient vector",
+        "body": "The gradient of f is the vector whose components are the partial derivatives, written nabla f. For the bowl-shaped function x squared plus y squared at the point (1, 1), the gradient is (2, 2), pointing away from the origin. Each point of a surface gets its own gradient, so it is a vector field rather than a single arrow.",
+        "math": "\\nabla f = \\langle f_x,\\, f_y \\rangle"
+      },
+      {
+        "heading": "Directional derivative",
+        "body": "The rate of change of f along a unit vector u is the dot product of the gradient with u, called the directional derivative. Continuing the example, along the diagonal direction (1 over root 2, 1 over root 2) at (1, 1), the dot product gives 2 root 2. Any direction with a smaller alignment with the gradient gives a smaller rate.",
+        "math": "D_{\\mathbf{u}} f = \\nabla f \\cdot \\mathbf{u}"
+      },
+      {
+        "heading": "Slopes and level curves",
+        "body": "The largest possible directional derivative at a point is the magnitude of the gradient, achieved by moving exactly along it. The gradient is also perpendicular to the level curve through that point, which is why contours and steepest paths cross at right angles. When the gradient is the zero vector, every direction has slope zero, marking a potential peak, valley, or saddle."
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\nabla f = \\langle f_x,\\, f_y \\rangle",
+        "meaning": "Vector collecting all first partial derivatives",
+        "explain": "The gradient turns a scalar function into a vector field. Its components are the slopes along the coordinate axes, and together they encode both the steepest direction and how steep it is."
+      },
+      {
+        "glyph": "D_{\\mathbf{u}} f = \\nabla f \\cdot \\mathbf{u}",
+        "meaning": "Rate of change along a unit direction u",
+        "explain": "The dot product picks out how much of the gradient points along your chosen direction. The vector u must be a unit vector, otherwise the number measures slope scaled by length rather than a true rate."
+      },
+      {
+        "glyph": "\\max_{\\|\\mathbf{u}\\| = 1} D_{\\mathbf{u}} f = \\|\\nabla f\\|",
+        "meaning": "Steepest slope equals the gradient magnitude",
+        "explain": "By the dot product formula, the best alignment happens when u points along the gradient, giving its full length. Walking opposite the gradient gives the steepest descent instead, the idea behind gradient descent algorithms."
+      }
+    ],
+    "mcq": {
+      "prompt": "For the function f(x, y) = xy, what is the gradient at the point (2, 3)?",
+      "choices": ["(3, 2)", "(2, 3)", "(6, 6)", "(5, 5)"],
+      "answerIndex": 0,
+      "rightExplain": "The partial with respect to x is y and the partial with respect to y is x, so at (2, 3) the gradient is (3, 2).",
+      "wrongExplain": "The point coordinates are not the gradient; the derivatives swap the roles here. The value (6, 6) is the function value xy equal to 6 repeated, not a pair of slopes."
+    }
+  },
+  {
+    "topic": "Double integrals",
+    "title": "Integrals Over Flat Regions",
+    "lede": "A double integral adds up the values of a function across a two-dimensional region, one thin rectangle at a time.",
+    "cards": [
+      {
+        "heading": "Slicing two ways",
+        "body": "Just as a single integral sums thin rectangles under a curve, a double integral sums thin boxes under a surface over a region R. Each box has base area dA and height f, so the integral measures signed volume when f is a height. If f is instead a density, the same integral gives total mass over the region.",
+        "math": "\\iint_R f(x,y)\\,dA"
+      },
+      {
+        "heading": "Iterated integrals",
+        "body": "In practice you compute a double integral as an iterated integral, doing the inner integral first while treating the outer variable as constant. For the rectangle example integrating xy over 0 to 2 in y and 0 to 3 in x, the inner integral gives 2x, and integrating that from 0 to 3 gives 9. Two nested single integrals replace one intimidating double symbol.",
+        "math": "\\int_0^3 \\int_0^2 xy\\,dy\\,dx = 9"
+      },
+      {
+        "heading": "Swapping the order",
+        "body": "The area element dA can be read as dx dy or dy dx, and the two orders give the same answer when the region allows it. Switching order is a favorite trick because one order may have an antiderivative the other lacks. For non-rectangular regions, describe the boundary as functions and let the inner limits depend on the outer variable.",
+        "math": "dA = dx\\,dy = dy\\,dx"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\iint_R f(x,y)\\,dA",
+        "meaning": "Signed volume under the surface over region R",
+        "explain": "The double integral sums the height f over every small patch of the region. Negative values count as volume below the xy-plane, which is why the result is called signed volume."
+      },
+      {
+        "glyph": "\\int_c^d f(x,y)\\,dy",
+        "meaning": "Inner integral of an iterated integral",
+        "explain": "You hold x fixed and integrate in y first, treating x as a constant. The result is a function of x alone, which then gets integrated in the outer step."
+      },
+      {
+        "glyph": "dA = dx\\,dy = dy\\,dx",
+        "meaning": "Area element, order of integration can swap",
+        "explain": "Both readings of dA describe the same tiny rectangle, just sliced in a different direction. Fubini's theorem guarantees the two orders agree for continuous functions on nice regions."
+      }
+    ],
+    "mcq": {
+      "prompt": "Evaluate the iterated integral of x, integrated over y from 0 to 3 and then over x from 0 to 2.",
+      "choices": ["3", "9", "6", "12"],
+      "answerIndex": 2,
+      "rightExplain": "The inner integral of x with respect to y over 0 to 3 is 3x, and integrating 3x from 0 to 2 gives 6.",
+      "wrongExplain": "The value 9 belongs to the example with the extra y factor in the integrand, and 3 or 12 come from integrating over only part of the rectangle or multiplying incorrectly. Careful inner-then-outer execution gives 6."
+    }
+  }
+]

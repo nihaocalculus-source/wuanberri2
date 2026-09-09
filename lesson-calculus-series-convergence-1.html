@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Sequences and Infinite Sums — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="An infinite sum is really just a limit of partial sums, and that single idea explains when adding forever can still land on a finite number." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Sequences and Infinite Sums</h1>
+      <p class="lede">An infinite sum is really just a limit of partial sums, and that single idea explains when adding forever can still land on a finite number.</p>
+
+
+      <div class="lesson-card">
+        <h2>Sequence limits</h2>
+        <p>A sequence is an infinite list of numbers written as a_n, and it converges to L if the terms get arbitrarily close to L as n grows large. For example, a_n = 1/n approaches 0, so the sequence converges to 0. If the terms grow without bound or oscillate, the sequence diverges, and any series built from its terms diverges too.</p>
+        <span class="math">a_n = \frac{1}{n} \to 0</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>From list to sum</h2>
+        <p>A series is what you get when you add the terms of a sequence, written as the sum of a_n from n equal 1 to infinity. The key object is the nth partial sum s_n, an ordinary finite sum of the first n terms. The series converges to S exactly when the sequence of partial sums converges to S.</p>
+        <span class="math">s_n = \sum_{k=1}^{n} a_k</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Partial sums example</h2>
+        <p>Take the series 1/2 + 1/4 + 1/8 + dots, where each term is half the one before it. The partial sums run 1/2, 3/4, 7/8, and so on, each step closing in on 1. Since s_n = 1 - (1/2)^n, the partial sums approach 1, so the infinite sum equals exactly 1. You can halve the remaining gap forever, and the gap shrinks to nothing.</p>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;a_n \\to L&quot;,&quot;meaning&quot;:&quot;The sequence converges to the limit L&quot;,&quot;explain&quot;:&quot;Convergence means that for any tolerance you pick, all terms far enough out in the list stay within that tolerance of L. The early terms do not matter; only the tail behavior decides the limit.&quot;},{&quot;glyph&quot;:&quot;s_n = \\sum_{k=1}^{n} a_k&quot;,&quot;meaning&quot;:&quot;The nth partial sum of the series&quot;,&quot;explain&quot;:&quot;Partial sums turn an infinite question into a finite one. Each s_n is a regular sum you can compute, and the series converges precisely when this new sequence of running totals has a limit.&quot;},{&quot;glyph&quot;:&quot;\\sum_{n=1}^{\\infty} ar^{n-1} = \\frac{a}{1-r}&quot;,&quot;meaning&quot;:&quot;Geometric series sum valid when r is between -1 and 1&quot;,&quot;explain&quot;:&quot;A geometric series adds terms that shrink by a fixed factor r each time. When the factor has absolute value below 1, the partial sums approach a divided by one minus r, and the example above is the case a = 1/2 and r = 1/2.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>a_n \to L</div>
+        <p data-flip-meaning>The sequence converges to the limit L</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Convergence means that for any tolerance you pick, all terms far enough out in the list stay within that tolerance of L. The early terms do not matter; only the tail behavior decides the limit.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>What is the value of the infinite series 1/2 + 1/4 + 1/8 + dots, where each term is half the previous one?</p>
+        <form class="mcq" data-mcq="a" data-right-explain="The partial sums are 1 - (1/2)^n, which converge to 1, so the series sums to exactly 1." data-wrong-explain="Partial sums stay below 1, but a series is defined by the limit of its partial sums, and that limit is exactly 1. Divergence would require the totals to grow or oscillate, which they do not.">
+          <button type="button" data-choice="a">1</button>
+          <button type="button" data-choice="b">It diverges to infinity</button>
+          <button type="button" data-choice="c">2</button>
+          <button type="button" data-choice="d">It has no value, because partial sums never actually reach 1</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-series-convergence.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

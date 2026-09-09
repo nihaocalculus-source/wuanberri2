@@ -1,0 +1,62 @@
+[
+  {
+    "prompt": "If f(x) = 1/x, what does the limit definition give for lim(h->0) [f(1 + h) - f(1)]/h?",
+    "choices": [
+      "1",
+      "-1",
+      "0",
+      "does not exist"
+    ],
+    "answerIndex": 1,
+    "rightExplain": "This difference quotient is f'(1). Since f'(x) = -1/x^2, f'(1) = -1; directly, [1/(1+h) - 1]/h simplifies to -1/(1+h), which approaches -1.",
+    "wrongExplain": "Dropping the minus sign in the simplification gives 1, and assuming the quotient must vanish because h -> 0 gives 0. The derivative of 1/x exists everywhere except x = 0, so 'does not exist' is wrong at x = 1."
+  },
+  {
+    "prompt": "Differentiate f(x) = 4x^3 - 2e^x + 5cos x.",
+    "choices": [
+      "12x^2 - 2e^x + 5sin x",
+      "12x^2 + 2e^x - 5sin x",
+      "12x^2 - 2e^x - 5sin x",
+      "4x^2 - 2e^x - 5sin x"
+    ],
+    "answerIndex": 2,
+    "rightExplain": "Term by term: d/dx of 4x^3 is 12x^2, of -2e^x is -2e^x, and of 5cos x is -5sin x.",
+    "wrongExplain": "Forgetting that the derivative of cos x is -sin x gives +5sin x, and mishandling the coefficient on e^x gives +2e^x. Reducing the power to 4x^2 forgets to multiply by the old exponent 3."
+  },
+  {
+    "prompt": "Use the product rule together with the chain rule to differentiate f(x) = x^2 * sin(x^3).",
+    "choices": [
+      "2x sin(x^3) + 3x^4 cos(x^3)",
+      "2x cos(x^3)",
+      "2x sin(x^3) + x^2 cos(3x^2)",
+      "3x^4 cos(x^3) - 2x sin(x^3)"
+    ],
+    "answerIndex": 0,
+    "rightExplain": "The product rule gives 2x sin(x^3) + x^2 * d/dx[sin(x^3)], and the chain rule turns that last factor into cos(x^3) * 3x^2, for a total of 2x sin(x^3) + 3x^4 cos(x^3).",
+    "wrongExplain": "2x cos(x^3) treats the product as a product of derivatives, ignoring the sin(x^3) factor. Writing cos(3x^2) differentiates the inner function incorrectly (it should be 3x^2 times cos(x^3)), and the minus sign in the last option comes from confusing this with the derivative of cos."
+  },
+  {
+    "prompt": "Use the quotient rule to differentiate f(x) = (x + 1)/(x - 3).",
+    "choices": [
+      "4/(x - 3)^2",
+      "-4/(x - 3)",
+      "2/(x - 3)^2",
+      "-4/(x - 3)^2"
+    ],
+    "answerIndex": 3,
+    "rightExplain": "The quotient rule gives [(1)(x - 3) - (x + 1)(1)]/(x - 3)^2 = (x - 3 - x - 1)/(x - 3)^2 = -4/(x - 3)^2.",
+    "wrongExplain": "Subtracting the numerator from the denominator instead of the other way around gives +4/(x - 3)^2, and forgetting to square the denominator gives -4/(x - 3). Getting a numerator of 2 usually comes from computing (x - 3) - (x + 1) as 2x - 4 and then mis-simplifying."
+  },
+  {
+    "prompt": "The curve x^2 + y^2 = 25 is a circle. Using implicit differentiation, find dy/dx at the point (3, 4).",
+    "choices": [
+      "-3/4",
+      "3/4",
+      "-4/3",
+      "4/3"
+    ],
+    "answerIndex": 0,
+    "rightExplain": "Differentiating implicitly: 2x + 2y(dy/dx) = 0, so dy/dx = -x/y = -3/4 at (3, 4).",
+    "wrongExplain": "Forgetting the minus sign gives 3/4, and inverting the ratio gives -4/3, which is the slope of the radius (the normal line) rather than the tangent line. Solving for y and differentiating the square root without the chain rule produces the positive value."
+  }
+]

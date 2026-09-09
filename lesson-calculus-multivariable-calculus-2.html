@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Derivatives in Several Variables — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="When a function has several inputs, you differentiate by freezing all but one variable and asking how fast the output moves." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Derivatives in Several Variables</h1>
+      <p class="lede">When a function has several inputs, you differentiate by freezing all but one variable and asking how fast the output moves.</p>
+
+
+      <div class="lesson-card">
+        <h2>One variable at a time</h2>
+        <p>The partial derivative with respect to x treats y as a constant and differentiates normally, using a limit with a small h added to x alone. For the function x squared times y, the x derivative is 2xy and the y derivative is x squared. Each partial measures the slope of the surface along one axis direction.</p>
+        <span class="math">\frac{\partial f}{\partial x} = \lim_{h \to 0} \frac{f(x+h,\, y) - f(x,\, y)}{h}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Reading the rates</h2>
+        <p>Evaluate the example function x squared y at the point (3, 2): the x derivative 2xy gives 12, and the y derivative x squared gives 9. So nudging x up by a tiny amount raises the output about 12 times the nudge, while the same nudge in y raises it about 9 times that amount. The two slopes are generally different, which is why the surface tilts differently along each axis.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Tangent plane</h2>
+        <p>Both partials together build the tangent plane, the flat sheet that best hugs the surface near a point. Its formula is the value at the point plus the x slope times the x offset plus the y slope times the y offset. Mixed partials like fxy also commute when they are continuous, so order of differentiation does not matter in that case.</p>
+        <span class="math">L(x,y) = f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b)</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\frac{\\partial f}{\\partial x}&quot;,&quot;meaning&quot;:&quot;Rate of change of f in the x direction&quot;,&quot;explain&quot;:&quot;You differentiate with respect to x while every other variable is held fixed, as if it were a constant. The curly d signals that other variables are present but frozen during this derivative.&quot;},{&quot;glyph&quot;:&quot;f_{xy}&quot;,&quot;meaning&quot;:&quot;Differentiate first in x, then in y&quot;,&quot;explain&quot;:&quot;Mixed partials stack: take the x derivative, then differentiate that result with respect to y. When the mixed partials are continuous, fxy equals fyx, so the order can be swapped freely.&quot;},{&quot;glyph&quot;:&quot;L(x,y) = f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b)&quot;,&quot;meaning&quot;:&quot;Tangent plane approximation near the point&quot;,&quot;explain&quot;:&quot;This is the multivariable version of the tangent line, combining both partial slopes into one flat estimate. Plugging in nearby points gives a quick linear approximation of the function without evaluating the full formula.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\frac{\partial f}{\partial x}</div>
+        <p data-flip-meaning>Rate of change of f in the x direction</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>You differentiate with respect to x while every other variable is held fixed, as if it were a constant. The curly d signals that other variables are present but frozen during this derivative.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>If f(x, y) = x cubed times y squared, what is the partial derivative of f with respect to x?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="Holding y fixed, x cubed differentiates to 3x squared and the y squared factor comes along untouched, giving 3x squared y squared." data-wrong-explain="The 6x squared y result would come from differentiating with respect to y, and the other options either drop the y factor or differentiate the wrong variable. Only the x derivative treats y squared as a constant multiplier.">
+          <button type="button" data-choice="a">6x squared y</button>
+          <button type="button" data-choice="b">3x squared y squared</button>
+          <button type="button" data-choice="c">2x y cubed</button>
+          <button type="button" data-choice="d">3x y squared</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-multivariable-calculus.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

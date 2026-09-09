@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Areas between curves quiz — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Five-question quiz on Areas between curves — Wuanberri Calculus." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Areas between curves quiz</h1>
+      <p class="lede">Five questions on Areas between curves. Answer all 5 to see your score.</p>
+      <p id="quiz-score" class="meta" style="font-variant-numeric: tabular-nums">0 of 5 answered</p>
+
+      <div class="lesson-card">
+        <h2>Question 1 of 5</h2>
+        <p>Find the area of the region enclosed between the curves y = x^2 and y = 2x.</p>
+        <form class="mcq" data-mcq="c" data-right-explain="The curves intersect where x^2 = 2x, at x = 0 and x = 2, and the line is on top there. Area = \int_0^2 (2x - x^2)\,dx = 4 - \frac{8}{3} = \frac{4}{3}." data-wrong-explain="A negative area means the integrand was set up as (lower - upper) = (x^2 - 2x); area is always the integral of (upper curve) - (lower curve).">
+          <button type="button" data-choice="a">\frac{4}{3}</button>
+          <button type="button" data-choice="b">-\frac{4}{3}</button>
+          <button type="button" data-choice="c">4</button>
+          <button type="button" data-choice="d">\frac{8}{3}</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 2 of 5</h2>
+        <p>The region under y = \sqrt{x} from x = 0 to x = 4 is revolved about the x-axis. Find the volume of the resulting solid using the disk method.</p>
+        <form class="mcq" data-mcq="b" data-right-explain="Each disk has radius \sqrt{x}, so V = \pi\int_0^4 (\sqrt{x})^2 dx = \pi\int_0^4 x\,dx = \pi \cdot \frac{16}{2} = 8\pi." data-wrong-explain="16\pi results from forgetting to square the radius (integrating \sqrt{x} instead of x), and 4\pi comes from using the disk formula with the wrong bounds or averaging incorrectly.">
+          <button type="button" data-choice="a">4\pi</button>
+          <button type="button" data-choice="b">8\pi</button>
+          <button type="button" data-choice="c">16\pi</button>
+          <button type="button" data-choice="d">2\pi</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 3 of 5</h2>
+        <p>A spring with spring constant k = 200 N/m obeys Hooke&#39;s law. How much work is required to stretch it 0.4 m from its natural length?</p>
+        <form class="mcq" data-mcq="d" data-right-explain="Work is W = \int_0^{0.4} kx\,dx = \frac{1}{2}k(0.4)^2 = \frac{1}{2}(200)(0.16) = 16 J." data-wrong-explain="80 J is kx, the final force rather than the work, and 8 J comes from multiplying by x but forgetting the \frac{1}{2} factor from integrating.">
+          <button type="button" data-choice="a">80 J</button>
+          <button type="button" data-choice="b">40 J</button>
+          <button type="button" data-choice="c">8 J</button>
+          <button type="button" data-choice="d">16 J</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 4 of 5</h2>
+        <p>What is the average value of f(x) = x^2 on the interval [0, 3]?</p>
+        <form class="mcq" data-mcq="a" data-right-explain="The average value is \frac{1}{b - a}\int_a^b f(x)\,dx = \frac{1}{3}\int_0^3 x^2 dx = \frac{1}{3} \cdot 9 = 3." data-wrong-explain="9 is the value of f at the right endpoint, not the average over the interval, and \frac{3}{2} comes from dividing the integral by the wrong length (6 instead of 3).">
+          <button type="button" data-choice="a">3</button>
+          <button type="button" data-choice="b">\frac{9}{4}</button>
+          <button type="button" data-choice="c">9</button>
+          <button type="button" data-choice="d">\frac{3}{2}</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 5 of 5</h2>
+        <p>Find the arc length of the curve y = \frac{2}{3}x^{3/2} from x = 0 to x = 3.</p>
+        <form class="mcq" data-mcq="c" data-right-explain="Since y&#39; = \sqrt{x}, the arc length is L = \int_0^3 \sqrt{1 + x}\,dx = \frac{2}{3}(1 + x)^{3/2}\Big|_0^3 = \frac{2}{3}(8 - 1) = \frac{14}{3}." data-wrong-explain="\frac{16}{3} comes from evaluating \frac{2}{3}(1+x)^{3/2} at the upper limit without subtracting the value at x = 0, and \frac{7}{3} drops the factor of 2 from integrating \sqrt{1 + x}.">
+          <button type="button" data-choice="a">\frac{16}{3}</button>
+          <button type="button" data-choice="b">4</button>
+          <button type="button" data-choice="c">\frac{14}{3}</button>
+          <button type="button" data-choice="d">\frac{7}{3}</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-ghost" href="calculus.html">Back to all units</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/quiz.js"></script>
+</body>
+</html>

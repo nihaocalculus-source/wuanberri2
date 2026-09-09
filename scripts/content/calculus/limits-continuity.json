@@ -1,0 +1,145 @@
+[
+  {
+    "topic": "Tangent and velocity problems",
+    "title": "Tangent lines and velocity",
+    "lede": "Before derivatives exist, two concrete questions — steepness of a curve and speed of a moving object — force you to invent the limit.",
+    "cards": [
+      {
+        "heading": "The tangent problem",
+        "body": "The slope of a curve at a point cannot be computed from two points the way a line's slope can, so we approximate. A secant line through the point and a nearby point has a computable slope, and as the nearby point slides closer, those secant slopes settle toward a single value. The tangent slope is defined as the limit of the secant slopes.",
+        "math": "m_{\\text{tan}} = \\lim_{h \\to 0} \\frac{f(a+h) - f(a)}{h}"
+      },
+      {
+        "heading": "Instantaneous velocity",
+        "body": "Velocity asks the same question in motion language. Average velocity over a time interval is distance traveled divided by elapsed time, which is exactly a secant slope on a position graph. Shrinking the time interval to zero turns average velocity into instantaneous velocity at that instant.",
+        "math": "v(a) = \\lim_{h \\to 0} \\frac{s(a+h) - s(a)}{h}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "Let s(t) = 3t^2 give position in meters after t seconds. The average velocity from t = 2 to t = 2 + h is (3(2+h)^2 - 12)/h, which simplifies to 12 + 3h. As h shrinks to 0, this approaches 12, so the instantaneous velocity at t = 2 is 12 meters per second.",
+        "math": "v(2) = \\lim_{h \\to 0} (12 + 3h) = 12"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\frac{f(a+h)-f(a)}{h}",
+        "meaning": "Slope of the secant line through two points",
+        "explain": "This quotient is the average rate of change of f over the interval from a to a+h. It is the rise over run using the two points (a, f(a)) and (a+h, f(a+h)) on the curve."
+      },
+      {
+        "glyph": "\\lim_{h \\to 0} \\frac{f(a+h)-f(a)}{h}",
+        "meaning": "Tangent slope, the derivative at a",
+        "explain": "This limit is the instantaneous rate of change of f at a. Geometrically it is the slope of the tangent line touching the curve at the point (a, f(a))."
+      },
+      {
+        "glyph": "v(a) = s'(a)",
+        "meaning": "Instantaneous velocity is the derivative of position",
+        "explain": "Velocity is the rate of change of position with respect to time. Computing it with a limit of difference quotients gives the speed at one exact instant rather than an average over an interval."
+      }
+    ],
+    "mcq": {
+      "prompt": "A ball's height is s(t) = t^2 meters after t seconds. What is its instantaneous velocity at t = 3?",
+      "choices": ["3 m/s", "6 m/s", "9 m/s", "18 m/s"],
+      "answerIndex": 2,
+      "rightExplain": "The difference quotient simplifies to 6 + h, and as h goes to 0 the velocity approaches 6 m/s.",
+      "wrongExplain": "The average velocity over a shrinking interval [3, 3+h] equals 6 + h, and only the limit as h goes to 0 gives the instantaneous value."
+    }
+  },
+  {
+    "topic": "Limit laws and one-sided limits",
+    "title": "Limit laws and one-sided limits",
+    "lede": "Once you know a limit exists, a short list of algebra rules lets you compute almost any limit without touching the definition.",
+    "cards": [
+      {
+        "heading": "The limit laws",
+        "body": "Limits respect the usual algebra: the limit of a sum is the sum of the limits, and the same holds for differences, products, and quotients as long as the denominator's limit is not zero. Constants pull outside, and powers and roots pass through. These laws let you evaluate limits of polynomials essentially by plugging in.",
+        "math": "\\lim_{x \\to a} [f(x)g(x)] = \\lim_{x \\to a} f(x) \\cdot \\lim_{x \\to a} g(x)"
+      },
+      {
+        "heading": "One-sided limits",
+        "body": "A one-sided limit only watches x approach a from the left (values below a) or from the right (values above a). The full limit exists exactly when both one-sided limits exist and agree. Piecewise-defined functions are the main place this check matters, because the formula changes at the boundary.",
+        "math": "\\lim_{x \\to a} f(x) = L \\iff \\lim_{x \\to a^-} f(x) = \\lim_{x \\to a^+} f(x) = L"
+      },
+      {
+        "heading": "Worked example",
+        "body": "Evaluate the limit of (x^2 - 9)/(x - 3) as x approaches 3. Plugging in gives 0/0, so factor first: the top is (x - 3)(x + 3). Canceling the common factor leaves x + 3, which is continuous, so the limit is 3 + 3 = 6.",
+        "math": "\\lim_{x \\to 3} \\frac{x^2 - 9}{x - 3} = \\lim_{x \\to 3} (x + 3) = 6"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\lim_{x \\to a} \\frac{f(x)}{g(x)} = \\frac{\\lim f}{\\lim g}",
+        "meaning": "Quotient law, valid when denominator limit is nonzero",
+        "explain": "The limit of a quotient equals the quotient of the limits, provided the limit of the denominator is not zero. If that limit is zero, other tools such as factoring are needed."
+      },
+      {
+        "glyph": "x \\to a^-",
+        "meaning": "x approaches a from the left side",
+        "explain": "The superscript minus means x takes values slightly less than a while moving toward it. The corresponding left-hand limit uses only those values, ignoring everything to the right of a."
+      },
+      {
+        "glyph": "\\frac{0}{0}",
+        "meaning": "Indeterminate form requiring algebra before plugging in",
+        "explain": "Getting zero over zero does not mean the limit fails or equals one. It means the direct substitution was inconclusive, so factor, cancel, or rewrite before evaluating."
+      }
+    ],
+    "mcq": {
+      "prompt": "Let f(x) = x + 1 for x < 2 and f(x) = (x - 2)^2 + 3 for x at least 2. Does the limit of f(x) as x approaches 2 exist?",
+      "choices": [
+        "No, because the pieces do not match",
+        "Yes, and it equals 3",
+        "Yes, and it equals 4",
+        "No, because f is not defined at x = 2"
+      ],
+      "answerIndex": 1,
+      "rightExplain": "The left-hand limit is 2 + 1 = 3 and the right-hand limit is 0 + 3 = 3, so the two sides agree and the limit is 3.",
+      "wrongExplain": "Evaluate each piece as x approaches 2: the left piece gives 3 and the right piece gives 3. Matching one-sided limits mean the limit exists even though the formulas differ."
+    }
+  },
+  {
+    "topic": "Continuity, limits at infinity, and l'Hospital's rule",
+    "title": "Continuity, infinity, and l'Hospital",
+    "lede": "Three tools finish the limit toolkit: when a function is unbroken, where it settles at infinity, and the shortcut for indeterminate forms.",
+    "cards": [
+      {
+        "heading": "Continuity",
+        "body": "A function is continuous at a point a if the limit as x approaches a exists, the function value f(a) exists, and the two are equal. In words: no hole, no jump, and the limit actually lands on the point. Polynomials are continuous everywhere, and quotients of continuous functions are continuous wherever the denominator is nonzero.",
+        "math": "\\lim_{x \\to a} f(x) = f(a)"
+      },
+      {
+        "heading": "Limits at infinity",
+        "body": "Writing x approaching infinity asks what value the outputs approach for large x. For rational functions, divide the numerator and denominator by the highest power of x in the denominator, then let small terms vanish. The result gives any horizontal asymptote of the graph.",
+        "math": "\\lim_{x \\to \\infty} \\frac{3x^2 + 5x}{x^2 - 2} = 3"
+      },
+      {
+        "heading": "l'Hospital's rule",
+        "body": "When a limit produces 0/0 or infinity over infinity, the limit of the ratio of derivatives equals the original limit, provided the new limit exists. For example, the limit of sin x over x as x approaches 0 becomes the limit of cos x over 1, which equals 1. Always check the indeterminate form first; the rule is invalid otherwise.",
+        "math": "\\lim_{x \\to 0} \\frac{\\sin x}{x} = \\lim_{x \\to 0} \\frac{\\cos x}{1} = 1"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "f(a) \\text{ defined}, \\lim_{x \\to a} f(x) \\text{ exists}, \\lim_{x \\to a} f(x) = f(a)",
+        "meaning": "Three conditions for continuity at a",
+        "explain": "Continuity at a requires the function value to exist, the limit to exist, and the two to be equal. Failing any one condition makes the function discontinuous at that point."
+      },
+      {
+        "glyph": "y = L,\\ \\lim_{x \\to \\infty} f(x) = L",
+        "meaning": "Horizontal asymptote from a limit at infinity",
+        "explain": "If the outputs of f approach the number L as x grows without bound, the graph has a horizontal asymptote y = L. The same idea works for x approaching negative infinity."
+      },
+      {
+        "glyph": "\\lim \\frac{f}{g} = \\lim \\frac{f'}{g'}",
+        "meaning": "l'Hospital's rule for 0/0 forms",
+        "explain": "When a quotient limit gives 0/0 or infinity over infinity, differentiate the top and bottom separately and take that limit instead. It does not follow from the quotient rule and needs the indeterminate form first."
+      }
+    ],
+    "mcq": {
+      "prompt": "What is the limit of (5x + 2)/(2x + 7) as x approaches infinity?",
+      "choices": ["0", "2/7", "The limit does not exist", "5/2"],
+      "answerIndex": 3,
+      "rightExplain": "Dividing top and bottom by x leaves (5 + 2/x)/(2 + 7/x), and the small terms vanish to give 5/2.",
+      "wrongExplain": "Divide every term by x, the highest power in the denominator. The constants 2/x and 7/x go to zero, leaving 5/2 rather than a nonexistent limit."
+    }
+  }
+]

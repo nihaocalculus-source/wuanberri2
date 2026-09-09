@@ -1,0 +1,155 @@
+[
+  {
+    "topic": "Integration by parts",
+    "title": "Splitting the Product Rule",
+    "lede": "Integration by parts trades one integral for another, and choosing well makes the trade a bargain.",
+    "cards": [
+      {
+        "heading": "Where It Comes From",
+        "body": "The product rule says the derivative of u times v is u prime v plus u v prime. Integrate both sides, rearrange, and the left over is the parts formula. It exists for products that u-substitution cannot touch, where two unrelated factors are multiplied together.",
+        "math": "\\int u\\,dv = uv - \\int v\\,du"
+      },
+      {
+        "heading": "Choosing u and dv",
+        "body": "Pick u to be the factor that simplifies when differentiated, and dv to be the piece you already know how to integrate. Logarithms and inverse functions make good u; exponentials and pure powers make good dv. A bad choice makes the new integral harder than the old one, which is the signal to swap.",
+        "math": "u = \\ln x,\\quad dv = x\\,dx"
+      },
+      {
+        "heading": "A Worked Trade",
+        "body": "Consider the integral of x times e to the x. Let u = x so du = dx, and let dv = e to the x dx so v = e to the x. The formula gives x e to the x minus the integral of e to the x, which is x e to the x minus e to the x plus C. The new integral was easier, exactly what a good choice guarantees.",
+        "math": "\\int x e^x\\,dx = xe^x - e^x + C"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\int u\\,dv = uv - \\int v\\,du",
+        "meaning": "The integration by parts formula",
+        "explain": "Derived from integrating the product rule. It rewrites a product integral as an evaluated product minus a second integral that is hopefully simpler."
+      },
+      {
+        "glyph": "uv - \\int v\\,du",
+        "meaning": "Output structure of one parts pass",
+        "explain": "The boundary term uv is fully evaluated, and what remains is a fresh integral. Success means that remaining integral is easier than the original."
+      },
+      {
+        "glyph": "\\int \\ln x\\,dx",
+        "meaning": "Parts with no visible product",
+        "explain": "Logarithm integrates by parts with u = ln x and dv = dx. The result is x ln x minus x plus C, a standard trick for lone hard factors."
+      }
+    ],
+    "mcq": {
+      "prompt": "When integrating x cosine of 2x by parts, which assignment of u and dv leads to a simpler integral?",
+      "choices": [
+        "u = x and dv = cos(2x) dx",
+        "u = cos(2x) and dv = x dx",
+        "u = 2x and dv = cos(2x) dx",
+        "Parts cannot be used on trigonometric integrands"
+      ],
+      "answerIndex": 0,
+      "rightExplain": "Differentiating u = x kills the power, and dv = cos(2x) dx integrates cleanly to sin(2x)/2, leaving the elementary integral of sin(2x)/2.",
+      "wrongExplain": "Differentiating cosine of 2x still leaves a trig factor in du, so the new integral is no simpler, and parts applies to any product with an integrable factor."
+    }
+  },
+  {
+    "topic": "Trig integrals and trigonometric substitution",
+    "title": "Identities Rewrite Hard Integrals",
+    "lede": "Pythagorean identities and a well-chosen triangle turn tangled roots into friendly powers of sine and cosine.",
+    "cards": [
+      {
+        "heading": "Powers and Identities",
+        "body": "Odd powers of sine or cosine yield to substitution: peel off one factor, convert the rest with the Pythagorean identity, and the leftover derivative matches. Even powers need half-angle identities, since cosine of two theta splits a square into a constant plus a single cosine. Strategy, not memorized answers, does the work.",
+        "math": "\\sin^2 x = \\frac{1-\\cos 2x}{2}"
+      },
+      {
+        "heading": "Three Root Forms",
+        "body": "Square roots of quadratics invite a substitution based on the Pythagorean identity. For a square root of (a squared minus x squared), set x = a sine theta. For (a squared plus x squared), set x = a tangent theta, and for (x squared minus a squared), use x = a secant theta. Each choice makes the root collapse.",
+        "math": "\\sqrt{a^2 - x^2} = a\\cos\\theta"
+      },
+      {
+        "heading": "A Worked Triangle",
+        "body": "To integrate 1 over the square root of (4 minus x squared), set x = 2 sine theta so the root becomes 2 cosine theta and dx becomes 2 cosine theta d theta. The integral collapses to theta, and since sine theta is x over 2, the answer is arcsine of (x over 2) plus C. The triangle you draw at the end converts back to x.",
+        "math": "\\int \\frac{dx}{\\sqrt{4-x^2}} = \\arcsin\\frac{x}{2} + C"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\sin^2\\theta + \\cos^2\\theta = 1",
+        "meaning": "Identity powering all trig substitution",
+        "explain": "This identity lets a substitution replace a quadratic expression under a root with a single squared trig factor. Rearrangements produce the tangent and secant forms too."
+      },
+      {
+        "glyph": "x = a\\sin\\theta",
+        "meaning": "Substitution for a squared minus x squared",
+        "explain": "Under this swap, the root of (a squared minus x squared) becomes a cosine theta, removing the radical. Sine theta must be converted back to x afterward."
+      },
+      {
+        "glyph": "x = a\\tan\\theta",
+        "meaning": "Substitution for a squared plus x squared",
+        "explain": "Tangent substitution turns the root of (a squared plus x squared) into a secant theta. It handles sums of squares, the form the sine swap cannot reach."
+      }
+    ],
+    "mcq": {
+      "prompt": "Which substitution is appropriate for an integral containing the square root of (9 plus x squared)?",
+      "choices": [
+        "x = 3 sin(theta)",
+        "x = 3 tan(theta)",
+        "x = 3 sec(theta)",
+        "u = 9 + x^2 with ordinary u-substitution"
+      ],
+      "answerIndex": 1,
+      "rightExplain": "The plus sign between squares matches the 1 plus tangent squared identity, so x = 3 tan(theta) collapses the root to 3 sec(theta).",
+      "wrongExplain": "Sine fits a difference of squares and secant fits x squared minus a squared, while plain u-substitution leaves the radical intact because du brings an odd x factor."
+    }
+  },
+  {
+    "topic": "Partial fractions and improper integrals",
+    "title": "Rational Splits and Infinite Limits",
+    "lede": "Two closing techniques: break rational integrands into simple pieces, and push integrals out to infinity.",
+    "cards": [
+      {
+        "heading": "Partial Fractions",
+        "body": "A rational function with a factored denominator can be written as a sum of simpler fractions, one per factor. Solve for the unknown numerators by clearing denominators and matching coefficients. Each piece integrates with a logarithm or an arctangent, which is the whole point of the split.",
+        "math": "\\frac{1}{x^2-1} = \\frac{1/2}{x-1} - \\frac{1/2}{x+1}"
+      },
+      {
+        "heading": "Improper Limits",
+        "body": "An integral is improper when an endpoint is infinite or the integrand blows up inside the interval. Replace the bad limit with a variable t, integrate normally, then take a limit. If the limit settles on a finite number the integral converges; otherwise it diverges and area is not assigned.",
+        "math": "\\int_a^{\\infty} f(x)\\,dx = \\lim_{t\\to\\infty}\\int_a^t f(x)\\,dx"
+      },
+      {
+        "heading": "A Worked Pair",
+        "body": "Split one over (x times (x plus 1)) as one over x minus one over (x plus 1), and the integral is the natural log of x over (x plus 1) plus C. For the infinite side, the integral of one over x squared from 1 to infinity converges to 1, while one over x diverges. The exponent, not the constant, decides the outcome.",
+        "math": "\\int_1^{\\infty}\\frac{dx}{x^2} = \\lim_{t\\to\\infty}\\left(1-\\frac{1}{t}\\right) = 1"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\frac{A}{x-1} + \\frac{B}{x+1}",
+        "meaning": "Partial fraction form for two linear factors",
+        "explain": "Each distinct linear factor in the denominator gets its own constant numerator. Clearing denominators and comparing coefficients pins A and B down."
+      },
+      {
+        "glyph": "\\lim_{t\\to b^-}\\int_a^t f(x)\\,dx",
+        "meaning": "Improper integral at a blow-up point",
+        "explain": "When f grows without bound near b, integrate up to a point t just short of it and take the limit. A finite limit means the integral converges."
+      },
+      {
+        "glyph": "\\int_1^{\\infty}\\frac{dx}{x^p}",
+        "meaning": "The p-test for convergence",
+        "explain": "This comparison integral converges exactly when p exceeds one. It is the reference case for deciding whether most infinite-limit integrals converge."
+      }
+    ],
+    "mcq": {
+      "prompt": "Does the integral of one over x from 1 to infinity converge, and why?",
+      "choices": [
+        "Yes, because the integrand shrinks to zero",
+        "Yes, with value equal to e",
+        "No, because its antiderivative grows without bound",
+        "No, because one over x is undefined at zero"
+      ],
+      "answerIndex": 2,
+      "rightExplain": "The antiderivative is ln x, and ln t tends to infinity, so the limit never settles on a finite value and the integral diverges.",
+      "wrongExplain": "An integrand tending to zero is necessary but not sufficient for convergence, and the discontinuity at zero is irrelevant because the interval starts at one."
+    }
+  }
+]

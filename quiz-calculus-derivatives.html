@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Derivatives quiz — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Five-question quiz on Derivatives — Wuanberri Calculus." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Derivatives quiz</h1>
+      <p class="lede">Five questions on Derivatives. Answer all 5 to see your score.</p>
+      <p id="quiz-score" class="meta" style="font-variant-numeric: tabular-nums">0 of 5 answered</p>
+
+      <div class="lesson-card">
+        <h2>Question 1 of 5</h2>
+        <p>If f(x) = 1/x, what does the limit definition give for lim(h-&gt;0) [f(1 + h) - f(1)]/h?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="This difference quotient is f&#39;(1). Since f&#39;(x) = -1/x^2, f&#39;(1) = -1; directly, [1/(1+h) - 1]/h simplifies to -1/(1+h), which approaches -1." data-wrong-explain="Dropping the minus sign in the simplification gives 1, and assuming the quotient must vanish because h -&gt; 0 gives 0. The derivative of 1/x exists everywhere except x = 0, so &#39;does not exist&#39; is wrong at x = 1.">
+          <button type="button" data-choice="a">1</button>
+          <button type="button" data-choice="b">-1</button>
+          <button type="button" data-choice="c">0</button>
+          <button type="button" data-choice="d">does not exist</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 2 of 5</h2>
+        <p>Differentiate f(x) = 4x^3 - 2e^x + 5cos x.</p>
+        <form class="mcq" data-mcq="c" data-right-explain="Term by term: d/dx of 4x^3 is 12x^2, of -2e^x is -2e^x, and of 5cos x is -5sin x." data-wrong-explain="Forgetting that the derivative of cos x is -sin x gives +5sin x, and mishandling the coefficient on e^x gives +2e^x. Reducing the power to 4x^2 forgets to multiply by the old exponent 3.">
+          <button type="button" data-choice="a">12x^2 - 2e^x + 5sin x</button>
+          <button type="button" data-choice="b">12x^2 + 2e^x - 5sin x</button>
+          <button type="button" data-choice="c">12x^2 - 2e^x - 5sin x</button>
+          <button type="button" data-choice="d">4x^2 - 2e^x - 5sin x</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 3 of 5</h2>
+        <p>Use the product rule together with the chain rule to differentiate f(x) = x^2 * sin(x^3).</p>
+        <form class="mcq" data-mcq="a" data-right-explain="The product rule gives 2x sin(x^3) + x^2 * d/dx[sin(x^3)], and the chain rule turns that last factor into cos(x^3) * 3x^2, for a total of 2x sin(x^3) + 3x^4 cos(x^3)." data-wrong-explain="2x cos(x^3) treats the product as a product of derivatives, ignoring the sin(x^3) factor. Writing cos(3x^2) differentiates the inner function incorrectly (it should be 3x^2 times cos(x^3)), and the minus sign in the last option comes from confusing this with the derivative of cos.">
+          <button type="button" data-choice="a">2x sin(x^3) + 3x^4 cos(x^3)</button>
+          <button type="button" data-choice="b">2x cos(x^3)</button>
+          <button type="button" data-choice="c">2x sin(x^3) + x^2 cos(3x^2)</button>
+          <button type="button" data-choice="d">3x^4 cos(x^3) - 2x sin(x^3)</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 4 of 5</h2>
+        <p>Use the quotient rule to differentiate f(x) = (x + 1)/(x - 3).</p>
+        <form class="mcq" data-mcq="d" data-right-explain="The quotient rule gives [(1)(x - 3) - (x + 1)(1)]/(x - 3)^2 = (x - 3 - x - 1)/(x - 3)^2 = -4/(x - 3)^2." data-wrong-explain="Subtracting the numerator from the denominator instead of the other way around gives +4/(x - 3)^2, and forgetting to square the denominator gives -4/(x - 3). Getting a numerator of 2 usually comes from computing (x - 3) - (x + 1) as 2x - 4 and then mis-simplifying.">
+          <button type="button" data-choice="a">4/(x - 3)^2</button>
+          <button type="button" data-choice="b">-4/(x - 3)</button>
+          <button type="button" data-choice="c">2/(x - 3)^2</button>
+          <button type="button" data-choice="d">-4/(x - 3)^2</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 5 of 5</h2>
+        <p>The curve x^2 + y^2 = 25 is a circle. Using implicit differentiation, find dy/dx at the point (3, 4).</p>
+        <form class="mcq" data-mcq="a" data-right-explain="Differentiating implicitly: 2x + 2y(dy/dx) = 0, so dy/dx = -x/y = -3/4 at (3, 4)." data-wrong-explain="Forgetting the minus sign gives 3/4, and inverting the ratio gives -4/3, which is the slope of the radius (the normal line) rather than the tangent line. Solving for y and differentiating the square root without the chain rule produces the positive value.">
+          <button type="button" data-choice="a">-3/4</button>
+          <button type="button" data-choice="b">3/4</button>
+          <button type="button" data-choice="c">-4/3</button>
+          <button type="button" data-choice="d">4/3</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-ghost" href="calculus.html">Back to all units</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/quiz.js"></script>
+</body>
+</html>

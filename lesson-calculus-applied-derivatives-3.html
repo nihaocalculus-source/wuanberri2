@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Related rates problems — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="When two quantities change together, differentiating their relationship with respect to time connects their rates." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Related rates problems</h1>
+      <p class="lede">When two quantities change together, differentiating their relationship with respect to time connects their rates.</p>
+
+
+      <div class="lesson-card">
+        <h2>Strategy</h2>
+        <p>Write an equation relating the variables themselves, using only variables at this stage, not the given rates. Differentiate both sides with respect to time t, applying the chain rule so every term picks up its own rate. Finally substitute the specific values and the known rates, then solve for the unknown rate.</p>
+        <span class="math">\frac{d}{dt}[x^2] = 2x \frac{dx}{dt}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>A 10-foot ladder leans against a wall with its base sliding away at 1 foot per second. Let x be the base distance and y the height, so x^2 + y^2 = 100. Differentiating gives 2x (dx/dt) + 2y (dy/dt) = 0. When x = 6, y = 8, so 6(1) + 8 (dy/dt) = 0 and the top slides down at 0.75 feet per second.</p>
+        <span class="math">6(1) + 8 \frac{dy}{dt} = 0 \implies \frac{dy}{dt} = -0.75</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Reading the sign</h2>
+        <p>A negative rate means the quantity is decreasing, not that a mistake was made. In the ladder problem the height y shrinks as the base x grows, so dy/dt comes out negative. Always answer the question asked: a speed is the absolute value of the rate.</p>
+        <span class="math">\frac{dy}{dt} &lt; 0 \text{ means } y \text{ is decreasing}</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;x^2 + y^2 = 100&quot;,&quot;meaning&quot;:&quot;Pythagorean link between ladder base and height&quot;,&quot;explain&quot;:&quot;The ladder forms the hypotenuse of a right triangle, so base and height satisfy this equation at every instant. Differentiating it with respect to time ties dx/dt to dy/dt.&quot;},{&quot;glyph&quot;:&quot;2x \\frac{dx}{dt} + 2y \\frac{dy}{dt} = 0&quot;,&quot;meaning&quot;:&quot;Time derivative of the Pythagorean relation&quot;,&quot;explain&quot;:&quot;Differentiating x squared plus y squared with respect to t uses the chain rule on each term. The result connects the two rates, letting you solve for whichever one is unknown.&quot;},{&quot;glyph&quot;:&quot;\\frac{dV}{dt} = 4 \\pi r^2 \\frac{dr}{dt}&quot;,&quot;meaning&quot;:&quot;Rate relation from differentiating sphere volume&quot;,&quot;explain&quot;:&quot;Differentiating V = (4/3) pi r^3 with respect to time gives this relation between volume rate and radius rate. It is the standard setup for inflating balloon and melting snowball problems.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>x^2 + y^2 = 100</div>
+        <p data-flip-meaning>Pythagorean link between ladder base and height</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>The ladder forms the hypotenuse of a right triangle, so base and height satisfy this equation at every instant. Differentiating it with respect to time ties dx/dt to dy/dt.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>A spherical balloon inflates so its radius grows at 2 cm/s. How fast is the volume increasing when the radius is 3 cm?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="Since dV/dt = 4 pi r^2 dr/dt, substituting r = 3 and dr/dt = 2 gives 4 pi (9)(2) = 72 pi cubic centimeters per second." data-wrong-explain="Differentiate the volume formula with respect to time to get dV/dt = 4 pi r^2 dr/dt, then plug in r = 3 and dr/dt = 2. The rate grows with the square of the radius.">
+          <button type="button" data-choice="a">8\pi cm^3/s</button>
+          <button type="button" data-choice="b">72\pi cm^3/s</button>
+          <button type="button" data-choice="c">36\pi cm^3/s</button>
+          <button type="button" data-choice="d">24\pi cm^3/s</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-applied-derivatives.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

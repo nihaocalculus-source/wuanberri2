@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tangent quiz — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Five-question quiz on Tangent — Wuanberri Calculus." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Tangent quiz</h1>
+      <p class="lede">Five questions on Tangent. Answer all 5 to see your score.</p>
+      <p id="quiz-score" class="meta" style="font-variant-numeric: tabular-nums">0 of 5 answered</p>
+
+      <div class="lesson-card">
+        <h2>Question 1 of 5</h2>
+        <p>A drone rises so that its height after t seconds is s(t) = 5t^2 meters. What is its average velocity between t = 1 and t = 4?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="Average velocity is the slope of the secant line: [s(4) - s(1)]/(4 - 1) = (80 - 5)/3 = 25 m/s." data-wrong-explain="Dividing the height change of 75 by 4 (the final time) instead of by the elapsed 3 seconds gives 75/4, a common off-by-one slip. Using the initial height s(1) = 5 directly as the answer ignores the displacement entirely.">
+          <button type="button" data-choice="a">75/4 m/s</button>
+          <button type="button" data-choice="b">25 m/s</button>
+          <button type="button" data-choice="c">10 m/s</button>
+          <button type="button" data-choice="d">35 m/s</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 2 of 5</h2>
+        <p>Suppose lim(x-&gt;a) f(x) = 4 and lim(x-&gt;a) g(x) = -3. Using the limit laws, what is lim(x-&gt;a) [ (2f(x) - g(x)) * g(x) ]?</p>
+        <form class="mcq" data-mcq="a" data-right-explain="By the limit laws, 2f(x) - g(x) -&gt; 2(4) - (-3) = 11, and multiplying limits gives 11 * (-3) = -33." data-wrong-explain="Dropping the parentheses around -3 gives 2(4) - 3 = 5 and then 5 * (-3) = -15 territory errors like -21; flipping the final sign gives 33; subtracting instead of multiplying the limits gives 4 - (-3) - related values like -11.">
+          <button type="button" data-choice="a">-33</button>
+          <button type="button" data-choice="b">33</button>
+          <button type="button" data-choice="c">-21</button>
+          <button type="button" data-choice="d">-11</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 3 of 5</h2>
+        <p>Let f(x) = x^2 - 1 for x &lt; 2 and f(x) = 3x + k for x &gt;= 2. What value of k makes f continuous at x = 2? (Compare the one-sided limits.)</p>
+        <form class="mcq" data-mcq="c" data-right-explain="The left-hand limit is lim(x-&gt;2^-) (x^2 - 1) = 3 and the right-hand limit is 3(2) + k = 6 + k. Continuity requires 6 + k = 3, so k = -3." data-wrong-explain="Setting 6 + k equal to the right-side formula&#39;s value at x = 0 or misreading the left limit as x^2 evaluated at x = 2 gives k = 5 or k = 3; forgetting to subtract 6 gives k = 3, while solving k - 6 = 3 (reversed order) gives k = 9.">
+          <button type="button" data-choice="a">3</button>
+          <button type="button" data-choice="b">5</button>
+          <button type="button" data-choice="c">-3</button>
+          <button type="button" data-choice="d">-9</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 4 of 5</h2>
+        <p>Evaluate lim(x-&gt;infinity) (3x^3 + 2x)/(5x^3 - x^2 + 4).</p>
+        <form class="mcq" data-mcq="d" data-right-explain="Divide numerator and denominator by x^3: every other term goes to 0, leaving 3/5. For equal-degree rational functions the limit is the ratio of leading coefficients." data-wrong-explain="0 is the limit when the denominator&#39;s degree is larger, and 5/3 inverts the leading-coefficient ratio. The limit does exist here because the degrees match; &#39;does not exist&#39; or &#39;infinity&#39; applies only when the numerator&#39;s degree is larger.">
+          <button type="button" data-choice="a">0</button>
+          <button type="button" data-choice="b">5/3</button>
+          <button type="button" data-choice="c">does not exist</button>
+          <button type="button" data-choice="d">3/5</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 5 of 5</h2>
+        <p>Use l&#39;Hospital&#39;s rule to evaluate lim(x-&gt;0) (1 - cos x)/x^2.</p>
+        <form class="mcq" data-mcq="a" data-right-explain="The form is 0/0, so differentiate top and bottom: sin x/(2x), still 0/0, and a second application gives cos x/2 -&gt; 1/2." data-wrong-explain="Stopping after one application without simplifying, or misremembering the small-angle limit sin x/x = 1, leads to answers like 1 or 0; differentiating only the denominator or flipping the ratio gives 2.">
+          <button type="button" data-choice="a">1/2</button>
+          <button type="button" data-choice="b">1</button>
+          <button type="button" data-choice="c">0</button>
+          <button type="button" data-choice="d">2</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-ghost" href="calculus.html">Back to all units</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/quiz.js"></script>
+</body>
+</html>

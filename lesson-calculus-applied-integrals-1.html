@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Area Is a Difference — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Between two curves, area is just the integral of the top curve minus the bottom curve." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Area Is a Difference</h1>
+      <p class="lede">Between two curves, area is just the integral of the top curve minus the bottom curve.</p>
+
+
+      <div class="lesson-card">
+        <h2>The Setup</h2>
+        <p>If f sits above g on an interval, a thin vertical strip has height f minus g and width dx. Adding those strips with an integral gives the total area between the curves. The formula works because negative gaps and positive gaps are never mixed, as long as the top curve really is on top.</p>
+        <span class="math">A = \int_a^b \bigl(f(x) - g(x)\bigr)\,dx</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Find the Crossings</h2>
+        <p>The intersection points set the limits of integration, so solve f equals g first. If the curves cross inside the interval, the region splits into pieces and each piece needs its own integral, with the roles of top and bottom swapped. Sketching first prevents the classic error of integrating the wrong difference.</p>
+        <span class="math">f(x) = g(x)</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>A Worked Region</h2>
+        <p>Between y = x and y = x squared, the curves meet at x = 0 and x = 1, and the line is on top. The area is the integral of x minus x squared, which evaluates to one half minus one third, or one sixth. A parabola and its chord always enclose a third of the bounding rectangle, a pattern worth noticing.</p>
+        <span class="math">\int_0^1 (x - x^2)\,dx = \frac{1}{6}</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\int_a^b (f-g)\\,dx&quot;,&quot;meaning&quot;:&quot;Area between curves, f on top&quot;,&quot;explain&quot;:&quot;Each strip contributes the vertical gap f minus g with width dx. The result is exact area only where f stays above g across the whole interval.&quot;},{&quot;glyph&quot;:&quot;f(x)=g(x)&quot;,&quot;meaning&quot;:&quot;Intersection points set limits&quot;,&quot;explain&quot;:&quot;Solving for crossings locates where the region begins and ends. If curves cross mid-interval, the region must be split at each crossing point.&quot;},{&quot;glyph&quot;:&quot;\\int_c^d (r-h)\\,dy&quot;,&quot;meaning&quot;:&quot;Horizontal strips when curves are sideways&quot;,&quot;explain&quot;:&quot;Integrating in y suits regions bounded left and right by functions of y. The right curve minus the left curve plays the role of top minus bottom.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\int_a^b (f-g)\,dx</div>
+        <p data-flip-meaning>Area between curves, f on top</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Each strip contributes the vertical gap f minus g with width dx. The result is exact area only where f stays above g across the whole interval.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>For the region enclosed by y = x^2 and y = x^3 between 0 and 1, which integrand gives the correct area?</p>
+        <form class="mcq" data-mcq="a" data-right-explain="On (0, 1) multiplying by a number less than one makes values larger, so x^2 exceeds x^3 and the top-minus-bottom difference is x^2 - x^3." data-wrong-explain="Cubes grow faster only past x = 1, adding the curves double counts, and integrating a single curve measures area to the axis, not the gap between curves.">
+          <button type="button" data-choice="a">x^2 - x^3, since squares sit above cubes there</button>
+          <button type="button" data-choice="b">x^3 - x^2, since cubes grow faster</button>
+          <button type="button" data-choice="c">x^2 + x^3, to cover both curves</button>
+          <button type="button" data-choice="d">x^3, since area under the upper curve suffices</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-applied-integrals.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

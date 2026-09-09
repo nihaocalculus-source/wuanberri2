@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reversing the Chain Rule — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="An indefinite integral is the family of all antiderivatives, and u-substitution is the chain rule read backwards." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Reversing the Chain Rule</h1>
+      <p class="lede">An indefinite integral is the family of all antiderivatives, and u-substitution is the chain rule read backwards.</p>
+
+
+      <div class="lesson-card">
+        <h2>Antiderivatives</h2>
+        <p>The indefinite integral of f is any function whose derivative is f, written with a C because derivatives cannot see constants. If F works, then F plus any constant also works, so the answer is a family, not a single function. Basic rules mirror differentiation: powers, exponentials, and sines each reverse cleanly.</p>
+        <span class="math">\int x^n\,dx = \frac{x^{n+1}}{n+1} + C,\quad n \neq -1</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>The Substitution Idea</h2>
+        <p>When an integrand contains a function and (a multiple of) its derivative, the chain rule is hiding inside. Pick u to be the inner function so that du covers the leftover factor. The integral then collapses to a basic form in u, you integrate, and substitute back at the end.</p>
+        <span class="math">\int f(g(x))g&#39;(x)\,dx = \int f(u)\,du</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>A Worked Swap</h2>
+        <p>Take the integral of x times the square root of (1 + x^2). Let u = 1 + x^2, so du = 2x dx and the x dx becomes du/2. The integral is now one half the integral of u to the one half power, which gives u to the three halves over three, so the final answer is (1 + x^2) to the three halves over 3 plus C.</p>
+        <span class="math">\int x\sqrt{1+x^2}\,dx = \frac{(1+x^2)^{3/2}}{3} + C</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;+C&quot;,&quot;meaning&quot;:&quot;Constant of integration&quot;,&quot;explain&quot;:&quot;Every antiderivative is known only up to a constant, since the derivative of a constant is zero. Omitting C makes an indefinite integral answer technically wrong.&quot;},{&quot;glyph&quot;:&quot;du = g&#39;(x)\\,dx&quot;,&quot;meaning&quot;:&quot;Differential used to swap variables&quot;,&quot;explain&quot;:&quot;Choosing u triggers a matching replacement for dx. The substituted integral must contain no stray x terms, or the choice of u needs adjusting.&quot;},{&quot;glyph&quot;:&quot;\\int \\frac{1}{x}\\,dx = \\ln|x| + C&quot;,&quot;meaning&quot;:&quot;The power rule&#39;s one exception&quot;,&quot;explain&quot;:&quot;Every power except negative one integrates by the power rule. The exponent negative one lands on the natural logarithm instead, and the absolute value keeps the domain safe.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>+C</div>
+        <p data-flip-meaning>Constant of integration</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Every antiderivative is known only up to a constant, since the derivative of a constant is zero. Omitting C makes an indefinite integral answer technically wrong.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>To evaluate the integral of 2x times e to the (x squared), what substitution fits best?</p>
+        <form class="mcq" data-mcq="c" data-right-explain="With u = x^2, du = 2x dx absorbs the outside factor exactly, leaving the elementary integral of e to the u." data-wrong-explain="Taking u = 2x leaves e to the x squared still tangled in x, and integration by parts is unnecessary when a clean du = 2x dx is already sitting there.">
+          <button type="button" data-choice="a">u = 2x, since the coefficient is out front</button>
+          <button type="button" data-choice="b">u = e^x, to simplify the exponential</button>
+          <button type="button" data-choice="c">u = x^2, since du = 2x dx matches the leftover factor</button>
+          <button type="button" data-choice="d">No substitution is needed; integrate directly by parts</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-integrals.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

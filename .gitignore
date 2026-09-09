@@ -25,3 +25,11 @@ node_modules/
 # Python (only used for the local dev server, never deployed)
 __pycache__/
 *.pyc
+
+# Copyrighted source PDFs — NEVER commit these
+*.pdf
+
+# Local artifacts
+Screenshot*.png
+wuanberri-prd.html
+tutor-market.html

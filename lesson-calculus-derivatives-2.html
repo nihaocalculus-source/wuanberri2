@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Power, exponential, trig rules — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="A handful of short rules replace limit computations for the functions you meet most often." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Power, exponential, trig rules</h1>
+      <p class="lede">A handful of short rules replace limit computations for the functions you meet most often.</p>
+
+
+      <div class="lesson-card">
+        <h2>Power rule</h2>
+        <p>For any real number n, the derivative of x^n is n times x^(n-1). The exponent comes down as a multiplier and drops by one. Differentiating a polynomial reduces to applying this rule term by term, since constants multiply through and sums split apart.</p>
+        <span class="math">\frac{d}{dx} x^n = n x^{n-1}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Exponential functions</h2>
+        <p>The exponential with base e is its own derivative, which is what makes e special: changing the input by a factor multiplies the output by a constant. Other bases carry a factor of the natural logarithm of the base. The general exponential a^x differentiates to a^x times ln a.</p>
+        <span class="math">\frac{d}{dx} e^x = e^x, \quad \frac{d}{dx} a^x = a^x \ln a</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Trig derivatives</h2>
+        <p>The derivative of sin x is cos x, and the derivative of cos x is negative sin x; the two cycle with a period of four differentiations. The derivative of tan x is secant squared of x. Combine these with the power rule term by term for mixed functions.</p>
+        <span class="math">(\sin x)&#39; = \cos x, \quad (\cos x)&#39; = -\sin x</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\frac{d}{dx} x^n = n x^{n-1}&quot;,&quot;meaning&quot;:&quot;Power rule for any real exponent&quot;,&quot;explain&quot;:&quot;Bring the exponent down as a coefficient and reduce it by one. It works for negative and fractional exponents too, so roots and reciprocals need rewriting before differentiating.&quot;},{&quot;glyph&quot;:&quot;\\frac{d}{dx} e^x = e^x&quot;,&quot;meaning&quot;:&quot;The natural exponential is its own derivative&quot;,&quot;explain&quot;:&quot;The slope of e^x at any point equals the height of the function there, which is why e is the natural base for growth and decay models.&quot;},{&quot;glyph&quot;:&quot;(\\tan x)&#39; = \\sec^2 x&quot;,&quot;meaning&quot;:&quot;Derivative of tangent is secant squared&quot;,&quot;explain&quot;:&quot;Writing tan x as sin x over cos x and using the quotient rule yields secant squared. This is the third standard trig derivative after sine and cosine.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\frac{d}{dx} x^n = n x^{n-1}</div>
+        <p data-flip-meaning>Power rule for any real exponent</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Bring the exponent down as a coefficient and reduce it by one. It works for negative and fractional exponents too, so roots and reciprocals need rewriting before differentiating.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>What is the derivative of f(x) = x^5 - 3 \cos x?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="The power rule gives 5x^4, and the derivative of -3 cos x is +3 sin x because the derivative of cos x is -sin x." data-wrong-explain="Differentiate term by term: the cosine term carries the coefficient -3, and since (cos x)&#39; = -sin x, that term contributes +3 sin x, not -3 sin x.">
+          <button type="button" data-choice="a">5x^4 + 3 \sin x</button>
+          <button type="button" data-choice="b">5x^4 - 3 \sin x</button>
+          <button type="button" data-choice="c">5x^4 + 3 \sin x - 3</button>
+          <button type="button" data-choice="d">x^4 + 3 \sin x</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-derivatives.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

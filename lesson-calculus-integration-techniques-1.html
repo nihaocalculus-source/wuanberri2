@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Splitting the Product Rule — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Integration by parts trades one integral for another, and choosing well makes the trade a bargain." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Splitting the Product Rule</h1>
+      <p class="lede">Integration by parts trades one integral for another, and choosing well makes the trade a bargain.</p>
+
+
+      <div class="lesson-card">
+        <h2>Where It Comes From</h2>
+        <p>The product rule says the derivative of u times v is u prime v plus u v prime. Integrate both sides, rearrange, and the left over is the parts formula. It exists for products that u-substitution cannot touch, where two unrelated factors are multiplied together.</p>
+        <span class="math">\int u\,dv = uv - \int v\,du</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Choosing u and dv</h2>
+        <p>Pick u to be the factor that simplifies when differentiated, and dv to be the piece you already know how to integrate. Logarithms and inverse functions make good u; exponentials and pure powers make good dv. A bad choice makes the new integral harder than the old one, which is the signal to swap.</p>
+        <span class="math">u = \ln x,\quad dv = x\,dx</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>A Worked Trade</h2>
+        <p>Consider the integral of x times e to the x. Let u = x so du = dx, and let dv = e to the x dx so v = e to the x. The formula gives x e to the x minus the integral of e to the x, which is x e to the x minus e to the x plus C. The new integral was easier, exactly what a good choice guarantees.</p>
+        <span class="math">\int x e^x\,dx = xe^x - e^x + C</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\int u\\,dv = uv - \\int v\\,du&quot;,&quot;meaning&quot;:&quot;The integration by parts formula&quot;,&quot;explain&quot;:&quot;Derived from integrating the product rule. It rewrites a product integral as an evaluated product minus a second integral that is hopefully simpler.&quot;},{&quot;glyph&quot;:&quot;uv - \\int v\\,du&quot;,&quot;meaning&quot;:&quot;Output structure of one parts pass&quot;,&quot;explain&quot;:&quot;The boundary term uv is fully evaluated, and what remains is a fresh integral. Success means that remaining integral is easier than the original.&quot;},{&quot;glyph&quot;:&quot;\\int \\ln x\\,dx&quot;,&quot;meaning&quot;:&quot;Parts with no visible product&quot;,&quot;explain&quot;:&quot;Logarithm integrates by parts with u = ln x and dv = dx. The result is x ln x minus x plus C, a standard trick for lone hard factors.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\int u\,dv = uv - \int v\,du</div>
+        <p data-flip-meaning>The integration by parts formula</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Derived from integrating the product rule. It rewrites a product integral as an evaluated product minus a second integral that is hopefully simpler.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>When integrating x cosine of 2x by parts, which assignment of u and dv leads to a simpler integral?</p>
+        <form class="mcq" data-mcq="a" data-right-explain="Differentiating u = x kills the power, and dv = cos(2x) dx integrates cleanly to sin(2x)/2, leaving the elementary integral of sin(2x)/2." data-wrong-explain="Differentiating cosine of 2x still leaves a trig factor in du, so the new integral is no simpler, and parts applies to any product with an integrable factor.">
+          <button type="button" data-choice="a">u = x and dv = cos(2x) dx</button>
+          <button type="button" data-choice="b">u = cos(2x) and dv = x dx</button>
+          <button type="button" data-choice="c">u = 2x and dv = cos(2x) dx</button>
+          <button type="button" data-choice="d">Parts cannot be used on trigonometric integrands</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-integration-techniques.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

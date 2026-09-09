@@ -1,0 +1,62 @@
+[
+  {
+    "prompt": "Find all critical numbers of f(x) = x^3 - 12x.",
+    "choices": [
+      "x = 2 only",
+      "x = -2 only",
+      "x = 2 and x = -2",
+      "x = 0 and x = 4"
+    ],
+    "answerIndex": 2,
+    "rightExplain": "f'(x) = 3x^2 - 12 = 3(x^2 - 4) = 3(x - 2)(x + 2), which is zero at x = 2 and x = -2. Both are in the domain, so both are critical numbers.",
+    "wrongExplain": "Factoring x^2 - 4 as (x - 2)^2 or dropping the negative root keeps only x = 2. Solving 3x^2 - 12 = 0 as x^2 = 48 or setting the original function (not its derivative) to zero leads to the wrong pair."
+  },
+  {
+    "prompt": "Find the maximum value of f(x) = -2x^2 + 8x + 1.",
+    "choices": [
+      "9",
+      "-8",
+      "2",
+      "17"
+    ],
+    "answerIndex": 0,
+    "rightExplain": "f'(x) = -4x + 8 = 0 gives x = 2, and since f''(x) = -4 < 0 it is a maximum. The maximum value is f(2) = -8 + 16 + 1 = 9.",
+    "wrongExplain": "Reporting x = 2 gives the location of the maximum, not its value. Substituting x = 2 into the derivative gives 0, and evaluating f at the wrong point (such as x = 4, from solving -4x + 8 = 0 incorrectly) gives -8."
+  },
+  {
+    "prompt": "A gardeners' club has 200 meters of fencing to enclose a rectangular garden along an existing straight wall, using the fence for the other three sides. What is the largest possible area?",
+    "choices": [
+      "10,000 m^2",
+      "5,000 m^2",
+      "2,500 m^2",
+      "1,250 m^2"
+    ],
+    "answerIndex": 1,
+    "rightExplain": "With sides parallel to the wall of length x and two sides of length y, 2y + x = 200, so A = x(200 - x)/2 = 100x - x^2/2. Setting A' = 100 - x = 0 gives x = 100 and y = 50, so the maximum area is 5,000 m^2.",
+    "wrongExplain": "10,000 m^2 would be 100 by 100, which ignores that only three sides are fenced; 2,500 m^2 is the maximum when all four sides are fenced (a 50 by 50 square). 1,250 m^2 comes from misassigning which side is doubled in the constraint."
+  },
+  {
+    "prompt": "Air is pumped into a spherical balloon at a rate of 96*pi cm^3/s. How fast is the radius increasing at the moment the radius is 4 cm? (V = (4/3)pi r^3)",
+    "choices": [
+      "2 cm/s",
+      "6 cm/s",
+      "0.375 cm/s",
+      "1.5 cm/s"
+    ],
+    "answerIndex": 3,
+    "rightExplain": "Differentiating V = (4/3)pi r^3 with respect to time gives dV/dt = 4pi r^2 (dr/dt). Substituting 96pi = 4pi(16)(dr/dt) gives dr/dt = 96/64 = 1.5 cm/s.",
+    "wrongExplain": "Forgetting the chain rule and differentiating as 4pi r^2 without dr/dt, then dividing, gives 6 cm/s; using V = 4pi r^2 (area formula) or squaring incorrectly gives 2 cm/s; dividing by 4pi r^3 instead of 4pi r^2 gives 0.375 cm/s."
+  },
+  {
+    "prompt": "For f(x) = x^3 - 3x^2 + 7, use the second derivative test to classify the critical number x = 2.",
+    "choices": [
+      "local minimum, since f''(2) = 6 > 0",
+      "local maximum, since f''(2) = 6 > 0",
+      "local minimum, since f''(2) = -6 < 0",
+      "neither, since f''(2) = 0"
+    ],
+    "answerIndex": 0,
+    "rightExplain": "f'(x) = 3x^2 - 6x has roots x = 0 and x = 2. Since f''(x) = 6x - 6 gives f''(2) = 6 > 0, the graph is concave up there and x = 2 is a local minimum.",
+    "wrongExplain": "A positive second derivative means concave up, hence a minimum, so calling f''(2) = 6 > 0 a maximum reverses the test. The value -6 comes from evaluating f''(0), and f''(2) is not 0."
+  }
+]

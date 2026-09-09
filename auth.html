@@ -4,6 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sign in — Wuanberri</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#c2410c">
+  <meta name="description" content="Wuanberri — your personal academic coach for calculus, physics, and the college-math core.">
   <link rel="stylesheet" href="assets/styles.css" />
   <style>
     .auth-wrap {
@@ -100,7 +105,9 @@
     </div>
   </main>
 
+  <script src="assets/__SUPABASE_CONFIG__.js"></script>
   <script src="assets/store.js"></script>
+  <script src="assets/auth-supabase.js"></script>
   <script src="assets/app.js"></script>
   <script>
     (function () {
@@ -114,6 +121,17 @@
       const footText = document.getElementById('footText');
       const footToggle = document.getElementById('footToggle');
       const err = document.getElementById('authError');
+      const demoNote = document.querySelector('.demo-note');
+
+      // Show the auth mode (local vs Supabase) so the user can see at a
+      // glance whether their signup is going to persist cross-device.
+      if (demoNote) {
+        if (window.Auth && Auth.configured) {
+          demoNote.innerHTML = '<strong>Real auth.</strong> Accounts are stored in a Supabase database. Sign in from any device and your progress comes with you.';
+        } else {
+          demoNote.innerHTML = '<strong>Local-only mode.</strong> Accounts live in this browser only. Set <code>__SUPABASE_URL__</code> in <code>assets/__SUPABASE_CONFIG__.js</code> to enable cross-device auth — see README.';
+        }
+      }
 
       // Redirect if already signed in
       if (Store.isAuthed()) { window.location.href = 'dashboard.html'; return; }
@@ -139,35 +157,77 @@
       tabLogin.addEventListener('click',  (e) => { e.preventDefault(); setMode('login');  });
       footToggle.addEventListener('click', (e) => { e.preventDefault(); setMode(mode === 'signup' ? 'login' : 'signup'); });
 
-      form.addEventListener('submit', (e) => {
+      form.addEventListener('submit', async (e) => {
         e.preventDefault();
         err.textContent = '';
+        submitBtn.disabled = true;
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = mode === 'signup' ? 'Creating…' : 'Signing in…';
+
         const name = form.name.value.trim();
         const email = form.email.value.trim();
         const password = form.password.value;
-        if (!email || !password) { err.textContent = 'Email and password are required.'; return; }
-        if (password.length < 4)  { err.textContent = 'Password must be at least 4 characters.'; return; }
-        if (mode === 'signup' && !name) { err.textContent = 'Please enter a name.'; return; }
 
-        // Demo "auth" — look up by email in the local users map, otherwise create.
-        const users = Store.get('users', {});
-        if (mode === 'login') {
-          if (!users[email] || users[email].password !== password) {
-            err.textContent = 'No matching account. Try signing up first.';
-            return;
+        try {
+          if (mode === 'signup') {
+            await Auth.signUp({ email, password, name });
+          } else {
+            await Auth.signIn({ email, password });
           }
-          Store.signIn({ name: users[email].name, email, joined: users[email].joined });
-        } else {
-          if (users[email]) { err.textContent = 'An account with that email already exists. Try logging in.'; return; }
-          users[email] = { name, password, joined: new Date().toISOString() };
-          Store.set('users', users);
-          Store.signIn({ name, email, joined: users[email].joined });
+          // Send them on — placement if they haven't taken it, dashboard otherwise.
+          const next = Store.getPlacement() ? 'dashboard.html' : 'placement.html';
+          window.location.href = next;
+        } catch (ex) {
+          err.textContent = ex && ex.message ? ex.message : 'Something went wrong. Please try again.';
+          submitBtn.disabled = false;
+          submitBtn.textContent = originalText;
         }
-        // Send them on — placement if they haven't taken it, dashboard otherwise.
-        const next = Store.getPlacement() ? 'dashboard.html' : 'placement.html';
-        window.location.href = next;
       });
     })();
   </script>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
 </body>
 </html>

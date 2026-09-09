@@ -1,0 +1,62 @@
+[
+  {
+    "prompt": "A drone rises so that its height after t seconds is s(t) = 5t^2 meters. What is its average velocity between t = 1 and t = 4?",
+    "choices": [
+      "75/4 m/s",
+      "25 m/s",
+      "10 m/s",
+      "35 m/s"
+    ],
+    "answerIndex": 1,
+    "rightExplain": "Average velocity is the slope of the secant line: [s(4) - s(1)]/(4 - 1) = (80 - 5)/3 = 25 m/s.",
+    "wrongExplain": "Dividing the height change of 75 by 4 (the final time) instead of by the elapsed 3 seconds gives 75/4, a common off-by-one slip. Using the initial height s(1) = 5 directly as the answer ignores the displacement entirely."
+  },
+  {
+    "prompt": "Suppose lim(x->a) f(x) = 4 and lim(x->a) g(x) = -3. Using the limit laws, what is lim(x->a) [ (2f(x) - g(x)) * g(x) ]?",
+    "choices": [
+      "-33",
+      "33",
+      "-21",
+      "-11"
+    ],
+    "answerIndex": 0,
+    "rightExplain": "By the limit laws, 2f(x) - g(x) -> 2(4) - (-3) = 11, and multiplying limits gives 11 * (-3) = -33.",
+    "wrongExplain": "Dropping the parentheses around -3 gives 2(4) - 3 = 5 and then 5 * (-3) = -15 territory errors like -21; flipping the final sign gives 33; subtracting instead of multiplying the limits gives 4 - (-3) - related values like -11."
+  },
+  {
+    "prompt": "Let f(x) = x^2 - 1 for x < 2 and f(x) = 3x + k for x >= 2. What value of k makes f continuous at x = 2? (Compare the one-sided limits.)",
+    "choices": [
+      "3",
+      "5",
+      "-3",
+      "-9"
+    ],
+    "answerIndex": 2,
+    "rightExplain": "The left-hand limit is lim(x->2^-) (x^2 - 1) = 3 and the right-hand limit is 3(2) + k = 6 + k. Continuity requires 6 + k = 3, so k = -3.",
+    "wrongExplain": "Setting 6 + k equal to the right-side formula's value at x = 0 or misreading the left limit as x^2 evaluated at x = 2 gives k = 5 or k = 3; forgetting to subtract 6 gives k = 3, while solving k - 6 = 3 (reversed order) gives k = 9."
+  },
+  {
+    "prompt": "Evaluate lim(x->infinity) (3x^3 + 2x)/(5x^3 - x^2 + 4).",
+    "choices": [
+      "0",
+      "5/3",
+      "does not exist",
+      "3/5"
+    ],
+    "answerIndex": 3,
+    "rightExplain": "Divide numerator and denominator by x^3: every other term goes to 0, leaving 3/5. For equal-degree rational functions the limit is the ratio of leading coefficients.",
+    "wrongExplain": "0 is the limit when the denominator's degree is larger, and 5/3 inverts the leading-coefficient ratio. The limit does exist here because the degrees match; 'does not exist' or 'infinity' applies only when the numerator's degree is larger."
+  },
+  {
+    "prompt": "Use l'Hospital's rule to evaluate lim(x->0) (1 - cos x)/x^2.",
+    "choices": [
+      "1/2",
+      "1",
+      "0",
+      "2"
+    ],
+    "answerIndex": 0,
+    "rightExplain": "The form is 0/0, so differentiate top and bottom: sin x/(2x), still 0/0, and a second application gives cos x/2 -> 1/2.",
+    "wrongExplain": "Stopping after one application without simplifying, or misremembering the small-angle limit sin x/x = 1, leads to answers like 1 or 0; differentiating only the denominator or flipping the ratio gives 2."
+  }
+]

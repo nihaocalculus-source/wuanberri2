@@ -4,6 +4,11 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Settings — Wuanberri</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#c2410c">
+  <meta name="description" content="Wuanberri — your personal academic coach for calculus, physics, and the college-math core.">
   <link rel="stylesheet" href="assets/styles.css" />
   <style>
     .settings-wrap { max-width: 640px; margin: 0 auto; padding: 56px 24px 96px; }
@@ -67,9 +72,25 @@
           <select id="provider" style="width:100%;box-sizing:border-box;border:1px solid var(--line-strong);background:var(--surface);border-radius:var(--radius-sm);padding:10px 14px;font:inherit;font-size:14px;outline:none">
             <option value="anthropic">Anthropic (Claude)</option>
             <option value="openai">OpenAI</option>
+            <option value="local">Local model (PrivateGPT / Ollama, no key)</option>
           </select>
         </div>
-        <div class="field">
+        <div id="localFields" style="display:none">
+          <div class="field">
+            <label for="localUrl">Local server URL</label>
+            <input type="text" id="localUrl" placeholder="http://localhost:8001" autocomplete="off" />
+            <div class="sub" style="margin-top:4px">Runs on your own computer. Must be up while you chat — e.g. PrivateGPT via START-PrivateGPT.bat, or Ollama on port 11434. Nothing is sent to the internet.</div>
+          </div>
+          <div class="field">
+            <label for="localModel">Model name <span style="color:var(--ink-muted)">(optional)</span></label>
+            <input type="text" id="localModel" placeholder="private-gpt" autocomplete="off" />
+          </div>
+          <div class="field">
+            <label for="localKey">API key <span style="color:var(--ink-muted)">(optional — only for free cloud tiers like Groq/OpenRouter; leave empty for PrivateGPT)</span></label>
+            <input type="password" id="localKey" placeholder="gsk_… / sk-or-…" autocomplete="off" />
+          </div>
+        </div>
+        <div class="field" id="keyField">
           <label for="apikey">API key</label>
           <input type="password" id="apikey" placeholder="sk-ant-… or sk-…" autocomplete="off" />
         </div>
@@ -77,9 +98,9 @@
           <span class="status" id="keyStatus">No key set.</span>
         </div>
         <div class="actions">
-          <button class="btn btn-accent" id="saveKey">Save key</button>
-          <button class="btn btn-ghost" id="clearKey">Remove key</button>
-          <button class="btn btn-ghost" id="testKey">Test key</button>
+          <button class="btn btn-accent" id="saveKey">Save</button>
+          <button class="btn btn-ghost" id="clearKey">Remove</button>
+          <button class="btn btn-ghost" id="testKey">Test</button>
         </div>
         <div id="testResult" style="font-size:13px;margin-top:10px;min-height:1em"></div>
       </div>
@@ -106,7 +127,7 @@
     <div class="wrap">
       <div>
         <a href="index.html" class="brand">Wuanberri.</a>
-        <p style="margin-top:8px">hello@wuanberri.app</p>
+        <p style="margin-top:8px">info@wuanberri.com</p>
       </div>
       <div>
         <h5>Product</h5>
@@ -115,14 +136,32 @@
           <li><a href="index.html#features">Features</a></li>
           <li><a href="index.html#coach">The Coach</a></li>
           <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
         </ul>
       </div>
       <div>
         <h5>Legal</h5>
-        <ul>
-          <li><a href="#">Privacy Notice</a></li>
-          <li><a href="#">Terms &amp; Conditions</a></li>
-        </ul>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
       </div>
       <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
     </div>
@@ -139,21 +178,48 @@
       const apikey = document.getElementById('apikey');
       const keyStatus = document.getElementById('keyStatus');
       const testResult = document.getElementById('testResult');
+      const localFields = document.getElementById('localFields');
+      const keyField = document.getElementById('keyField');
+      const localUrl = document.getElementById('localUrl');
+      const localModel = document.getElementById('localModel');
+      const localKey = document.getElementById('localKey');
+
+      const toggleLocalUi = () => {
+        const isLocal = provider.value === 'local';
+        localFields.style.display = isLocal ? '' : 'none';
+        keyField.style.display = isLocal ? 'none' : '';
+      };
 
       const refresh = () => {
+        toggleLocalUi();
+
         // Account
         const u = Store.getUser();
         document.getElementById('accountInfo').textContent = u ? `Signed in as ${u.name} (${u.email}).` : 'Signed out.';
 
-        // Key
+        // Key / endpoint
         const p = provider.value;
-        const k = Store.getApiKey(p);
-        if (k) {
-          keyStatus.className = 'status on';
-          keyStatus.textContent = `${p} key set.`;
+        if (p === 'local') {
+          localUrl.value = Store.getSetting('localEndpoint.url', '') || '';
+          localModel.value = Store.getSetting('localEndpoint.model', '') || '';
+          localKey.value = '';  // never echo a stored key back into the field
+          const saved = (localUrl.value || '').trim();
+          if (saved) {
+            keyStatus.className = 'status on';
+            keyStatus.textContent = `Local endpoint set: ${saved}`;
+          } else {
+            keyStatus.className = 'status off';
+            keyStatus.textContent = 'No local endpoint set.';
+          }
         } else {
-          keyStatus.className = 'status off';
-          keyStatus.textContent = 'No key set.';
+          const k = Store.getApiKey(p);
+          if (k) {
+            keyStatus.className = 'status on';
+            keyStatus.textContent = `${p} key set.`;
+          } else {
+            keyStatus.className = 'status off';
+            keyStatus.textContent = 'No key set.';
+          }
         }
 
         // Placement
@@ -171,16 +237,32 @@
 
       document.getElementById('saveKey').addEventListener('click', () => {
         const p = provider.value;
-        const k = apikey.value.trim();
-        if (!k) return;
-        Store.setApiKey(p, k);
-        apikey.value = '';
+        if (p === 'local') {
+          const url = (localUrl.value || '').trim().replace(/\/+$/, '');
+          if (!url) return;  // empty URL can't work — require it
+          Store.setSetting('localEndpoint.url', url);
+          Store.setSetting('localEndpoint.model', (localModel.value || '').trim());
+          Store.setSetting('localEndpoint.useContext', true);  // PrivateGPT: answer from ingested docs
+          if ((localKey.value || '').trim()) Store.setApiKey('openai-compatible', localKey.value.trim());
+        } else {
+          const k = apikey.value.trim();
+          if (!k) return;
+          Store.setApiKey(p, k);
+          apikey.value = '';
+        }
         testResult.textContent = '';
         refresh();
       });
 
       document.getElementById('clearKey').addEventListener('click', () => {
-        Store.clearApiKey(provider.value);
+        if (provider.value === 'local') {
+          Store.setSetting('localEndpoint.url', null);
+          Store.setSetting('localEndpoint.model', null);
+          Store.setSetting('localEndpoint.useContext', null);
+          Store.clearApiKey('openai-compatible');
+        } else {
+          Store.clearApiKey(provider.value);
+        }
         refresh();
       });
 

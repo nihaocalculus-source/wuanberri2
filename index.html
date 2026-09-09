@@ -5,6 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Wuanberri — your personal academic coach</title>
   <meta name="description" content="Wuanberri maps your exact level in calculus and physics and generates personalized practice, decks, and study plans." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
   <link rel="stylesheet" href="assets/styles.css" />
 </head>
 <body>
@@ -164,19 +168,19 @@
             </ul>
           </div>
 
-          <div class="chat" data-chat>
+          <div class="chat">
             <div class="chat-head"><span>Context · Calculus · Derivatives</span></div>
             <div class="chat-body">
               <div class="bubble bot">Hi! I'm your study coach. I can see you're on the Derivatives tab. Want me to explain a concept, build you a deck, or sketch a study plan?</div>
             </div>
             <div class="chips">
-              <button class="chip" data-chip>Explain derivatives</button>
-              <button class="chip" data-chip>Make me a study plan</button>
-              <button class="chip" data-chip>Give me a deck on chain rule</button>
+              <button class="chip">Explain derivatives</button>
+              <button class="chip">Make me a study plan</button>
+              <button class="chip">Give me a deck on chain rule</button>
             </div>
-            <form class="chat-input">
-              <input type="text" placeholder="Ask the coach anything…" aria-label="Message" />
-              <button type="submit" class="btn btn-accent">Send</button>
+            <form class="chat-input" onsubmit="event.preventDefault(); document.querySelector('.chatbox-fab')?.click();">
+              <input type="text" placeholder="Open the coach in the corner to chat…" aria-label="Open chat" />
+              <button type="submit" class="btn btn-accent">Open coach</button>
             </form>
           </div>
         </div>
@@ -197,12 +201,12 @@
       <div class="wrap">
         <div class="section-head">
           <span class="eyebrow">Available now</span>
-          <h2>Six subjects. More on the way.</h2>
+          <h2>Thirteen subjects. Calculus leads the way.</h2>
         </div>
         <div class="subjects" aria-hidden="true">
           <span>🧮</span><span>⚛️</span><span>📐</span><span>∫</span><span>🔢</span><span>📊</span>
         </div>
-        <p class="note" style="text-align:center;color:var(--ink-muted);margin:0">Calculus, Physics, Linear Algebra, Differential Equations, Discrete Math, and Statistics are live. Chemistry is added monthly.</p>
+        <p class="note" style="text-align:center;color:var(--ink-muted);margin:0">Calculus is fully live — 30 lessons and 9 auto-scored unit quizzes. Physics, Linear Algebra, Differential Equations, Discrete Math, Statistics, Chemistry, Biology, Anatomy &amp; Physiology, Micro, Macro, English, and Electrical Engineering have demo lessons, with full courses shipping unit by unit.</p>
       </div>
     </section>
 
@@ -225,7 +229,7 @@
               <li>Study Partners</li>
               <li>Full reference &amp; worked examples</li>
             </ul>
-            <a href="placement.html" class="btn btn-accent">Start 7-day trial</a>
+            <button class="btn btn-accent" data-stripe="checkout">Start 7-day trial</button>
           </div>
           <div class="plan">
             <h3>Standard</h3>
@@ -257,21 +261,29 @@
     <div class="wrap">
       <div>
         <a href="index.html" class="brand">Wuanberri.</a>
-        <p style="margin-top:8px">hello@wuanberri.app</p>
+        <p style="margin-top:8px">info@wuanberri.com</p>
       </div>
       <div>
         <h5>Product</h5>
         <ul>
-          <li><a href="#why">Why Wuanberri</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#coach">The Coach</a></li>
-          <li><a href="#pricing">Pricing</a></li>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
           <li><a href="calculus.html">Calculus</a></li>
           <li><a href="physics.html">Physics</a></li>
           <li><a href="linear-algebra.html">Linear Algebra</a></li>
           <li><a href="differential-equations.html">Differential Equations</a></li>
           <li><a href="discrete-math.html">Discrete Math</a></li>
           <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
           <li><a href="decks.html">AI Decks</a></li>
           <li><a href="practice.html">Quick Practice</a></li>
           <li><a href="library.html">Worked Examples</a></li>
@@ -283,10 +295,7 @@
       </div>
       <div>
         <h5>Legal</h5>
-        <ul>
-          <li><a href="#">Privacy Notice</a></li>
-          <li><a href="#">Terms &amp; Conditions</a></li>
-        </ul>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
       </div>
       <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
     </div>
@@ -295,60 +304,10 @@
   <script src="assets/store.js"></script>
   <script src="assets/llm.js"></script>
   <script src="assets/app.js"></script>
-  <script>
-    // Landing-page coach: upgrade to LLM if a key is set.
-    (function () {
-      if (!window.LLM) return;
-      const chat = document.querySelector('[data-chat]');
-      if (!chat) return;
-      const body = chat.querySelector('.chat-body');
-      const form = chat.querySelector('form');
-      const input = chat.querySelector('input');
-      const chips = chat.querySelector('.chips');
-      const provider = LLM.activeProvider();
-
-      const history = [];
-      const banner = document.createElement('div');
-      banner.style.cssText = 'font-size:11px;padding:8px 16px;border-bottom:1px solid var(--line);background:' + (provider ? '#f4faf5;color:#2f7a3e' : '#fcfaf6;color:var(--ink-muted)');
-      banner.innerHTML = provider
-        ? `LLM mode: ${provider}. <a href="settings.html" style="color:#2f7a3e;text-decoration:underline">Settings</a>`
-        : `Keyword mode. <a href="settings.html" style="color:var(--accent)">Add an API key</a> for real-time answers.`;
-      chat.insertBefore(banner, body);
-
-      const send = async (text) => {
-        if (!text.trim()) return;
-        const u = document.createElement('div');
-        u.className = 'bubble user';
-        u.textContent = text;
-        body.appendChild(u);
-        body.scrollTop = body.scrollHeight;
-        input.value = '';
-        history.push({ role: 'user', content: text });
-
-        if (provider) {
-          const typing = document.createElement('div');
-          typing.className = 'bubble bot';
-          typing.textContent = '…';
-          body.appendChild(typing);
-          body.scrollTop = body.scrollHeight;
-          try {
-            const reply = await LLM.send({
-              provider,
-              history: history.slice(0, -1),
-              userMessage: text,
-              context: 'Landing-page coach. Short answers, one actionable suggestion at a time.',
-            });
-            history.push({ role: 'assistant', content: reply });
-            typing.innerHTML = reply;
-          } catch (e) {
-            typing.innerHTML = '(LLM call failed: ' + e.message + ')';
-          }
-        }
-        // When no provider, the keyword router in app.js handles it (on submit).
-      };
-      form.addEventListener('submit', (e) => { e.preventDefault(); if (provider) { send(input.value); } else { /* app.js handles */ } });
-      chips?.querySelectorAll('[data-chip]').forEach(c => c.addEventListener('click', () => { if (provider) send(c.textContent); }));
-    })();
-  </script>
+  <script src="assets/__STRIPE_CONFIG__.js"></script>
+  <script src="assets/stripe.js"></script>
+  <!-- The landing-page coach section is a static demo. The real,
+       interactive coach lives in the global floating chatbox loaded
+       by app.js (corner of every page). -->
 </body>
 </html>

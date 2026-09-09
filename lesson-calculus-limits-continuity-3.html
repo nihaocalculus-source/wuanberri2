@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Continuity, infinity, and l&#39;Hospital — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Three tools finish the limit toolkit: when a function is unbroken, where it settles at infinity, and the shortcut for indeterminate forms." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Continuity, infinity, and l&#39;Hospital</h1>
+      <p class="lede">Three tools finish the limit toolkit: when a function is unbroken, where it settles at infinity, and the shortcut for indeterminate forms.</p>
+
+
+      <div class="lesson-card">
+        <h2>Continuity</h2>
+        <p>A function is continuous at a point a if the limit as x approaches a exists, the function value f(a) exists, and the two are equal. In words: no hole, no jump, and the limit actually lands on the point. Polynomials are continuous everywhere, and quotients of continuous functions are continuous wherever the denominator is nonzero.</p>
+        <span class="math">\lim_{x \to a} f(x) = f(a)</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Limits at infinity</h2>
+        <p>Writing x approaching infinity asks what value the outputs approach for large x. For rational functions, divide the numerator and denominator by the highest power of x in the denominator, then let small terms vanish. The result gives any horizontal asymptote of the graph.</p>
+        <span class="math">\lim_{x \to \infty} \frac{3x^2 + 5x}{x^2 - 2} = 3</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>l&#39;Hospital&#39;s rule</h2>
+        <p>When a limit produces 0/0 or infinity over infinity, the limit of the ratio of derivatives equals the original limit, provided the new limit exists. For example, the limit of sin x over x as x approaches 0 becomes the limit of cos x over 1, which equals 1. Always check the indeterminate form first; the rule is invalid otherwise.</p>
+        <span class="math">\lim_{x \to 0} \frac{\sin x}{x} = \lim_{x \to 0} \frac{\cos x}{1} = 1</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;f(a) \\text{ defined}, \\lim_{x \\to a} f(x) \\text{ exists}, \\lim_{x \\to a} f(x) = f(a)&quot;,&quot;meaning&quot;:&quot;Three conditions for continuity at a&quot;,&quot;explain&quot;:&quot;Continuity at a requires the function value to exist, the limit to exist, and the two to be equal. Failing any one condition makes the function discontinuous at that point.&quot;},{&quot;glyph&quot;:&quot;y = L,\\ \\lim_{x \\to \\infty} f(x) = L&quot;,&quot;meaning&quot;:&quot;Horizontal asymptote from a limit at infinity&quot;,&quot;explain&quot;:&quot;If the outputs of f approach the number L as x grows without bound, the graph has a horizontal asymptote y = L. The same idea works for x approaching negative infinity.&quot;},{&quot;glyph&quot;:&quot;\\lim \\frac{f}{g} = \\lim \\frac{f&#39;}{g&#39;}&quot;,&quot;meaning&quot;:&quot;l&#39;Hospital&#39;s rule for 0/0 forms&quot;,&quot;explain&quot;:&quot;When a quotient limit gives 0/0 or infinity over infinity, differentiate the top and bottom separately and take that limit instead. It does not follow from the quotient rule and needs the indeterminate form first.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>f(a) \text{ defined}, \lim_{x \to a} f(x) \text{ exists}, \lim_{x \to a} f(x) = f(a)</div>
+        <p data-flip-meaning>Three conditions for continuity at a</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Continuity at a requires the function value to exist, the limit to exist, and the two to be equal. Failing any one condition makes the function discontinuous at that point.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>What is the limit of (5x + 2)/(2x + 7) as x approaches infinity?</p>
+        <form class="mcq" data-mcq="d" data-right-explain="Dividing top and bottom by x leaves (5 + 2/x)/(2 + 7/x), and the small terms vanish to give 5/2." data-wrong-explain="Divide every term by x, the highest power in the denominator. The constants 2/x and 7/x go to zero, leaving 5/2 rather than a nonexistent limit.">
+          <button type="button" data-choice="a">0</button>
+          <button type="button" data-choice="b">2/7</button>
+          <button type="button" data-choice="c">The limit does not exist</button>
+          <button type="button" data-choice="d">5/2</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-limits-continuity.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

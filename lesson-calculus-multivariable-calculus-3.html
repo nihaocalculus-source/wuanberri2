@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Gradient Points Uphill — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="The gradient packs all the partial derivatives into one vector that points in the direction of fastest increase." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>The Gradient Points Uphill</h1>
+      <p class="lede">The gradient packs all the partial derivatives into one vector that points in the direction of fastest increase.</p>
+
+
+      <div class="lesson-card">
+        <h2>The gradient vector</h2>
+        <p>The gradient of f is the vector whose components are the partial derivatives, written nabla f. For the bowl-shaped function x squared plus y squared at the point (1, 1), the gradient is (2, 2), pointing away from the origin. Each point of a surface gets its own gradient, so it is a vector field rather than a single arrow.</p>
+        <span class="math">\nabla f = \langle f_x,\, f_y \rangle</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Directional derivative</h2>
+        <p>The rate of change of f along a unit vector u is the dot product of the gradient with u, called the directional derivative. Continuing the example, along the diagonal direction (1 over root 2, 1 over root 2) at (1, 1), the dot product gives 2 root 2. Any direction with a smaller alignment with the gradient gives a smaller rate.</p>
+        <span class="math">D_{\mathbf{u}} f = \nabla f \cdot \mathbf{u}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Slopes and level curves</h2>
+        <p>The largest possible directional derivative at a point is the magnitude of the gradient, achieved by moving exactly along it. The gradient is also perpendicular to the level curve through that point, which is why contours and steepest paths cross at right angles. When the gradient is the zero vector, every direction has slope zero, marking a potential peak, valley, or saddle.</p>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\nabla f = \\langle f_x,\\, f_y \\rangle&quot;,&quot;meaning&quot;:&quot;Vector collecting all first partial derivatives&quot;,&quot;explain&quot;:&quot;The gradient turns a scalar function into a vector field. Its components are the slopes along the coordinate axes, and together they encode both the steepest direction and how steep it is.&quot;},{&quot;glyph&quot;:&quot;D_{\\mathbf{u}} f = \\nabla f \\cdot \\mathbf{u}&quot;,&quot;meaning&quot;:&quot;Rate of change along a unit direction u&quot;,&quot;explain&quot;:&quot;The dot product picks out how much of the gradient points along your chosen direction. The vector u must be a unit vector, otherwise the number measures slope scaled by length rather than a true rate.&quot;},{&quot;glyph&quot;:&quot;\\max_{\\|\\mathbf{u}\\| = 1} D_{\\mathbf{u}} f = \\|\\nabla f\\|&quot;,&quot;meaning&quot;:&quot;Steepest slope equals the gradient magnitude&quot;,&quot;explain&quot;:&quot;By the dot product formula, the best alignment happens when u points along the gradient, giving its full length. Walking opposite the gradient gives the steepest descent instead, the idea behind gradient descent algorithms.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\nabla f = \langle f_x,\, f_y \rangle</div>
+        <p data-flip-meaning>Vector collecting all first partial derivatives</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>The gradient turns a scalar function into a vector field. Its components are the slopes along the coordinate axes, and together they encode both the steepest direction and how steep it is.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>For the function f(x, y) = xy, what is the gradient at the point (2, 3)?</p>
+        <form class="mcq" data-mcq="a" data-right-explain="The partial with respect to x is y and the partial with respect to y is x, so at (2, 3) the gradient is (3, 2)." data-wrong-explain="The point coordinates are not the gradient; the derivatives swap the roles here. The value (6, 6) is the function value xy equal to 6 repeated, not a pair of slopes.">
+          <button type="button" data-choice="a">(3, 2)</button>
+          <button type="button" data-choice="b">(2, 3)</button>
+          <button type="button" data-choice="c">(6, 6)</button>
+          <button type="button" data-choice="d">(5, 5)</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-multivariable-calculus.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

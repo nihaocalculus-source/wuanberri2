@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Choosing a Convergence Test — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="A small toolkit of tests turns the vague question of whether a sum settles down into a routine you can run in a few lines." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Choosing a Convergence Test</h1>
+      <p class="lede">A small toolkit of tests turns the vague question of whether a sum settles down into a routine you can run in a few lines.</p>
+
+
+      <div class="lesson-card">
+        <h2>Divergence test first</h2>
+        <p>Always start here: if the terms a_n do not approach 0, the series must diverge. For example, the terms of n divided by (n+1) approach 1, so that series diverges immediately. The catch is that the test is one-way, since the harmonic series has terms approaching 0 and still diverges.</p>
+        <span class="math">\lim_{n \to \infty} a_n \neq 0 \implies \sum a_n \text{ diverges}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Ratio and comparison</h2>
+        <p>The ratio test computes the limit of the absolute ratio of consecutive terms, call it L, and converges when L is below 1. For the series with terms n^2 divided by 2^n, the ratio limit is 1/2, so it converges. Comparison tests let you borrow a verdict from a simpler series with terms of similar size.</p>
+        <span class="math">L = \lim_{n \to \infty} \left| \frac{a_{n+1}}{a_n} \right|</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>p-series benchmark</h2>
+        <p>A p-series adds up 1 over n to the power p, and it converges exactly when p is greater than 1. The harmonic series is the p-series with p equal to 1, and the integral test shows its totals grow like the natural log, so it diverges. Memorizing the p-series cutoff gives you a reliable yardstick for comparison.</p>
+        <span class="math">\sum_{n=1}^{\infty} \frac{1}{n^p} \text{ converges iff } p &gt; 1</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\lim_{n \\to \\infty} a_n \\neq 0&quot;,&quot;meaning&quot;:&quot;Term test forces divergence of the series&quot;,&quot;explain&quot;:&quot;A sum of terms that do not shrink to zero cannot settle down, because every term keeps contributing a nonzero amount. Passing this test does not prove convergence, as the harmonic series shows.&quot;},{&quot;glyph&quot;:&quot;\\left| \\frac{a_{n+1}}{a_n} \\right| \\to L &lt; 1&quot;,&quot;meaning&quot;:&quot;Ratio test guarantees absolute convergence&quot;,&quot;explain&quot;:&quot;If each term is eventually a fixed fraction of the one before, the terms decay geometrically fast. When the limit L exceeds 1 the terms grow and the series diverges, and L equal to 1 leaves the test inconclusive.&quot;},{&quot;glyph&quot;:&quot;\\sum \\frac{1}{n^p}&quot;,&quot;meaning&quot;:&quot;p-series converges exactly when p is greater than 1&quot;,&quot;explain&quot;:&quot;This family is the standard benchmark for comparison. Powers above 1 shrink fast enough to sum to something finite, while p equal to 1 or less diverges, including the famous harmonic series at p equal to 1.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\lim_{n \to \infty} a_n \neq 0</div>
+        <p data-flip-meaning>Term test forces divergence of the series</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>A sum of terms that do not shrink to zero cannot settle down, because every term keeps contributing a nonzero amount. Passing this test does not prove convergence, as the harmonic series shows.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>What does the ratio test tell you about the series whose nth term is n^2 divided by 2^n?</p>
+        <form class="mcq" data-mcq="d" data-right-explain="The ratio of consecutive terms simplifies to (1/2)(1 + 1/n)^2, whose limit is 1/2, below 1, so the series converges absolutely." data-wrong-explain="The terms do approach zero, and the ratio limit is 1/2, not 1, so the test actually decides the question. Comparison with the harmonic series also fails, since 2^n grows much faster than n^2 in the denominator.">
+          <button type="button" data-choice="a">It diverges because the terms do not approach zero</button>
+          <button type="button" data-choice="b">It diverges by comparison with the harmonic series</button>
+          <button type="button" data-choice="c">It is inconclusive because the ratio limit equals 1</button>
+          <button type="button" data-choice="d">It converges, since the ratio limit equals 1/2</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-series-convergence.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

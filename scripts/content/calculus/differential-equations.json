@@ -1,0 +1,196 @@
+[
+  {
+    "topic": "Modeling with differential equations",
+    "title": "Equations That Track Change",
+    "lede": "A differential equation is a rule for how a quantity changes, and solving it means recovering the quantity itself from that rule.",
+    "cards": [
+      {
+        "heading": "What a solution is",
+        "body": "A solution is a function whose derivative satisfies the equation at every point in time. For example, y equals e to the negative 0.5 t solves the equation y prime equals negative 0.5 y, because differentiating gives back negative 0.5 times the function itself. The order of the equation is the highest derivative that appears in it.",
+        "math": "\\frac{dy}{dt} = -0.5y"
+      },
+      {
+        "heading": "From story to equation",
+        "body": "Modeling means translating a sentence about rates into symbols. Coffee cooling becomes dT/dt equals negative k times the difference between T and room temperature, because cooling is proportional to how far the coffee is from room temperature. The same proportional-reasoning pattern gives interest growth, drug decay, and population drift models.",
+        "math": "\\frac{dT}{dt} = -k(T - A)"
+      },
+      {
+        "heading": "Initial conditions",
+        "body": "Solutions come in families, usually with one free constant for a first-order equation. An initial condition such as y at time 0 equals 100 selects exactly one member of the family. For the decay example, the general solution is C e to the negative 0.5 t, and the initial condition pins C to 100, giving a complete prediction.",
+        "math": "y(t) = 100\\,e^{-0.5t}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\frac{dy}{dt} = f(t, y)",
+        "meaning": "General form of a first-order equation",
+        "explain": "The right side may depend on time, on the unknown function y, or both. First order means only the first derivative appears, so the rule describes slope directly."
+      },
+      {
+        "glyph": "y(t_0) = y_0",
+        "meaning": "Initial condition that selects one solution",
+        "explain": "The condition states where the solution starts, pinning down the constant in the general family. With a slope rule plus a starting value, the whole future trajectory is determined under mild conditions."
+      },
+      {
+        "glyph": "y = C e^{kt}",
+        "meaning": "Family of exponential solutions for proportional growth",
+        "explain": "Any equation whose rate is proportional to the current amount has exponential solutions. The constant C is fixed by the initial condition and k sets whether the quantity grows or decays."
+      }
+    ],
+    "mcq": {
+      "prompt": "A cup of coffee sits in a 70-degree room, and its temperature drops at a rate proportional to the gap between the coffee and the room. Which differential equation models the coffee temperature T?",
+      "choices": [
+        "dT/dt = -kT",
+        "dT/dt = -k(T - 70)",
+        "dT/dt = kT(1 - T)",
+        "dT/dt = -k/t"
+      ],
+      "answerIndex": 1,
+      "rightExplain": "Newton's cooling law makes the rate proportional to the difference between the object and its surroundings, which is T minus 70 here.",
+      "wrongExplain": "The first option would predict cooling toward 0 degrees, ignoring the room temperature. The third is a logistic growth model and the fourth has no physical basis for cooling."
+    }
+  },
+  {
+    "topic": "Separable equations",
+    "title": "Separate, Integrate, Solve",
+    "lede": "Whenever you can herd all the y terms to one side and all the t terms to the other, solving the equation is just two integrals.",
+    "cards": [
+      {
+        "heading": "Spotting separability",
+        "body": "An equation is separable when the right side factors into a pure function of x times a pure function of y. The equation y prime equals x times y is separable, while y prime equals x plus y is not, since that sum cannot be factored that way. Learning to see the factorization is most of the battle.",
+        "math": "y' = g(x)\\,h(y)"
+      },
+      {
+        "heading": "The three-step method",
+        "body": "First rewrite the equation so every y sits with dy and every x sits with dx. Second, integrate both sides. For y prime equals x times y, dividing by y and integrating gives the log of the absolute value of y equals x squared over 2 plus C. Third, solve for y by exponentiating to get y equals A times e to the x squared over 2.",
+        "math": "\\int \\frac{dy}{y} = \\int x\\,dx"
+      },
+      {
+        "heading": "Lost solutions and checks",
+        "body": "Dividing by h of y can silently discard constant solutions, such as y equal to 0 in the example above, so check those separately. Use the initial condition to pin down the constant A. Finally, verify by differentiating your answer; a solution must reproduce the original equation exactly.",
+        "math": "y = A\\,e^{x^2/2}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "y' = g(x)\\,h(y)",
+        "meaning": "Form of a separable differential equation",
+        "explain": "The slope function must split into a product of a function of x alone and a function of y alone. Once it does, the variables can be pulled onto opposite sides of the equation."
+      },
+      {
+        "glyph": "\\ln|y| = \\frac{x^2}{2} + C",
+        "meaning": "Result after separating and integrating the example",
+        "explain": "Integrating one over y gives the natural log of the absolute value, and integrating x gives x squared over 2. The two integration constants from each side merge into one C."
+      },
+      {
+        "glyph": "y = A\\,e^{x^2/2}",
+        "meaning": "General solution found by exponentiating",
+        "explain": "Exponentiating both sides clears the logarithm, and the merged constant becomes the multiplicative constant A. Each choice of A gives one solution curve of the family."
+      }
+    ],
+    "mcq": {
+      "prompt": "Solve the initial value problem y prime equals 2y with y of 0 equal to 5.",
+      "choices": [
+        "y = e^{2x} + 4",
+        "y = 2x + 5",
+        "y = 5e^{x^2}",
+        "y = 5e^{2x}"
+      ],
+      "answerIndex": 3,
+      "rightExplain": "Separating gives ln of y equals 2x plus C, so y equals A e to the 2x, and the initial condition forces A to be 5.",
+      "wrongExplain": "The linear answer 2x plus 5 solves y prime equals 2, not y prime equals 2y. The x squared exponent appears when the rate is proportional to x times y, and the plus 4 version fails both the equation and the initial value."
+    }
+  },
+  {
+    "topic": "Linear first-order equations",
+    "title": "Integrating Factor Method",
+    "lede": "For linear equations the trick is multiplying by a factor that collapses the left side into a single perfect derivative.",
+    "cards": [
+      {
+        "heading": "Standard linear form",
+        "body": "A first-order linear equation can be written as y prime plus p of x times y equals q of x. Linear means y and its derivative appear only to the first power, with no y squared, no y times y prime, and no sines of y. Recognizing the form matters because linear equations always yield to the same mechanical method.",
+        "math": "y' + p(x)\\,y = q(x)"
+      },
+      {
+        "heading": "The integrating factor",
+        "body": "Multiply the whole equation by mu equal to e to the integral of p. This choice makes the left side exactly the derivative of mu times y by the product rule, since mu prime matches p times mu. The equation then reduces to the derivative of mu y equals mu q, ready for one integration.",
+        "math": "\\mu(x) = e^{\\int p(x)\\,dx}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "Solve y prime plus 2y equals 6. The factor mu is e to the 2x, so the derivative of e to the 2x times y equals 6 e to the 2x. Integrating gives e to the 2x times y equals 3 e to the 2x plus C, and dividing by mu yields y equals 3 plus C e to the negative 2x, which visibly settles toward the equilibrium 3.",
+        "math": "y = 3 + Ce^{-2x}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "y' + p(x)\\,y = q(x)",
+        "meaning": "Standard form of a linear first-order equation",
+        "explain": "Every linear first-order equation can be arranged this way with coefficient 1 on y prime. Getting into this form is the required first step before applying the integrating factor."
+      },
+      {
+        "glyph": "\\mu = e^{\\int p\\,dx}",
+        "meaning": "Integrating factor that collapses the left side",
+        "explain": "Exponentiating the integral of the coefficient produces a factor whose derivative matches p times itself. That exact match is what lets the product rule combine y prime plus p y into one derivative."
+      },
+      {
+        "glyph": "(\\mu\\,y)' = \\mu\\,q",
+        "meaning": "Identity after multiplying through by mu",
+        "explain": "Once the left side is a single derivative, integrating both sides is straightforward. Solving for y afterwards requires dividing by mu, which recovers the general solution with one constant."
+      }
+    ],
+    "mcq": {
+      "prompt": "What is the integrating factor for the linear equation y prime plus 3x squared times y equals x?",
+      "choices": ["e to the 3x", "3x squared", "e to the x cubed", "x cubed"],
+      "answerIndex": 2,
+      "rightExplain": "Integrating the coefficient p equal to 3x squared gives x cubed, so the integrating factor is e to the x cubed.",
+      "wrongExplain": "The coefficient 3x squared is what gets integrated, not the factor itself, and e to the 3x would fit the coefficient 3 instead. A polynomial factor does not have the derivative-matching property the method needs."
+    }
+  },
+  {
+    "topic": "Population models and predator-prey systems",
+    "title": "Logistic and Predator-Prey Models",
+    "lede": "Populations cannot grow forever, and two classic models show how limits and species interactions enter the math.",
+    "cards": [
+      {
+        "heading": "From exponential to logistic",
+        "body": "Pure proportional growth, dP/dt equals r P, predicts unchecked exponential blowup, which real environments cannot support. The logistic model multiplies by the brake factor one minus P over K, where K is the carrying capacity. With r equal to 0.1 and K equal to 1000, a population at 500 grows at 0.1 times 500 times 0.5, or 25 individuals per year.",
+        "math": "\\frac{dP}{dt} = rP\\left(1 - \\frac{P}{K}\\right)"
+      },
+      {
+        "heading": "Reading the S-curve",
+        "body": "The logistic solution rises slowly, grows fastest at half the carrying capacity, then flattens toward K. The equilibria are P equal to 0 and P equal to K, and the first is unstable while the second is stable. Small populations act nearly exponential, and crowding only bites once P is a real fraction of K.",
+        "math": "P = K/2"
+      },
+      {
+        "heading": "Predator-prey cycles",
+        "body": "The Lotka-Volterra system pairs a prey equation a x minus b x y with a predator equation negative c y plus d x y. The interaction term x y appears in both, helping the prey die and feeding the predators. For the classic parameters, prey alone grow, predators alone die out, and the two populations chase each other in cycles around a coexistence equilibrium.",
+        "math": "\\frac{dx}{dt} = ax - bxy,\\quad \\frac{dy}{dt} = -cy + dxy"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\frac{dP}{dt} = rP\\left(1 - \\frac{P}{K}\\right)",
+        "meaning": "Logistic growth with a population cap",
+        "explain": "The factor in parentheses shrinks the growth rate as the population approaches carrying capacity. At P equal to K the brake factor is zero, so growth stops exactly at the cap."
+      },
+      {
+        "glyph": "P^{*} = K",
+        "meaning": "Carrying capacity equilibrium of the logistic model",
+        "explain": "At this population the birth and crowding effects cancel, so the population holds steady. It is stable because any small deviation produces growth or decline that pushes the population back toward K."
+      },
+      {
+        "glyph": "\\frac{dx}{dt} = ax - bxy",
+        "meaning": "Prey equation in the Lotka-Volterra system",
+        "explain": "The prey grow exponentially at rate a when alone, and the term b x y removes individuals at a rate proportional to encounters with predators. The encounter term is what couples the two species together."
+      }
+    ],
+    "mcq": {
+      "prompt": "For the logistic model dP/dt equals 0.2 times P times (1 minus P over 800), at what population is the population growing fastest?",
+      "choices": ["At P equal to 800", "At P equal to 0", "At P equal to 200", "At P equal to 400"],
+      "answerIndex": 3,
+      "rightExplain": "The product P times (1 minus P over 800) is maximized halfway to carrying capacity, so growth peaks at 400.",
+      "wrongExplain": "At 800 the brake factor is zero so growth has stopped, and at 0 there is nobody to reproduce. Half of 800 is 400, the classic midpoint of the logistic S-curve."
+    }
+  }
+]

@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Equations That Track Change — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="A differential equation is a rule for how a quantity changes, and solving it means recovering the quantity itself from that rule." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Equations That Track Change</h1>
+      <p class="lede">A differential equation is a rule for how a quantity changes, and solving it means recovering the quantity itself from that rule.</p>
+
+
+      <div class="lesson-card">
+        <h2>What a solution is</h2>
+        <p>A solution is a function whose derivative satisfies the equation at every point in time. For example, y equals e to the negative 0.5 t solves the equation y prime equals negative 0.5 y, because differentiating gives back negative 0.5 times the function itself. The order of the equation is the highest derivative that appears in it.</p>
+        <span class="math">\frac{dy}{dt} = -0.5y</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>From story to equation</h2>
+        <p>Modeling means translating a sentence about rates into symbols. Coffee cooling becomes dT/dt equals negative k times the difference between T and room temperature, because cooling is proportional to how far the coffee is from room temperature. The same proportional-reasoning pattern gives interest growth, drug decay, and population drift models.</p>
+        <span class="math">\frac{dT}{dt} = -k(T - A)</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Initial conditions</h2>
+        <p>Solutions come in families, usually with one free constant for a first-order equation. An initial condition such as y at time 0 equals 100 selects exactly one member of the family. For the decay example, the general solution is C e to the negative 0.5 t, and the initial condition pins C to 100, giving a complete prediction.</p>
+        <span class="math">y(t) = 100\,e^{-0.5t}</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\frac{dy}{dt} = f(t, y)&quot;,&quot;meaning&quot;:&quot;General form of a first-order equation&quot;,&quot;explain&quot;:&quot;The right side may depend on time, on the unknown function y, or both. First order means only the first derivative appears, so the rule describes slope directly.&quot;},{&quot;glyph&quot;:&quot;y(t_0) = y_0&quot;,&quot;meaning&quot;:&quot;Initial condition that selects one solution&quot;,&quot;explain&quot;:&quot;The condition states where the solution starts, pinning down the constant in the general family. With a slope rule plus a starting value, the whole future trajectory is determined under mild conditions.&quot;},{&quot;glyph&quot;:&quot;y = C e^{kt}&quot;,&quot;meaning&quot;:&quot;Family of exponential solutions for proportional growth&quot;,&quot;explain&quot;:&quot;Any equation whose rate is proportional to the current amount has exponential solutions. The constant C is fixed by the initial condition and k sets whether the quantity grows or decays.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\frac{dy}{dt} = f(t, y)</div>
+        <p data-flip-meaning>General form of a first-order equation</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>The right side may depend on time, on the unknown function y, or both. First order means only the first derivative appears, so the rule describes slope directly.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>A cup of coffee sits in a 70-degree room, and its temperature drops at a rate proportional to the gap between the coffee and the room. Which differential equation models the coffee temperature T?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="Newton&#39;s cooling law makes the rate proportional to the difference between the object and its surroundings, which is T minus 70 here." data-wrong-explain="The first option would predict cooling toward 0 degrees, ignoring the room temperature. The third is a logistic growth model and the fourth has no physical basis for cooling.">
+          <button type="button" data-choice="a">dT/dt = -kT</button>
+          <button type="button" data-choice="b">dT/dt = -k(T - 70)</button>
+          <button type="button" data-choice="c">dT/dt = kT(1 - T)</button>
+          <button type="button" data-choice="d">dT/dt = -k/t</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-differential-equations.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

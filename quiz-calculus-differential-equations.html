@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Modeling with differential equations quiz — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Five-question quiz on Modeling with differential equations — Wuanberri Calculus." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Modeling with differential equations quiz</h1>
+      <p class="lede">Five questions on Modeling with differential equations. Answer all 5 to see your score.</p>
+      <p id="quiz-score" class="meta" style="font-variant-numeric: tabular-nums">0 of 5 answered</p>
+
+      <div class="lesson-card">
+        <h2>Question 1 of 5</h2>
+        <p>A 90°C cup of coffee sits in a 70°C room. Newton&#39;s law of cooling says the temperature changes at a rate proportional to the difference between the coffee and the room. Which ODE models the coffee temperature T(t), with k &gt; 0?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="While T &gt; 70 the coffee must be cooling, so dT/dt must be negative; -k(T - 70) is the only option with the correct sign and the correct ambient target of 70." data-wrong-explain="k(T - 70) has the sign backwards and would warm the coffee; -kT drives the temperature toward 0 instead of the room temperature; k(90 - T) wrongly uses the initial temperature where the ambient temperature belongs.">
+          <button type="button" data-choice="a">\frac{dT}{dt} = k(T - 70)</button>
+          <button type="button" data-choice="b">\frac{dT}{dt} = -k(T - 70)</button>
+          <button type="button" data-choice="c">\frac{dT}{dt} = -kT</button>
+          <button type="button" data-choice="d">\frac{dT}{dt} = k(90 - T)</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 2 of 5</h2>
+        <p>Sketching the direction field for \frac{dP}{dt} = P(2 - P), what can you conclude about the equilibrium solutions P = 0 and P = 2?</p>
+        <form class="mcq" data-mcq="c" data-right-explain="For 0 &lt; P &lt; 2 the slopes are positive and for P &gt; 2 they are negative, so nearby solutions are pushed toward P = 2; below 0 the slopes are negative, pushing solutions away from P = 0." data-wrong-explain="The sign of P(2 - P) flips at each root, so the two equilibria cannot share the same stability; a quick sign chart on the intervals (-\infty, 0), (0, 2), and (2, \infty) shows P = 2 attracts and P = 0 repels.">
+          <button type="button" data-choice="a">Both P = 0 and P = 2 are stable equilibria</button>
+          <button type="button" data-choice="b">P = 0 is stable and P = 2 is unstable</button>
+          <button type="button" data-choice="c">P = 2 is stable and P = 0 is unstable</button>
+          <button type="button" data-choice="d">Neither value is an equilibrium, because dP/dt is never zero</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 3 of 5</h2>
+        <p>Solve the separable initial-value problem \frac{dy}{dx} = y^2 e^x with y(0) = 1.</p>
+        <form class="mcq" data-mcq="a" data-right-explain="Separating gives \int y^{-2} \, dy = \int e^x \, dx, so -1/y = e^x + C; the condition y(0) = 1 forces C = -2, hence y = 1/(2 - e^x)." data-wrong-explain="The e^x - 2 version solves the equation but fails the initial condition, giving y(0) = -1; y = 2 - e^x drops the reciprocal entirely; 1/(2 + e^x) comes from mis-signing the constant.">
+          <button type="button" data-choice="a">y = \frac{1}{2 - e^x}</button>
+          <button type="button" data-choice="b">y = \frac{1}{e^x - 2}</button>
+          <button type="button" data-choice="c">y = 2 - e^x</button>
+          <button type="button" data-choice="d">y = \frac{1}{2 + e^x}</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 4 of 5</h2>
+        <p>Use an integrating factor to solve \frac{dy}{dx} + 2y = e^{-2x}. What is the general solution?</p>
+        <form class="mcq" data-mcq="d" data-right-explain="The integrating factor is \mu = e^{2x}, so (y e^{2x})&#39; = 1 and y e^{2x} = x + C, giving y = (x + C)e^{-2x}." data-wrong-explain="x e^{-2x} + C forgets that the constant gets multiplied by the integrating factor too; (x + C)e^{2x} uses \mu = e^{-2x} backwards; C e^{-2x} - x has the sign of the particular part flipped.">
+          <button type="button" data-choice="a">y = x e^{-2x} + C</button>
+          <button type="button" data-choice="b">y = (x + C)e^{2x}</button>
+          <button type="button" data-choice="c">y = C e^{-2x} - x</button>
+          <button type="button" data-choice="d">y = (x + C)e^{-2x}</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 5 of 5</h2>
+        <p>For the logistic population model \frac{dP}{dt} = 0.5 P \left(1 - \frac{P}{100}\right), at what population does P grow fastest, and what is the carrying capacity?</p>
+        <form class="mcq" data-mcq="a" data-right-explain="The right side is a downward-opening quadratic in P with roots at 0 and 100, so it peaks halfway between them at P = K/2 = 50, while growth stops entirely at K = 100." data-wrong-explain="At P = 100 the growth rate is exactly zero, so nothing grows fastest there; P = 0 also gives zero growth; P = 25 with capacity 200 comes from halving and doubling the wrong constants.">
+          <button type="button" data-choice="a">Growth is fastest at P = 50, and the carrying capacity is 100</button>
+          <button type="button" data-choice="b">Growth is fastest at P = 100, and the carrying capacity is 50</button>
+          <button type="button" data-choice="c">Growth is fastest at P = 0, and the carrying capacity is 100</button>
+          <button type="button" data-choice="d">Growth is fastest at P = 25, and the carrying capacity is 200</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-ghost" href="calculus.html">Back to all units</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/quiz.js"></script>
+</body>
+</html>

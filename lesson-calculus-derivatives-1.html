@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Definition of the derivative — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="The derivative compresses the tangent problem and the velocity problem into one object: a limit of difference quotients." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Definition of the derivative</h1>
+      <p class="lede">The derivative compresses the tangent problem and the velocity problem into one object: a limit of difference quotients.</p>
+
+
+      <div class="lesson-card">
+        <h2>Definition</h2>
+        <p>The derivative of f at x is the limit of the difference quotient as h approaches 0. It measures the instantaneous rate of change of f at that exact input. If the limit exists, f is called differentiable at x, and f&#39; denotes the resulting new function.</p>
+        <span class="math">f&#39;(x) = \lim_{h \to 0} \frac{f(x+h) - f(x)}{h}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Three readings</h2>
+        <p>The same number carries three meanings. Geometrically it is the slope of the tangent line to the graph at x. Physically it is the instantaneous velocity when f describes position. Generally it is the rate at which the output changes per unit change of the input.</p>
+        <span class="math">\frac{dy}{dx} = \lim_{\Delta x \to 0} \frac{\Delta y}{\Delta x}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>Take f(x) = x^2 - 4x. The difference quotient is ((x+h)^2 - 4(x+h) - x^2 + 4x)/h, which simplifies to 2x - 4 + h. Letting h approach 0 gives f&#39;(x) = 2x - 4. At x = 1 the slope is -2, so the curve is falling there.</p>
+        <span class="math">f&#39;(x) = \lim_{h \to 0} (2x - 4 + h) = 2x - 4</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;f&#39;(x) = \\lim_{h \\to 0} \\frac{f(x+h)-f(x)}{h}&quot;,&quot;meaning&quot;:&quot;Limit definition of the derivative&quot;,&quot;explain&quot;:&quot;This limit of average rates of change defines the instantaneous rate of change. If it exists at a point, f is differentiable there and the value is the tangent slope.&quot;},{&quot;glyph&quot;:&quot;f&#39;(a)&quot;,&quot;meaning&quot;:&quot;Slope of tangent line at x = a&quot;,&quot;explain&quot;:&quot;The number f&#39;(a) is the slope the tangent line to the graph of f has at the point (a, f(a)). The tangent line itself is y = f(a) + f&#39;(a)(x - a).&quot;},{&quot;glyph&quot;:&quot;f&#39;(a) \\text{ exists} \\implies f \\text{ continuous at } a&quot;,&quot;meaning&quot;:&quot;Differentiability implies continuity&quot;,&quot;explain&quot;:&quot;Every differentiable function is continuous, but not conversely: a function can be continuous everywhere yet fail to be differentiable where it has a corner, such as the absolute value function at zero.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>f&#39;(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}</div>
+        <p data-flip-meaning>Limit definition of the derivative</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>This limit of average rates of change defines the instantaneous rate of change. If it exists at a point, f is differentiable there and the value is the tangent slope.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>Using the limit definition, what is the derivative of f(x) = x^3 at x = 2?</p>
+        <form class="mcq" data-mcq="a" data-right-explain="The quotient ((2+h)^3 - 8)/h simplifies to 12 + 6h + h^2, which approaches 12 as h goes to 0." data-wrong-explain="Expand (2+h)^3 = 8 + 12h + 6h^2 + h^3, subtract 8, divide by h, and take the limit. The surviving constant term is 12.">
+          <button type="button" data-choice="a">12</button>
+          <button type="button" data-choice="b">6</button>
+          <button type="button" data-choice="c">8</button>
+          <button type="button" data-choice="d">4</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-derivatives.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

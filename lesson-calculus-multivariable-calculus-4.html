@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Integrals Over Flat Regions — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="A double integral adds up the values of a function across a two-dimensional region, one thin rectangle at a time." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Integrals Over Flat Regions</h1>
+      <p class="lede">A double integral adds up the values of a function across a two-dimensional region, one thin rectangle at a time.</p>
+
+
+      <div class="lesson-card">
+        <h2>Slicing two ways</h2>
+        <p>Just as a single integral sums thin rectangles under a curve, a double integral sums thin boxes under a surface over a region R. Each box has base area dA and height f, so the integral measures signed volume when f is a height. If f is instead a density, the same integral gives total mass over the region.</p>
+        <span class="math">\iint_R f(x,y)\,dA</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Iterated integrals</h2>
+        <p>In practice you compute a double integral as an iterated integral, doing the inner integral first while treating the outer variable as constant. For the rectangle example integrating xy over 0 to 2 in y and 0 to 3 in x, the inner integral gives 2x, and integrating that from 0 to 3 gives 9. Two nested single integrals replace one intimidating double symbol.</p>
+        <span class="math">\int_0^3 \int_0^2 xy\,dy\,dx = 9</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Swapping the order</h2>
+        <p>The area element dA can be read as dx dy or dy dx, and the two orders give the same answer when the region allows it. Switching order is a favorite trick because one order may have an antiderivative the other lacks. For non-rectangular regions, describe the boundary as functions and let the inner limits depend on the outer variable.</p>
+        <span class="math">dA = dx\,dy = dy\,dx</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\iint_R f(x,y)\\,dA&quot;,&quot;meaning&quot;:&quot;Signed volume under the surface over region R&quot;,&quot;explain&quot;:&quot;The double integral sums the height f over every small patch of the region. Negative values count as volume below the xy-plane, which is why the result is called signed volume.&quot;},{&quot;glyph&quot;:&quot;\\int_c^d f(x,y)\\,dy&quot;,&quot;meaning&quot;:&quot;Inner integral of an iterated integral&quot;,&quot;explain&quot;:&quot;You hold x fixed and integrate in y first, treating x as a constant. The result is a function of x alone, which then gets integrated in the outer step.&quot;},{&quot;glyph&quot;:&quot;dA = dx\\,dy = dy\\,dx&quot;,&quot;meaning&quot;:&quot;Area element, order of integration can swap&quot;,&quot;explain&quot;:&quot;Both readings of dA describe the same tiny rectangle, just sliced in a different direction. Fubini&#39;s theorem guarantees the two orders agree for continuous functions on nice regions.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\iint_R f(x,y)\,dA</div>
+        <p data-flip-meaning>Signed volume under the surface over region R</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>The double integral sums the height f over every small patch of the region. Negative values count as volume below the xy-plane, which is why the result is called signed volume.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>Evaluate the iterated integral of x, integrated over y from 0 to 3 and then over x from 0 to 2.</p>
+        <form class="mcq" data-mcq="c" data-right-explain="The inner integral of x with respect to y over 0 to 3 is 3x, and integrating 3x from 0 to 2 gives 6." data-wrong-explain="The value 9 belongs to the example with the extra y factor in the integrand, and 3 or 12 come from integrating over only part of the rectangle or multiplying incorrectly. Careful inner-then-outer execution gives 6.">
+          <button type="button" data-choice="a">3</button>
+          <button type="button" data-choice="b">9</button>
+          <button type="button" data-choice="c">6</button>
+          <button type="button" data-choice="d">12</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-multivariable-calculus.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

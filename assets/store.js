@@ -115,6 +115,13 @@
   const setSetting = (k, v) => set('settings.' + k, v);
   const getSetting = (k, fallback) => get('settings.' + k, fallback);
 
+  // Pro (Stripe subscription state)
+  // Flipped client-side on success_url bounce (see dashboard.html script).
+  // For cross-device Pro, mirror to a Supabase table later — same pattern as user.
+  const markPro = () => set('pro', { since: new Date().toISOString() });
+  const isPro = () => !!get('pro');
+  const clearPro = () => del('pro');
+
   global.Store = {
     get, set, del, clear,
     isAuthed, getUser, signIn, signOut,
@@ -123,5 +130,6 @@
     addReview, getReviews,
     setApiKey, getApiKey, clearApiKey, hasApiKey,
     setSetting, getSetting,
+    markPro, isPro, clearPro,
   };
 })(window);

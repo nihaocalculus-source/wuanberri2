@@ -1,0 +1,47 @@
+[
+  {
+    "prompt": "For u = \\langle 2, -1, 3 \\rangle and v = \\langle 1, 4, -2 \\rangle, compute the dot product u \\cdot v.",
+    "choices": ["-8", "0", "4", "12"],
+    "answerIndex": 0,
+    "rightExplain": "Multiply matching components and add: (2)(1) + (-1)(4) + (3)(-2) = 2 - 4 - 6 = -8.",
+    "wrongExplain": "0, 4, and 12 all come from sign slips on the second or third component; tracking each negative sign individually gives -8."
+  },
+  {
+    "prompt": "Compute the cross product u \\times v for u = \\langle 2, 1, 0 \\rangle and v = \\langle 1, 3, 0 \\rangle.",
+    "choices": [
+      "\\langle 0, 0, 7 \\rangle",
+      "\\langle 0, 0, -5 \\rangle",
+      "\\langle 0, 0, 5 \\rangle",
+      "\\langle 1, 3, 0 \\rangle"
+    ],
+    "answerIndex": 2,
+    "rightExplain": "For two vectors in the xy-plane the cross product points along the z-axis with signed magnitude ad - bc = (2)(3) - (1)(1) = 5, and the right-hand rule gives the +z direction.",
+    "wrongExplain": "7 adds ad + bc instead of subtracting, -5 reverses the right-hand rule, and \\langle 1, 3, 0 \\rangle is just v itself — a cross product must be perpendicular to both inputs."
+  },
+  {
+    "prompt": "For f(x, y) = x^2 y + \\sin(xy), what is the partial derivative \\frac{\\partial f}{\\partial x}?",
+    "choices": [
+      "2xy + x\\cos(xy)",
+      "2xy + y\\cos(xy)",
+      "x^2 + x\\cos(xy)",
+      "2xy - y\\sin(xy)"
+    ],
+    "answerIndex": 1,
+    "rightExplain": "Holding y constant: the derivative of x^2 y is 2xy, and by the chain rule the derivative of \\sin(xy) with respect to x is y\\cos(xy).",
+    "wrongExplain": "The x\\cos(xy) variant uses the chain-rule factor from differentiating with respect to y instead; x^2 + x\\cos(xy) is actually \\partial f/\\partial y; and the derivative of \\sin is \\cos, not -\\sin."
+  },
+  {
+    "prompt": "For f(x, y) = x^2 + y^2, find the directional derivative at the point (1, 2) in the direction from (1, 2) toward (3, 4).",
+    "choices": ["6", "-3\\sqrt{2}", "2\\sqrt{2}", "3\\sqrt{2}"],
+    "answerIndex": 3,
+    "rightExplain": "The gradient is \\nabla f(1, 2) = \\langle 2, 4 \\rangle, and the displacement \\langle 2, 2 \\rangle normalizes to \\langle 1/\\sqrt{2}, 1/\\sqrt{2} \\rangle, giving (2 + 4)/\\sqrt{2} = 3\\sqrt{2}.",
+    "wrongExplain": "6 dots the gradient with the raw vector \\langle 2, 2 \\rangle without normalizing it to unit length; -3\\sqrt{2} points the direction back toward (1, 2); 2\\sqrt{2} miscomputes the dot product."
+  },
+  {
+    "prompt": "Evaluate the double integral \\int_0^1 \\int_0^2 (x + y) \\, dy \\, dx.",
+    "choices": ["3", "2", "6", "8"],
+    "answerIndex": 0,
+    "rightExplain": "Integrating in y first gives 2x + 2, and integrating that over x from 0 to 1 gives 1 + 2 = 3.",
+    "wrongExplain": "2 keeps only the y-term of the integrand; 6 multiplies the corner value x + y = 3 by the area 2; 8 comes from letting the outer integral run to 2 instead of 1."
+  }
+]

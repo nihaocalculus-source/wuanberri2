@@ -4,6 +4,56 @@
 (function () {
   'use strict';
 
+  // ---------- Bootstrap auth (Supabase config + wrapper) ----------
+  // app.js is loaded by every page. Pull in the Supabase config and
+  // the auth wrapper so the rest of the file can rely on
+  // `Store.isAuthed()` being accurate — including the case where
+  // Supabase restored a session from localStorage.
+  const ensureAuth = () => {
+    if (window.Auth) return Promise.resolve();
+    return new Promise((resolve) => {
+      let pending = 0;
+      const done = () => { if (--pending <= 0) resolve(); };
+      const load = (src) => {
+        // Skip if a script tag for this src is already in the document
+        // (auth.html pre-loads them; we don't want to double-execute).
+        const existing = document.querySelector(`script[src="${src}"]`);
+        if (existing) { resolve(); return; }
+        pending++;
+        const s = document.createElement('script');
+        s.src = src;
+        s.onload = done;
+        s.onerror = done;   // local mode if either file is missing
+        document.head.appendChild(s);
+      };
+      load('assets/__SUPABASE_CONFIG__.js');
+      // auth-supabase.js depends on the config having been read.
+      // It's a tiny file so we just queue it; the script order is
+      // preserved by synchronous-append of the script tag.
+      load('assets/auth-supabase.js');
+      // If neither script loaded (offline, weird CSP), resolve immediately.
+      setTimeout(resolve, 50);
+    });
+  };
+
+  // ---------- Lazy-load chatbox on every page ----------
+  // The chatbox lives in its own file so it's easy to iterate. We load
+  // it lazily so the FAB doesn't appear before the page's own inline
+  // scripts have finished (matters for the landing-page coach upgrade
+  // and the dashboard hydration).
+  const lazyLoad = (src) => {
+    if (document.querySelector(`script[src="${src}"]`)) return;
+    const s = document.createElement('script');
+    s.src = src;
+    s.defer = true;
+    document.body.appendChild(s);
+  };
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => lazyLoad('assets/chatbox.js'));
+  } else {
+    setTimeout(() => lazyLoad('assets/chatbox.js'), 0);
+  }
+
   // ---------- Hero flashcard: "Explain" reveal + "Next" cycle ----------
   const flashcard = document.querySelector('[data-flashcard]');
   if (flashcard) {
@@ -265,10 +315,35 @@
   }
 
   // ---------- Auth gate ----------
-  // Gated pages redirect to /auth.html if not signed in.
+  // Gated pages redirect to /auth.html if not signed in. We wait for
+  // the Supabase auth bootstrap (if any) so a returning user with a
+  // restored session doesn't get bounced.
   const gatedPages = ['dashboard.html', 'partners.html', 'workout.html', 'decks.html', 'practice.html', 'library.html', 'solve.html', 'plan.html', 'settings.html'];
   const here = window.location.pathname.split('/').pop() || 'index.html';
-  if (gatedPages.includes(here) && window.Store && !Store.isAuthed()) {
-    window.location.href = 'auth.html';
+  if (gatedPages.includes(here) && window.Store) {
+    const decide = () => {
+      if (!Store.isAuthed()) window.location.href = 'auth.html';
+    };
+    if (window.Auth) {
+      // Wait one tick for the INITIAL auth-state event to land.
+      let resolved = false;
+      Auth.onChange(({ event, user }) => {
+        if (event === 'INITIAL' && !resolved) { resolved = true; decide(); }
+      });
+      setTimeout(() => { if (!resolved) { resolved = true; decide(); } }, 800);
+    } else {
+      // Auth wrapper not loaded yet — bootstrap then decide.
+      ensureAuth().then(() => {
+        if (window.Auth) {
+          let resolved = false;
+          Auth.onChange(({ event, user }) => {
+            if (event === 'INITIAL' && !resolved) { resolved = true; decide(); }
+          });
+          setTimeout(() => { if (!resolved) { resolved = true; decide(); } }, 800);
+        } else {
+          decide();
+        }
+      });
+    }
   }
 })();

@@ -1,0 +1,155 @@
+[
+  {
+    "topic": "Areas between curves",
+    "title": "Area Is a Difference",
+    "lede": "Between two curves, area is just the integral of the top curve minus the bottom curve.",
+    "cards": [
+      {
+        "heading": "The Setup",
+        "body": "If f sits above g on an interval, a thin vertical strip has height f minus g and width dx. Adding those strips with an integral gives the total area between the curves. The formula works because negative gaps and positive gaps are never mixed, as long as the top curve really is on top.",
+        "math": "A = \\int_a^b \\bigl(f(x) - g(x)\\bigr)\\,dx"
+      },
+      {
+        "heading": "Find the Crossings",
+        "body": "The intersection points set the limits of integration, so solve f equals g first. If the curves cross inside the interval, the region splits into pieces and each piece needs its own integral, with the roles of top and bottom swapped. Sketching first prevents the classic error of integrating the wrong difference.",
+        "math": "f(x) = g(x)"
+      },
+      {
+        "heading": "A Worked Region",
+        "body": "Between y = x and y = x squared, the curves meet at x = 0 and x = 1, and the line is on top. The area is the integral of x minus x squared, which evaluates to one half minus one third, or one sixth. A parabola and its chord always enclose a third of the bounding rectangle, a pattern worth noticing.",
+        "math": "\\int_0^1 (x - x^2)\\,dx = \\frac{1}{6}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\int_a^b (f-g)\\,dx",
+        "meaning": "Area between curves, f on top",
+        "explain": "Each strip contributes the vertical gap f minus g with width dx. The result is exact area only where f stays above g across the whole interval."
+      },
+      {
+        "glyph": "f(x)=g(x)",
+        "meaning": "Intersection points set limits",
+        "explain": "Solving for crossings locates where the region begins and ends. If curves cross mid-interval, the region must be split at each crossing point."
+      },
+      {
+        "glyph": "\\int_c^d (r-h)\\,dy",
+        "meaning": "Horizontal strips when curves are sideways",
+        "explain": "Integrating in y suits regions bounded left and right by functions of y. The right curve minus the left curve plays the role of top minus bottom."
+      }
+    ],
+    "mcq": {
+      "prompt": "For the region enclosed by y = x^2 and y = x^3 between 0 and 1, which integrand gives the correct area?",
+      "choices": [
+        "x^2 - x^3, since squares sit above cubes there",
+        "x^3 - x^2, since cubes grow faster",
+        "x^2 + x^3, to cover both curves",
+        "x^3, since area under the upper curve suffices"
+      ],
+      "answerIndex": 0,
+      "rightExplain": "On (0, 1) multiplying by a number less than one makes values larger, so x^2 exceeds x^3 and the top-minus-bottom difference is x^2 - x^3.",
+      "wrongExplain": "Cubes grow faster only past x = 1, adding the curves double counts, and integrating a single curve measures area to the axis, not the gap between curves."
+    }
+  },
+  {
+    "topic": "Volumes of revolution and cross-sections",
+    "title": "Slice Solids into Disks",
+    "lede": "Every volume formula in this lesson is one idea: integrate the area of a representative slice.",
+    "cards": [
+      {
+        "heading": "Slicing Principle",
+        "body": "Cut a solid perpendicular to an axis, and each slice has a measurable cross-sectional area. Volume is the integral of area times thickness. Nothing in this principle cares whether the solid is round; if you can write the slice area as a function, you can integrate it.",
+        "math": "V = \\int_a^b A(x)\\,dx"
+      },
+      {
+        "heading": "Disks and Washers",
+        "body": "Rotating a region around an axis sweeps out disks, each of area pi R squared. When the region leaves a hole around the axis, each slice is a washer, so subtract the inner radius: pi times R squared minus r squared. The rotation axis tells you whether the radius is measured vertically or horizontally.",
+        "math": "V = \\pi\\int_a^b \\bigl(R^2 - r^2\\bigr)\\,dx"
+      },
+      {
+        "heading": "A Worked Solid",
+        "body": "Rotate the region under y = the square root of x from 0 to 1 around the x-axis. A slice at x is a disk of radius the square root of x, so its area is pi times x, and the integral gives pi over 2. Cylindrical shells offer the mirror method, integrating 2 pi x f(x) when slicing vertically around a horizontal axis is awkward.",
+        "math": "V = \\pi\\int_0^1 x\\,dx = \\frac{\\pi}{2}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "V = \\int A(x)\\,dx",
+        "meaning": "The general slicing method for volume",
+        "explain": "Cross-sectional area times an infinitesimal thickness is one slice's volume. Integrating along the axis sums every slice into the solid's volume."
+      },
+      {
+        "glyph": "\\pi R^2",
+        "meaning": "Area of a circular disk slice",
+        "explain": "Rotation turns a thin rectangle into a disk whose radius is the rectangle's height. Pi times radius squared is that slice's cross-sectional area."
+      },
+      {
+        "glyph": "2\\pi x\\,f(x)\\,dx",
+        "meaning": "Volume element for cylindrical shells",
+        "explain": "A shell at distance x from the axis unrolls to a slab of length 2 pi x, height f, and thickness dx. Shells shine when washers force the wrong variable."
+      }
+    ],
+    "mcq": {
+      "prompt": "The region between y = x and y = 0 on [0, 2] is rotated about the x-axis. What setup gives the volume?",
+      "choices": [
+        "2 times the integral of pi x over [0, 2]",
+        "The integral of pi x squared over [0, 2]",
+        "The integral of 2 pi x over [0, 2]",
+        "The integral of pi over [0, 2]"
+      ],
+      "answerIndex": 1,
+      "rightExplain": "Each slice is a disk of radius x, so the volume element is pi x squared dx, and the integral evaluates to 8 pi over 3, the volume of a cone.",
+      "wrongExplain": "The shell integrand 2 pi x describes rotating a horizontal-strip region about a vertical axis, while pi without a radius squared drops the disk geometry entirely."
+    }
+  },
+  {
+    "topic": "Work, average value, and arc length",
+    "title": "Integrals Beyond Area",
+    "lede": "The same slicing logic measures physical work, typical values, and the length of a curve.",
+    "cards": [
+      {
+        "heading": "Work Done",
+        "body": "Work is force times distance, but when force varies with position you slice the path instead. Each small stretch contributes force times dx, and the integral sums them. Pumping water out of a tank uses the same idea, with force replaced by the weight of each thin layer of water.",
+        "math": "W = \\int_a^b F(x)\\,dx"
+      },
+      {
+        "heading": "Average Value",
+        "body": "The average of a function over an interval is its integral divided by the interval's width. It is the constant height with the same total accumulation, so it answers what the function is typically doing. Stretching a spring from 0 to a meters by Hooke's law averages the force at half its final value, which is why the work is k a squared over 2.",
+        "math": "f_{\\text{avg}} = \\frac{1}{b-a}\\int_a^b f(x)\\,dx"
+      },
+      {
+        "heading": "Arc Length",
+        "body": "Approximate a curve by tiny straight segments, each with length the square root of one plus the slope squared times dx. The integral of that expression is the exact arc length. For y = x to the two thirds from 0 to 1, the antiderivative works out to 27 over 40 plus the square root of 9 over 4, a finite and tidy length.",
+        "math": "L = \\int_a^b \\sqrt{1 + \\bigl(f'(x)\\bigr)^2}\\,dx"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "W = \\int F(x)\\,dx",
+        "meaning": "Work under a variable force",
+        "explain": "Force times a small displacement is one slice of work. Integrating over the path handles forces that change with position, like springs."
+      },
+      {
+        "glyph": "\\frac{1}{b-a}\\int_a^b f\\,dx",
+        "meaning": "Mean value of a function on an interval",
+        "explain": "Total accumulated value divided by interval length gives the constant function with equal area underneath. It is the function's fair, typical height."
+      },
+      {
+        "glyph": "\\sqrt{1+(f')^2}\\,dx",
+        "meaning": "Arc length element along a curve",
+        "explain": "The Pythagorean theorem on a tiny segment gives its length from the slope. Integrating these elements adds up the curve's true length."
+      }
+    ],
+    "mcq": {
+      "prompt": "A spring follows Hooke's law with force kx. Why does stretching it a meters require k a squared over 2 of work rather than k a squared?",
+      "choices": [
+        "Because the spring's mass absorbs half the energy",
+        "Because the force grows from zero, so its average is k a over 2",
+        "Because work must always be halved to account for friction",
+        "Because k a squared over 2 is the spring's maximum force"
+      ],
+      "answerIndex": 1,
+      "rightExplain": "The force rises linearly from 0 to k a, so its average over the stretch is k a over 2, and multiplying by the distance a gives k a squared over 2.",
+      "wrongExplain": "Mass and friction play no role in the ideal spring model, and k a is already the final force, not a work quantity to halve afterward."
+    }
+  }
+]

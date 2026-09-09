@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Slice Solids into Disks — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Every volume formula in this lesson is one idea: integrate the area of a representative slice." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Slice Solids into Disks</h1>
+      <p class="lede">Every volume formula in this lesson is one idea: integrate the area of a representative slice.</p>
+
+
+      <div class="lesson-card">
+        <h2>Slicing Principle</h2>
+        <p>Cut a solid perpendicular to an axis, and each slice has a measurable cross-sectional area. Volume is the integral of area times thickness. Nothing in this principle cares whether the solid is round; if you can write the slice area as a function, you can integrate it.</p>
+        <span class="math">V = \int_a^b A(x)\,dx</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Disks and Washers</h2>
+        <p>Rotating a region around an axis sweeps out disks, each of area pi R squared. When the region leaves a hole around the axis, each slice is a washer, so subtract the inner radius: pi times R squared minus r squared. The rotation axis tells you whether the radius is measured vertically or horizontally.</p>
+        <span class="math">V = \pi\int_a^b \bigl(R^2 - r^2\bigr)\,dx</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>A Worked Solid</h2>
+        <p>Rotate the region under y = the square root of x from 0 to 1 around the x-axis. A slice at x is a disk of radius the square root of x, so its area is pi times x, and the integral gives pi over 2. Cylindrical shells offer the mirror method, integrating 2 pi x f(x) when slicing vertically around a horizontal axis is awkward.</p>
+        <span class="math">V = \pi\int_0^1 x\,dx = \frac{\pi}{2}</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;V = \\int A(x)\\,dx&quot;,&quot;meaning&quot;:&quot;The general slicing method for volume&quot;,&quot;explain&quot;:&quot;Cross-sectional area times an infinitesimal thickness is one slice&#39;s volume. Integrating along the axis sums every slice into the solid&#39;s volume.&quot;},{&quot;glyph&quot;:&quot;\\pi R^2&quot;,&quot;meaning&quot;:&quot;Area of a circular disk slice&quot;,&quot;explain&quot;:&quot;Rotation turns a thin rectangle into a disk whose radius is the rectangle&#39;s height. Pi times radius squared is that slice&#39;s cross-sectional area.&quot;},{&quot;glyph&quot;:&quot;2\\pi x\\,f(x)\\,dx&quot;,&quot;meaning&quot;:&quot;Volume element for cylindrical shells&quot;,&quot;explain&quot;:&quot;A shell at distance x from the axis unrolls to a slab of length 2 pi x, height f, and thickness dx. Shells shine when washers force the wrong variable.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>V = \int A(x)\,dx</div>
+        <p data-flip-meaning>The general slicing method for volume</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Cross-sectional area times an infinitesimal thickness is one slice&#39;s volume. Integrating along the axis sums every slice into the solid&#39;s volume.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>The region between y = x and y = 0 on [0, 2] is rotated about the x-axis. What setup gives the volume?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="Each slice is a disk of radius x, so the volume element is pi x squared dx, and the integral evaluates to 8 pi over 3, the volume of a cone." data-wrong-explain="The shell integrand 2 pi x describes rotating a horizontal-strip region about a vertical axis, while pi without a radius squared drops the disk geometry entirely.">
+          <button type="button" data-choice="a">2 times the integral of pi x over [0, 2]</button>
+          <button type="button" data-choice="b">The integral of pi x squared over [0, 2]</button>
+          <button type="button" data-choice="c">The integral of 2 pi x over [0, 2]</button>
+          <button type="button" data-choice="d">The integral of pi over [0, 2]</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-applied-integrals.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

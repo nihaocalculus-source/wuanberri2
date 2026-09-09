@@ -1,0 +1,186 @@
+[
+  {
+    "topic": "Derivatives and rates of change",
+    "title": "Definition of the derivative",
+    "lede": "The derivative compresses the tangent problem and the velocity problem into one object: a limit of difference quotients.",
+    "cards": [
+      {
+        "heading": "Definition",
+        "body": "The derivative of f at x is the limit of the difference quotient as h approaches 0. It measures the instantaneous rate of change of f at that exact input. If the limit exists, f is called differentiable at x, and f' denotes the resulting new function.",
+        "math": "f'(x) = \\lim_{h \\to 0} \\frac{f(x+h) - f(x)}{h}"
+      },
+      {
+        "heading": "Three readings",
+        "body": "The same number carries three meanings. Geometrically it is the slope of the tangent line to the graph at x. Physically it is the instantaneous velocity when f describes position. Generally it is the rate at which the output changes per unit change of the input.",
+        "math": "\\frac{dy}{dx} = \\lim_{\\Delta x \\to 0} \\frac{\\Delta y}{\\Delta x}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "Take f(x) = x^2 - 4x. The difference quotient is ((x+h)^2 - 4(x+h) - x^2 + 4x)/h, which simplifies to 2x - 4 + h. Letting h approach 0 gives f'(x) = 2x - 4. At x = 1 the slope is -2, so the curve is falling there.",
+        "math": "f'(x) = \\lim_{h \\to 0} (2x - 4 + h) = 2x - 4"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "f'(x) = \\lim_{h \\to 0} \\frac{f(x+h)-f(x)}{h}",
+        "meaning": "Limit definition of the derivative",
+        "explain": "This limit of average rates of change defines the instantaneous rate of change. If it exists at a point, f is differentiable there and the value is the tangent slope."
+      },
+      {
+        "glyph": "f'(a)",
+        "meaning": "Slope of tangent line at x = a",
+        "explain": "The number f'(a) is the slope the tangent line to the graph of f has at the point (a, f(a)). The tangent line itself is y = f(a) + f'(a)(x - a)."
+      },
+      {
+        "glyph": "f'(a) \\text{ exists} \\implies f \\text{ continuous at } a",
+        "meaning": "Differentiability implies continuity",
+        "explain": "Every differentiable function is continuous, but not conversely: a function can be continuous everywhere yet fail to be differentiable where it has a corner, such as the absolute value function at zero."
+      }
+    ],
+    "mcq": {
+      "prompt": "Using the limit definition, what is the derivative of f(x) = x^3 at x = 2?",
+      "choices": ["12", "6", "8", "4"],
+      "answerIndex": 0,
+      "rightExplain": "The quotient ((2+h)^3 - 8)/h simplifies to 12 + 6h + h^2, which approaches 12 as h goes to 0.",
+      "wrongExplain": "Expand (2+h)^3 = 8 + 12h + 6h^2 + h^3, subtract 8, divide by h, and take the limit. The surviving constant term is 12."
+    }
+  },
+  {
+    "topic": "Derivative rules for polynomials, exponentials, and trig functions",
+    "title": "Power, exponential, trig rules",
+    "lede": "A handful of short rules replace limit computations for the functions you meet most often.",
+    "cards": [
+      {
+        "heading": "Power rule",
+        "body": "For any real number n, the derivative of x^n is n times x^(n-1). The exponent comes down as a multiplier and drops by one. Differentiating a polynomial reduces to applying this rule term by term, since constants multiply through and sums split apart.",
+        "math": "\\frac{d}{dx} x^n = n x^{n-1}"
+      },
+      {
+        "heading": "Exponential functions",
+        "body": "The exponential with base e is its own derivative, which is what makes e special: changing the input by a factor multiplies the output by a constant. Other bases carry a factor of the natural logarithm of the base. The general exponential a^x differentiates to a^x times ln a.",
+        "math": "\\frac{d}{dx} e^x = e^x, \\quad \\frac{d}{dx} a^x = a^x \\ln a"
+      },
+      {
+        "heading": "Trig derivatives",
+        "body": "The derivative of sin x is cos x, and the derivative of cos x is negative sin x; the two cycle with a period of four differentiations. The derivative of tan x is secant squared of x. Combine these with the power rule term by term for mixed functions.",
+        "math": "(\\sin x)' = \\cos x, \\quad (\\cos x)' = -\\sin x"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\frac{d}{dx} x^n = n x^{n-1}",
+        "meaning": "Power rule for any real exponent",
+        "explain": "Bring the exponent down as a coefficient and reduce it by one. It works for negative and fractional exponents too, so roots and reciprocals need rewriting before differentiating."
+      },
+      {
+        "glyph": "\\frac{d}{dx} e^x = e^x",
+        "meaning": "The natural exponential is its own derivative",
+        "explain": "The slope of e^x at any point equals the height of the function there, which is why e is the natural base for growth and decay models."
+      },
+      {
+        "glyph": "(\\tan x)' = \\sec^2 x",
+        "meaning": "Derivative of tangent is secant squared",
+        "explain": "Writing tan x as sin x over cos x and using the quotient rule yields secant squared. This is the third standard trig derivative after sine and cosine."
+      }
+    ],
+    "mcq": {
+      "prompt": "What is the derivative of f(x) = x^5 - 3 \\cos x?",
+      "choices": ["5x^4 + 3 \\sin x", "5x^4 - 3 \\sin x", "5x^4 + 3 \\sin x - 3", "x^4 + 3 \\sin x"],
+      "answerIndex": 1,
+      "rightExplain": "The power rule gives 5x^4, and the derivative of -3 cos x is +3 sin x because the derivative of cos x is -sin x.",
+      "wrongExplain": "Differentiate term by term: the cosine term carries the coefficient -3, and since (cos x)' = -sin x, that term contributes +3 sin x, not -3 sin x."
+    }
+  },
+  {
+    "topic": "Product and quotient rules",
+    "title": "Product and quotient rules",
+    "lede": "Rates of change of products and quotients split in ways intuition gets wrong, so the rules are worth memorizing exactly.",
+    "cards": [
+      {
+        "heading": "Product rule",
+        "body": "The derivative of a product f times g is f' g plus f g'. Each factor's own change must be accounted for, which is why the derivative is not simply the product of the derivatives. Both orders appear because multiplication is symmetric.",
+        "math": "(fg)' = f'g + fg'"
+      },
+      {
+        "heading": "Quotient rule",
+        "body": "For a quotient f over g, the derivative is f' g minus f g', all divided by g squared. The minus sign tracks the denominator's growth suppressing the ratio. A memory aid: low d-high minus high d-low, over low squared.",
+        "math": "\\left( \\frac{f}{g} \\right)' = \\frac{f'g - fg'}{g^2}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "Differentiate f(x) = x^2 e^x using the product rule with f = x^2 and g = e^x. The result is 2x e^x + x^2 e^x, which factors to x e^x (x + 2). For a quotient, the derivative of (x^2 + 1)/x is (2x \\cdot x - (x^2+1) \\cdot 1)/x^2, which simplifies to (x^2 - 1)/x^2.",
+        "math": "(x^2 e^x)' = 2x e^x + x^2 e^x"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "(fg)' = f'g + fg'",
+        "meaning": "Product rule for derivatives",
+        "explain": "Differentiate each factor in turn while holding the other fixed, then add the two contributions. The derivative of a product is never the product of the derivatives in general."
+      },
+      {
+        "glyph": "\\left( \\frac{f}{g} \\right)' = \\frac{f'g - fg'}{g^2}",
+        "meaning": "Quotient rule for derivatives",
+        "explain": "The numerator follows the pattern low d-high minus high d-low, and the denominator is the square of the original bottom function. The order of the minus matters."
+      },
+      {
+        "glyph": "(x^2 e^x)' = x e^x (x + 2)",
+        "meaning": "Product rule applied to x squared times e^x",
+        "explain": "Treating x^2 and e^x as the two factors gives 2x e^x plus x^2 e^x. Factoring out x e^x leaves x + 2, a useful habit for finding critical points later."
+      }
+    ],
+    "mcq": {
+      "prompt": "What is the derivative of h(x) = x^2 \\ln x for x > 0?",
+      "choices": ["2x \\ln x", "\\frac{2 \\ln x}{x}", "2x \\ln x + x", "2x + \\ln x"],
+      "answerIndex": 2,
+      "rightExplain": "The product rule gives 2x ln x plus x^2 times (1/x), and the second term simplifies to x.",
+      "wrongExplain": "Differentiate each factor in turn and add: 2x ln x from x^2 times ln x, plus x from x^2 times 1/x. Treating the product as a quotient of derivatives misses the second term."
+    }
+  },
+  {
+    "topic": "Chain rule and implicit differentiation",
+    "title": "Chain rule and implicit forms",
+    "lede": "When functions are stacked inside each other, differentiate the outside, leave the inside alone, then multiply by the inside's derivative.",
+    "cards": [
+      {
+        "heading": "The chain rule",
+        "body": "If y is a function of u and u is a function of x, the derivative of the composition is the outside derivative evaluated at the inside, times the inside derivative. In words: differentiate outer, keep inner, multiply by derivative of inner. This handles composites like sin of 3x^2 in one step.",
+        "math": "(f(g(x)))' = f'(g(x)) \\cdot g'(x)"
+      },
+      {
+        "heading": "Leibniz form",
+        "body": "In Leibniz notation the chain rule reads dy/dx equals dy/du times du/dx, and the du terms cancel as if they were fractions. This form makes nested rates multiply, which is why it is the workhorse of related rates problems. Treat any intermediate variable as the u.",
+        "math": "\\frac{dy}{dx} = \\frac{dy}{du} \\cdot \\frac{du}{dx}"
+      },
+      {
+        "heading": "Implicit differentiation",
+        "body": "For curves defined by an equation in x and y, differentiate both sides with respect to x, applying the chain rule to every y term so each contributes a dy/dx factor. Then solve algebraically for dy/dx. For the circle x^2 + y^2 = 25, differentiating gives 2x + 2y (dy/dx) = 0, so dy/dx = -x/y.",
+        "math": "x^2 + y^2 = 25 \\implies \\frac{dy}{dx} = -\\frac{x}{y}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "(f \\circ g)'(x) = f'(g(x)) g'(x)",
+        "meaning": "Chain rule for composite functions",
+        "explain": "Differentiate the outer function with the inner left untouched, then multiply by the derivative of the inner function. The order of operations in the composition dictates the order of differentiation."
+      },
+      {
+        "glyph": "\\frac{dy}{du} \\cdot \\frac{du}{dx}",
+        "meaning": "Leibniz form where intermediate rates multiply",
+        "explain": "Writing the chain rule with differentials makes it look like fractions canceling. It also generalizes cleanly to three or more links in a composition, such as y depends on u depends on x."
+      },
+      {
+        "glyph": "\\frac{d}{dx} y^n = n y^{n-1} \\frac{dy}{dx}",
+        "meaning": "Power rule on y terms picks up dy/dx",
+        "explain": "When differentiating an implicit equation, any power of y is a composition of the outer power with y(x). The chain rule therefore attaches a factor of dy/dx, which is what lets you solve for the slope afterward."
+      }
+    ],
+    "mcq": {
+      "prompt": "What is the derivative of g(x) = \\sin(3x^2)?",
+      "choices": ["\\cos(3x^2)", "6x \\cos(3x^2)", "3x^2 \\cos(3x^2)", "6x \\sin(3x^2)"],
+      "answerIndex": 1,
+      "rightExplain": "The outer sine differentiates to cosine evaluated at 3x^2, and the inner derivative is 6x, giving 6x times cos(3x^2).",
+      "wrongExplain": "Apply the chain rule: the derivative of sin u is cos u times u', and here u = 3x^2 has derivative 6x. Forgetting the 6x factor is the most common slip."
+    }
+  }
+]

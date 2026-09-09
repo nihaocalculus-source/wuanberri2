@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Logistic and Predator-Prey Models — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Populations cannot grow forever, and two classic models show how limits and species interactions enter the math." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Logistic and Predator-Prey Models</h1>
+      <p class="lede">Populations cannot grow forever, and two classic models show how limits and species interactions enter the math.</p>
+
+
+      <div class="lesson-card">
+        <h2>From exponential to logistic</h2>
+        <p>Pure proportional growth, dP/dt equals r P, predicts unchecked exponential blowup, which real environments cannot support. The logistic model multiplies by the brake factor one minus P over K, where K is the carrying capacity. With r equal to 0.1 and K equal to 1000, a population at 500 grows at 0.1 times 500 times 0.5, or 25 individuals per year.</p>
+        <span class="math">\frac{dP}{dt} = rP\left(1 - \frac{P}{K}\right)</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Reading the S-curve</h2>
+        <p>The logistic solution rises slowly, grows fastest at half the carrying capacity, then flattens toward K. The equilibria are P equal to 0 and P equal to K, and the first is unstable while the second is stable. Small populations act nearly exponential, and crowding only bites once P is a real fraction of K.</p>
+        <span class="math">P = K/2</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Predator-prey cycles</h2>
+        <p>The Lotka-Volterra system pairs a prey equation a x minus b x y with a predator equation negative c y plus d x y. The interaction term x y appears in both, helping the prey die and feeding the predators. For the classic parameters, prey alone grow, predators alone die out, and the two populations chase each other in cycles around a coexistence equilibrium.</p>
+        <span class="math">\frac{dx}{dt} = ax - bxy,\quad \frac{dy}{dt} = -cy + dxy</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\frac{dP}{dt} = rP\\left(1 - \\frac{P}{K}\\right)&quot;,&quot;meaning&quot;:&quot;Logistic growth with a population cap&quot;,&quot;explain&quot;:&quot;The factor in parentheses shrinks the growth rate as the population approaches carrying capacity. At P equal to K the brake factor is zero, so growth stops exactly at the cap.&quot;},{&quot;glyph&quot;:&quot;P^{*} = K&quot;,&quot;meaning&quot;:&quot;Carrying capacity equilibrium of the logistic model&quot;,&quot;explain&quot;:&quot;At this population the birth and crowding effects cancel, so the population holds steady. It is stable because any small deviation produces growth or decline that pushes the population back toward K.&quot;},{&quot;glyph&quot;:&quot;\\frac{dx}{dt} = ax - bxy&quot;,&quot;meaning&quot;:&quot;Prey equation in the Lotka-Volterra system&quot;,&quot;explain&quot;:&quot;The prey grow exponentially at rate a when alone, and the term b x y removes individuals at a rate proportional to encounters with predators. The encounter term is what couples the two species together.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\frac{dP}{dt} = rP\left(1 - \frac{P}{K}\right)</div>
+        <p data-flip-meaning>Logistic growth with a population cap</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>The factor in parentheses shrinks the growth rate as the population approaches carrying capacity. At P equal to K the brake factor is zero, so growth stops exactly at the cap.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>For the logistic model dP/dt equals 0.2 times P times (1 minus P over 800), at what population is the population growing fastest?</p>
+        <form class="mcq" data-mcq="d" data-right-explain="The product P times (1 minus P over 800) is maximized halfway to carrying capacity, so growth peaks at 400." data-wrong-explain="At 800 the brake factor is zero so growth has stopped, and at 0 there is nobody to reproduce. Half of 800 is 400, the classic midpoint of the logistic S-curve.">
+          <button type="button" data-choice="a">At P equal to 800</button>
+          <button type="button" data-choice="b">At P equal to 0</button>
+          <button type="button" data-choice="c">At P equal to 200</button>
+          <button type="button" data-choice="d">At P equal to 400</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-differential-equations.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Ohm's law and circuit basics — Wuanberri EE</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#c2410c">
+  <meta name="description" content="Wuanberri Electrical Engineering — charge, current, voltage, resistance, and Ohm's law.">
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="electrical-engineering.html">← Back to Electrical Engineering</a>
+      <h1>Ohm's law and circuit basics</h1>
+      <p class="lede">Every circuit — from a flashlight to a motherboard — comes down to three quantities: current flowing, voltage pushing it, and resistance slowing it. Ohm's law ties them together.</p>
+
+      <div class="lesson-card">
+        <h2>Current: charge in motion</h2>
+        <p>Electric <strong>current</strong> is the rate of charge flow past a point, measured in amperes (A). One ampere means one coulomb of charge (about 6.24 × 10¹⁸ electrons) passing per second. Current only flows in a <strong>closed loop</strong> — break the loop with a switch, and the flow stops everywhere in the loop at once.</p>
+        <p>By convention, current arrows point from positive to negative terminal, opposite to the actual electron drift. Circuit analysis always uses this <em>conventional current</em> direction, and it works regardless.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Voltage and resistance</h2>
+        <p><strong>Voltage</strong> is the potential difference between two points, measured in volts (V) — the "push" that drives charge. Voltage is always measured <em>across</em> two points; there is no such thing as the voltage at one point, only relative to another (ground is the chosen zero).</p>
+        <p><strong>Resistance</strong> (ohms, Ω) is how strongly a material opposes current. A resistor's current grows linearly with the voltage across it — the relationship is Ohm's law:</p>
+        <p style="text-align:center"><strong>V = I × R</strong></p>
+        <p>Double the voltage across a fixed resistor and the current doubles. Double the resistance at a fixed voltage and the current halves.</p>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Power: where the energy goes</h2>
+        <p>Circuit elements absorb or deliver <strong>power</strong>, measured in watts (W). For any element:</p>
+        <p style="text-align:center"><strong>P = V × I = I²R = V²/R</strong></p>
+        <p>Passive sign convention: when current enters the positive voltage terminal, the element <em>absorbs</em> power (a resistor heating up); when it exits there, the element <em>delivers</em> power (a battery). Power balances in every circuit — what sources deliver, the rest of the circuit absorbs.</p>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[
+        {"glyph":"V = IR","meaning":"Ohm’s law: voltage across a resistor equals current times resistance.","explain":"Rearrange freely: I = V/R and R = V/I. Only applies to ohmic (linear) resistors. Check units: V in volts, I in amperes, R in ohms."},
+        {"glyph":"P = VI","meaning":"Power absorbed by an element equals voltage across it times current through it.","explain":"Combine with Ohm’s law to get P = I²R = V²/R — three equivalent forms. Use the one whose quantity you actually know."},
+        {"glyph":"Closed loop","meaning":"Current flows only in a complete, unbroken path back to the source.","explain":"An open switch or broken wire stops the current everywhere in that loop instantly — not just at the break. This is why a single blown bulb kills an old-style series string of lights."}
+      ]'>
+        <p class="hint">Flashcard · Unit 1</p>
+        <div class="q" data-flip-glyph>V = IR</div>
+        <p data-flip-meaning>Ohm's law: voltage across a resistor equals current times resistance.</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain></div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>A 12 V battery drives a 240 Ω resistor. How much current flows, and how much power does the resistor dissipate?</p>
+        <form class="mcq" data-mcq="c" data-right-explain="I = V/R = 12/240 = 0.05 A (50 mA). P = VI = 12 × 0.05 = 0.6 W — or P = I²R = 0.05² × 240 = 0.6 W, same answer." data-wrong-explain="Current is I = V/R, not R/V. Then power is P = VI (or I²R or V²/R) — check that the units come out in watts.">
+          <button type="button" data-choice="a">0.5 A and 6 W</button>
+          <button type="button" data-choice="b">20 A and 240 W</button>
+          <button type="button" data-choice="c">0.05 A and 0.6 W</button>
+          <button type="button" data-choice="d">0.05 A and 12 W</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <script src="assets/app.js"></script>
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+</body>
+</html>

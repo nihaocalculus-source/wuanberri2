@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Antiderivatives Unlock the Integral — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="The Fundamental Theorem says the two great ideas of calculus, slopes and areas, are inverse operations." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Antiderivatives Unlock the Integral</h1>
+      <p class="lede">The Fundamental Theorem says the two great ideas of calculus, slopes and areas, are inverse operations.</p>
+
+
+      <div class="lesson-card">
+        <h2>Defining the Integral</h2>
+        <p>The definite integral of f from a to b is the limit of Riemann sums as the slices get infinitely thin. It measures signed area: regions above the axis count positive, regions below count negative. A function can be negative everywhere and still have a perfectly good, negative integral.</p>
+        <span class="math">\int_a^b f(x)\,dx = \lim_{n\to\infty}\sum_{i=1}^{n} f(x_i^*)\,\Delta x</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>FTC Part 1</h2>
+        <p>Define an area-so-far function by integrating f from a fixed point a up to a variable endpoint x. Differentiate that accumulation and you get back f itself. This is the theorem&#39;s first half: integration, run forward, is undone by differentiation.</p>
+        <span class="math">\frac{d}{dx}\int_a^x f(t)\,dt = f(x)</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>FTC Part 2</h2>
+        <p>The second half says you can evaluate a definite integral with any antiderivative F: the answer is F(b) minus F(a), no limits required. For f(x) = x^2 on [0, 2], an antiderivative is x^3/3, so the integral is 8/3 minus 0. What took an infinite sum by hand is now two evaluations.</p>
+        <span class="math">\int_a^b f(x)\,dx = F(b) - F(a)</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\int_a^b f(x)\\,dx = F(b)-F(a)&quot;,&quot;meaning&quot;:&quot;Evaluation form of the Fundamental Theorem&quot;,&quot;explain&quot;:&quot;If F is any antiderivative of f, the definite integral equals the antiderivative evaluated at the endpoints and subtracted. This bypasses computing Riemann sums entirely.&quot;},{&quot;glyph&quot;:&quot;\\frac{d}{dx}\\int_a^x f(t)\\,dt = f(x)&quot;,&quot;meaning&quot;:&quot;Differentiation cancels integration&quot;,&quot;explain&quot;:&quot;The accumulation function grows at exactly the rate f supplies area. Differentiating the integral with a variable upper limit returns the original integrand.&quot;},{&quot;glyph&quot;:&quot;F(b)-F(a)&quot;,&quot;meaning&quot;:&quot;Net change over the interval&quot;,&quot;explain&quot;:&quot;The integral tracks accumulated change, so it answers with net results. Distance traveled uses speed, not velocity, because direction reversals would cancel otherwise.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\int_a^b f(x)\,dx = F(b)-F(a)</div>
+        <p data-flip-meaning>Evaluation form of the Fundamental Theorem</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>If F is any antiderivative of f, the definite integral equals the antiderivative evaluated at the endpoints and subtracted. This bypasses computing Riemann sums entirely.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>A car&#39;s velocity is v(t) = 2t for 0 to 3 seconds. What does the integral of v from 0 to 3 give, and what is its value?</p>
+        <form class="mcq" data-mcq="c" data-right-explain="Integrating velocity gives displacement, and an antiderivative t^2 evaluated from 0 to 3 yields 9. The units work out to meters." data-wrong-explain="Integrating velocity does not give average velocity or acceleration, and 18 comes from forgetting that the antiderivative of 2t is t^2, not 2t^2.">
+          <button type="button" data-choice="a">Average velocity, equal to 3</button>
+          <button type="button" data-choice="b">Acceleration, equal to 9</button>
+          <button type="button" data-choice="c">Displacement, equal to 9</button>
+          <button type="button" data-choice="d">Displacement, equal to 18</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-integrals.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Maximum quiz — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Five-question quiz on Maximum — Wuanberri Calculus." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Maximum quiz</h1>
+      <p class="lede">Five questions on Maximum. Answer all 5 to see your score.</p>
+      <p id="quiz-score" class="meta" style="font-variant-numeric: tabular-nums">0 of 5 answered</p>
+
+      <div class="lesson-card">
+        <h2>Question 1 of 5</h2>
+        <p>Find all critical numbers of f(x) = x^3 - 12x.</p>
+        <form class="mcq" data-mcq="c" data-right-explain="f&#39;(x) = 3x^2 - 12 = 3(x^2 - 4) = 3(x - 2)(x + 2), which is zero at x = 2 and x = -2. Both are in the domain, so both are critical numbers." data-wrong-explain="Factoring x^2 - 4 as (x - 2)^2 or dropping the negative root keeps only x = 2. Solving 3x^2 - 12 = 0 as x^2 = 48 or setting the original function (not its derivative) to zero leads to the wrong pair.">
+          <button type="button" data-choice="a">x = 2 only</button>
+          <button type="button" data-choice="b">x = -2 only</button>
+          <button type="button" data-choice="c">x = 2 and x = -2</button>
+          <button type="button" data-choice="d">x = 0 and x = 4</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 2 of 5</h2>
+        <p>Find the maximum value of f(x) = -2x^2 + 8x + 1.</p>
+        <form class="mcq" data-mcq="a" data-right-explain="f&#39;(x) = -4x + 8 = 0 gives x = 2, and since f&#39;&#39;(x) = -4 &lt; 0 it is a maximum. The maximum value is f(2) = -8 + 16 + 1 = 9." data-wrong-explain="Reporting x = 2 gives the location of the maximum, not its value. Substituting x = 2 into the derivative gives 0, and evaluating f at the wrong point (such as x = 4, from solving -4x + 8 = 0 incorrectly) gives -8.">
+          <button type="button" data-choice="a">9</button>
+          <button type="button" data-choice="b">-8</button>
+          <button type="button" data-choice="c">2</button>
+          <button type="button" data-choice="d">17</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 3 of 5</h2>
+        <p>A gardeners&#39; club has 200 meters of fencing to enclose a rectangular garden along an existing straight wall, using the fence for the other three sides. What is the largest possible area?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="With sides parallel to the wall of length x and two sides of length y, 2y + x = 200, so A = x(200 - x)/2 = 100x - x^2/2. Setting A&#39; = 100 - x = 0 gives x = 100 and y = 50, so the maximum area is 5,000 m^2." data-wrong-explain="10,000 m^2 would be 100 by 100, which ignores that only three sides are fenced; 2,500 m^2 is the maximum when all four sides are fenced (a 50 by 50 square). 1,250 m^2 comes from misassigning which side is doubled in the constraint.">
+          <button type="button" data-choice="a">10,000 m^2</button>
+          <button type="button" data-choice="b">5,000 m^2</button>
+          <button type="button" data-choice="c">2,500 m^2</button>
+          <button type="button" data-choice="d">1,250 m^2</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 4 of 5</h2>
+        <p>Air is pumped into a spherical balloon at a rate of 96*pi cm^3/s. How fast is the radius increasing at the moment the radius is 4 cm? (V = (4/3)pi r^3)</p>
+        <form class="mcq" data-mcq="d" data-right-explain="Differentiating V = (4/3)pi r^3 with respect to time gives dV/dt = 4pi r^2 (dr/dt). Substituting 96pi = 4pi(16)(dr/dt) gives dr/dt = 96/64 = 1.5 cm/s." data-wrong-explain="Forgetting the chain rule and differentiating as 4pi r^2 without dr/dt, then dividing, gives 6 cm/s; using V = 4pi r^2 (area formula) or squaring incorrectly gives 2 cm/s; dividing by 4pi r^3 instead of 4pi r^2 gives 0.375 cm/s.">
+          <button type="button" data-choice="a">2 cm/s</button>
+          <button type="button" data-choice="b">6 cm/s</button>
+          <button type="button" data-choice="c">0.375 cm/s</button>
+          <button type="button" data-choice="d">1.5 cm/s</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Question 5 of 5</h2>
+        <p>For f(x) = x^3 - 3x^2 + 7, use the second derivative test to classify the critical number x = 2.</p>
+        <form class="mcq" data-mcq="a" data-right-explain="f&#39;(x) = 3x^2 - 6x has roots x = 0 and x = 2. Since f&#39;&#39;(x) = 6x - 6 gives f&#39;&#39;(2) = 6 &gt; 0, the graph is concave up there and x = 2 is a local minimum." data-wrong-explain="A positive second derivative means concave up, hence a minimum, so calling f&#39;&#39;(2) = 6 &gt; 0 a maximum reverses the test. The value -6 comes from evaluating f&#39;&#39;(0), and f&#39;&#39;(2) is not 0.">
+          <button type="button" data-choice="a">local minimum, since f&#39;&#39;(2) = 6 &gt; 0</button>
+          <button type="button" data-choice="b">local maximum, since f&#39;&#39;(2) = 6 &gt; 0</button>
+          <button type="button" data-choice="c">local minimum, since f&#39;&#39;(2) = -6 &lt; 0</button>
+          <button type="button" data-choice="d">neither, since f&#39;&#39;(2) = 0</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-ghost" href="calculus.html">Back to all units</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+  <script src="assets/quiz.js"></script>
+</body>
+</html>

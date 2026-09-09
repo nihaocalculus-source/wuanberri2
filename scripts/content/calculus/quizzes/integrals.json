@@ -1,0 +1,37 @@
+[
+  {
+    "prompt": "A particle moves along a line with velocity v(t) = 3t^2 - 12 (in m/s) for 0 \\le t \\le 3. What is the total distance the particle travels?",
+    "choices": ["9 m", "16 m", "23 m", "7 m"],
+    "answerIndex": 2,
+    "rightExplain": "The velocity is negative on (0, 2) and positive on (2, 3), so distance = |\\int_0^2 v\\,dt| + |\\int_2^3 v\\,dt| = |-16| + |7| = 23 m.",
+    "wrongExplain": "9 m is the displacement \\int_0^3 v\\,dt = -9 (in magnitude). Total distance requires integrating |v(t)|, which means taking absolute values on each piece where the sign changes."
+  },
+  {
+    "prompt": "Estimate \\int_1^5 \\frac{1}{x}\\,dx using a right Riemann sum with 4 equal subintervals.",
+    "choices": ["\\frac{77}{60}", "\\frac{25}{12}", "\\ln(5)", "\\frac{5}{4}"],
+    "answerIndex": 0,
+    "rightExplain": "Each subinterval has width 1 and the right endpoints are 2, 3, 4, 5, so the sum is \\frac{1}{2} + \\frac{1}{3} + \\frac{1}{4} + \\frac{1}{5} = \\frac{77}{60}.",
+    "wrongExplain": "\\frac{25}{12} comes from using the left endpoints (1, 2, 3, 4), and \\ln(5) is the exact value of the integral, not the Riemann sum approximation."
+  },
+  {
+    "prompt": "Evaluate \\int_1^3 \\left(2x + \\frac{1}{x}\\right) dx.",
+    "choices": ["8 - \\ln(3)", "8 + \\ln(3)", "9 + \\ln(3)", "10 + \\ln(3)"],
+    "answerIndex": 1,
+    "rightExplain": "An antiderivative is x^2 + \\ln|x|, so the value is (9 + \\ln 3) - (1 + \\ln 1) = 8 + \\ln(3).",
+    "wrongExplain": "9 + \\ln(3) forgets to subtract the antiderivative evaluated at the lower limit x = 1, and 8 - \\ln(3) has a sign error on the logarithm term."
+  },
+  {
+    "prompt": "Find the general antiderivative: \\int \\left(6x^2 - 4x + 5\\right) dx.",
+    "choices": ["2x^3 - 2x^2 + 5 + C", "6x^3 - 2x^2 + 5x + C", "2x^3 + 2x^2 + 5x + C", "2x^3 - 2x^2 + 5x + C"],
+    "answerIndex": 3,
+    "rightExplain": "Integrating term by term raises each power by one and divides by the new exponent: \\int 6x^2 dx = 2x^3, \\int -4x\\,dx = -2x^2, \\int 5\\,dx = 5x, plus a constant C.",
+    "wrongExplain": "Leaving off the +C gives only one particular antiderivative, not the general one, and multiplying 6x^2 by the new exponent instead of dividing gives the wrong coefficient 6x^3."
+  },
+  {
+    "prompt": "Evaluate \\int x e^{x^2}\\,dx.",
+    "choices": ["e^{x^2} + C", "\\frac{1}{2}e^{x^2} + C", "2e^{x^2} + C", "\\frac{1}{2}x^2 e^{x^2} + C"],
+    "answerIndex": 1,
+    "rightExplain": "With u = x^2, du = 2x\\,dx, so x\\,dx = \\frac{1}{2}du and the integral becomes \\frac{1}{2}\\int e^u\\,du = \\frac{1}{2}e^{x^2} + C.",
+    "wrongExplain": "e^{x^2} + C drops the factor of \\frac{1}{2} that comes from du = 2x\\,dx, and \\frac{1}{2}x^2 e^{x^2} + C incorrectly treats the problem as if e^{x^2} could be integrated like a power rule term."
+  }
+]

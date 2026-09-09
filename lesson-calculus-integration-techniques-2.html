@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Identities Rewrite Hard Integrals — Wuanberri Calculus</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Pythagorean identities and a well-chosen triangle turn tangled roots into friendly powers of sine and cosine." />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand">Wuanberri.</a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+        <a href="calculus.html">Calculus</a>
+        <a href="physics.html">Physics</a>
+        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="calculus.html">← Back to Calculus</a>
+      <h1>Identities Rewrite Hard Integrals</h1>
+      <p class="lede">Pythagorean identities and a well-chosen triangle turn tangled roots into friendly powers of sine and cosine.</p>
+
+
+      <div class="lesson-card">
+        <h2>Powers and Identities</h2>
+        <p>Odd powers of sine or cosine yield to substitution: peel off one factor, convert the rest with the Pythagorean identity, and the leftover derivative matches. Even powers need half-angle identities, since cosine of two theta splits a square into a constant plus a single cosine. Strategy, not memorized answers, does the work.</p>
+        <span class="math">\sin^2 x = \frac{1-\cos 2x}{2}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Three Root Forms</h2>
+        <p>Square roots of quadratics invite a substitution based on the Pythagorean identity. For a square root of (a squared minus x squared), set x = a sine theta. For (a squared plus x squared), set x = a tangent theta, and for (x squared minus a squared), use x = a secant theta. Each choice makes the root collapse.</p>
+        <span class="math">\sqrt{a^2 - x^2} = a\cos\theta</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>A Worked Triangle</h2>
+        <p>To integrate 1 over the square root of (4 minus x squared), set x = 2 sine theta so the root becomes 2 cosine theta and dx becomes 2 cosine theta d theta. The integral collapses to theta, and since sine theta is x over 2, the answer is arcsine of (x over 2) plus C. The triangle you draw at the end converts back to x.</p>
+        <span class="math">\int \frac{dx}{\sqrt{4-x^2}} = \arcsin\frac{x}{2} + C</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\sin^2\\theta + \\cos^2\\theta = 1&quot;,&quot;meaning&quot;:&quot;Identity powering all trig substitution&quot;,&quot;explain&quot;:&quot;This identity lets a substitution replace a quadratic expression under a root with a single squared trig factor. Rearrangements produce the tangent and secant forms too.&quot;},{&quot;glyph&quot;:&quot;x = a\\sin\\theta&quot;,&quot;meaning&quot;:&quot;Substitution for a squared minus x squared&quot;,&quot;explain&quot;:&quot;Under this swap, the root of (a squared minus x squared) becomes a cosine theta, removing the radical. Sine theta must be converted back to x afterward.&quot;},{&quot;glyph&quot;:&quot;x = a\\tan\\theta&quot;,&quot;meaning&quot;:&quot;Substitution for a squared plus x squared&quot;,&quot;explain&quot;:&quot;Tangent substitution turns the root of (a squared plus x squared) into a secant theta. It handles sums of squares, the form the sine swap cannot reach.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\sin^2\theta + \cos^2\theta = 1</div>
+        <p data-flip-meaning>Identity powering all trig substitution</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>This identity lets a substitution replace a quadratic expression under a root with a single squared trig factor. Rearrangements produce the tangent and secant forms too.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>Which substitution is appropriate for an integral containing the square root of (9 plus x squared)?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="The plus sign between squares matches the 1 plus tangent squared identity, so x = 3 tan(theta) collapses the root to 3 sec(theta)." data-wrong-explain="Sine fits a difference of squares and secant fits x squared minus a squared, while plain u-substitution leaves the radical intact because du brings an odd x factor.">
+          <button type="button" data-choice="a">x = 3 sin(theta)</button>
+          <button type="button" data-choice="b">x = 3 tan(theta)</button>
+          <button type="button" data-choice="c">x = 3 sec(theta)</button>
+          <button type="button" data-choice="d">u = 9 + x^2 with ordinary u-substitution</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-calculus-integration-techniques.html">Take the unit quiz</a></p>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>

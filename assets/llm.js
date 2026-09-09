@@ -1,7 +1,9 @@
 // Wuanberri — LLM client
 // Bring-your-own key. Calls go direct from the browser to the provider.
 // Storage: localStorage, namespaced under wuanberri:v1.llm.*
-// Supports OpenAI (chat completions) and Anthropic (messages).
+// Supports OpenAI (chat completions), Anthropic (messages), and a local
+// OpenAI-compatible endpoint (e.g. PrivateGPT on http://localhost:8001) —
+// no key needed, everything stays on the user's machine.
 // Falls back to the keyword router if no key is set.
 
 (function (global) {
@@ -70,6 +72,42 @@
     return data.content?.[0]?.text || '(empty response)';
   };
 
+  const getLocalConfig = () => {
+    const url = (Store.getSetting('localEndpoint.url', '') || '').trim().replace(/\/+$/, '');
+    if (!url) return null;
+    return {
+      url,
+      model: (Store.getSetting('localEndpoint.model', '') || '').trim() || 'private-gpt',
+      key: Store.getApiKey('openai-compatible') || '',
+      useContext: !!Store.getSetting('localEndpoint.useContext', false),
+    };
+  };
+
+  const callLocal = async (messages, opts) => {
+    const cfg = getLocalConfig();
+    if (!cfg) throw new Error('No local endpoint URL set.');
+    const body = { model: opts.model || cfg.model, messages, temperature: 0.4, max_tokens: 500 };
+    if (cfg.useContext) body.use_context = true;
+    // URL may be a bare host (http://localhost:8001) or already include /v1
+    // (e.g. https://api.groq.com/openai/v1) — join accordingly.
+    const endpoint = /\/v\d+$/.test(cfg.url)
+      ? cfg.url + '/chat/completions'
+      : cfg.url + '/v1/chat/completions';
+    const headers = { 'Content-Type': 'application/json' };
+    if (cfg.key) headers['Authorization'] = 'Bearer ' + cfg.key;  // only free-cloud tiers need it
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: headers,
+      body: JSON.stringify(body),
+    });
+    if (!res.ok) {
+      const err = await res.text();
+      throw new Error('Local ' + res.status + ': ' + err.slice(0, 200));
+    }
+    const data = await res.json();
+    return data.choices?.[0]?.message?.content || '(empty response)';
+  };
+
   const send = async ({ provider, history, userMessage, context, system }) => {
     const sys = (system || SYSTEM_PROMPT) + (context ? '\n\nCurrent screen: ' + context : '');
     const messages = [
@@ -77,13 +115,16 @@
       ...(history || []),
       { role: 'user', content: userMessage },
     ];
+    if (provider === 'local')     return callLocal(messages, {});
     if (provider === 'anthropic') return callAnthropic(messages, {});
     if (provider === 'openai')    return callOpenAI(messages, {});
     throw new Error('Unknown provider: ' + provider);
   };
 
-  // Pick whichever provider has a key, else null.
+  // Pick whichever provider is available: local endpoint first (free/private),
+  // then whichever key exists.
   const activeProvider = () => {
+    if (getLocalConfig()) return 'local';
     if (Store.hasApiKey('anthropic')) return 'anthropic';
     if (Store.hasApiKey('openai')) return 'openai';
     return null;

@@ -1,0 +1,155 @@
+[
+  {
+    "topic": "The area and distance problem",
+    "title": "Estimating Area with Slices",
+    "lede": "When a quantity changes, slicing it into thin rectangles turns a hard question into arithmetic.",
+    "cards": [
+      {
+        "heading": "The Question",
+        "body": "How much area sits between a curve and the x-axis over an interval? For a constant height it is just length times width, but a curve changes height at every point. The fix is to freeze the curve for a moment, treat that height as constant over a tiny slice, and add the slices up.",
+        "math": "A \\approx \\sum f(x_i^*)\\,\\Delta x"
+      },
+      {
+        "heading": "Riemann Sums",
+        "body": "Cut the interval from a to b into n equal pieces, so each has width Delta x = (b-a)/n. On each piece pick a sample point, draw a rectangle of that height, and add all n rectangles. Left endpoints undershoot an increasing curve and overshoot a decreasing one; more, thinner rectangles shrink the error either way.",
+        "math": "\\Delta x = \\frac{b-a}{n}"
+      },
+      {
+        "heading": "A Worked Slice",
+        "body": "Estimate the area under f(x) = x^2 on [0, 2] using 4 rectangles with right endpoints. Delta x = 0.5 and the sample heights are 0.25, 1, 2.25, and 4, giving a sum of 3.75. The exact answer is 8/3, about 2.67, so the overestimate is already shrinking as rectangles get thinner.",
+        "math": "S_4 = 0.5(0.25 + 1 + 2.25 + 4) = 3.75"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\sum_{i=1}^{n} f(x_i^*)\\,\\Delta x",
+        "meaning": "A Riemann sum approximating area",
+        "explain": "Adds n rectangle areas of width Delta x and heights sampled from the curve. As n grows the sum approaches the exact area under the curve between a and b."
+      },
+      {
+        "glyph": "\\Delta x = \\frac{b-a}{n}",
+        "meaning": "Width of each equal subinterval",
+        "explain": "Dividing the interval length by n gives equal slice widths. Smaller Delta x means thinner rectangles and a tighter approximation of the curved region."
+      },
+      {
+        "glyph": "\\lim_{n\\to\\infty} \\sum f(x_i^*)\\,\\Delta x",
+        "meaning": "The limit that defines the integral",
+        "explain": "Letting the number of rectangles go to infinity while each width goes to zero removes the sampling error. That limit is exactly what the definite integral computes."
+      }
+    ],
+    "mcq": {
+      "prompt": "Using right endpoints to approximate an increasing function with rectangles always produces what kind of estimate?",
+      "choices": [
+        "An underestimate, because the curve rises after each sample point",
+        "An overestimate, because the curve rises after each sample point",
+        "An exact value, since right endpoints capture the trend",
+        "It depends on whether the function is positive"
+      ],
+      "answerIndex": 1,
+      "rightExplain": "On each slice an increasing function is highest at its right edge, so the rectangle covers a little extra area and the sum overshoots.",
+      "wrongExplain": "Left endpoints undershoot increasing curves, and positivity affects the sign of the sum but not whether right endpoints run high on a rising curve."
+    }
+  },
+  {
+    "topic": "The definite integral and the Fundamental Theorem of Calculus",
+    "title": "Antiderivatives Unlock the Integral",
+    "lede": "The Fundamental Theorem says the two great ideas of calculus, slopes and areas, are inverse operations.",
+    "cards": [
+      {
+        "heading": "Defining the Integral",
+        "body": "The definite integral of f from a to b is the limit of Riemann sums as the slices get infinitely thin. It measures signed area: regions above the axis count positive, regions below count negative. A function can be negative everywhere and still have a perfectly good, negative integral.",
+        "math": "\\int_a^b f(x)\\,dx = \\lim_{n\\to\\infty}\\sum_{i=1}^{n} f(x_i^*)\\,\\Delta x"
+      },
+      {
+        "heading": "FTC Part 1",
+        "body": "Define an area-so-far function by integrating f from a fixed point a up to a variable endpoint x. Differentiate that accumulation and you get back f itself. This is the theorem's first half: integration, run forward, is undone by differentiation.",
+        "math": "\\frac{d}{dx}\\int_a^x f(t)\\,dt = f(x)"
+      },
+      {
+        "heading": "FTC Part 2",
+        "body": "The second half says you can evaluate a definite integral with any antiderivative F: the answer is F(b) minus F(a), no limits required. For f(x) = x^2 on [0, 2], an antiderivative is x^3/3, so the integral is 8/3 minus 0. What took an infinite sum by hand is now two evaluations.",
+        "math": "\\int_a^b f(x)\\,dx = F(b) - F(a)"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\int_a^b f(x)\\,dx = F(b)-F(a)",
+        "meaning": "Evaluation form of the Fundamental Theorem",
+        "explain": "If F is any antiderivative of f, the definite integral equals the antiderivative evaluated at the endpoints and subtracted. This bypasses computing Riemann sums entirely."
+      },
+      {
+        "glyph": "\\frac{d}{dx}\\int_a^x f(t)\\,dt = f(x)",
+        "meaning": "Differentiation cancels integration",
+        "explain": "The accumulation function grows at exactly the rate f supplies area. Differentiating the integral with a variable upper limit returns the original integrand."
+      },
+      {
+        "glyph": "F(b)-F(a)",
+        "meaning": "Net change over the interval",
+        "explain": "The integral tracks accumulated change, so it answers with net results. Distance traveled uses speed, not velocity, because direction reversals would cancel otherwise."
+      }
+    ],
+    "mcq": {
+      "prompt": "A car's velocity is v(t) = 2t for 0 to 3 seconds. What does the integral of v from 0 to 3 give, and what is its value?",
+      "choices": [
+        "Average velocity, equal to 3",
+        "Acceleration, equal to 9",
+        "Displacement, equal to 9",
+        "Displacement, equal to 18"
+      ],
+      "answerIndex": 2,
+      "rightExplain": "Integrating velocity gives displacement, and an antiderivative t^2 evaluated from 0 to 3 yields 9. The units work out to meters.",
+      "wrongExplain": "Integrating velocity does not give average velocity or acceleration, and 18 comes from forgetting that the antiderivative of 2t is t^2, not 2t^2."
+    }
+  },
+  {
+    "topic": "Indefinite integrals and u-substitution",
+    "title": "Reversing the Chain Rule",
+    "lede": "An indefinite integral is the family of all antiderivatives, and u-substitution is the chain rule read backwards.",
+    "cards": [
+      {
+        "heading": "Antiderivatives",
+        "body": "The indefinite integral of f is any function whose derivative is f, written with a C because derivatives cannot see constants. If F works, then F plus any constant also works, so the answer is a family, not a single function. Basic rules mirror differentiation: powers, exponentials, and sines each reverse cleanly.",
+        "math": "\\int x^n\\,dx = \\frac{x^{n+1}}{n+1} + C,\\quad n \\neq -1"
+      },
+      {
+        "heading": "The Substitution Idea",
+        "body": "When an integrand contains a function and (a multiple of) its derivative, the chain rule is hiding inside. Pick u to be the inner function so that du covers the leftover factor. The integral then collapses to a basic form in u, you integrate, and substitute back at the end.",
+        "math": "\\int f(g(x))g'(x)\\,dx = \\int f(u)\\,du"
+      },
+      {
+        "heading": "A Worked Swap",
+        "body": "Take the integral of x times the square root of (1 + x^2). Let u = 1 + x^2, so du = 2x dx and the x dx becomes du/2. The integral is now one half the integral of u to the one half power, which gives u to the three halves over three, so the final answer is (1 + x^2) to the three halves over 3 plus C.",
+        "math": "\\int x\\sqrt{1+x^2}\\,dx = \\frac{(1+x^2)^{3/2}}{3} + C"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "+C",
+        "meaning": "Constant of integration",
+        "explain": "Every antiderivative is known only up to a constant, since the derivative of a constant is zero. Omitting C makes an indefinite integral answer technically wrong."
+      },
+      {
+        "glyph": "du = g'(x)\\,dx",
+        "meaning": "Differential used to swap variables",
+        "explain": "Choosing u triggers a matching replacement for dx. The substituted integral must contain no stray x terms, or the choice of u needs adjusting."
+      },
+      {
+        "glyph": "\\int \\frac{1}{x}\\,dx = \\ln|x| + C",
+        "meaning": "The power rule's one exception",
+        "explain": "Every power except negative one integrates by the power rule. The exponent negative one lands on the natural logarithm instead, and the absolute value keeps the domain safe."
+      }
+    ],
+    "mcq": {
+      "prompt": "To evaluate the integral of 2x times e to the (x squared), what substitution fits best?",
+      "choices": [
+        "u = 2x, since the coefficient is out front",
+        "u = e^x, to simplify the exponential",
+        "u = x^2, since du = 2x dx matches the leftover factor",
+        "No substitution is needed; integrate directly by parts"
+      ],
+      "answerIndex": 2,
+      "rightExplain": "With u = x^2, du = 2x dx absorbs the outside factor exactly, leaving the elementary integral of e to the u.",
+      "wrongExplain": "Taking u = 2x leaves e to the x squared still tangled in x, and integration by parts is unnecessary when a clean du = 2x dx is already sitting there."
+    }
+  }
+]
