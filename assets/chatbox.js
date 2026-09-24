@@ -60,7 +60,10 @@
   const setStatus = (panel) => {
     const status = panel.querySelector('[data-chatbox-status]');
     const provider = LLM.activeProvider();
-    if (provider) {
+    if (provider === 'server') {
+      status.style.cssText = 'font-size:11px;padding:8px 16px;border-bottom:1px solid var(--line);background:#f4faf5;color:#2f7a3e';
+      status.innerHTML = 'Wuanberri AI — ask away. <a href="settings.html" style="color:#2f7a3e;text-decoration:underline">Use your own key</a>';
+    } else if (provider) {
       status.style.cssText = 'font-size:11px;padding:8px 16px;border-bottom:1px solid var(--line);background:#f4faf5;color:#2f7a3e';
       status.innerHTML = `LLM mode: ${provider}. <a href="settings.html" style="color:#2f7a3e;text-decoration:underline">Settings</a>`;
     } else {
@@ -89,6 +92,39 @@
     body.scrollTop = body.scrollHeight;
   };
 
+  // ---------- Canned keyword reply (no LLM backend answered) ----------
+
+  const keywordReply = (text) => {
+    const lower = text.toLowerCase();
+    if (/deriv/.test(lower)) {
+      return 'A <strong>derivative</strong> measures how a function changes. <span class="math">f\'(x) = lim<sub>h→0</sub> (f(x+h) − f(x)) / h</span>.';
+    } else if (/integr|antideriv/.test(lower)) {
+      return 'An <strong>integral</strong> accumulates change. <span class="math">∫<sub>a</sub><sup>b</sup> f(x) dx</span> = signed area under f.';
+    } else if (/limit/.test(lower)) {
+      return 'A <strong>limit</strong> asks: what does f(x) approach as x approaches something?';
+    } else if (/newton|force|kinematic/.test(lower)) {
+      return '<strong>Newton\'s second law:</strong> <span class="math">F = ma</span>.';
+    } else if (/plan|study/.test(lower)) {
+      return 'A 4-week starter: 1) Limits, 2) Derivatives, 3) Applications, 4) Integrals.';
+    } else if (/quiz|practice/.test(lower)) {
+      return 'Open the dashboard and click "Take a pop quiz" — I\'ll generate 5 questions from your weakest topics.';
+    } else if (/hello|hi|hey/.test(lower)) {
+      return 'Hey! What are you working on?';
+    }
+    return 'The study coach is offline right now. Meanwhile, try <em>explain derivatives</em> / <em>quiz me</em> / <em>make a plan</em>.';
+  };
+
+  const showBotReply = (body, reply, text) => {
+    const b = document.createElement('div');
+    b.className = 'bubble bot';
+    b.innerHTML = reply;
+    body.appendChild(b);
+    body.scrollTop = body.scrollHeight;
+    const h = Store.get(HISTORY_KEY, []);
+    h.push({ role: 'assistant', content: reply });
+    Store.set(HISTORY_KEY, h);
+  };
+
   // ---------- Send a message ----------
 
   const send = async (panel, text) => {
@@ -113,35 +149,7 @@
     if (!provider) {
       // Local keyword mode — give a short canned reply so the chatbox
       // doesn't go silent when no key is configured.
-      setTimeout(() => {
-        const lower = text.toLowerCase();
-        let reply;
-        if (/deriv/.test(lower)) {
-          reply = 'A <strong>derivative</strong> measures how a function changes. <span class="math">f\'(x) = lim<sub>h→0</sub> (f(x+h) − f(x)) / h</span>.';
-        } else if (/integr|antideriv/.test(lower)) {
-          reply = 'An <strong>integral</strong> accumulates change. <span class="math">∫<sub>a</sub><sup>b</sup> f(x) dx</span> = signed area under f.';
-        } else if (/limit/.test(lower)) {
-          reply = 'A <strong>limit</strong> asks: what does f(x) approach as x approaches something?';
-        } else if (/newton|force|kinematic/.test(lower)) {
-          reply = '<strong>Newton\'s second law:</strong> <span class="math">F = ma</span>.';
-        } else if (/plan|study/.test(lower)) {
-          reply = 'A 4-week starter: 1) Limits, 2) Derivatives, 3) Applications, 4) Integrals.';
-        } else if (/quiz|practice/.test(lower)) {
-          reply = 'Open the dashboard and click "Take a pop quiz" — I\'ll generate 5 questions from your weakest topics.';
-        } else if (/hello|hi|hey/.test(lower)) {
-          reply = 'Hey! What are you working on?';
-        } else {
-          reply = 'I\'m in keyword mode (no LLM key set). Add one in Settings, or try <em>explain derivatives</em> / <em>quiz me</em> / <em>make a plan</em>.';
-        }
-        const b = document.createElement('div');
-        b.className = 'bubble bot';
-        b.innerHTML = reply;
-        body.appendChild(b);
-        body.scrollTop = body.scrollHeight;
-        const h = Store.get(HISTORY_KEY, []);
-        h.push({ role: 'assistant', content: reply });
-        Store.set(HISTORY_KEY, h);
-      }, 200);
+      setTimeout(() => showBotReply(body, keywordReply(text), text), 200);
       return;
     }
 
@@ -162,7 +170,10 @@
       Store.set(HISTORY_KEY, history);
       typing.innerHTML = reply;
     } catch (e) {
-      typing.innerHTML = '(LLM call failed: ' + (e && e.message ? e.message : 'unknown error') + ')';
+      // Site brain down and no fallback answered — canned keyword reply
+      // beats a raw error string in the visitor's face.
+      typing.remove();
+      showBotReply(body, keywordReply(text), text);
     }
     body.scrollTop = body.scrollHeight;
   };

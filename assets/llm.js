@@ -1,10 +1,10 @@
 // Wuanberri — LLM client
-// Bring-your-own key. Calls go direct from the browser to the provider.
-// Storage: localStorage, namespaced under wuanberri:v1.llm.*
-// Supports OpenAI (chat completions), Anthropic (messages), and a local
-// OpenAI-compatible endpoint (e.g. PrivateGPT on http://localhost:8001) —
-// no key needed, everything stays on the user's machine.
-// Falls back to the keyword router if no key is set.
+// Default: the site brain at /api/chat (serverless, key lives server-side,
+// works for every visitor). Also supports bring-your-own-key: OpenAI
+// (chat completions), Anthropic (messages), and a local OpenAI-compatible
+// endpoint (e.g. PrivateGPT on http://localhost:8001) — no key needed,
+// everything stays on the user's machine. Falls back to the keyword router
+// if no backend answers. Storage: localStorage, wuanberri:v1.llm.*
 
 (function (global) {
   'use strict';
@@ -108,6 +108,50 @@
     return data.choices?.[0]?.message?.content || '(empty response)';
   };
 
+  // ---------- Site brain (serverless /api/chat, key stays server-side) ----------
+
+  const callServer = async (messages, opts) => {
+    const conv = messages.filter(m => m.role !== 'system');
+    const res = await fetch('/api/chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        messages: conv,
+        system: opts.system || '',   // custom prompts (e.g. JSON generators) pass through
+        context: opts.context || '',
+      }),
+    });
+    if (!res.ok) {
+      const err = await res.text();
+      const e = new Error('Wuanberri AI ' + res.status + ': ' + err.slice(0, 200));
+      e.status = res.status;
+      throw e;
+    }
+    const data = await res.json();
+    return data.reply || '(empty response)';
+  };
+
+  const ownProvider = () => {
+    if (getLocalConfig()) return 'local';
+    if (Store.hasApiKey('anthropic')) return 'anthropic';
+    if (Store.hasApiKey('openai')) return 'openai';
+    return null;
+  };
+
+  // Site brain first; if it is down or not configured, fall back to the
+  // visitor's own setup before giving up.
+  const callServerWithFallback = async (messages, opts) => {
+    try {
+      return await callServer(messages, opts);
+    } catch (e) {
+      const own = ownProvider();
+      if (own === 'local') return callLocal(messages, opts);
+      if (own === 'anthropic') return callAnthropic(messages, opts);
+      if (own === 'openai') return callOpenAI(messages, opts);
+      throw e;
+    }
+  };
+
   const send = async ({ provider, history, userMessage, context, system }) => {
     const sys = (system || SYSTEM_PROMPT) + (context ? '\n\nCurrent screen: ' + context : '');
     const messages = [
@@ -115,6 +159,7 @@
       ...(history || []),
       { role: 'user', content: userMessage },
     ];
+    if (provider === 'server')     return callServerWithFallback(messages, { context, system });
     if (provider === 'local')     return callLocal(messages, {});
     if (provider === 'anthropic') return callAnthropic(messages, {});
     if (provider === 'openai')    return callOpenAI(messages, {});
@@ -122,12 +167,13 @@
   };
 
   // Pick whichever provider is available: local endpoint first (free/private),
-  // then whichever key exists.
+  // then whichever key exists, then the site brain (works for every visitor,
+  // no setup needed).
   const activeProvider = () => {
     if (getLocalConfig()) return 'local';
     if (Store.hasApiKey('anthropic')) return 'anthropic';
     if (Store.hasApiKey('openai')) return 'openai';
-    return null;
+    return 'server';
   };
 
   global.LLM = { send, activeProvider };
