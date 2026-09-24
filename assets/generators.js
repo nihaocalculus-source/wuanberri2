@@ -37,6 +37,11 @@ Return ONLY the JSON.`;
     return JSON.parse(s);
   };
 
+  // Random per-call seed injected into every generation prompt. Without it
+  // the model regenerates the same textbook items run after run — users saw
+  // the identical quiz twice in a row.
+  const variationSeed = () => `Variation seed: ${Date.now().toString(36)}-${Math.floor(Math.random() * 1e9).toString(36)}. Vary the scenarios, numbers, names, and contexts — avoid the most common textbook examples.`;
+
   // ---------- The five generators ----------
 
   const generateDeck = async ({ topic, count = 8, difficulty = 'medium' }) => {
@@ -56,7 +61,7 @@ Return ONLY the JSON.`;
     return callJSON(
       LLM.activeProvider(),
       buildSystem('flashcard deck', schema),
-      `Generate a deck of exactly ${count} flashcards on the topic: "${topic}". Difficulty: ${difficulty}. Mix definitions, formulas, and applied questions.`
+      `Generate a deck of exactly ${count} flashcards on the topic: "${topic}". Difficulty: ${difficulty}. Mix definitions, formulas, and applied questions. ${variationSeed()}`
     );
   };
 
@@ -77,7 +82,7 @@ Return ONLY the JSON.`;
     return callJSON(
       LLM.activeProvider(),
       buildSystem('quick practice set', schema),
-      `Generate exactly ${count} multiple-choice questions on "${topic}". Difficulty: ${difficulty}. Each must have exactly 4 choices and exactly one correct answer (answerIndex 0-3).`
+      `Generate exactly ${count} multiple-choice questions on "${topic}". Difficulty: ${difficulty}. Each must have exactly 4 choices and exactly one correct answer (answerIndex 0-3). ${variationSeed()}`
     );
   };
 
@@ -102,7 +107,7 @@ Return ONLY the JSON.`;
     return callJSON(
       LLM.activeProvider(),
       buildSystem('multi-step workout', schema),
-      `Generate a multi-step workout of exactly ${parts} parts on "${topic}". Difficulty: ${difficulty}. Each part must be solvable from the previous and have a numeric or short symbolic answer. Tolerance is a small number (e.g. 0.01 to 0.5).`
+      `Generate a multi-step workout of exactly ${parts} parts on "${topic}". Difficulty: ${difficulty}. Each part must be solvable from the previous and have a numeric or short symbolic answer. Tolerance is a small number (e.g. 0.01 to 0.5). ${variationSeed()}`
     );
   };
 
@@ -126,7 +131,7 @@ Return ONLY the JSON.`;
     return callJSON(
       LLM.activeProvider(),
       buildSystem('study plan', schema),
-      `Generate a ${weeks}-week study plan for: "${goal}". Student level: ${level}. Available time: ${hoursPerWeek} hours per week. Each week should have 3-5 daily tasks with realistic minutes. Include 2-3 weekly milestones.`
+      `Generate a ${weeks}-week study plan for: "${goal}". Student level: ${level}. Available time: ${hoursPerWeek} hours per week. Each week should have 3-5 daily tasks with realistic minutes. Include 2-3 weekly milestones. ${variationSeed()}`
     );
   };
 
@@ -152,7 +157,7 @@ Return ONLY the JSON.`;
     return callJSON(
       LLM.activeProvider(),
       buildSystem('worked example', schema),
-      `Generate a ${kindPrompt} on the topic: "${topic}". Use LaTeX for math. The steps array should have 3-6 entries.`
+      `Generate a ${kindPrompt} on the topic: "${topic}". Use LaTeX for math. The steps array should have 3-6 entries. ${variationSeed()}`
     );
   };
 
@@ -179,7 +184,7 @@ Return ONLY the JSON.`;
     return callJSON(
       LLM.activeProvider(),
       buildSystem('pop quiz', schema),
-      `Generate a pop quiz of exactly ${count} multiple-choice questions (4 choices each) covering these subjects: ${topicList}. Mix ${difficulty} difficulty. Each question tests a different concept. The first choice must be the correct answer in at least 2 of the 5 questions so users can't just always click "A". Return STRICT JSON only.`
+      `Generate a pop quiz of exactly ${count} multiple-choice questions (4 choices each) covering these subjects: ${topicList}. Mix ${difficulty} difficulty. Each question tests a different concept. The first choice must be the correct answer in at least 2 of the 5 questions so users can't just always click "A". ${variationSeed()} Return STRICT JSON only.`
     );
   };
 
