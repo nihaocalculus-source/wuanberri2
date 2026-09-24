@@ -232,12 +232,14 @@
   </footer>
 
   <script src="assets/store.js"></script>
+  <script src="assets/llm.js"></script>
   <script src="assets/app.js"></script>
   <script>
     (function () {
       const parts = document.querySelectorAll('.part');
       const sideBody = document.getElementById('sideBody');
       const sideForm = document.getElementById('sideForm');
+      const workoutHistory = [];
 
       const addSide = (text) => {
         const p = document.createElement('p');
@@ -306,13 +308,41 @@
         return "Good question. Try clicking the Hint button — or take a guess and I'll tell you how close you are.";
       };
 
-      sideForm.addEventListener('submit', (e) => {
+      sideForm.addEventListener('submit', async (e) => {
         e.preventDefault();
         const msg = sideForm.querySelector('input').value;
         if (!msg.trim()) return;
+        if (sideForm.busy) return;
+        sideForm.busy = true;
         addSide(`<em>You:</em> ${msg}`);
         sideForm.querySelector('input').value = '';
-        setTimeout(() => addSide(reply(msg)), 400);
+
+        // LLM mode: real answers grounded in the current workout step.
+        if (window.LLM && LLM.activeProvider()) {
+          const activePart = document.querySelector('.part.active h3');
+          addSide('<em>Coach:</em> thinking…');
+          const pending = sideBody.lastElementChild;
+          try {
+            const reply = await LLM.send({
+              provider: LLM.activeProvider(),
+              userMessage: msg,
+              context: 'Workout Coach. The student is working a multi-step physics workout. '
+                + (activePart ? 'Current step: "' + activePart.textContent.trim() + '". ' : '')
+                + 'Answer the question directly first, then one guiding follow-up. Be concise.',
+              history: workoutHistory,
+            });
+            workoutHistory.push({ role: 'user', content: msg });
+            workoutHistory.push({ role: 'assistant', content: reply });
+            pending.remove();
+            addSide('<em>Coach:</em> ' + reply);
+          } catch (err) {
+            pending.remove();
+            addSide('<em>Coach:</em> ' + reply(msg));
+          }
+          sideForm.busy = false;
+        } else {
+          setTimeout(() => { addSide(reply(msg)); sideForm.busy = false; }, 400);
+        }
       });
     })();
   </script>

@@ -207,30 +207,47 @@
   }
 
   // ---------- Lesson page: flashcard + MCQ ----------
+  // Each lesson card is parsed and bound independently: a malformed
+  // data-lesson-flip attribute on one card must not stop the MCQ handler
+  // below (users saw "Check your understanding" go dead across lesson
+  // pages because of exactly that coupling).
   document.querySelectorAll('[data-lesson-flip]').forEach((card) => {
-    const reveal = card.querySelector('[data-flip-reveal]');
-    const toggle = card.querySelector('[data-flip-toggle]');
-    const next = card.querySelector('[data-flip-next]');
-    const glyph = card.querySelector('[data-flip-glyph]');
-    const meaning = card.querySelector('[data-flip-meaning]');
-    const explain = card.querySelector('[data-flip-explain]');
+    try {
+      const reveal = card.querySelector('[data-flip-reveal]');
+      const toggle = card.querySelector('[data-flip-toggle]');
+      const next = card.querySelector('[data-flip-next]');
+      const glyph = card.querySelector('[data-flip-glyph]');
+      const meaning = card.querySelector('[data-flip-meaning]');
+      const explain = card.querySelector('[data-flip-explain]');
 
-    const deck = JSON.parse(card.getAttribute('data-lesson-flip'));
-    let i = 0;
-    const render = () => {
-      const c = deck[i];
-      glyph.textContent = c.glyph;
-      meaning.textContent = c.meaning;
-      explain.innerHTML = c.explain;
-      reveal.classList.remove('show');
-      toggle.textContent = 'Show explanation';
-    };
-    render();
-    toggle.addEventListener('click', () => {
-      reveal.classList.toggle('show');
-      toggle.textContent = reveal.classList.contains('show') ? 'Hide explanation' : 'Show explanation';
-    });
-    next.addEventListener('click', () => { i = (i + 1) % deck.length; render(); });
+      let deck;
+      try {
+        deck = JSON.parse(card.getAttribute('data-lesson-flip'));
+      } catch (err) {
+        console.warn('Wuanberri: bad flashcard data:', err.message);
+        return;
+      }
+      if (!Array.isArray(deck) || !deck.length) return;
+      if (!glyph || !meaning || !explain || !reveal || !toggle || !next) return;
+
+      let i = 0;
+      const render = () => {
+        const c = deck[i];
+        glyph.textContent = c.glyph;
+        meaning.textContent = c.meaning;
+        explain.innerHTML = c.explain;
+        reveal.classList.remove('show');
+        toggle.textContent = 'Show explanation';
+      };
+      render();
+      toggle.addEventListener('click', () => {
+        reveal.classList.toggle('show');
+        toggle.textContent = reveal.classList.contains('show') ? 'Hide explanation' : 'Show explanation';
+      });
+      next.addEventListener('click', () => { i = (i + 1) % deck.length; render(); });
+    } catch (err) {
+      console.warn('Wuanberri: flashcard failed to bind:', err);
+    }
   });
 
   document.querySelectorAll('[data-mcq]').forEach((form) => {

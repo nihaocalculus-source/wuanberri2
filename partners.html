@@ -319,7 +319,49 @@
         document.querySelector('.chat-large .body').parentNode.insertBefore(sub, document.querySelector('.chat-large .body'));
       }
 
+      // Anti-repeat: keyword mode gives canned replies, and returning the
+      // exact same bubble on every prompt click reads as "looping". Track
+      // the last reply per partner; when it would repeat, rotate in a
+      // persona-appropriate follow-up so consecutive replies always differ.
+      const lastReply = {};
+      const angles = {
+        ada: [
+          "Let's try a second example with different numbers — same rule, different clothes. Give me one you pick.",
+          "Quick sanity check: differentiate your last answer again — do you land back where you started?",
+          "Switching gears: tell me the rule in words first, then we'll do the symbols.",
+        ],
+        isaac: [
+          "Different picture this time: keep the same setup but change one number — what changes in the physics?",
+          "Let's flip it: if the answer came out twice as large, what would that say about the setup?",
+          "Try explaining it to me in one sentence, like I'm the one who's stuck.",
+        ],
+        noor: [
+          "Let's take a different route: start from the answer's side and work backward. What must be true at the end?",
+          "Rate your confidence 1-10 and tell me why it isn't 10.",
+          "New angle: what do you already know that's <em>adjacent</em> to this problem?",
+        ],
+        kofi: [
+          "Different drill, same intensity: give me one problem you KNOW you'd fail right now. We start there.",
+          "Time check. How long did that take? Half it next round.",
+          "New round: I pick the topic, you pick the pace. Ready?",
+        ],
+      };
+      const angleIdx = {};
+
       const match = (msg, partner) => {
+        const reply = matchRaw(msg, partner);
+        if (reply === lastReply[partner]) {
+          const pool = angles[partner] || [];
+          const pick = pool[angleIdx[partner] % pool.length];
+          angleIdx[partner] = (angleIdx[partner] || 0) + 1;
+          lastReply[partner] = pick;
+          return pick;
+        }
+        lastReply[partner] = reply;
+        return reply;
+      };
+
+      const matchRaw = (msg, partner) => {
         const m = msg.toLowerCase();
         const r = responses[partner];
         if (partner === 'ada') {
@@ -367,6 +409,11 @@
 
       const send = async (text) => {
         if (!text.trim()) return;
+        // Guard against double-sends (chip spam / double-click): one
+        // in-flight exchange at a time, so one prompt click can't queue
+        // two identical exchanges.
+        if (send.busy) return;
+        send.busy = true;
         addBubble(text, 'user');
         input.value = '';
         const typing = showTyping();
@@ -387,11 +434,14 @@
             typing.remove();
             addBubble('(LLM call failed: ' + e.message + ' — falling back to keyword router.)', 'bot');
             addBubble(match(text, current), 'bot');
+          } finally {
+            send.busy = false;
           }
         } else {
           setTimeout(() => {
             typing.remove();
             addBubble(match(text, current), 'bot');
+            send.busy = false;
           }, 600);
         }
       };
@@ -413,9 +463,6 @@
       list.querySelectorAll('.partner-card').forEach(c => c.addEventListener('click', () => switchPartner(c.dataset.pid)));
       chipsRow.querySelectorAll('[data-chip]').forEach(c => c.addEventListener('click', () => send(c.textContent)));
       form.addEventListener('submit', (e) => { e.preventDefault(); send(input.value); });
-
-      // initial chips wired
-      chipsRow.querySelectorAll('[data-chip]').forEach(c => c.addEventListener('click', () => send(c.textContent)));
     })();
   </script>
 </body>
