@@ -925,7 +925,7 @@ html { scroll-behavior: smooth; }
 }
 .dd-col a { display: block; font-size: 14px; color: var(--ink); padding: 3px 0; }
 .dd-col a:hover { color: var(--accent); }
-.brand-img img { height: 40px; width: auto; display: block; }
+.brand-img img { height: 34px; width: auto; display: block; }
 .brand-img { display: inline-flex; align-items: center; }
 @media (max-width: 720px) {
   .nav-dd-panel {
