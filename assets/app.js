@@ -364,3 +364,19 @@
     }
   }
 })();
+
+// ---------- Subjects dropdown toggle (tap on touch, hover on desktop) ----------
+const navDD = document.querySelector(".nav-dd");
+if (navDD) {
+  const ddBtn = navDD.querySelector(".nav-dd-btn");
+  ddBtn.addEventListener("click", () => {
+    const open = navDD.classList.toggle("open");
+    ddBtn.setAttribute("aria-expanded", String(open));
+  });
+  document.addEventListener("click", (e) => {
+    if (!navDD.contains(e.target)) {
+      navDD.classList.remove("open");
+      ddBtn.setAttribute("aria-expanded", "false");
+    }
+  });
+}
