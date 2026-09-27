@@ -925,8 +925,12 @@ html { scroll-behavior: smooth; }
 }
 .dd-col a { display: block; font-size: 14px; color: var(--ink); padding: 3px 0; }
 .dd-col a:hover { color: var(--accent); }
-.brand-img img { height: 34px; width: auto; display: block; }
-.brand-img { display: inline-flex; align-items: center; }
+.brand-img img { height: 30px; width: auto; display: block; }
+.brand-img { display: inline-flex; flex-direction: column; align-items: center; gap: 2px; }
+.brand-img .brand-word {
+  font-family: var(--font-display); font-size: 13px; font-weight: 700;
+  color: var(--ink); line-height: 1; letter-spacing: .01em;
+}
 @media (max-width: 720px) {
   .nav-dd-panel {
     position: static; transform: none; display: none; grid-template-columns: 1fr;
