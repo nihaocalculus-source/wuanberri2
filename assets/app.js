@@ -340,11 +340,12 @@
     if (!isExit && !isSettings) {
       const user = (window.Store && Store.getUser && Store.getUser()) || null;
       if (user) {
-        cta.textContent = `Sign out · ${user.name.split(' ')[0]}`;
+        cta.textContent = `Sign out · ${(user.name || user.email || 'you').split(' ')[0]}`;
+        cta.setAttribute('title', user.email ? `Signed in as ${user.email}` : 'Signed in');
         cta.setAttribute('href', '#');
         cta.addEventListener('click', (e) => {
           e.preventDefault();
-          if (confirm('Sign out? Your local progress will be cleared.')) {
+          if (confirm(`Sign out${user.email ? ' of ' + user.email : ''}? Your progress stays saved to this account on this device.`)) {
             Store.signOut();
             window.location.href = 'index.html';
           }

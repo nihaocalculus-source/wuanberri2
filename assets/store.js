@@ -1,11 +1,18 @@
 // Wuanberri — state store
-// Thin localStorage wrapper. One key, JSON blob, namespaced getters/setters.
+// Thin localStorage wrapper with one JSON blob PER ACCOUNT, so signing in with a
+// different Google account on the same browser gives a clean, separate profile
+// (placement, streak, reviews, settings) instead of sharing one blob.
+//   wuanberri:session   -> the signed-in user ({id, name, email, ...})
+//   wuanberri:u:<uid>   -> that user's data
+//   wuanberri:v1        -> guest bucket (signed-out) + pre-accounts legacy data
 // Falls back to an in-memory object if localStorage is unavailable (private mode, etc.).
 
 (function (global) {
   'use strict';
 
-  const KEY = 'wuanberri:v1';
+  const GUEST_KEY = 'wuanberri:v1';
+  const SESSION_KEY = 'wuanberri:session';
+  const USER_PREFIX = 'wuanberri:u:';
 
   const memory = {};
   let hasLS = false;
@@ -15,22 +22,57 @@
     hasLS = true;
   } catch (e) { hasLS = false; }
 
-  const read = () => {
+  const rawRead = (key) => {
     if (hasLS) {
-      try { return JSON.parse(localStorage.getItem(KEY) || '{}'); }
-      catch (e) { return {}; }
+      try { return JSON.parse(localStorage.getItem(key) || 'null'); }
+      catch (e) { return null; }
     }
-    return memory._data || {};
+    return memory[key] || null;
   };
-  const write = (data) => {
+  const rawWrite = (key, data) => {
     if (hasLS) {
-      try { localStorage.setItem(KEY, JSON.stringify(data)); return; }
-      catch (e) { memory._data = data; return; }
+      try { localStorage.setItem(key, JSON.stringify(data)); return; }
+      catch (e) { /* fall through to memory */ }
     }
-    memory._data = data;
+    memory[key] = data;
+  };
+  const rawRemove = (key) => {
+    if (hasLS) { try { localStorage.removeItem(key); } catch (e) {} }
+    delete memory[key];
   };
 
+  // The signed-in user lives in its own session record.
+  const readSession = () => {
+    const u = rawRead(SESSION_KEY);
+    return (u && typeof u === 'object' && u.id) ? u : null;
+  };
+
+  // One-time move of the old shared blob (user + data in one key) into the
+  // per-account layout. Only the account that owned the old blob inherits it.
+  (function migrate() {
+    const legacy = rawRead(GUEST_KEY);
+    if (!legacy || !legacy.user) return;
+    const { user, ...rest } = legacy;
+    if (user && user.id) {
+      if (!readSession()) rawWrite(SESSION_KEY, user);
+      if (!rawRead(USER_PREFIX + user.id)) rawWrite(USER_PREFIX + user.id, rest);
+      rawWrite(GUEST_KEY, {});
+    } else {
+      // Pre-Google demo accounts had no id. Drop the dead login but keep the
+      // progress as guest data, so nothing a student earned is thrown away.
+      rawWrite(GUEST_KEY, rest);
+    }
+  })();
+
+  const activeKey = () => {
+    const u = readSession();
+    return u ? USER_PREFIX + u.id : GUEST_KEY;
+  };
+  const read = () => rawRead(activeKey()) || {};
+  const write = (data) => rawWrite(activeKey(), data);
+
   const get = (path, fallback) => {
+    if (path === 'user') { const u = readSession(); return u === null ? fallback : u; }
     const data = read();
     const parts = path.split('.');
     let cur = data;
@@ -42,6 +84,7 @@
   };
 
   const set = (path, value) => {
+    if (path === 'user') { if (value && value.id) rawWrite(SESSION_KEY, value); else rawRemove(SESSION_KEY); return; }
     const data = read();
     const parts = path.split('.');
     let cur = data;
@@ -54,6 +97,7 @@
   };
 
   const del = (path) => {
+    if (path === 'user') { rawRemove(SESSION_KEY); return; }
     const data = read();
     const parts = path.split('.');
     let cur = data;
@@ -65,17 +109,26 @@
     write(data);
   };
 
-  const clear = () => { if (hasLS) localStorage.removeItem(KEY); memory._data = {}; };
+  // Clears the active bucket only (the current account's data, or the guest bucket).
+  const clear = () => { rawRemove(activeKey()); };
 
   // ---------- Domain helpers ----------
 
   const today = () => new Date().toISOString().slice(0, 10);
 
   // Auth
-  const isAuthed = () => !!get('user');
-  const getUser = () => get('user');
-  const signIn = (user) => set('user', user);  // {name, email, joined}
-  const signOut = () => del('user');
+  const isAuthed = () => !!readSession();
+  const getUser = () => readSession();
+  // {id, name, email, joined}. Called on every page load by auth-firebase.js,
+  // so skip the write when nothing changed.
+  const signIn = (user) => {
+    if (!user || !user.id) return;
+    const cur = readSession();
+    if (cur && JSON.stringify(cur) === JSON.stringify(user)) return;
+    rawWrite(SESSION_KEY, user);
+  };
+  // Ends the session; the account's data stays saved under its own key.
+  const signOut = () => rawRemove(SESSION_KEY);
 
   // Placement / profile
   const savePlacement = (result) => {
