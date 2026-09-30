@@ -31,6 +31,10 @@
       // It's a tiny file so we just queue it; the script order is
       // preserved by synchronous-append of the script tag.
       load('assets/auth-supabase.js');
+      // Firebase pair (Google sign-in): config first, then the wrapper
+      // that extends window.Auth. Same order guarantee as above.
+      load('assets/__FIREBASE_CONFIG__.js');
+      load('assets/auth-firebase.js');
       // If neither script loaded (offline, weird CSP), resolve immediately.
       setTimeout(resolve, 50);
     });
@@ -327,6 +331,9 @@
             window.location.href = 'index.html';
           }
         });
+      } else {
+        cta.textContent = 'Sign in';
+        cta.setAttribute('href', 'auth.html');
       }
     }
   }
