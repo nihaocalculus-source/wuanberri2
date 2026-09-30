@@ -39,15 +39,15 @@
         s.onerror = done;   // local mode if either file is missing
         document.head.appendChild(s);
       };
-      load('assets/__SUPABASE_CONFIG__.js');
+      load('assets/__SUPABASE_CONFIG__.js?v=20260930c');
       // auth-supabase.js depends on the config having been read.
       // It's a tiny file so we just queue it; the script order is
       // preserved by synchronous-append of the script tag.
-      load('assets/auth-supabase.js');
+      load('assets/auth-supabase.js?v=20260930c');
       // Firebase pair (Google sign-in): config first, then the wrapper
       // that extends window.Auth. Same order guarantee as above.
-      load('assets/__FIREBASE_CONFIG__.js');
-      load('assets/auth-firebase.js');
+      load('assets/__FIREBASE_CONFIG__.js?v=20260930c');
+      load('assets/auth-firebase.js?v=20260930c');
       // If neither script loaded (offline, weird CSP), resolve immediately.
       setTimeout(resolve, 50);
     });

@@ -69,7 +69,24 @@
     return u ? USER_PREFIX + u.id : GUEST_KEY;
   };
   const read = () => rawRead(activeKey()) || {};
-  const write = (data) => rawWrite(activeKey(), data);
+
+  // Cloud sync hook (auth-firebase.js). Every write to a signed-in account's
+  // bucket is stamped with _t and handed to the listeners, which push it to
+  // Firestore. Guest data never leaves the device.
+  const listeners = [];
+  const write = (data) => {
+    const u = readSession();
+    if (u) data._t = Date.now();
+    rawWrite(activeKey(), data);
+    if (u) listeners.forEach((fn) => { try { fn(u, data); } catch (e) {} });
+  };
+  const onAccountWrite = (fn) => { listeners.push(fn); };
+  // Pulls: replace the signed-in account's bucket without re-triggering a push.
+  const replaceAccountData = (uid, data) => {
+    if (!uid || !data || typeof data !== 'object') return;
+    rawWrite(USER_PREFIX + uid, data);
+  };
+  const accountData = (uid) => (uid ? rawRead(USER_PREFIX + uid) : null);
 
   const get = (path, fallback) => {
     if (path === 'user') { const u = readSession(); return u === null ? fallback : u; }
@@ -178,6 +195,7 @@
   global.Store = {
     get, set, del, clear,
     isAuthed, getUser, signIn, signOut,
+    onAccountWrite, replaceAccountData, accountData,
     savePlacement, getPlacement,
     bumpStreak, getStreak,
     addReview, getReviews,

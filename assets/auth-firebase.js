@@ -68,6 +68,61 @@
     return code === 'auth/popup-closed-by-user' || code === 'auth/cancelled-popup-request';
   };
 
+  // ---------- Cloud sync (Firestore) ----------
+  // One document per account: users/{uid} = { data: "<JSON of the account's
+  // bucket>", t: <last-write ms> }. Security rules only let an account read
+  // and write its own document. Newer side wins on sign-in; after that every
+  // local write is pushed (debounced). The visitor's own LLM API keys ("llm")
+  // are never uploaded and are kept when cloud data is pulled down.
+  var syncedUid = null;
+  var startSync = function (app, uid) {
+    if (syncedUid === uid || !global.Store || !global.Store.onAccountWrite) return;
+    syncedUid = uid;
+    import(SDK + 'firebase-firestore.js').then(function (fs) {
+      var db = fs.getFirestore(app);
+      var ref = fs.doc(db, 'users', uid);
+      var strip = function (data) {
+        var copy = {};
+        Object.keys(data || {}).forEach(function (k) { if (k !== 'llm') copy[k] = data[k]; });
+        return copy;
+      };
+      var push = function (data) {
+        var clean = strip(data);
+        return fs.setDoc(ref, { data: JSON.stringify(clean), t: clean._t || Date.now() })
+          .catch(function (e) { console.warn('Wuanberri: cloud save failed:', e && e.code); });
+      };
+      var timer = null;
+      global.Store.onAccountWrite(function (user, data) {
+        if (!user || user.id !== uid) return;
+        clearTimeout(timer);
+        timer = setTimeout(function () { push(data); }, 1200);
+      });
+      return fs.getDoc(ref).then(function (snap) {
+        var local = global.Store.accountData(uid) || {};
+        var localT = local._t || 0;
+        if (!snap.exists()) {
+          if (Object.keys(strip(local)).some(function (k) { return k !== '_t'; })) return push(local);
+          return;
+        }
+        var cloudT = snap.data().t || 0;
+        if (localT > cloudT) return push(local);
+        if (cloudT > localT) {
+          var cloud = {};
+          try { cloud = JSON.parse(snap.data().data) || {}; } catch (e) { return; }
+          if (local.llm) cloud.llm = local.llm;
+          global.Store.replaceAccountData(uid, cloud);
+          // Show the synced progress: reload once so the page renders it.
+          var flag = 'wuanberri:synced:' + uid;
+          try {
+            if (!sessionStorage.getItem(flag)) { sessionStorage.setItem(flag, '1'); global.location.reload(); }
+          } catch (e) {}
+        }
+      });
+    }).catch(function (e) {
+      console.warn('Wuanberri: cloud sync unavailable:', e && (e.code || e.message));
+    });
+  };
+
   var boot = function () {
     if (booted) return;
     booted = true;
@@ -83,6 +138,7 @@
         // IndexedDB and we mirror it into localStorage.
         authMod.onAuthStateChanged(authInstance, function (u) {
           mirror(normalize(u));
+          if (u) startSync(app, u.uid);
         });
       });
     }).catch(function (e) {
