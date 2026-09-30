@@ -36,6 +36,11 @@
   <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#c2410c" />
   <link rel="stylesheet" href="assets/styles.css?v=20260929c" />
+  <style>
+    .hero-auth{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;margin:6px auto 36px}
+    .hero-auth-lede{width:100%;text-align:center;font-size:14px;color:#6b6b6b;margin-bottom:2px}
+    .hero-auth[hidden]{display:none}
+  </style>
 </head>
 <body>
 
@@ -108,6 +113,11 @@
         <div class="ctas">
           <a href="placement.html" class="btn btn-accent">Start learning</a>
           <a href="#why" class="btn btn-ghost">See how it works</a>
+        </div>
+        <div class="hero-auth" data-hero-auth>
+          <span class="hero-auth-lede">Save your progress across devices</span>
+          <a href="auth.html#signup" class="btn btn-primary">Create account</a>
+          <a href="auth.html#login" class="btn btn-ghost">Sign in</a>
         </div>
 
         <div class="card flashcard" data-flashcard>
@@ -371,6 +381,11 @@
   <script src="assets/store.js?v=20260929c"></script>
   <script src="assets/llm.js?v=20260929c"></script>
   <script src="assets/app.js?v=20260930a"></script>
+  <script>
+    // Signed-in visitors already have an account: hide the hero sign-in row.
+    (function(){var r=document.querySelector("[data-hero-auth]");
+      try{if(r&&window.Store&&Store.isAuthed())r.hidden=true;}catch(e){}})();
+  </script>
   <script src="assets/square.js?v=20260929c"></script>
   <!-- The landing-page coach section is a static demo. The real,
        interactive coach lives in the global floating chatbox loaded
