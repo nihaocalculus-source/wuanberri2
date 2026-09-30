@@ -161,7 +161,9 @@ module.exports = async function handler(req, res) {
     ? PERSONAS[body.persona] : "";
   const base = isSiteGeneratorPrompt(body && body.system)
     ? body.system.slice(0, 2000)
-    : SYSTEM_PROMPT + (persona ? "\n\n" + persona : "");
+    : SYSTEM_PROMPT + (persona
+      ? "\n\n" + persona + "\n\nThis chat shows plain text, not LaTeX: write math like (2x+3)^4, d/dx, 3/(x+1), sqrt(x). Never use backslash commands such as \\frac or \\cdot, and never wrap math in dollar signs."
+      : "");
   const system = base +
     (body && typeof body.context === "string" && body.context.trim()
       ? "\n\nCurrent screen: " + body.context.slice(0, 500)
