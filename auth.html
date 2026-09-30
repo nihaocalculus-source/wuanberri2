@@ -212,8 +212,12 @@
         });
       }
 
-      // Redirect if already signed in
-      if (Store.isAuthed()) { window.location.href = 'dashboard.html'; return; }
+      // Legacy local (demo-mode) accounts from before Firebase: clear the
+      // ghost sign-in instead of redirecting — a stale localStorage session
+      // here silently hijacks the page and makes the Google button look dead.
+      if (window.__FIREBASE_CONFIG__ && window.__FIREBASE_CONFIG__.apiKey && Store.isAuthed() && Store.getUser() && Store.getUser().provider !== 'google') {
+        Store.signOut();
+      }
 
       let mode = 'signup';
       const setMode = (m) => {
