@@ -4,12 +4,15 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sign in — Wuanberri</title>
+  <meta name="robots" content="noindex" />
+  <meta name="robots" content="noindex" />
+  <meta name="robots" content="noindex" />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
   <link rel="apple-touch-icon" href="apple-touch-icon.svg">
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#c2410c">
   <meta name="description" content="Wuanberri — your personal academic coach for calculus, physics, and the college-math core.">
-  <link rel="stylesheet" href="assets/styles.css?v=20260926b" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260929b" />
   <style>
     .auth-wrap {
       max-width: 440px; margin: 0 auto; padding: 80px 24px 96px;
@@ -116,12 +119,18 @@
           <strong>Demo mode.</strong> Nothing here is sent to a server. Accounts are stored only in your browser's localStorage. You can sign out any time and everything disappears.
         </div>
 
-        <div class="tabs-row" role="tablist">
+        <button type="button" class="btn btn-ghost" id="googleBtn" style="display:none;align-items:center;justify-content:center;gap:8px">
+          <svg width="18" height="18" viewBox="0 0 48 48" aria-hidden="true"><path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.19 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5z"/><path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z"/><path fill="#FBBC05" d="M10.53 28.59c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19C.92 16.46 0 20.12 0 24c0 3.88.92 7.54 2.56 10.78l7.97-6.19z"/><path fill="#34A853" d="M24 48c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48z"/></svg>
+          Continue with Google
+        </button>
+        <div id="authDivider" style="display:none;text-align:center;font-size:12px;color:var(--ink-muted);margin:16px 0 20px">or use email</div>
+
+        <div class="tabs-row" role="tablist" style="display:none">
           <button id="tabSignup" aria-selected="true" data-tab="signup">Sign up</button>
           <button id="tabLogin"  aria-selected="false" data-tab="login">Log in</button>
         </div>
 
-        <form id="authForm">
+        <form id="authForm" style="display:none">
           <div class="field" id="nameField">
             <label for="name">Name</label>
             <input type="text" id="name" name="name" autocomplete="name" placeholder="Sam" />
@@ -138,7 +147,7 @@
           <div class="auth-error" id="authError"></div>
         </form>
 
-        <p class="auth-foot">
+        <p class="auth-foot" style="display:none">
           <span id="footText">Already have an account?</span>
           <a href="#" id="footToggle">Log in</a>
         </p>
@@ -149,7 +158,9 @@
   <script src="assets/__SUPABASE_CONFIG__.js"></script>
   <script src="assets/store.js"></script>
   <script src="assets/auth-supabase.js"></script>
-  <script src="assets/app.js?v=20260926b"></script>
+  <script src="assets/__FIREBASE_CONFIG__.js"></script>
+  <script src="assets/auth-firebase.js"></script>
+  <script src="assets/app.js?v=20260929b"></script>
   <script>
     (function () {
       const form = document.getElementById('authForm');
@@ -163,15 +174,41 @@
       const footToggle = document.getElementById('footToggle');
       const err = document.getElementById('authError');
       const demoNote = document.querySelector('.demo-note');
+      const googleBtn = document.getElementById('googleBtn');
+      const authDivider = document.getElementById('authDivider');
 
-      // Show the auth mode (local vs Supabase) so the user can see at a
-      // glance whether their signup is going to persist cross-device.
+      // Show the auth mode (local vs Supabase vs Google-via-Firebase) so the
+      // user can see at a glance whether their signup is going to persist
+      // cross-device.
       if (demoNote) {
-        if (window.Auth && Auth.configured) {
+        if (window.__FIREBASE_CONFIG__ && window.__FIREBASE_CONFIG__.apiKey) {
+          demoNote.innerHTML = '<strong>One-tap sign-in.</strong> Continue with Google and your account follows you across devices.';
+        } else if (window.Auth && Auth.configured) {
           demoNote.innerHTML = '<strong>Real auth.</strong> Accounts are stored in a Supabase database. Sign in from any device and your progress comes with you.';
         } else {
           demoNote.innerHTML = '<strong>Local-only mode.</strong> Accounts live in this browser only. Set <code>__SUPABASE_URL__</code> in <code>assets/__SUPABASE_CONFIG__.js</code> to enable cross-device auth — see README.';
         }
+      }
+
+      // Google sign-in button — appears only when Firebase is configured.
+      if (googleBtn && window.__FIREBASE_CONFIG__ && window.__FIREBASE_CONFIG__.apiKey) {
+        googleBtn.style.display = 'flex';
+        if (authDivider) authDivider.style.display = 'none'; // Google-only: no email divider
+        googleBtn.addEventListener('click', async () => {
+          err.textContent = '';
+          googleBtn.disabled = true;
+          const original = googleBtn.innerHTML;
+          googleBtn.textContent = 'Opening Google…';
+          try {
+            const u = await Auth.signInWithGoogle();
+            if (!u) throw new Error('Sign-in was cancelled.');
+            window.location.href = Store.getPlacement() ? 'dashboard.html' : 'placement.html';
+          } catch (ex) {
+            if (!(ex && ex.silent)) err.textContent = (ex && ex.message) || 'Google sign-in failed.';
+            googleBtn.disabled = false;
+            googleBtn.innerHTML = original;
+          }
+        });
       }
 
       // Redirect if already signed in
@@ -229,7 +266,7 @@
   <footer class="site-footer">
     <div class="wrap">
       <div>
-        <a href="index.html" class="brand brand-img"><img src="assets/wuanberri-logo.png" alt="Wuanberri"><span class="brand-word">Wuanberri</span></a>
+        <a href="index.html" class="brand">Wuanberri.</a>
         <p style="margin-top:8px">info@wuanberri.com</p>
       </div>
       <div>
