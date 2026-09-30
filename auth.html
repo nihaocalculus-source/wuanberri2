@@ -125,6 +125,7 @@
         </button>
         <div id="authDivider" style="display:none;text-align:center;font-size:12px;color:var(--ink-muted);margin:16px 0 20px">or use email</div>
 
+        <div class="auth-error" id="googleError"></div>
         <div class="tabs-row" role="tablist" style="display:none">
           <button id="tabSignup" aria-selected="true" data-tab="signup">Sign up</button>
           <button id="tabLogin"  aria-selected="false" data-tab="login">Log in</button>
@@ -172,7 +173,7 @@
       const submitBtn = document.getElementById('submitBtn');
       const footText = document.getElementById('footText');
       const footToggle = document.getElementById('footToggle');
-      const err = document.getElementById('authError');
+      const err = document.getElementById('googleError');
       const demoNote = document.querySelector('.demo-note');
       const googleBtn = document.getElementById('googleBtn');
       const authDivider = document.getElementById('authDivider');
