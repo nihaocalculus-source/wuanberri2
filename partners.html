@@ -354,18 +354,45 @@
       let current = 'ada';
       const history = { ada: [], isaac: [], noor: [], kofi: [] };
 
-      // LLM mode banner
-      if (window.LLM && LLM.activeProvider()) {
-        const sub = document.createElement('div');
-        sub.style.cssText = 'font-size:12px;color:#2f7a3e;padding:8px 20px;background:#f4faf5;border-bottom:1px solid #e3efe5';
-        sub.textContent = `LLM mode: talking to ${LLM.activeProvider()}. Manage in Settings.`;
-        document.querySelector('.chat-large .body').parentNode.insertBefore(sub, document.querySelector('.chat-large .body'));
-      } else {
-        const sub = document.createElement('div');
-        sub.style.cssText = 'font-size:12px;color:var(--ink-muted);padding:8px 20px;background:#fcfaf6;border-bottom:1px solid var(--line)';
-        sub.innerHTML = `Keyword mode. <a href="settings.html" style="color:var(--accent)">Add an API key</a> to talk to a real LLM.`;
-        document.querySelector('.chat-large .body').parentNode.insertBefore(sub, document.querySelector('.chat-large .body'));
-      }
+      // Status banner: the partners are live on Wuanberri's own AI by default.
+      // A visitor's own key (Settings) takes over when present; the keyword
+      // router is only the fallback when the AI can't be reached.
+      const banner = document.createElement('div');
+      const LIVE_CSS = 'font-size:12px;color:#2f7a3e;padding:8px 20px;background:#f4faf5;border-bottom:1px solid #e3efe5';
+      const DOWN_CSS = 'font-size:12px;color:var(--ink-muted);padding:8px 20px;background:#fcfaf6;border-bottom:1px solid var(--line)';
+      const setBanner = (mode) => {
+        if (mode === 'own') {
+          banner.style.cssText = LIVE_CSS;
+          banner.textContent = `Live · using your own ${LLM.activeProvider()} key. Manage in Settings.`;
+        } else if (mode === 'live') {
+          banner.style.cssText = LIVE_CSS;
+          banner.textContent = 'Live · real AI tutor. It asks, hints, and checks your reasoning.';
+        } else {
+          banner.style.cssText = DOWN_CSS;
+          banner.textContent = 'The AI tutor is unreachable right now, so replies are canned practice prompts. Try again in a minute.';
+        }
+      };
+      setBanner(window.LLM && LLM.activeProvider() ? 'own' : 'live');
+      document.querySelector('.chat-large .body').parentNode.insertBefore(banner, document.querySelector('.chat-large .body'));
+
+      // AI replies are plain text: escape them, then allow **bold**, `code`
+      // and line breaks. Never inject model output as raw HTML.
+      const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+      const fmt = (s) => esc(s)
+        .replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
+        .replace(/`([^`\n]+)`/g, "<span class='math'>$1</span>")
+        .replace(/\n/g, '<br>');
+
+      const askServer = async (pid, msgs) => {
+        const r = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'content-type': 'application/json' },
+          body: JSON.stringify({ persona: pid, messages: msgs }),
+        });
+        const j = await r.json().catch(() => ({}));
+        if (!r.ok || !j.reply) throw new Error(j.error || ('HTTP ' + r.status));
+        return j.reply;
+      };
 
       // Anti-repeat: keyword mode gives canned replies, and returning the
       // exact same bubble on every prompt click reads as "looping". Track
@@ -462,35 +489,34 @@
         // two identical exchanges.
         if (send.busy) return;
         send.busy = true;
-        addBubble(text, 'user');
+        const pid = current;
+        addBubble(esc(text), 'user');
         input.value = '';
         const typing = showTyping();
         const provider = window.LLM ? LLM.activeProvider() : null;
-        if (provider) {
-          try {
-            const reply = await LLM.send({
+        try {
+          let reply;
+          if (provider) {
+            reply = await LLM.send({
               provider,
               userMessage: text,
-              context: `Study partner: ${partners[current].name} (${partners[current].role}). Style: Socratic, ask first, hint second, answer only when stuck.`,
-              history: history[current],
+              context: `Study partner: ${partners[pid].name} (${partners[pid].role}). Style: Socratic, ask first, hint second, answer only when stuck.`,
+              history: history[pid],
             });
-            history[current].push({ role: 'user', content: text });
-            history[current].push({ role: 'assistant', content: reply });
-            typing.remove();
-            addBubble(reply, 'bot');
-          } catch (e) {
-            typing.remove();
-            addBubble('(LLM call failed: ' + e.message + ' — falling back to keyword router.)', 'bot');
-            addBubble(match(text, current), 'bot');
-          } finally {
-            send.busy = false;
+          } else {
+            reply = await askServer(pid, history[pid].concat([{ role: 'user', content: text }]).slice(-12));
+            setBanner('live');
           }
-        } else {
-          setTimeout(() => {
-            typing.remove();
-            addBubble(match(text, current), 'bot');
-            send.busy = false;
-          }, 600);
+          history[pid].push({ role: 'user', content: text });
+          history[pid].push({ role: 'assistant', content: reply });
+          typing.remove();
+          if (pid === current) addBubble(fmt(reply), 'bot');
+        } catch (e) {
+          typing.remove();
+          if (!provider) setBanner('down');
+          if (pid === current) addBubble(match(text, pid), 'bot');
+        } finally {
+          send.busy = false;
         }
       };
 
@@ -503,6 +529,8 @@
         role.textContent = p.role;
         body.innerHTML = '';
         addBubble(greetings[pid], 'bot');
+        // Coming back to a partner shows the conversation you already had.
+        history[pid].forEach((m) => addBubble(m.role === 'user' ? esc(m.content) : fmt(m.content), m.role === 'user' ? 'user' : 'bot'));
         chipsRow.innerHTML = chips[pid].map(c => `<button class="chip" data-chip>${c}</button>`).join('');
         chipsRow.querySelectorAll('[data-chip]').forEach(c => c.addEventListener('click', () => send(c.textContent)));
         list.querySelectorAll('.partner-card').forEach(c => c.setAttribute('aria-selected', c.dataset.pid === pid ? 'true' : 'false'));
