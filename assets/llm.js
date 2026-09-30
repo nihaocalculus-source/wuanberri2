@@ -3,7 +3,9 @@
 // works for every visitor). Also supports bring-your-own-key: OpenAI
 // (chat completions), Anthropic (messages), and a local OpenAI-compatible
 // endpoint (e.g. PrivateGPT on http://localhost:8001) — no key needed,
-// everything stays on the user's machine. Falls back to the keyword router
+// everything stays on the user's machine. The local endpoint is DEV ONLY:
+// the production CSP allows no arbitrary connect host, so the provider is
+// disabled off localhost. Falls back to the keyword router
 // if no backend answers. Storage: localStorage, wuanberri:v1.llm.*
 
 (function (global) {
@@ -58,7 +60,10 @@
         'anthropic-dangerous-direct-browser-access': 'true',
       },
       body: JSON.stringify({
-        model: opts.model || 'claude-3-5-haiku-20251001',
+        // Current Haiku model. (The previous value, 'claude-3-5-haiku-20251001',
+        // was never a real id — 3.5 Haiku shipped as ...-20241022 and is now
+        // retired, so that string 404s for every BYOK Anthropic call.)
+        model: opts.model || 'claude-haiku-4-5',
         system,
         max_tokens: 500,
         messages: conv,
@@ -73,6 +78,12 @@
   };
 
   const getLocalConfig = () => {
+    // DEV ONLY. The production CSP is an explicit connect-src allowlist that
+    // deliberately excludes arbitrary hosts — wildcarding it to make this
+    // work would undo the rest of the policy. So a "local endpoint" can only
+    // ever answer on a dev machine. Refuse to expose the provider anywhere
+    // else, so nobody configures a backend that is guaranteed to fail.
+    if (!/^(localhost|127\.0\.0\.1|\[::1\]|0\.0\.0\.0)$/.test(location.hostname)) return null;
     const url = (Store.getSetting('localEndpoint.url', '') || '').trim().replace(/\/+$/, '');
     if (!url) return null;
     return {

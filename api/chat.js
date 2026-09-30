@@ -3,9 +3,12 @@
    Receives: POST { messages: [{role, content}, ...], system?: "...", context?: "..." }
    Returns:  { "reply": "..." }
    The AI provider key lives ONLY here, server-side. It is never
-   bundled into the site's JavaScript. A client may pass its own
-   "system" prompt (capped at 2000 chars — the strict-JSON generators
-   need this); without one, the study-coach prompt is used. Until GEMINI_API_KEY is set
+   bundled into the site's JavaScript. The strict-JSON generator pages
+   (generators.js, solve.html) may pass their own "system" prompt; those
+   are honored only when they carry the site's own generator signature —
+   any other client-supplied "system" is ignored and the study-coach
+   prompt is used, so this endpoint cannot be driven as a free
+   general-purpose chatbot. Until GEMINI_API_KEY is set
    in Vercel's Environment Variables, this returns 503 and the
    chatbox falls back to keyword mode (or the visitor's own key).
    ============================================================ */
@@ -25,9 +28,97 @@ const MODELS = (process.env.GEMINI_MODEL ? [process.env.GEMINI_MODEL] : []).conc
   "gemini-3.5-flash",
 ]);
 
+// ---------- Abuse guards (dependency-free) ----------
+// NOTE: the limiter is in memory, so it is per warm instance. Vercel may run
+// several instances and recycle them, so this is a first pass that stops
+// casual/scripted abuse — it is not a hard guarantee. Move the bucket to a
+// shared store (KV / Upstash) if this endpoint ever gets real traffic.
+
+const ALLOWED_ORIGIN_HOSTS = new Set([
+  "wuanberri.com",
+  "www.wuanberri.com",
+  "localhost",
+  "127.0.0.1",
+  "::1",
+]);
+
+function sameOrigin(req) {
+  // Browsers set Sec-Fetch-Site on every fetch(); "same-origin" cannot be
+  // forged from another site. Trust it first so preview deployments (any
+  // *.vercel.app host) keep working. Then fall back to an Origin allowlist.
+  if (req.headers["sec-fetch-site"] === "same-origin") return true;
+  const origin = req.headers.origin;
+  if (typeof origin !== "string" || !origin) return false; // fail closed
+  try {
+    return ALLOWED_ORIGIN_HOSTS.has(new URL(origin).hostname.toLowerCase());
+  } catch (e) {
+    return false;
+  }
+}
+
+const RATE_CAPACITY = 12;             // burst
+const RATE_PER_MS = 12 / 60000;       // refill ~12 requests / minute
+const BUCKET_IDLE_MS = 10 * 60 * 1000;
+const MAX_BUCKETS = 5000;
+const buckets = new Map();            // ip -> { tokens, last }
+
+function clientIp(req) {
+  const fwd = req.headers["x-forwarded-for"];
+  if (typeof fwd === "string" && fwd) return fwd.split(",")[0].trim();
+  return (req.socket && req.socket.remoteAddress) || "unknown";
+}
+
+function takeToken(ip) {
+  const now = Date.now();
+  // Opportunistic cleanup: once the map is full, sweep idle buckets so a
+  // stream of distinct IPs cannot grow it without bound.
+  if (buckets.size >= MAX_BUCKETS) {
+    for (const [k, b] of buckets) {
+      if (now - b.last > BUCKET_IDLE_MS) buckets.delete(k);
+      if (buckets.size <= MAX_BUCKETS / 2) break;
+    }
+    if (buckets.size >= MAX_BUCKETS) buckets.clear(); // last resort
+  }
+  let b = buckets.get(ip);
+  if (!b) { b = { tokens: RATE_CAPACITY, last: now }; buckets.set(ip, b); }
+  b.tokens = Math.min(RATE_CAPACITY, b.tokens + (now - b.last) * RATE_PER_MS);
+  b.last = now;
+  if (b.tokens < 1) {
+    const retryAfter = Math.max(1, Math.ceil((1 - b.tokens) / RATE_PER_MS / 1000));
+    return { ok: false, retryAfter: retryAfter };
+  }
+  b.tokens -= 1;
+  return { ok: true };
+}
+
+// A client-supplied "system" is honored only when it carries the signature
+// of the site's own generator/solver prompts (generators.js, solve.html:
+// "You are the Wuanberri <role> generator." / "You are the Wuanberri
+// problem solver."). Everything else is ignored. This is a speed bump on
+// top of the origin gate, not an auth boundary — any same-origin page can
+// still craft a prompt starting with that phrase.
+const GENERATOR_SYSTEM_RE = /^You are the Wuanberri [A-Za-z0-9 /-]{1,48}(generator|solver)\./;
+
+function isSiteGeneratorPrompt(s) {
+  return typeof s === "string" &&
+    s.length <= 2000 &&
+    GENERATOR_SYSTEM_RE.test(s) &&
+    /JSON/.test(s);
+}
+
 module.exports = async function handler(req, res) {
   if (req.method !== "POST") {
     res.status(405).json({ error: "POST only" });
+    return;
+  }
+  if (!sameOrigin(req)) {
+    res.status(403).json({ error: "Forbidden" });
+    return;
+  }
+  const gate = takeToken(clientIp(req));
+  if (!gate.ok) {
+    res.setHeader("Retry-After", String(gate.retryAfter));
+    res.status(429).json({ error: "Too many requests — try again in a moment." });
     return;
   }
   const apiKey = process.env.GEMINI_API_KEY;
@@ -55,7 +146,7 @@ module.exports = async function handler(req, res) {
     res.status(400).json({ error: "No message" });
     return;
   }
-  const base = (body && typeof body.system === "string" && body.system.trim())
+  const base = isSiteGeneratorPrompt(body && body.system)
     ? body.system.slice(0, 2000)
     : SYSTEM_PROMPT;
   const system = base +

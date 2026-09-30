@@ -543,8 +543,11 @@ section.tight { padding: 48px 0; }
   grid-template-columns: 2fr 1fr 1fr;
   gap: 32px;
 }
-.site-footer h5 {
+.site-footer h5,
+.site-footer .footer-head {
+  display: block;
   font-size: 12px;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin: 0 0 12px;
@@ -919,7 +922,9 @@ html { scroll-behavior: smooth; }
 }
 .nav-dd:hover .nav-dd-panel,
 .nav-dd.open .nav-dd-panel { display: grid; }
-.dd-col h6 {
+.dd-col h6,
+.dd-col .dd-col-label {
+  display: block;
   font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase;
   color: var(--ink-soft); margin: 2px 0 6px;
 }

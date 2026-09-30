@@ -29,9 +29,17 @@
     const form = btn.closest('.mcq[data-mcq]');
     if (!form || form.dataset.answered) return;
     form.dataset.answered = '1';
-    form.dataset.correct = btn.classList.contains('correct') ? '1' : '0';
+    // app.js owns the verdict: it binds its own handler on the button, so on
+    // the bubble pass it has already marked the classes and written
+    // form.dataset.correct. Read that instead of racing it. (This listener
+    // used to run in the CAPTURE phase, which read the class before app.js
+    // had added it — every quiz reported "0 correct".) The class check is a
+    // fallback for a page where app.js did not bind the form.
+    if (form.dataset.correct === undefined) {
+      form.dataset.correct = btn.classList.contains('correct') ? '1' : '0';
+    }
     render();
-  }, true);
+  });
 
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', render);

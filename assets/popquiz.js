@@ -141,12 +141,22 @@
 
     promptEl.textContent = `Pop quiz · ${score} of ${total} (${pct}%) — ${message}`;
     choicesEl.innerHTML = '';
-    feedbackEl.innerHTML = state.questions.map((q, i) => `
-      <div style="margin:6px 0;padding:8px 10px;border-radius:var(--radius-sm);background:${q.wasCorrect ? '#e7f6ec' : '#fbe9e6'};font-size:13px;line-height:1.4">
-        <strong>${i + 1}. ${q.prompt}</strong><br>
-        ${q.explain}
-      </div>
-    `).join('');
+    // Build the per-question recap as DOM nodes. q.prompt and q.explain are
+    // MODEL output — they go in as text, never interpolated into markup, so a
+    // prompt-injected page context cannot execute here. The wrapper markup and
+    // the correctness colour are the site's own and are kept as-is.
+    feedbackEl.textContent = '';
+    state.questions.forEach((q, i) => {
+      const row = document.createElement('div');
+      row.style.cssText = 'margin:6px 0;padding:8px 10px;border-radius:var(--radius-sm);' +
+        'background:' + (q.wasCorrect ? '#e7f6ec' : '#fbe9e6') + ';font-size:13px;line-height:1.4';
+      const head = document.createElement('strong');
+      head.textContent = (i + 1) + '. ' + q.prompt;
+      row.appendChild(head);
+      row.appendChild(document.createElement('br'));
+      row.appendChild(document.createTextNode(q.explain == null ? '' : String(q.explain)));
+      feedbackEl.appendChild(row);
+    });
     progressEl.textContent = '';
     actionBtn.textContent = 'Close';
     actionBtn.disabled = false;
@@ -219,7 +229,7 @@
     state = { questions: [], current: 0, correct: 0, answered: false };
 
     const topics = pickTopics();
-    promptEl.textContent = `Generating a pop quiz on ${topics.join(' & '}…`;
+    promptEl.textContent = `Generating a pop quiz on ${topics.join(' & ')}…`;
     choicesEl.innerHTML = '';
     feedbackEl.textContent = '';
     progressEl.textContent = '';

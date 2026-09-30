@@ -86,7 +86,12 @@
     history.forEach((m) => {
       const b = document.createElement('div');
       b.className = 'bubble ' + (m.role === 'user' ? 'user' : 'bot');
-      b.innerHTML = m.content;
+      // Only the site's own canned replies are authored HTML (format:'html').
+      // Anything a model produced is inserted as text, so a prompt-injected
+      // page context cannot execute in the visitor's origin. Legacy entries
+      // carry no `format`; text is the safe default for those.
+      if (m.role === 'assistant' && m.format === 'html') b.innerHTML = m.content;
+      else b.textContent = m.content;
       body.appendChild(b);
     });
     body.scrollTop = body.scrollHeight;
@@ -114,6 +119,9 @@
     return 'The study coach is offline right now. Meanwhile, try <em>explain derivatives</em> / <em>quiz me</em> / <em>make a plan</em>.';
   };
 
+  // Author-written canned reply: the only bot text that is intentionally
+  // HTML (it uses <strong>/<span class="math">). Marked so renderHistory
+  // knows it is safe to insert as markup.
   const showBotReply = (body, reply, text) => {
     const b = document.createElement('div');
     b.className = 'bubble bot';
@@ -121,7 +129,7 @@
     body.appendChild(b);
     body.scrollTop = body.scrollHeight;
     const h = Store.get(HISTORY_KEY, []);
-    h.push({ role: 'assistant', content: reply });
+    h.push({ role: 'assistant', content: reply, format: 'html' });
     Store.set(HISTORY_KEY, h);
   };
 
@@ -166,9 +174,10 @@
         userMessage: text,
         context: 'Floating chatbox. Be concise. Use LaTeX in $...$ inline, $$...$$ for blocks.',
       });
-      history.push({ role: 'assistant', content: reply });
+      history.push({ role: 'assistant', content: reply, format: 'text' });
       Store.set(HISTORY_KEY, history);
-      typing.innerHTML = reply;
+      // textContent, never innerHTML: `reply` is model output.
+      typing.textContent = reply;
     } catch (e) {
       // Site brain down and no fallback answered — canned keyword reply
       // beats a raw error string in the visitor's face.

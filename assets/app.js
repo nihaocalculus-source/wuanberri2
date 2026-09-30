@@ -4,6 +4,20 @@
 (function () {
   'use strict';
 
+  // Is a script with this path already in the document? Compare PATHNAMES,
+  // not raw src attributes: a cache-busted tag ("assets/x.js?v=20260929c")
+  // never equals the bare "assets/x.js", so an exact-string check missed it
+  // and injected a second copy that executed twice.
+  const scriptPresent = (path) => {
+    let want;
+    try { want = new URL(path, location.href).pathname; }
+    catch (e) { return false; }
+    return Array.prototype.some.call(document.scripts, (s) => {
+      try { return new URL(s.src, location.href).pathname === want; }
+      catch (e) { return false; }
+    });
+  };
+
   // ---------- Bootstrap auth (Supabase config + wrapper) ----------
   // app.js is loaded by every page. Pull in the Supabase config and
   // the auth wrapper so the rest of the file can rely on
@@ -17,8 +31,7 @@
       const load = (src) => {
         // Skip if a script tag for this src is already in the document
         // (auth.html pre-loads them; we don't want to double-execute).
-        const existing = document.querySelector(`script[src="${src}"]`);
-        if (existing) { resolve(); return; }
+        if (scriptPresent(src)) { resolve(); return; }
         pending++;
         const s = document.createElement('script');
         s.src = src;
@@ -46,7 +59,7 @@
   // scripts have finished (matters for the landing-page coach upgrade
   // and the dashboard hydration).
   const lazyLoad = (src) => {
-    if (document.querySelector(`script[src="${src}"]`)) return;
+    if (scriptPresent(src)) return;
     const s = document.createElement('script');
     s.src = src;
     s.defer = true;
@@ -266,6 +279,11 @@
         if (!isRight) {
           buttons.forEach(x => { if (x.dataset.choice === correct) x.classList.add('correct'); });
         }
+        // Record the verdict on the form. quiz.js reads this to keep the
+        // running score — it must be set here (the only place that knows
+        // isRight) and before the feedback line below, so a missing
+        // feedback element can't leave the score stale.
+        form.dataset.correct = isRight ? '1' : '0';
         feedback.textContent = isRight
           ? 'Correct. ' + (form.dataset.rightExplain || '')
           : 'Not quite. ' + (form.dataset.wrongExplain || '');
