@@ -1,0 +1,37 @@
+[
+  {
+    "prompt": "A car accelerates uniformly from rest at 3.0 m/s^2 for 4.0 s. What is its final velocity?",
+    "choices": ["6 m/s", "12 m/s", "24 m/s", "48 m/s"],
+    "answerIndex": 1,
+    "rightExplain": "From rest, v = v0 + at = 0 + (3.0)(4.0) = 12 m/s.",
+    "wrongExplain": "6 m/s is the average velocity over the interval, not the final one. 24 m/s is actually the distance traveled, (1/2)(3)(16) = 24 m, reported with the wrong units, and 48 m/s comes from using at^2 instead of at."
+  },
+  {
+    "prompt": "A rock is dropped from rest. How fast is it falling after 3.0 s? Use g = 9.8 m/s^2.",
+    "choices": ["9.8 m/s", "19.6 m/s", "29.4 m/s", "44.1 m/s"],
+    "answerIndex": 2,
+    "rightExplain": "From rest, v = gt = (9.8)(3.0) = 29.4 m/s.",
+    "wrongExplain": "9.8 m/s is the speed after only 1 s, and 19.6 m/s the speed after 2 s, from stopping the clock one or two seconds early. 44.1 m/s would be the speed after 4.5 s, not 3 s."
+  },
+  {
+    "prompt": "A ball rolls off a 45 m high table moving horizontally at 12 m/s. How far from the table's base does it land?",
+    "choices": ["36 m", "24 m", "45 m", "12 m"],
+    "answerIndex": 0,
+    "rightExplain": "Fall time is t = sqrt(2h/g) = sqrt(90/9.8) = 3.0 s, so the horizontal range is 12 times 3.0 = 36 m.",
+    "wrongExplain": "The fall time 3.0 s, not the height or the speed, sets the range: 45 m just echoes the height and 12 m the launch speed. 24 m would come from using a fall time of 2 s, which belongs to a 20 m drop, not a 45 m drop."
+  },
+  {
+    "prompt": "A car traveling at 30 m/s brakes to a complete stop in 6.0 s at constant acceleration. How far does it travel while stopping?",
+    "choices": ["45 m", "180 m", "30 m", "90 m"],
+    "answerIndex": 3,
+    "rightExplain": "Under constant deceleration the average velocity is (30 + 0)/2 = 15 m/s, so the distance is 15 times 6.0 = 90 m.",
+    "wrongExplain": "180 m multiplies the full 30 m/s by 6 s, ignoring that the car slows the whole way, and 45 m uses half of something twice, effectively quartering the distance. 30 m swaps the speed value into the distance slot with no computation behind it."
+  },
+  {
+    "prompt": "A projectile is launched at 40 m/s at 30 degrees above horizontal over level ground. What maximum height does it reach? Use g = 9.8 m/s^2.",
+    "choices": ["40.8 m", "20.4 m", "81.6 m", "10.2 m"],
+    "answerIndex": 1,
+    "rightExplain": "The vertical component is 40 sin(30) = 20 m/s, so the height is v0y^2/(2g) = 400/19.6 = 20.4 m.",
+    "wrongExplain": "40.8 m divides the correct 20^2 by g instead of by 2g, dropping the factor of two. 81.6 m squares the full 40 m/s launch speed rather than just its vertical component, and 10.2 m stacks an extra factor of two on top of the correct component."
+  }
+]

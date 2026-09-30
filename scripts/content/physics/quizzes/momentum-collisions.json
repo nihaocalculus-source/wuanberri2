@@ -1,0 +1,42 @@
+[
+  {
+    "prompt": "A 0.30 kg ball hits a wall head-on at 12 m/s and rebounds at 12 m/s. What is the magnitude of the impulse the wall delivers to the ball?",
+    "choices": ["3.6 kg·m/s", "7.2 kg·m/s", "0 kg·m/s", "14.4 kg·m/s"],
+    "answerIndex": 1,
+    "rightExplain": "Take the incoming direction as positive: delta-p = (0.30)(-12) - (0.30)(+12) = -7.2 kg m/s, so the impulse magnitude is 7.2 kg m/s — twice the ball's initial momentum of 3.6 kg m/s.",
+    "wrongExplain": "3.6 kg m/s counts only the initial momentum and misses the sign flip, 0 kg m/s assumes equal speeds before and after cancel the change, and 14.4 kg m/s double-counts by adding the two momentum magnitudes in the same direction."
+  },
+  {
+    "prompt": "A 60 kg astronaut floating at rest throws a 3.0 kg wrench at 8.0 m/s, straight away from herself. What is her recoil speed?",
+    "choices": ["0.40 m/s", "4.0 m/s", "8.0 m/s", "0.48 m/s"],
+    "answerIndex": 0,
+    "rightExplain": "Momentum starts at zero, so (3.0)(8.0) + (60)v = 0 gives v = -24/60 = -0.40 m/s: she drifts backward at 0.40 m/s.",
+    "wrongExplain": "4.0 m/s divides the wrench's momentum by 6 kg instead of the astronaut's 60 kg, 8.0 m/s assumes she recoils as fast as the wrench travels, and 0.48 m/s divides by a 50 kg mass that is not in the problem."
+  },
+  {
+    "prompt": "A 2.0 kg cart moving right at 6.0 m/s collides with a 1.0 kg cart moving left at 3.0 m/s, and they lock together. What is their common velocity?",
+    "choices": ["5.0 m/s", "4.5 m/s", "3.0 m/s", "6.0 m/s"],
+    "answerIndex": 2,
+    "rightExplain": "Take right as positive: total momentum is (2.0)(6.0) - (1.0)(3.0) = 9.0 kg m/s, and dividing by the 3.0 kg combined mass gives 3.0 m/s to the right.",
+    "wrongExplain": "5.0 m/s adds the momenta as if the second cart also moved right (dropping its sign), 4.5 m/s averages the speeds while ignoring the masses, and 6.0 m/s is just the first cart's speed, as if the collision changed nothing."
+  },
+  {
+    "prompt": "Two identical 0.50 kg pucks collide elastically on frictionless ice. Puck A moves at 4.0 m/s and hits stationary puck B head-on. What are the velocities after the collision?",
+    "choices": [
+      "Both move at 2.0 m/s",
+      "A moves at 4.0 m/s, B stays at rest",
+      "A moves at 1.0 m/s, B at 3.0 m/s",
+      "A stops, B moves at 4.0 m/s"
+    ],
+    "answerIndex": 3,
+    "rightExplain": "Equal masses in a 1D elastic collision swap velocities: A stops and B moves off at 4.0 m/s. Check it: momentum 0.5(4.0) = 2.0 kg m/s and kinetic energy 4.0 J are both unchanged.",
+    "wrongExplain": "Both at 2.0 m/s conserves momentum but throws away half the kinetic energy, so the collision was not elastic. A at 1.0 m/s with B at 3.0 m/s also conserves momentum but only 2.5 J of the original 4.0 J survives, and 'unchanged' is not a collision at all."
+  },
+  {
+    "prompt": "A 2.0 kg object glides at 5.0 m/s when a steady 12 N force pushes back on it for 0.75 s. What is its final velocity?",
+    "choices": ["0.50 m/s", "-0.50 m/s", "9.5 m/s", "4.5 m/s"],
+    "answerIndex": 0,
+    "rightExplain": "The impulse is -(12)(0.75) = -9.0 kg m/s, so momentum goes from 10 kg m/s to 1.0 kg m/s, and the final velocity is 1.0/2.0 = 0.50 m/s — still forward.",
+    "wrongExplain": "-0.50 m/s flips the sign even though the 9.0 kg m/s impulse is smaller than the object's 10 kg m/s of momentum, so it cannot stop it. 9.5 m/s adds the speed change instead of subtracting it, and 4.5 m/s reports the speed change (12 times 0.75 over 2.0) rather than the final speed."
+  }
+]

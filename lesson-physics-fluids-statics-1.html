@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pressure in still fluids — Wuanberri Physics</title>
+  <link rel="canonical" href="https://wuanberri.com/lesson-physics-fluids-statics-1.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Wuanberri" />
+  <meta property="og:title" content="Pressure in still fluids — Wuanberri Physics" />
+  <meta property="og:description" content="Pressure is force spread over area, and in a fluid it grows with depth — nothing else about the container matters." />
+  <meta property="og:url" content="https://wuanberri.com/lesson-physics-fluids-statics-1.html" />
+  <meta property="og:image" content="https://wuanberri.com/assets/wuanberri-logo.png" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Pressure is force spread over area, and in a fluid it grows with depth — nothing else about the container matters." />
+  <link rel="stylesheet" href="assets/styles.css?v=20260929c" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand brand-img"><img src="assets/wuanberri-logo.png" alt="Wuanberri"></a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+<div class="nav-dd">
+          <button class="nav-dd-btn" type="button" aria-haspopup="true" aria-expanded="false">Subjects <span class="nav-dd-caret">&#9662;</span></button>
+          <div class="nav-dd-panel" role="menu">
+            <div class="dd-col">
+              <span class="dd-col-label">Math</span>
+              <a href="algebra.html">Algebra</a>
+              <a href="geometry.html">Geometry</a>
+              <a href="calculus.html">Calculus</a>
+              <a href="linear-algebra.html">Linear Algebra</a>
+              <a href="differential-equations.html">Differential Equations</a>
+              <a href="discrete-math.html">Discrete Math</a>
+              <a href="statistics.html">Statistics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Science</span>
+              <a href="biology.html">Biology</a>
+              <a href="chemistry.html">Chemistry</a>
+              <a href="physics.html">Physics</a>
+              <a href="anatomy-physiology.html">Anatomy &amp; Physiology</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Business &amp; Economics</span>
+              <a href="intro-to-business.html">Intro to Business</a>
+              <a href="microeconomics.html">Microeconomics</a>
+              <a href="macroeconomics.html">Macroeconomics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">English</span>
+              <a href="english-composition.html">English Composition</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Engineering</span>
+              <a href="electrical-engineering.html">Electrical Engineering</a>
+              <a href="statics.html">Statics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Tools</span>
+              <a href="tutor-market.html">Tutor Market</a>
+              <a href="decks.html">AI Decks</a>
+              <a href="practice.html">Quick Practice</a>
+              <a href="library.html">Worked Examples</a>
+            </div>
+          </div>
+        </div>        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="physics.html">← Back to Physics</a>
+      <h1>Pressure in still fluids</h1>
+      <p class="lede">Pressure is force spread over area, and in a fluid it grows with depth — nothing else about the container matters.</p>
+
+
+      <div class="lesson-card">
+        <h2>Pressure</h2>
+        <p>Pressure is force per area, P = F/A, measured in pascals (1 Pa = 1 N/m^2). Fluid pressure pushes perpendicular to every surface it touches, equally in all directions. Gauge pressure is what a tire gauge reads — the amount above atmospheric — while absolute pressure adds the 1.01e5 Pa of the atmosphere on top.</p>
+        <span class="math">P = \frac{F}{A}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Hydrostatic pressure</h2>
+        <p>In a liquid at rest, pressure grows linearly with depth: P = P0 + rho*g*h, where rho is the fluid density and h is the depth below the surface. The pressure depends only on depth and fluid — not on the container&#39;s shape or the total volume of water — which is why connected tanks of any geometry fill to the same height.</p>
+        <span class="math">P = P_0 + \rho g h</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>A diver descends 10 m in fresh water (rho = 1000 kg/m^3). The gauge pressure is rho*g*h = (1000)(9.8)(10) = 98,000 Pa, about 98 kPa — roughly one atmosphere. Adding the air&#39;s 1.01e5 Pa, the absolute pressure is about 2.0e5 Pa: two atmospheres total at 10 m down.</p>
+        <span class="math">P = P_0 + \rho g h \approx 1.0\times 10^5 + 9.8\times 10^4 = 2.0\times 10^5\ \text{Pa}</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;P = \\frac{F}{A}&quot;,&quot;meaning&quot;:&quot;Pressure equals force per unit area&quot;,&quot;explain&quot;:&quot;One pascal is one newton spread over one square meter. Doubling the contact area halves the pressure for the same push, which is why snowshoes keep you on top of the drift.&quot;},{&quot;glyph&quot;:&quot;P = P_0 + \\rho g h&quot;,&quot;meaning&quot;:&quot;Hydrostatic pressure grows with depth&quot;,&quot;explain&quot;:&quot;P0 is the pressure at the surface, usually one atmosphere. Every 10 m of water adds about 98 kPa, so depth alone fixes the pressure regardless of container shape.&quot;},{&quot;glyph&quot;:&quot;P_{gauge} = \\rho g h&quot;,&quot;meaning&quot;:&quot;Gauge pressure is the fluid&#39;s contribution only&quot;,&quot;explain&quot;:&quot;A pressure gauge reads zero at the surface because it measures the excess over atmospheric. Absolute pressure is gauge pressure plus the roughly 101 kPa the atmosphere supplies.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>P = \frac{F}{A}</div>
+        <p data-flip-meaning>Pressure equals force per unit area</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>One pascal is one newton spread over one square meter. Doubling the contact area halves the pressure for the same push, which is why snowshoes keep you on top of the drift.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>What gauge pressure does a swimmer feel 5.0 m below the surface of a lake?</p>
+        <form class="mcq" data-mcq="c" data-right-explain="P = rho*g*h = (1000)(9.8)(5.0) = 49,000 Pa = 49 kPa." data-wrong-explain="98 kPa is the pressure at twice the depth (10 m), 9.8 kPa misplaces the decimal by one, and 490 kPa treats the depth as 50 m.">
+          <button type="button" data-choice="a">98 kPa</button>
+          <button type="button" data-choice="b">9.8 kPa</button>
+          <button type="button" data-choice="c">49 kPa</button>
+          <button type="button" data-choice="d">490 kPa</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-physics-fluids-statics.html">Take the unit quiz</a></p>
+
+      <div style="display:flex;justify-content:space-between;gap:12px;margin-top:24px">
+        <a class="btn btn-ghost" href="lesson-physics-thermodynamics-3.html">&larr; Previous lesson</a>
+        <a class="btn btn-ghost" href="lesson-physics-fluids-statics-2.html">Next lesson &rarr;</a>
+      </div>    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h2 class="footer-head">Product</h2>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-head">Legal</h2>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js?v=20260929c"></script>
+  <script src="assets/llm.js?v=20260929c"></script>
+  <script src="assets/app.js?v=20260930a"></script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+[
+  {
+    "prompt": "A tuning fork sends a 250 Hz sound through air at 340 m/s. What is the wavelength?",
+    "choices": ["0.74 m", "1.36 m", "340 m", "85,000 m"],
+    "answerIndex": 1,
+    "rightExplain": "lambda = v/f = 340/250 = 1.36 m.",
+    "wrongExplain": "0.74 m divides the frequency by the speed (250/340), inverting the relationship. 340 m copies the wave speed, and 85,000 m multiplies speed by frequency, which has no physical meaning as a length."
+  },
+  {
+    "prompt": "A 0.30 kg mass hangs from a spring with k = 30 N/m and is set oscillating vertically. What is its period?",
+    "choices": ["0.63 s", "0.063 s", "1.6 s", "6.3 s"],
+    "answerIndex": 0,
+    "rightExplain": "T = 2 pi sqrt(m/k) = 2 pi sqrt(0.30/30) = 2 pi (0.10) = 0.63 s.",
+    "wrongExplain": "0.063 s forgets to take the square root of m/k before multiplying by 2 pi. 1.6 s is the frequency (about 1.6 Hz) misread as a period, and 6.3 s is a factor-of-ten slip inside the square root, as if m/k were 1.0."
+  },
+  {
+    "prompt": "If you make a pendulum four times longer, what happens to its period (small swings)?",
+    "choices": ["It quadruples", "It halves", "It is unchanged", "It doubles"],
+    "answerIndex": 3,
+    "rightExplain": "T = 2 pi sqrt(L/g) grows with the square root of L, so quadrupling L doubles sqrt(L): the period doubles.",
+    "wrongExplain": "Quadrupling assumes the period grows linearly with length, but only the square root enters. Halving gets the direction of the change backwards, and 'unchanged' is only true for amplitude changes — never for length."
+  },
+  {
+    "prompt": "A string fixed at both ends is 3.0 m long and carries waves at 12 m/s. What is the frequency of its third harmonic?",
+    "choices": ["2.0 Hz", "6.0 Hz", "36 Hz", "4.0 Hz"],
+    "answerIndex": 1,
+    "rightExplain": "f3 = 3v/2L = (3)(12)/(2)(3.0) = 36/6 = 6.0 Hz.",
+    "wrongExplain": "2.0 Hz is the fundamental f1 = v/2L, 36 Hz forgets the factor of 2 in the denominator (using nv/L instead of nv/2L), and 4.0 Hz is the second harmonic."
+  },
+  {
+    "prompt": "A 0.20 kg block oscillates on a spring with k = 80 N/m and amplitude 0.15 m. What is its total mechanical energy?",
+    "choices": ["1.8 J", "0.45 J", "0.90 J", "12 J"],
+    "answerIndex": 2,
+    "rightExplain": "E = (1/2)kA^2 = (1/2)(80)(0.15)^2 = (1/2)(80)(0.0225) = 0.90 J.",
+    "wrongExplain": "1.8 J uses kA^2 and drops the 1/2, doubling the energy. 0.45 J divides by 4 instead of 2, and 12 J uses (1/2)kA without squaring the amplitude, mixing units of energy with units of force times length."
+  }
+]

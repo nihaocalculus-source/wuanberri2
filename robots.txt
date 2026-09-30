@@ -1,0 +1,7 @@
+# Wuanberri — robots
+# App pages are noindex via meta tags; everything else is fair game.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://wuanberri.com/sitemap.xml

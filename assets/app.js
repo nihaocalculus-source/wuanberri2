@@ -350,8 +350,17 @@
           }
         });
       } else {
-        cta.textContent = 'Sign in';
-        cta.setAttribute('href', 'auth.html');
+        // Signed out: two buttons, "Log in" and "Sign up". Both open the
+        // Google sign-in page (auth.html); the hash only picks the wording.
+        cta.textContent = 'Sign up';
+        cta.setAttribute('href', 'auth.html#signup');
+        if (cta.parentElement && !cta.parentElement.querySelector('.btn-login')) {
+          const login = document.createElement('a');
+          login.className = 'btn btn-ghost btn-login';
+          login.textContent = 'Log in';
+          login.setAttribute('href', 'auth.html#login');
+          cta.parentElement.insertBefore(login, cta);
+        }
       }
     }
   }

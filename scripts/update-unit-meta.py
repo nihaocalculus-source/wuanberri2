@@ -42,12 +42,12 @@ HUB_UNIT_TITLES = {
         'Kinematics',
         "Newton's laws",
         'Work & energy',
-        'Momentum',
+        'Momentum & collisions',
         'Rotational motion',
-        'Gravitation',
-        'Oscillations & waves',
-        'Thermodynamics',
+        'Waves & oscillations',
         'Electricity & magnetism',
+        'Thermodynamics',
+        'Fluids & statics',
     ],
     'linear-algebra': [
         'Vectors & spaces',
@@ -110,7 +110,8 @@ def real_counts(subject_key, units):
         return None
     counts = []
     for u in units:
-        f = content / (slugify(u['title']) + '.json')
+        unit_slug = u.get('slug') or slugify(u['title'])
+        f = content / (unit_slug + '.json')
         if not f.exists():
             return None
         lessons = json.loads(f.read_text(encoding='utf-8'))

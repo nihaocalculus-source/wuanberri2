@@ -1,0 +1,140 @@
+[
+  {
+    "topic": "Simple harmonic motion",
+    "title": "Simple harmonic motion basics",
+    "lede": "A restoring force proportional to stretch makes any mass oscillate sinusoidally, at a frequency set by stiffness and mass alone.",
+    "cards": [
+      {
+        "heading": "The spring-mass ideal",
+        "body": "A spring that pulls back proportionally to stretch, F = -kx, makes a mass oscillate in simple harmonic motion: x(t) = A cos(omega t). The acceleration peaks at the turning points (maximum stretch) and vanishes at equilibrium, exactly the opposite of the speed, which peaks at the center. Any restoring force that grows linearly with displacement produces this same motion.",
+        "math": "x(t) = A\\cos(\\omega t), \\quad \\omega = \\sqrt{\\frac{k}{m}}"
+      },
+      {
+        "heading": "Period and frequency",
+        "body": "The angular frequency omega = sqrt(k/m) sets the pace: T = 2 pi/omega = 2 pi sqrt(m/k) and f = 1/T. Notice what is missing: amplitude. Pull the spring twice as far and the mass travels farther each cycle but finishes each cycle in the same time — a heavier mass or a lazier spring changes the period, amplitude never does.",
+        "math": "T = \\frac{2\\pi}{\\omega} = 2\\pi\\sqrt{\\frac{m}{k}}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A 0.50 kg mass hangs from a stiff spring, k = 200 N/m. omega = sqrt(200/0.50) = sqrt(400) = 20 rad/s, so the period is 2 pi/20 = 0.31 s and the frequency is 20/2 pi = 3.2 Hz. If it oscillates with amplitude 0.10 m, its top speed is A omega = (0.10)(20) = 2.0 m/s — fastest at equilibrium, dead stop at the extremes.",
+        "math": "\\omega = \\sqrt{\\frac{200}{0.50}} = 20\\ \\text{rad/s}, \\quad T = \\frac{2\\pi}{20} \\approx 0.31\\ \\text{s}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "F = -kx",
+        "meaning": "Linear restoring force defines SHM",
+        "explain": "A spring pulls back proportionally to how far it is stretched, the minus sign marking direction toward equilibrium. This force law alone is what makes the resulting motion sinusoidal rather than some other wobble."
+      },
+      {
+        "glyph": "T = 2\\pi\\sqrt{\\frac{m}{k}}",
+        "meaning": "Period of a spring-mass oscillator",
+        "explain": "Heavier masses drag the period longer; stiffer springs shorten it. Amplitude does not appear — big swings and small swings take exactly the same time, which surprises most people."
+      },
+      {
+        "glyph": "v_{\\max} = A\\omega",
+        "meaning": "Peak speed of a harmonic oscillator",
+        "explain": "Speed peaks crossing equilibrium and scales with both amplitude and angular frequency. Doubling the amplitude doubles how fast the mass whips through the center of its swing."
+      }
+    ],
+    "mcq": {
+      "prompt": "A 0.25 kg mass on a spring with k = 100 N/m is pulled aside and released. What is its period of oscillation?",
+      "choices": ["0.050 s", "3.2 s", "0.31 s", "0.63 s"],
+      "answerIndex": 2,
+      "rightExplain": "T = 2 pi sqrt(m/k) = 2 pi sqrt(0.25/100) = 2 pi (0.050) = 0.31 s.",
+      "wrongExplain": "0.050 s is the square root of m/k without the 2 pi, 3.2 s is the frequency in Hz misread as a period, and 0.63 s is double the correct value, as if the mass were 1.0 kg instead of 0.25 kg."
+    }
+  },
+  {
+    "topic": "Energy and the simple pendulum",
+    "title": "Oscillator energy and pendulums",
+    "lede": "A harmonic oscillator's energy is fixed and just sloshes between potential and kinetic — and a small-swing pendulum keeps time regardless of mass.",
+    "cards": [
+      {
+        "heading": "Energy sloshing",
+        "body": "Total energy E = (1/2)kA^2 is set by stiffness and amplitude, and it trades form continuously: all potential (1/2)kx^2 at the turning points x = plus or minus A, all kinetic (1/2)mv^2 at equilibrium. Damping leaks this budget away into heat and sound, which is why real oscillators need a periodic push to keep going.",
+        "math": "E = \\tfrac{1}{2}kA^2 = \\tfrac{1}{2}mv_{\\max}^2"
+      },
+      {
+        "heading": "The pendulum",
+        "body": "A pendulum's restoring force is gravity's tangential component, mg sin(theta), which is proportional to displacement only for small angles where sin(theta) is nearly theta in radians. That small-angle approximation gives T = 2 pi sqrt(L/g) — independent of both the bob's mass and the swing amplitude. Push a playground swing gently or hard and the period barely budges, until angles get large.",
+        "math": "T = 2\\pi\\sqrt{\\frac{L}{g}} \\quad (\\text{small angles})"
+      },
+      {
+        "heading": "Worked example",
+        "body": "Energy check: the 0.50 kg mass on the k = 200 N/m spring swinging with amplitude 0.10 m holds E = (1/2)(200)(0.10)^2 = 1.0 J. All 1.0 J is spring potential at the turning points, all 1.0 J is kinetic at the center, so v_max = sqrt(2E/m) = sqrt(2.0/0.50) = 2.0 m/s — matching A omega = (0.10)(20). Pendulum check: L = 1.0 m gives T = 2 pi sqrt(1.0/9.8) = 2.0 s, the classic seconds pendulum.",
+        "math": "v_{\\max} = \\sqrt{\\frac{2E}{m}} = \\sqrt{\\frac{2(1.0)}{0.50}} = 2.0\\ \\text{m/s}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "E = \\tfrac{1}{2}kA^2",
+        "meaning": "Total energy of a harmonic oscillator",
+        "explain": "Mechanical energy depends only on stiffness and amplitude. It all sits in the spring at the turning points and all in the motion at equilibrium, sloshing between the two twice per cycle."
+      },
+      {
+        "glyph": "T = 2\\pi\\sqrt{\\frac{L}{g}}",
+        "meaning": "Small-angle pendulum period",
+        "explain": "A pendulum's period depends only on its length and gravity — not the bob's mass and not the swing size, as long as the angle stays small enough that sin(theta) is close to theta."
+      },
+      {
+        "glyph": "x = \\pm A",
+        "meaning": "Turning points of the oscillation",
+        "explain": "At these extremes the oscillator momentarily stops and its energy is entirely potential. They mark where the velocity flips sign, one at each end of the swing."
+      }
+    ],
+    "mcq": {
+      "prompt": "A 0.50 kg block on a spring with k = 200 N/m oscillates with amplitude 0.10 m. What is its maximum speed?",
+      "choices": ["2.0 m/s", "1.0 m/s", "4.0 m/s", "0.20 m/s"],
+      "answerIndex": 0,
+      "rightExplain": "E = (1/2)(200)(0.10)^2 = 1.0 J; setting (1/2)mv^2 = 1.0 J gives v_max = sqrt(2(1.0)/0.50) = 2.0 m/s, the same as A omega = (0.10)(20).",
+      "wrongExplain": "1.0 m/s uses only half the energy, 4.0 m/s comes from kA^2 without the 1/2 (doubling the stored energy), and 0.20 m/s is a decimal slip on A omega."
+    }
+  },
+  {
+    "topic": "Traveling waves and superposition",
+    "title": "Traveling waves and standing waves",
+    "lede": "Waves pass through each other and simply add — and when the additions happen between fixed ends, the result is a family of standing harmonics.",
+    "cards": [
+      {
+        "heading": "Wave anatomy",
+        "body": "A traveling wave is a shape moving through a medium: y(x, t) = A sin(kx - omega t). The wavelength lambda sets the spatial repeat (k = 2 pi/lambda), the period T sets the temporal repeat (omega = 2 pi/T), and the wave speed ties them together: v = f lambda. On a given string the medium fixes the speed, so shaking it faster shrinks the wavelength rather than raising the speed.",
+        "math": "v = f\\lambda"
+      },
+      {
+        "heading": "Two kinds, superposed",
+        "body": "In a transverse wave (string, light) the medium moves across the propagation direction; in a longitudinal wave (sound) it moves along it. Waves pass through each other and add point by point: crest on crest doubles the displacement (constructive), crest on trough cancels it (destructive). Two identical waves traveling opposite directions superpose into a standing wave whose nodes never move at all.",
+        "math": "y = y_1 + y_2"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A string fixed at both ends is 2.0 m long and carries transverse waves at 8.0 m/s. The fixed ends force nodes, so only shapes fitting whole half-wavelengths survive: the fundamental has lambda = 2L = 4.0 m and f1 = v/lambda = 2.0 Hz; the second harmonic has lambda = L = 2.0 m and f2 = 4.0 Hz; the third has lambda = 2L/3 = 1.33 m and f3 = 6.0 Hz. Each harmonic adds one more loop to the pattern.",
+        "math": "f_n = \\frac{nv}{2L} = \\frac{n(8.0)}{2(2.0)} = 2n\\ \\text{Hz}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "v = f\\lambda",
+        "meaning": "Wave speed ties frequency to wavelength",
+        "explain": "Frequency times wavelength equals the wave speed, which the medium sets. Raising the frequency shortens the wavelength; the speed itself does not budge."
+      },
+      {
+        "glyph": "y(x,t) = A\\sin(kx - \\omega t)",
+        "meaning": "A wave traveling in the plus-x direction",
+        "explain": "The minus sign in the phase means the shape slides toward increasing x as time grows. Here k = 2 pi/lambda compresses the spatial pattern and omega = 2 pi/T the temporal one."
+      },
+      {
+        "glyph": "f_n = \\frac{nv}{2L}",
+        "meaning": "Harmonic frequencies of a string fixed at both ends",
+        "explain": "Fixed ends demand nodes there, so the string holds an integer number of half-wavelengths. Every allowed frequency is the fundamental times the integer n, giving the 1x, 2x, 3x series."
+      }
+    ],
+    "mcq": {
+      "prompt": "A wave of frequency 50 Hz travels at 340 m/s (roughly the speed of room-temperature sound). What is its wavelength?",
+      "choices": ["0.15 m", "17,000 m", "340 m", "6.8 m"],
+      "answerIndex": 3,
+      "rightExplain": "lambda = v/f = 340/50 = 6.8 m.",
+      "wrongExplain": "0.15 m divides the frequency by the speed instead of the other way around, 17,000 m multiplies v by f, and 340 m simply echoes the wave speed back — dividing speed by frequency is the only way to get meters per cycle."
+    }
+  }
+]

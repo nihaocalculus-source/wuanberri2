@@ -1,0 +1,186 @@
+[
+  {
+    "topic": "Position, velocity, and acceleration",
+    "title": "Position, velocity, acceleration",
+    "lede": "Motion is tracked by three quantities built from one idea: how position changes over time.",
+    "cards": [
+      {
+        "heading": "Displacement vs distance",
+        "body": "Position is where you are relative to an origin. Displacement is the change in position, a straight-line quantity with a sign, while distance is the total path length traveled and is always positive. Walk 40 m east then 30 m west and your distance is 70 m but your displacement is only 10 m east.",
+        "math": "\\Delta x = x_f - x_i"
+      },
+      {
+        "heading": "Velocity and graphs",
+        "body": "Average velocity is displacement divided by elapsed time; instantaneous velocity is what that quotient becomes over a vanishing interval, which is the slope of the position-time graph. Acceleration is the rate of change of velocity, the slope of the velocity-time graph. On a velocity-time graph, the area under the curve equals the displacement.",
+        "math": "v_{\\text{avg}} = \\frac{\\Delta x}{\\Delta t}, \\quad a = \\frac{\\Delta v}{\\Delta t}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "Let s(t) = t^2 - 4t + 3 give position in meters. From t = 0 to t = 3, displacement is s(3) - s(0) = 0 - 3 = -3 m, so average velocity is -3/3 = -1 m/s even though the object ends up moving forward: v(t) = 2t - 4 gives +2 m/s at t = 3. The object reverses at t = 2 (position falls from 3 m to -1 m, then rises back to 0 m), so the distance traveled is 4 + 1 = 5 m while displacement is only -3 m.",
+        "math": "v(3) = 2(3) - 4 = 2 \\text{ m/s}, \\quad \\text{distance} = 5 \\text{ m}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "v_{\\text{avg}} = \\frac{\\Delta x}{\\Delta t}",
+        "meaning": "Average velocity is displacement over elapsed time",
+        "explain": "This is the slope of the secant line on a position-time graph between two instants. It can be zero even when a lot of ground was covered, if the motion ends where it started."
+      },
+      {
+        "glyph": "a = \\frac{dv}{dt}",
+        "meaning": "Acceleration is the rate of change of velocity",
+        "explain": "Slope of the velocity-time graph. An object speeds up when acceleration and velocity point the same way and slows down when they oppose, regardless of the sign of a itself."
+      },
+      {
+        "glyph": "\\text{area under } v(t) = \\Delta x",
+        "meaning": "Displacement is area under the velocity graph",
+        "explain": "On a velocity-time graph, area between the curve and the time axis gives displacement. Area below the axis counts as negative, which is why net area can vanish while distance traveled does not."
+      }
+    ],
+    "mcq": {
+      "prompt": "A cyclist's position is s(t) = 2t^2 - 3t meters after t seconds. What is her average velocity from t = 1 to t = 2?",
+      "choices": ["3 m/s", "5 m/s", "1 m/s", "-1 m/s"],
+      "answerIndex": 0,
+      "rightExplain": "s(1) = -1 and s(2) = 2, so average velocity is (2 - (-1))/(2 - 1) = 3 m/s.",
+      "wrongExplain": "5 m/s is the instantaneous velocity v(2) = 4t - 3 evaluated at t = 2, and 1 m/s is v(1); average velocity needs the displacement over the whole interval. -1 m/s is just the position s(1), not a velocity."
+    }
+  },
+  {
+    "topic": "Constant-acceleration equations",
+    "title": "The four kinematics equations",
+    "lede": "When acceleration is constant, four linked equations let you skip the calculus and connect any three of x, v, a, and t.",
+    "cards": [
+      {
+        "heading": "The four equations",
+        "body": "Each equation deliberately leaves one variable out, and that is how you choose which to use. No x? Use v = v0 + at. No t? Use v^2 = v0^2 + 2ax. No v? Use x = x0 + v0 t + (1/2)at^2. No a? Use x = (1/2)(v0 + v)t. All four assume constant acceleration and straight-line motion.",
+        "math": "v = v_0 + at"
+      },
+      {
+        "heading": "Choosing the right one",
+        "body": "List what the problem gives and what it asks for, then pick the equation whose missing variable matches the one you neither know nor need. Watch signs: a negative acceleration means the acceleration points along the negative axis, and a negative displacement means the object ended behind the start. Free fall is the most common case, with a = -9.8 m/s^2 taking upward as positive.",
+        "math": "v^2 = v_0^2 + 2a\\Delta x"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A car traveling 12 m/s brakes with constant acceleration of -3 m/s^2. To find stopping time, use v = v0 + at: 0 = 12 - 3t gives t = 4 s. For stopping distance, use v^2 = v0^2 + 2ax since time is now extra information: 0 = 144 + 2(-3)x gives x = 24 m. Check with x = v0 t + (1/2)at^2 = 48 - 24 = 24 m.",
+        "math": "x = \\frac{v^2 - v_0^2}{2a} = \\frac{0 - 144}{-6} = 24 \\text{ m}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "v = v_0 + at",
+        "meaning": "Velocity under constant acceleration, no position",
+        "explain": "Use this when the problem never mentions or asks for position. It is just the definition of constant acceleration rearranged: velocity changes linearly in time."
+      },
+      {
+        "glyph": "v^2 = v_0^2 + 2a\\Delta x",
+        "meaning": "Relates velocities, acceleration, and position, no time",
+        "explain": "The go-to equation when time is neither given nor wanted, such as stopping-distance problems. It comes from eliminating t between the other two equations."
+      },
+      {
+        "glyph": "\\Delta x = v_0 t + \\tfrac{1}{2}at^2",
+        "meaning": "Position from initial velocity and constant acceleration",
+        "explain": "The full position equation for constant acceleration. The two terms split the displacement into the part from the initial velocity and the part from acceleration."
+      }
+    ],
+    "mcq": {
+      "prompt": "A train slows from 30 m/s to 10 m/s while covering 200 m of track. What is its acceleration, assumed constant?",
+      "choices": ["-4 m/s^2", "2 m/s^2", "-1 m/s^2", "-2 m/s^2"],
+      "answerIndex": 3,
+      "rightExplain": "Time is not given, so use v^2 = v0^2 + 2ax: 100 = 900 + 2a(200), so 400a = -800 and a = -2 m/s^2.",
+      "wrongExplain": "2 m/s^2 has the sign flipped, and -4 m/s^2 doubles the deceleration, as if the train covered only 100 m. -1 m/s^2 assumes the slowdown took 20 s, but no time is given or needed when v^2 = v0^2 + 2ax applies."
+    }
+  },
+  {
+    "topic": "Free fall and projectile motion",
+    "title": "Free fall and projectiles",
+    "lede": "A projectile runs two independent one-dimensional problems at once, and gravity only writes in one of them.",
+    "cards": [
+      {
+        "heading": "Horizontal and vertical split",
+        "body": "Gravity acts only vertically, so the horizontal motion is constant velocity and the vertical motion is free fall with a = -9.8 m/s^2. The two directions share exactly one quantity: the time of flight. A ball dropped and a ball thrown horizontally from the same height hit the ground together.",
+        "math": "x = v_{0x} t, \\quad y = v_{0y} t - \\tfrac{1}{2}gt^2"
+      },
+      {
+        "heading": "Range and height",
+        "body": "For a launch at speed v0 and angle theta over level ground, the vertical and horizontal components are v0y = v0 sin(theta) and v0x = v0 cos(theta). The time of flight is 2 v0y/g, so the range is v0x times that. Maximum height uses v^2 = v0^2 + 2ax with final vertical velocity zero.",
+        "math": "R = \\frac{2 v_0^2 \\sin\\theta \\cos\\theta}{g}, \\quad h_{\\max} = \\frac{v_0^2 \\sin^2\\theta}{2g}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A ball is kicked at 20 m/s at 30 degrees above horizontal. The components are v0x = 20 cos(30) = 17.3 m/s and v0y = 20 sin(30) = 10 m/s. Time of flight is 2(10)/9.8 = 2.04 s, so the range is 17.3 times 2.04 = 35.4 m. Max height is v0y^2/(2g) = 100/19.6 = 5.1 m.",
+        "math": "R = 17.3 \\times 2.04 = 35.4 \\text{ m}, \\quad h = \\frac{10^2}{19.6} = 5.1 \\text{ m}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "v_{0x} = v_0\\cos\\theta, \\ v_{0y} = v_0\\sin\\theta",
+        "meaning": "Splitting a launch velocity into components",
+        "explain": "Every projectile starts by decomposing the initial speed into horizontal and vertical pieces. The horizontal piece stays constant through the whole flight; the vertical piece is what gravity steadily erodes."
+      },
+      {
+        "glyph": "t_{\\text{flight}} = \\frac{2v_{0y}}{g}",
+        "meaning": "Time of flight for level-ground launch",
+        "explain": "Rise time is v0y/g and fall time equals rise time over level ground, doubling the total. This single time value links the horizontal and vertical problems together."
+      },
+      {
+        "glyph": "h_{\\max} = \\frac{v_{0y}^2}{2g}",
+        "meaning": "Maximum height of a projectile",
+        "explain": "At the top the vertical velocity is momentarily zero, which turns the height question into a no-time kinematics problem. Only the vertical velocity component matters, so launching straight up and at an angle at the same v0y reach the same height."
+      }
+    ],
+    "mcq": {
+      "prompt": "A dart is thrown horizontally at 15 m/s from a 20 m high cliff. How far from the base of the cliff does it land?",
+      "choices": ["20 m", "30.3 m", "15 m", "9.8 m"],
+      "answerIndex": 1,
+      "rightExplain": "Fall time is t = sqrt(2h/g) = sqrt(40/9.8) = 2.02 s. Horizontal distance is 15 times 2.02 = 30.3 m.",
+      "wrongExplain": "20 m just echoes the height and 15 m the throw speed, but neither is a distance along the ground. 9.8 m substitutes g as if it were a time or distance, mixing up the constants."
+    }
+  },
+  {
+    "topic": "Relative motion",
+    "title": "Reference frames and relative velocity",
+    "lede": "Every velocity you state is measured against some frame, and switching frames is simple vector subtraction.",
+    "cards": [
+      {
+        "heading": "Reference frames",
+        "body": "A frame is the viewpoint you measure from, often the ground. The same object has different velocities in different frames: to a passenger on a smooth train, a dropped ball falls straight down, but to someone on the ground it traces a curve. Position, velocity, and acceleration all depend on the chosen frame.",
+        "math": "\\vec{v}_{A/\\text{ground}} = \\vec{v}_{A/B} + \\vec{v}_{B/\\text{ground}}"
+      },
+      {
+        "heading": "Relative velocity vectors",
+        "body": "The velocity of A as seen from B is the vector difference of their ground velocities. If two cars both head east at 25 m/s, each sees the other as stationary. If one heads east at 20 m/s and the other west at 15 m/s, each sees the other approaching at 35 m/s. Because it is a vector equation, directions must be handled with signs or components, never raw speeds alone.",
+        "math": "\\vec{v}_{A/B} = \\vec{v}_{A/G} - \\vec{v}_{B/G}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A boat points straight across a river at 4 m/s relative to the water while the current flows downstream at 3 m/s, and the river is 80 m wide. The crossing time depends only on the across-component: 80/4 = 20 s. The current does not speed up or slow down the crossing; it just carries the boat 3 times 20 = 60 m downstream, so the boat actually moves at 5 m/s along a diagonal at arctan(3/4) = 37 degrees from straight across.",
+        "math": "|\\vec{v}| = \\sqrt{4^2 + 3^2} = 5 \\text{ m/s}, \\quad t = \\frac{80}{4} = 20 \\text{ s}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "\\vec{v}_{A/B} = \\vec{v}_{A/G} - \\vec{v}_{B/G}",
+        "meaning": "Velocity of A relative to B",
+        "explain": "Subtract the observer's velocity from the object's velocity, both measured in the ground frame. Keep the arrow directions: subtracting vectors means subtracting components, not just numbers."
+      },
+      {
+        "glyph": "\\vec{v}_{A/B} = -\\vec{v}_{B/A}",
+        "meaning": "Reversing the observer flips the relative velocity",
+        "explain": "How A sees B is the exact opposite of how B sees A. If the train passenger sees the platform move backward at 20 m/s, the platform sees the passenger move forward at 20 m/s."
+      },
+      {
+        "glyph": "t_{\\text{cross}} = \\frac{d}{v_{\\text{across}}}",
+        "meaning": "River crossing time uses only the across-component",
+        "explain": "The current is perpendicular to the crossing direction, so it contributes nothing to reaching the far bank. Crossing time is the river width divided by the boat's speed relative to the water, pointed straight across."
+      }
+    ],
+    "mcq": {
+      "prompt": "A swimmer moves at 2.0 m/s straight across a 60 m wide river while a 1.5 m/s current runs parallel to the banks. How long does the crossing take?",
+      "choices": ["24 s", "20 s", "30 s", "40 s"],
+      "answerIndex": 2,
+      "rightExplain": "The current is perpendicular to the crossing, so only the 2.0 m/s across-component matters: t = 60/2.0 = 30 s.",
+      "wrongExplain": "24 s divides the width by the 2.5 m/s resultant speed, but that diagonal direction does not point toward the far bank. 20 s would need a 3.0 m/s across-component, and 40 s divides the width by the 1.5 m/s current, which runs along the bank and never carries anyone across."
+    }
+  }
+]

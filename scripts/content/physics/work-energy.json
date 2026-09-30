@@ -1,0 +1,140 @@
+[
+  {
+    "topic": "Work and the work-energy theorem",
+    "title": "Work and the work-energy theorem",
+    "lede": "Work measures force delivered through distance, and all of it shows up as a change in speed.",
+    "cards": [
+      {
+        "heading": "The work formula",
+        "body": "Work is force magnitude times displacement times the cosine of the angle between them. Only the force component along the motion does work: pushing perpendicular contributes zero. The angle matters silently in many problems, since a rope at an angle or a force that opposes the motion changes the sign or shrinks the contribution.",
+        "math": "W = Fd\\cos\\theta"
+      },
+      {
+        "heading": "The work-energy theorem",
+        "body": "The net work done on an object equals its change in kinetic energy. Positive net work speeds it up, negative net work slows it, and zero net work leaves the speed unchanged even if individual forces did work. Kinetic energy is (1/2)mv^2, so the theorem ties force and distance directly to speed without ever mentioning time.",
+        "math": "W_{\\text{net}} = \\Delta KE = \\tfrac{1}{2}mv^2 - \\tfrac{1}{2}mv_0^2"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A 0.145 kg baseball arrives at 40 m/s and is stopped in the catcher's mitt. Its kinetic energy drops from (1/2)(0.145)(1600) = 116 J to zero, so the mitt does -116 J of work on the ball. If the ball squashes into the mitt over 0.10 m, the average stopping force is 116/0.10 = 1160 N backward, a force worth remembering next time someone offers to catch.",
+        "math": "W = 0 - \\tfrac{1}{2}(0.145)(40)^2 = -116 \\text{ J}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "W = Fd\\cos\\theta",
+        "meaning": "Work is force times displacement times the angle factor",
+        "explain": "The cosine picks out only the force component along the displacement. At 90 degrees the work is zero, and above 90 degrees it is negative, meaning the force removes energy."
+      },
+      {
+        "glyph": "W_{\\text{net}} = \\tfrac{1}{2}mv^2 - \\tfrac{1}{2}mv_0^2",
+        "meaning": "Net work equals the change in kinetic energy",
+        "explain": "Add up the work from every force acting, and the total must equal how much the kinetic energy grew or shrank. It is a bookkeeping rule that converts forces over distances into speeds."
+      },
+      {
+        "glyph": "\\text{J} = \\text{N}\\cdot\\text{m}",
+        "meaning": "The joule is a newton-meter",
+        "explain": "Work and energy share the joule, defined as one newton of force applied over one meter. Torque also uses newton-meters, but torque is a vector product while work is a scalar, so they are never interchangeable quantities."
+      }
+    ],
+    "mcq": {
+      "prompt": "A rope pulls a sled 5.0 m across ice with a 10 N force at 60 degrees above the horizontal. How much work does the rope do?",
+      "choices": ["50 J", "43 J", "12.5 J", "25 J"],
+      "answerIndex": 3,
+      "rightExplain": "Only the horizontal component works: W = Fd cos(60) = (10)(5.0)(0.5) = 25 J.",
+      "wrongExplain": "50 J ignores the angle and counts the full force, and 43 J uses cos(30) instead of cos(60), measuring the angle from the wrong reference. 12.5 J halves the correct answer one time too many, leaving a stray factor of 1/2."
+    }
+  },
+  {
+    "topic": "Conservation of energy",
+    "title": "Conservation of energy with friction",
+    "lede": "Energy is never lost, but friction quietly converts the useful kind into heat, and the accounting must include it.",
+    "cards": [
+      {
+        "heading": "Kinetic and potential energy",
+        "body": "Kinetic energy is energy of motion, (1/2)mv^2, and gravitational potential energy is energy of position, mgh relative to a chosen zero level. When only gravity does work, the total is conserved: whatever kinetic energy the object loses climbing, it regains descending. A ball dropped from 2 m arrives at the ground at sqrt(2(9.8)(2)) = 6.3 m/s no matter its mass.",
+        "math": "KE + PE = \\text{constant} \\quad (\\text{only conservative forces})"
+      },
+      {
+        "heading": "Conservative vs nonconservative",
+        "body": "A force is conservative when the work it does depends only on the endpoints: gravity and ideal springs qualify, friction does not. Drag a box across a table and back, and friction has done negative work the whole way, leaving thermal energy behind. Friction is always nonconservative, and its work equals friction force times the path length slid.",
+        "math": "KE_i + U_i = KE_f + U_f + f_k d"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A 2.0 kg block starts from rest and slides 3.0 m down a 30 degree incline with mu_k = 0.20. It drops h = 3.0 sin(30) = 1.5 m, releasing U = (2.0)(9.8)(1.5) = 29.4 J. The normal force is mg cos(30) = 16.97 N, so friction is (0.20)(16.97) = 3.39 N and absorbs 3.39 times 3.0 = 10.2 J. The remaining 19.2 J is kinetic, giving v = sqrt(2(19.2)/2.0) = 4.4 m/s, slower than the frictionless 5.4 m/s.",
+        "math": "\\tfrac{1}{2}mv^2 = mgh - \\mu_k mgd\\cos\\theta = 29.4 - 10.2 = 19.2 \\text{ J}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "U_g = mgh",
+        "meaning": "Gravitational potential energy near Earth",
+        "explain": "Energy stored by lifting against gravity, measured from any convenient zero height you choose. Only changes in U ever enter a problem, so the zero level is yours to pick for convenience."
+      },
+      {
+        "glyph": "KE_i + U_i = KE_f + U_f",
+        "meaning": "Energy conservation with only conservative forces",
+        "explain": "With no friction or drag, mechanical energy shuttles freely between kinetic and potential. Speeds at any height come from a single subtraction, with no forces or time needed."
+      },
+      {
+        "glyph": "KE_i + U_i = KE_f + U_f + f_k d",
+        "meaning": "Energy bookkeeping including friction losses",
+        "explain": "Friction converts mechanical energy into thermal energy equal to friction force times sliding distance. Put it on the final side and the equation stays a conservation statement: nothing vanished, it just heated the surfaces."
+      }
+    ],
+    "mcq": {
+      "prompt": "A pendulum bob is released from rest with the string taut and horizontal, so the bob sits 0.20 m above the lowest point of the swing. What is its speed at the bottom? Use g = 9.8 m/s^2.",
+      "choices": ["1.4 m/s", "2.0 m/s", "2.8 m/s", "0.44 m/s"],
+      "answerIndex": 1,
+      "rightExplain": "Potential energy converts entirely to kinetic: v = sqrt(2gh) = sqrt(2(9.8)(0.20)) = sqrt(3.92) = 2.0 m/s.",
+      "wrongExplain": "1.4 m/s comes from forgetting the factor of two in v = sqrt(2gh), and 2.8 m/s from multiplying h by 2 twice more. 0.44 m/s has taken a square root of h alone, discarding g and the factor of two."
+    }
+  },
+  {
+    "topic": "Power and potential energy diagrams",
+    "title": "Power and potential curves",
+    "lede": "Power is the rate of delivering energy, and a potential energy curve is a map of where a particle can and cannot go.",
+    "cards": [
+      {
+        "heading": "Power",
+        "body": "Power is work per unit time, measured in watts where 1 W = 1 J/s. For motion at speed v driven by force F along the motion, power is also F times v, which is why a car climbing a steep grade at constant speed needs the same power no matter which gear it uses. Doubling the climb speed doubles the power demanded.",
+        "math": "P = \\frac{W}{t} = Fv"
+      },
+      {
+        "heading": "Reading U(x) curves",
+        "body": "A potential energy graph encodes the force: F = -dU/dx, so the force points downhill on the curve and vanishes at the flat spots. A particle with total energy E can only be where U(x) is at most E, and the turning points are the x values where U(x) = E, since there the kinetic energy hits zero and the particle turns back.",
+        "math": "F = -\\frac{dU}{dx}, \\quad K = E - U(x)"
+      },
+      {
+        "heading": "Equilibrium",
+        "body": "The flat spots of a U(x) curve are equilibrium points. At a valley bottom U has a local minimum: displace the object either way and the force pushes it back toward center, like a marble in a bowl. At a hilltop U has a local maximum: any nudge and the force pushes it further away, like a pencil on its tip. Try U(x) = 3x^2 J, whose minimum sits at x = 0: the force is F = -6x, so at x = 1 m it points back with 6 N, confirming stable equilibrium.",
+        "math": "\\text{stable: } U \\text{ min}, \\quad \\text{unstable: } U \\text{ max}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "P = \\frac{W}{t} = Fv",
+        "meaning": "Power is energy delivered per second",
+        "explain": "The two forms are equivalent when a steady force moves something at steady speed. The Fv form explains why hills force slow speeds: with the engine power capped, less v is the only way to survive a bigger F."
+      },
+      {
+        "glyph": "F = -\\frac{dU}{dx}",
+        "meaning": "Force is the negative slope of the potential curve",
+        "explain": "Steep parts of the U(x) curve mean strong forces; flat parts mean none. The minus sign says the force always pushes the particle toward lower potential energy, like gravity pulling downhill."
+      },
+      {
+        "glyph": "K = E - U(x)",
+        "meaning": "Kinetic energy is the gap between total energy and the curve",
+        "explain": "Draw a horizontal line at E on the U(x) plot: wherever the curve sits below the line, the particle moves with that much kinetic energy. Where the curve meets the line, K is zero and the particle turns around."
+      }
+    ],
+    "mcq": {
+      "prompt": "A spring with k = 200 N/m is compressed 0.30 m and holds a 0.50 kg block against it at rest. When released, the block leaves the spring at the spring's natural length. What is the block's speed at x = 0.15 m from natural length? Take the total energy as the initial spring energy.",
+      "choices": ["5.2 m/s", "3.7 m/s", "6.0 m/s", "9.0 m/s"],
+      "answerIndex": 0,
+      "rightExplain": "Total energy is (1/2)(200)(0.30)^2 = 9.0 J. At x = 0.15 the spring still holds (1/2)(200)(0.15)^2 = 2.25 J, so the block has K = 6.75 J and v = sqrt(2(6.75)/0.50) = 5.2 m/s.",
+      "wrongExplain": "6.0 m/s assumes all 9.0 J is kinetic at x = 0.15, ignoring the energy still stored in the spring, and 9.0 m/s just restates the energy number with speed units. 3.7 m/s comes from using half the kinetic energy, a factor-of-two slip in the (1/2)mv^2 formula."
+    }
+  }
+]

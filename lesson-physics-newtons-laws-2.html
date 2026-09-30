@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Free-body diagrams — Wuanberri Physics</title>
+  <link rel="canonical" href="https://wuanberri.com/lesson-physics-newtons-laws-2.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Wuanberri" />
+  <meta property="og:title" content="Free-body diagrams — Wuanberri Physics" />
+  <meta property="og:description" content="Draw only the forces acting on the object itself, and most mechanics problems solve themselves." />
+  <meta property="og:url" content="https://wuanberri.com/lesson-physics-newtons-laws-2.html" />
+  <meta property="og:image" content="https://wuanberri.com/assets/wuanberri-logo.png" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Draw only the forces acting on the object itself, and most mechanics problems solve themselves." />
+  <link rel="stylesheet" href="assets/styles.css?v=20260929c" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand brand-img"><img src="assets/wuanberri-logo.png" alt="Wuanberri"></a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+<div class="nav-dd">
+          <button class="nav-dd-btn" type="button" aria-haspopup="true" aria-expanded="false">Subjects <span class="nav-dd-caret">&#9662;</span></button>
+          <div class="nav-dd-panel" role="menu">
+            <div class="dd-col">
+              <span class="dd-col-label">Math</span>
+              <a href="algebra.html">Algebra</a>
+              <a href="geometry.html">Geometry</a>
+              <a href="calculus.html">Calculus</a>
+              <a href="linear-algebra.html">Linear Algebra</a>
+              <a href="differential-equations.html">Differential Equations</a>
+              <a href="discrete-math.html">Discrete Math</a>
+              <a href="statistics.html">Statistics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Science</span>
+              <a href="biology.html">Biology</a>
+              <a href="chemistry.html">Chemistry</a>
+              <a href="physics.html">Physics</a>
+              <a href="anatomy-physiology.html">Anatomy &amp; Physiology</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Business &amp; Economics</span>
+              <a href="intro-to-business.html">Intro to Business</a>
+              <a href="microeconomics.html">Microeconomics</a>
+              <a href="macroeconomics.html">Macroeconomics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">English</span>
+              <a href="english-composition.html">English Composition</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Engineering</span>
+              <a href="electrical-engineering.html">Electrical Engineering</a>
+              <a href="statics.html">Statics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Tools</span>
+              <a href="tutor-market.html">Tutor Market</a>
+              <a href="decks.html">AI Decks</a>
+              <a href="practice.html">Quick Practice</a>
+              <a href="library.html">Worked Examples</a>
+            </div>
+          </div>
+        </div>        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="physics.html">← Back to Physics</a>
+      <h1>Free-body diagrams</h1>
+      <p class="lede">Draw only the forces acting on the object itself, and most mechanics problems solve themselves.</p>
+
+
+      <div class="lesson-card">
+        <h2>How to draw one</h2>
+        <p>Shrink the object to a dot and draw one arrow for each external force acting on it, with tails starting at the dot and lengths reflecting relative sizes. Include only forces on the object, never forces the object exerts on other things, and never add a separate arrow for ma, which is the result of the forces, not one of them.</p>
+        <span class="math">\sum \vec{F}_{\text{on object}} = m\vec{a}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Normal force and tension</h2>
+        <p>The normal force is a surface pushing perpendicular to itself, and it adjusts itself to whatever makes the perpendicular motion come out right, so it is not always equal to mg. In an elevator accelerating up at 2 m/s^2, the floor must push with m(g + 2). Tension in a rope pulls along the rope toward both ends, and a rope around an ideal pulley has the same tension throughout.</p>
+        <span class="math">N - mg = ma \implies N = m(g+a)</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Inclines and components</h2>
+        <p>On a slope, tilt your axes so x runs along the incline and y is perpendicular to it. The weight then decomposes into mg sin(theta) down the slope and mg cos(theta) into the surface. For a 10 kg block on a 30 degree incline, those components are 98 sin(30) = 49 N along the slope and 98 cos(30) = 84.9 N into the surface, which is what sets the normal force on a frictionless incline.</p>
+        <span class="math">mg\sin\theta \ \text{(along slope)}, \quad mg\cos\theta \ \text{(into surface)}</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;N = m(g + a)&quot;,&quot;meaning&quot;:&quot;Normal force in an upward-accelerating elevator&quot;,&quot;explain&quot;:&quot;Newton&#39;s second law in the vertical direction: the floor&#39;s push must both support the weight and supply the upward acceleration. The scale reads this normal force, which is why you feel heavier on launch.&quot;},{&quot;glyph&quot;:&quot;mg\\sin\\theta, \\ mg\\cos\\theta&quot;,&quot;meaning&quot;:&quot;Weight components along and into an incline&quot;,&quot;explain&quot;:&quot;Rotating axes so one axis lies along the slope turns a two-dimensional problem into two one-dimensional ones. The sine component drives sliding; the cosine component sets the normal force and therefore friction.&quot;},{&quot;glyph&quot;:&quot;\\text{tension } T \\text{ same at both ends}&quot;,&quot;meaning&quot;:&quot;Ideal rope pulls equally on both attached objects&quot;,&quot;explain&quot;:&quot;An ideal massless rope over an ideal pulley transmits the same tension everywhere. Each attached object feels that tension pulling toward the rope, so one T value links both halves of a pulley problem.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>N = m(g + a)</div>
+        <p data-flip-meaning>Normal force in an upward-accelerating elevator</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Newton&#39;s second law in the vertical direction: the floor&#39;s push must both support the weight and supply the upward acceleration. The scale reads this normal force, which is why you feel heavier on launch.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>A 50 kg person stands in an elevator accelerating upward at 2.0 m/s^2. What does the scale read? Use g = 9.8 m/s^2.</p>
+        <form class="mcq" data-mcq="b" data-right-explain="Newton&#39;s second law gives N - mg = ma, so N = m(g + a) = 50(9.8 + 2.0) = 590 N." data-wrong-explain="490 N is the plain weight, which is the reading only when the elevator is at rest or at constant speed, and 390 N uses a sign error, computing m(g - a) as if the elevator accelerated downward. 980 N doubles the weight, as if the acceleration equaled g.">
+          <button type="button" data-choice="a">490 N</button>
+          <button type="button" data-choice="b">590 N</button>
+          <button type="button" data-choice="c">390 N</button>
+          <button type="button" data-choice="d">980 N</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-physics-newtons-laws.html">Take the unit quiz</a></p>
+
+      <div style="display:flex;justify-content:space-between;gap:12px;margin-top:24px">
+        <a class="btn btn-ghost" href="lesson-physics-newtons-laws-1.html">&larr; Previous lesson</a>
+        <a class="btn btn-ghost" href="lesson-physics-newtons-laws-3.html">Next lesson &rarr;</a>
+      </div>    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h2 class="footer-head">Product</h2>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-head">Legal</h2>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js?v=20260929c"></script>
+  <script src="assets/llm.js?v=20260929c"></script>
+  <script src="assets/app.js?v=20260930a"></script>
+</body>
+</html>

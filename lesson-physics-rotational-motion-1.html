@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Angular variables and inertia — Wuanberri Physics</title>
+  <link rel="canonical" href="https://wuanberri.com/lesson-physics-rotational-motion-1.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Wuanberri" />
+  <meta property="og:title" content="Angular variables and inertia — Wuanberri Physics" />
+  <meta property="og:description" content="Rotation swaps x, v, a for theta, omega, alpha — and adds a new inertia that depends on where the mass sits." />
+  <meta property="og:url" content="https://wuanberri.com/lesson-physics-rotational-motion-1.html" />
+  <meta property="og:image" content="https://wuanberri.com/assets/wuanberri-logo.png" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Rotation swaps x, v, a for theta, omega, alpha — and adds a new inertia that depends on where the mass sits." />
+  <link rel="stylesheet" href="assets/styles.css?v=20260929c" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand brand-img"><img src="assets/wuanberri-logo.png" alt="Wuanberri"></a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+<div class="nav-dd">
+          <button class="nav-dd-btn" type="button" aria-haspopup="true" aria-expanded="false">Subjects <span class="nav-dd-caret">&#9662;</span></button>
+          <div class="nav-dd-panel" role="menu">
+            <div class="dd-col">
+              <span class="dd-col-label">Math</span>
+              <a href="algebra.html">Algebra</a>
+              <a href="geometry.html">Geometry</a>
+              <a href="calculus.html">Calculus</a>
+              <a href="linear-algebra.html">Linear Algebra</a>
+              <a href="differential-equations.html">Differential Equations</a>
+              <a href="discrete-math.html">Discrete Math</a>
+              <a href="statistics.html">Statistics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Science</span>
+              <a href="biology.html">Biology</a>
+              <a href="chemistry.html">Chemistry</a>
+              <a href="physics.html">Physics</a>
+              <a href="anatomy-physiology.html">Anatomy &amp; Physiology</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Business &amp; Economics</span>
+              <a href="intro-to-business.html">Intro to Business</a>
+              <a href="microeconomics.html">Microeconomics</a>
+              <a href="macroeconomics.html">Macroeconomics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">English</span>
+              <a href="english-composition.html">English Composition</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Engineering</span>
+              <a href="electrical-engineering.html">Electrical Engineering</a>
+              <a href="statics.html">Statics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Tools</span>
+              <a href="tutor-market.html">Tutor Market</a>
+              <a href="decks.html">AI Decks</a>
+              <a href="practice.html">Quick Practice</a>
+              <a href="library.html">Worked Examples</a>
+            </div>
+          </div>
+        </div>        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="physics.html">← Back to Physics</a>
+      <h1>Angular variables and inertia</h1>
+      <p class="lede">Rotation swaps x, v, a for theta, omega, alpha — and adds a new inertia that depends on where the mass sits.</p>
+
+
+      <div class="lesson-card">
+        <h2>Angular variables</h2>
+        <p>Rotation trades linear variables for angular ones: angle theta in radians, angular velocity omega, angular acceleration alpha. Every constant-acceleration kinematics equation has an exact rotational twin — swap x for theta, v for omega, a for alpha — so there is nothing new to memorize. Angles in radians make the swap work cleanly, which is why radians are the default unit.</p>
+        <span class="math">\omega = \frac{\Delta\theta}{\Delta t}, \quad \alpha = \frac{\Delta\omega}{\Delta t}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Moment of inertia</h2>
+        <p>Moment of inertia I measures how hard it is to spin an object up, and unlike mass it depends on where the mass sits — each bit counts as mr squared, so mass far from the axis matters much more. Point masses add directly, standard shapes have table values: hoop MR^2, disk (1/2)MR^2, rod about its center (1/12)ML^2, solid sphere (2/5)MR^2. The parallel-axis theorem moves the axis: I = I_cm + Md^2.</p>
+        <span class="math">I = \sum m_i r_i^2, \quad I = I_{\text{cm}} + Md^2</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>Two 3.0 kg masses sit at the ends of a light 2.0 m rod. About the center, each mass is 1.0 m from the axis, so I = (3.0)(1.0)^2 + (3.0)(1.0)^2 = 6.0 kg m^2. Now shift the axis to one end. Parallel axis with M = 6.0 kg and d = 1.0 m gives 6.0 + (6.0)(1.0)^2 = 12 kg m^2. Computing directly agrees: the near mass sits on the axis and contributes 0, the far mass is 2.0 m out for (3.0)(2.0)^2 = 12 kg m^2.</p>
+        <span class="math">I_{\text{end}} = 6.0 + (6.0)(1.0)^2 = 12\ \text{kg}\cdot\text{m}^2</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;I = \\sum m_i r_i^2&quot;,&quot;meaning&quot;:&quot;Moment of inertia adds mass times radius squared&quot;,&quot;explain&quot;:&quot;Moment of inertia is the rotational analog of mass: resistance to angular acceleration. Each piece of mass counts as mass times the square of its distance from the axis, so spreading mass outward raises I fast.&quot;},{&quot;glyph&quot;:&quot;I = I_{\\text{cm}} + Md^2&quot;,&quot;meaning&quot;:&quot;Parallel-axis theorem&quot;,&quot;explain&quot;:&quot;This shifts the rotation axis from the center of mass to a parallel axis a distance d away. The new inertia is the center-of-mass value plus the total mass times d squared, and it works in both directions.&quot;},{&quot;glyph&quot;:&quot;\\theta = \\omega_0 t + \\tfrac{1}{2}\\alpha t^2&quot;,&quot;meaning&quot;:&quot;Rotational twin of constant-acceleration kinematics&quot;,&quot;explain&quot;:&quot;With constant angular acceleration, the angle swept is initial angular velocity times time plus half alpha times time squared. It is the exact rotational copy of x = v_0 t + (1/2)at^2, radians replacing meters.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>I = \sum m_i r_i^2</div>
+        <p data-flip-meaning>Moment of inertia adds mass times radius squared</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Moment of inertia is the rotational analog of mass: resistance to angular acceleration. Each piece of mass counts as mass times the square of its distance from the axis, so spreading mass outward raises I fast.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>A wheel starts at rest and spins up with a constant angular acceleration of 4.0 rad/s^2. Through what angle does it turn in 3.0 s?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="theta = (1/2) alpha t^2 = (1/2)(4.0)(3.0)^2 = 18 radians." data-wrong-explain="36 rad forgets the factor of 1/2, 12 rad uses alpha times t as if it were an angle (it is actually the final angular velocity), and 6.0 rad comes from (1/2) alpha t, dropping the square on t.">
+          <button type="button" data-choice="a">36 rad</button>
+          <button type="button" data-choice="b">18 rad</button>
+          <button type="button" data-choice="c">12 rad</button>
+          <button type="button" data-choice="d">6.0 rad</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-physics-rotational-motion.html">Take the unit quiz</a></p>
+
+      <div style="display:flex;justify-content:space-between;gap:12px;margin-top:24px">
+        <a class="btn btn-ghost" href="lesson-physics-momentum-collisions-3.html">&larr; Previous lesson</a>
+        <a class="btn btn-ghost" href="lesson-physics-rotational-motion-2.html">Next lesson &rarr;</a>
+      </div>    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h2 class="footer-head">Product</h2>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-head">Legal</h2>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js?v=20260929c"></script>
+  <script src="assets/llm.js?v=20260929c"></script>
+  <script src="assets/app.js?v=20260930a"></script>
+</body>
+</html>

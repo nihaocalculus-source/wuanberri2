@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Heat engines and entropy — Wuanberri Physics</title>
+  <link rel="canonical" href="https://wuanberri.com/lesson-physics-thermodynamics-3.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Wuanberri" />
+  <meta property="og:title" content="Heat engines and entropy — Wuanberri Physics" />
+  <meta property="og:description" content="Heat never flows uphill for free: every engine pays a tax to the cold reservoir, and entropy is the tax collector." />
+  <meta property="og:url" content="https://wuanberri.com/lesson-physics-thermodynamics-3.html" />
+  <meta property="og:image" content="https://wuanberri.com/assets/wuanberri-logo.png" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="Heat never flows uphill for free: every engine pays a tax to the cold reservoir, and entropy is the tax collector." />
+  <link rel="stylesheet" href="assets/styles.css?v=20260929c" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand brand-img"><img src="assets/wuanberri-logo.png" alt="Wuanberri"></a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+<div class="nav-dd">
+          <button class="nav-dd-btn" type="button" aria-haspopup="true" aria-expanded="false">Subjects <span class="nav-dd-caret">&#9662;</span></button>
+          <div class="nav-dd-panel" role="menu">
+            <div class="dd-col">
+              <span class="dd-col-label">Math</span>
+              <a href="algebra.html">Algebra</a>
+              <a href="geometry.html">Geometry</a>
+              <a href="calculus.html">Calculus</a>
+              <a href="linear-algebra.html">Linear Algebra</a>
+              <a href="differential-equations.html">Differential Equations</a>
+              <a href="discrete-math.html">Discrete Math</a>
+              <a href="statistics.html">Statistics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Science</span>
+              <a href="biology.html">Biology</a>
+              <a href="chemistry.html">Chemistry</a>
+              <a href="physics.html">Physics</a>
+              <a href="anatomy-physiology.html">Anatomy &amp; Physiology</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Business &amp; Economics</span>
+              <a href="intro-to-business.html">Intro to Business</a>
+              <a href="microeconomics.html">Microeconomics</a>
+              <a href="macroeconomics.html">Macroeconomics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">English</span>
+              <a href="english-composition.html">English Composition</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Engineering</span>
+              <a href="electrical-engineering.html">Electrical Engineering</a>
+              <a href="statics.html">Statics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Tools</span>
+              <a href="tutor-market.html">Tutor Market</a>
+              <a href="decks.html">AI Decks</a>
+              <a href="practice.html">Quick Practice</a>
+              <a href="library.html">Worked Examples</a>
+            </div>
+          </div>
+        </div>        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="physics.html">← Back to Physics</a>
+      <h1>Heat engines and entropy</h1>
+      <p class="lede">Heat never flows uphill for free: every engine pays a tax to the cold reservoir, and entropy is the tax collector.</p>
+
+
+      <div class="lesson-card">
+        <h2>Heat engines</h2>
+        <p>An engine takes heat Qh from a hot reservoir, converts some to work W, and dumps the rest Qc into a cold reservoir. Its efficiency is e = W/Qh = 1 - Qc/Qh. Carnot&#39;s theorem caps this at e = 1 - Tc/Th using absolute temperatures — no engine can beat a reversible one running between the same two reservoirs.</p>
+        <span class="math">e_{max} = 1 - \frac{T_c}{T_h}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Refrigerators and entropy</h2>
+        <p>A refrigerator runs the flow backwards: work input moves heat from the cold box into the warm room. Entropy change is delta-S = Q/T for heat Q entering at temperature T, and the second law says the universe&#39;s total entropy never decreases. That single inequality is why perfectly efficient engines and perpetual motion machines are impossible.</p>
+        <span class="math">\Delta S_{universe} \ge 0</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>An engine runs between a boiler at 500 K and the environment at 300 K. The Carnot bound is e = 1 - 300/500 = 0.40, so at best 40 percent of the absorbed heat becomes work. If the engine takes in 1000 J per cycle, the maximum work is 400 J and at least 600 J must be exhausted as waste heat.</p>
+        <span class="math">e = 1 - \frac{300}{500} = 0.40</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;e = 1 - \\frac{T_c}{T_h}&quot;,&quot;meaning&quot;:&quot;Carnot efficiency limit&quot;,&quot;explain&quot;:&quot;Kelvin only: reservoirs at 227 C and 27 C mean 500 K and 300 K, giving 40 percent, not 88. Every real engine falls short of this bound because of friction and unrestrained heat flow.&quot;},{&quot;glyph&quot;:&quot;\\Delta S = \\frac{Q}{T}&quot;,&quot;meaning&quot;:&quot;Entropy change from heat flow&quot;,&quot;explain&quot;:&quot;The same joule of heat adds more entropy to a cold reservoir than to a hot one, because T is in the denominator. That asymmetry is exactly why heat flows spontaneously from hot to cold and never the reverse.&quot;},{&quot;glyph&quot;:&quot;\\Delta S_{universe} \\ge 0&quot;,&quot;meaning&quot;:&quot;Second law: total entropy never decreases&quot;,&quot;explain&quot;:&quot;A local entropy drop is allowed only if something nearby gains more. This is the physical arrow of time, and it is the reason no cyclic device can turn heat entirely into work.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>e = 1 - \frac{T_c}{T_h}</div>
+        <p data-flip-meaning>Carnot efficiency limit</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Kelvin only: reservoirs at 227 C and 27 C mean 500 K and 300 K, giving 40 percent, not 88. Every real engine falls short of this bound because of friction and unrestrained heat flow.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>An inventor claims an engine whose hot reservoir is at 227 C and whose cold reservoir is at 27 C. What is the maximum possible efficiency?</p>
+        <form class="mcq" data-mcq="b" data-right-explain="Convert first: 227 C = 500 K and 27 C = 300 K, so e = 1 - 300/500 = 0.40, or 40 percent." data-wrong-explain="88 percent is what you get plugging the Celsius readings straight into the formula, 60 percent is the heat fraction that must be rejected (Tc/Th), and 100 percent would require a cold reservoir at absolute zero.">
+          <button type="button" data-choice="a">88%</button>
+          <button type="button" data-choice="b">40%</button>
+          <button type="button" data-choice="c">60%</button>
+          <button type="button" data-choice="d">100%</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-physics-thermodynamics.html">Take the unit quiz</a></p>
+
+      <div style="display:flex;justify-content:space-between;gap:12px;margin-top:24px">
+        <a class="btn btn-ghost" href="lesson-physics-thermodynamics-2.html">&larr; Previous lesson</a>
+        <a class="btn btn-ghost" href="lesson-physics-fluids-statics-1.html">Next lesson &rarr;</a>
+      </div>    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h2 class="footer-head">Product</h2>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-head">Legal</h2>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js?v=20260929c"></script>
+  <script src="assets/llm.js?v=20260929c"></script>
+  <script src="assets/app.js?v=20260930a"></script>
+</body>
+</html>

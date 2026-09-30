@@ -31,118 +31,121 @@ def err(msg):
     errors.append(msg)
 
 
-def check_lessons():
-    """Lesson pages: flashcard JSON + MCQ structure."""
-    lesson_files = sorted(glob.glob("lesson-calculus-*.html"))
-    json_files = sorted(
-        os.path.join("scripts", "content", "calculus", f)
-        for f in os.listdir(os.path.join("scripts", "content", "calculus"))
-        if f.endswith(".json")
-    )
-    if len(json_files) != 9:
-        err(f"expected 9 calculus content files, found {len(json_files)}")
-        return
+# Subjects with authored content: slug -> expected unit (content file) count.
+SUBJECTS = {"calculus": 9, "physics": 9}
 
-    expected = {}
-    for jf in json_files:
-        slug = os.path.splitext(os.path.basename(jf))[0]
-        with open(jf, encoding="utf-8") as f:
-            lessons = json.load(f)
-        expected[slug] = lessons
-        for i, lesson in enumerate(lessons, 1):
-            fn = f"lesson-calculus-{slug}-{i}.html"
+
+def check_lessons():
+    """Lesson pages: flashcard JSON + MCQ structure, per subject."""
+    for subject, expected_units in SUBJECTS.items():
+        lesson_files = sorted(glob.glob(f"lesson-{subject}-*.html"))
+        cdir = os.path.join("scripts", "content", subject)
+        json_files = sorted(
+            os.path.join(cdir, f)
+            for f in os.listdir(cdir)
+            if f.endswith(".json")
+        )
+        if len(json_files) != expected_units:
+            err(f"expected {expected_units} {subject} content files, found {len(json_files)}")
+            continue
+
+        expected = {}
+        for jf in json_files:
+            slug = os.path.splitext(os.path.basename(jf))[0]
+            with open(jf, encoding="utf-8") as f:
+                lessons = json.load(f)
+            expected[slug] = lessons
+            for i, lesson in enumerate(lessons, 1):
+                fn = f"lesson-{subject}-{slug}-{i}.html"
+                if not os.path.exists(fn):
+                    err(f"missing lesson page {fn}")
+                    continue
+                with open(fn, encoding="utf-8") as f:
+                    page = f.read()
+
+                m = re.search(r"data-lesson-flip='([^']*)'", page)
+                if not m:
+                    err(f"{fn}: no data-lesson-flip")
+                    continue
+                try:
+                    cards = json.loads(html.unescape(m.group(1)))
+                except json.JSONDecodeError as e:
+                    err(f"{fn}: flashcard JSON does not parse: {e}")
+                    continue
+                if len(cards) != 3:
+                    err(f"{fn}: expected 3 flashcards, got {len(cards)}")
+                for idx, c in enumerate(cards, 1):
+                    for key in ("glyph", "meaning", "explain"):
+                        if not str(c.get(key, "")).strip():
+                            err(f"{fn}: flashcard {idx} missing {key}")
+
+                mcq = re.search(r'<form class="mcq" data-mcq="([a-d])"', page)
+                if not mcq:
+                    err(f"{fn}: no valid data-mcq letter")
+                choices = re.findall(r'data-choice="([a-d])"', page)
+                if len(choices) != 4 or set(choices) != {"a", "b", "c", "d"}:
+                    err(f"{fn}: MCQ choices wrong ({choices})")
+                if "data-right-explain" not in page or "data-wrong-explain" not in page:
+                    err(f"{fn}: missing explain attributes")
+
+                if f"quiz-{subject}-{slug}.html" not in page:
+                    warnings.append(f"{fn}: no quiz CTA (quiz page missing?)")
+                title_ok = re.search(r"<title>([^<]+)</title>", page)
+                if not title_ok:
+                    err(f"{fn}: no <title>")
+
+        # Every rendered lesson file accounted for?
+        rendered = set(lesson_files)
+        expected_names = {
+            f"lesson-{subject}-{slug}-{i}.html"
+            for slug, lessons in expected.items()
+            for i in range(1, len(lessons) + 1)
+        }
+        extra = rendered - expected_names
+        if extra:
+            err(f"lesson pages on disk with no JSON source: {sorted(extra)}")
+
+
+def check_quizzes():
+    """Quiz pages: MCQ forms, score element, quiz.js, headers, per subject."""
+    for subject, expected_units in SUBJECTS.items():
+        qdir = os.path.join("scripts", "content", subject, "quizzes")
+        qfiles = sorted(f for f in os.listdir(qdir) if f.endswith(".json"))
+        if len(qfiles) != expected_units:
+            err(f"expected {expected_units} {subject} quiz JSON files, found {len(qfiles)}")
+            continue
+
+        for qf in qfiles:
+            slug = os.path.splitext(qf)[0]
+            with open(os.path.join(qdir, qf), encoding="utf-8") as f:
+                questions = json.load(f)
+            fn = f"quiz-{subject}-{slug}.html"
             if not os.path.exists(fn):
-                err(f"missing lesson page {fn}")
+                err(f"missing quiz page {fn}")
                 continue
             with open(fn, encoding="utf-8") as f:
                 page = f.read()
 
-            m = re.search(r"data-lesson-flip='([^']*)'", page)
-            if not m:
-                err(f"{fn}: no data-lesson-flip")
-                continue
-            try:
-                cards = json.loads(html.unescape(m.group(1)))
-            except json.JSONDecodeError as e:
-                err(f"{fn}: flashcard JSON does not parse: {e}")
-                continue
-            if len(cards) != 3:
-                err(f"{fn}: expected 3 flashcards, got {len(cards)}")
-            for idx, c in enumerate(cards, 1):
-                for key in ("glyph", "meaning", "explain"):
-                    if not str(c.get(key, "")).strip():
-                        err(f"{fn}: flashcard {idx} missing {key}")
-
-            mcq = re.search(r'<form class="mcq" data-mcq="([a-d])"', page)
-            if not mcq:
-                err(f"{fn}: no valid data-mcq letter")
-            choices = re.findall(r'data-choice="([a-d])"', page)
-            if len(choices) != 4 or set(choices) != {"a", "b", "c", "d"}:
-                err(f"{fn}: MCQ choices wrong ({choices})")
-            if "data-right-explain" not in page or "data-wrong-explain" not in page:
-                err(f"{fn}: missing explain attributes")
-
-            if f"quiz-calculus-{slug}.html" not in page:
-                warnings.append(f"{fn}: no quiz CTA (quiz page missing?)")
-            title_ok = re.search(r"<title>([^<]+)</title>", page)
-            if not title_ok:
-                err(f"{fn}: no <title>")
-
-    # Every rendered lesson file accounted for?
-    rendered = {
-        os.path.basename(p) for p in glob.glob("lesson-calculus-*.html")
-    }
-    expected_names = {
-        f"lesson-calculus-{slug}-{i}.html"
-        for slug, lessons in expected.items()
-        for i in range(1, len(lessons) + 1)
-    }
-    extra = rendered - expected_names
-    if extra:
-        err(f"lesson pages on disk with no JSON source: {sorted(extra)}")
-
-
-def check_quizzes():
-    """Quiz pages: 5 MCQ forms, score element, quiz.js, headers."""
-    qdir = os.path.join("scripts", "content", "calculus", "quizzes")
-    qfiles = sorted(f for f in os.listdir(qdir) if f.endswith(".json"))
-    if len(qfiles) != 9:
-        err(f"expected 9 quiz JSON files, found {len(qfiles)}")
-        return
-
-    for qf in qfiles:
-        slug = os.path.splitext(qf)[0]
-        with open(os.path.join(qdir, qf), encoding="utf-8") as f:
-            questions = json.load(f)
-        fn = f"quiz-calculus-{slug}.html"
-        if not os.path.exists(fn):
-            err(f"missing quiz page {fn}")
-            continue
-        with open(fn, encoding="utf-8") as f:
-            page = f.read()
-
-        forms = re.findall(r'<form class="mcq" data-mcq="([a-d])"', page)
-        if len(forms) != len(questions):
-            err(f"{fn}: {len(forms)} MCQ forms but {len(questions)} questions in JSON")
-        if len(set(re.findall(r"<h3>(Question \d+ of \d+)</h3>", page))) != len(questions):
-            # header format is <h3>Question i of N</h3> inside .mcq block
+            forms = re.findall(r'<form class="mcq" data-mcq="([a-d])"', page)
+            if len(forms) != len(questions):
+                err(f"{fn}: {len(forms)} MCQ forms but {len(questions)} questions in JSON")
             if len(re.findall(r"Question \d+ of \d+", page)) < len(questions):
                 err(f"{fn}: missing per-question headers")
 
-        if 'id="quiz-score"' not in page:
-            err(f"{fn}: no #quiz-score element")
-        if 'src="assets/quiz.js"' not in page:
-            err(f"{fn}: quiz.js not loaded")
+            if 'id="quiz-score"' not in page:
+                err(f"{fn}: no #quiz-score element")
+            if 'src="assets/quiz.js"' not in page:
+                err(f"{fn}: quiz.js not loaded")
 
-        # Each question must have exactly 4 choices and explain attrs.
-        for i, q in enumerate(questions, 1):
-            for key in ("prompt", "choices", "answerIndex", "rightExplain", "wrongExplain"):
-                if key not in q:
-                    err(f"{qf} Q{i}: missing {key}")
-            if not isinstance(q.get("choices"), list) or len(q["choices"]) != 4:
-                err(f"{qf} Q{i}: choices != 4")
-            if q.get("answerIndex") not in (0, 1, 2, 3):
-                err(f"{qf} Q{i}: answerIndex out of range")
+            # Each question must have exactly 4 choices and explain attrs.
+            for i, q in enumerate(questions, 1):
+                for key in ("prompt", "choices", "answerIndex", "rightExplain", "wrongExplain"):
+                    if key not in q:
+                        err(f"{qf} Q{i}: missing {key}")
+                if not isinstance(q.get("choices"), list) or len(q["choices"]) != 4:
+                    err(f"{qf} Q{i}: choices != 4")
+                if q.get("answerIndex") not in (0, 1, 2, 3):
+                    err(f"{qf} Q{i}: answerIndex out of range")
 
 
 def check_site_hygiene():
@@ -180,8 +183,8 @@ def main():
     check_lessons()
     check_quizzes()
     check_site_hygiene()
-    print(f"Lessons checked: {len(glob.glob('lesson-calculus-*.html'))}, "
-          f"quizzes: {len(glob.glob('quiz-calculus-*.html'))}")
+    print(f"Lessons checked: {sum(len(glob.glob(f'lesson-{s}-*.html')) for s in SUBJECTS)}, "
+          f"quizzes: {sum(len(glob.glob(f'quiz-{s}-*.html')) for s in SUBJECTS)}")
     if warnings:
         print("\nWarnings:")
         for w in warnings:

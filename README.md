@@ -91,44 +91,41 @@ To turn on **real auth** backed by a real database:
 
 The auth banner on the signup page shows the current mode (local-only or real auth) so you always know which one is active.
 
-## Stripe / Google setup
+## Square / Google setup
 
-Wuanberri has a "Go Pro" checkout wired to Stripe, and an optional "Continue with Google" button on the auth page. Both are off by default — the buttons appear only when the relevant public credential is present. This walkthrough runs the setup end-to-end.
+Wuanberri has a "Go Pro" checkout wired to Square, and an optional "Continue with Google" button on the auth page. Both are off by default — the checkout button says "being set up" until Square is configured, and the Google button appears only when its credential is present. This walkthrough runs the setup end-to-end.
 
 ### What's safe to commit, and what isn't
 
 | Credential | Type | Where it goes |
 |---|---|---|
-| Stripe **publishable** key (`pk_test_...` / `pk_live_...`) | public | `assets/__STRIPE_CONFIG__.js` (via setup script) |
-| Stripe **secret** key (`sk_...`) | SECRET | Vercel env var `STRIPE_SECRET_KEY` |
-| Stripe **price** id (`price_...`) | SECRET-ish | Vercel env var `STRIPE_PRICE_ID` |
-| Stripe **webhook** secret (`whsec_...`) | SECRET | Vercel env var `STRIPE_WEBHOOK_SECRET` |
+| Square **payment link URL** (Tier 1) | semi-secret | Vercel env var `SQUARE_CHECKOUT_URL` |
+| Square **access token** (`EAAA...`) | SECRET | Vercel env var `SQUARE_ACCESS_TOKEN` |
+| Square **location id** (`L...`) | SECRET-ish | Vercel env var `SQUARE_LOCATION_ID` |
+| Square **subscription plan id** (`PLAN_...`) | SECRET-ish | Vercel env var `SQUARE_SUBSCRIPTION_PLAN_ID` |
+| Square **price** (optional, cents) | config | Vercel env var `SQUARE_PRO_PRICE_CENTS` (default `999` = $9.99) |
 | Google **Client ID** (`...apps.googleusercontent.com`) | public | `assets/__GOOGLE_CONFIG__.js` (via setup script) |
 | Google **Client secret** | SECRET | Vercel env var `GOOGLE_CLIENT_SECRET` |
 
 ### One-time setup
 
-1. **Run the setup script** to write the public credentials. The script is interactive and refuses to accept anything that looks like a secret key — if you paste your `sk_...` by mistake, it tells you so instead of writing it.
-   ```powershell
-   node scripts/setup-secrets.mjs
-   ```
-   It will ask for your Stripe publishable key and your Google Client ID. Press Enter to skip either. To wipe both stubs back to empty, run `node scripts/setup-secrets.mjs --reset`.
+1. **Pick your Square tier.** You only need ONE of these:
+   - **Tier 1 — zero API (fastest).** In the Square dashboard: Items → Payment links → Create a link for your Wuanberri Pro subscription plan. Copy the link URL. That's the whole thing — the site hands that URL to buyers.
+   - **Tier 2 — full API.** Grabs `SQUARE_ACCESS_TOKEN` (Square dashboard → Developer → Credentials), `SQUARE_LOCATION_ID` (Locations → your store → ID), and `SQUARE_SUBSCRIPTION_PLAN_ID` (Subscriptions → Plans → your Pro plan — use the plan **variation** id, and make sure its price is $9.99/month so it doesn't get overridden).
 
-2. **Set the secret env vars in Vercel.** See `.env.example` for the full list and the dashboard.stripe.com / console.cloud.google.com paths to grab each one. Vercel dashboard: Project → Settings → Environment Variables → "Add New". Paste the name and value, pick Production (and Preview if you want it there too), Save.
+2. **Set the secret env vars in Vercel** — as **Secret** type, never Config (Config echoes values into the terminal). See `.env.example` for the full checklist. Vercel dashboard: Project → Settings → Environment Variables → "Add New" → paste name + value → type **Secret** → Production → Save.
 
-3. **Create the Stripe webhook endpoint** (after your first deploy so you have a URL to point at). Dashboard path: Developers → Webhooks → Add endpoint. URL: `https://YOUR-DOMAIN.vercel.app/api/stripe-webhook`. Events: `checkout.session.completed`, `customer.subscription.deleted`. After saving, click into the endpoint and "Reveal" the signing secret — that's your `STRIPE_WEBHOOK_SECRET`.
+3. **Add your domain to Google OAuth origins** (if using Google sign-in). console.cloud.google.com → APIs & Services → Credentials → your OAuth client → Authorized JavaScript origins → add `https://YOUR-DOMAIN.vercel.app` and `http://localhost:8000` for dev. The public Client ID goes in `assets/__GOOGLE_CONFIG__.js` via `node scripts/setup-secrets.mjs`.
 
-4. **Add your domain to Google OAuth origins** (if using Google sign-in). console.cloud.google.com → APIs & Services → Credentials → your OAuth client → Authorized JavaScript origins → add `https://YOUR-DOMAIN.vercel.app` and `http://localhost:8000` for dev.
-
-5. **Redeploy.** Vercel env vars apply to new deploys, not to live code. After step 2, push a commit (or click Redeploy in the dashboard) to pick them up.
+4. **Redeploy.** Vercel env vars apply to new deploys, not to live code. After step 2, redeploy to pick them up.
 
 ### Sanity-check after deploy
 
 - Auth page shows the green "Continue with Google" button (only if Google Client ID is set).
-- Clicking "Go Pro" on the pricing section opens Stripe Checkout (only if Stripe is configured).
-- Vercel function logs (`vercel.com/dashboard` → your project → Logs → Functions) show no `STRIPE_SECRET_KEY not set` errors when you click checkout.
+- Clicking "Start 7-day trial" on the pricing section opens Square checkout (only if Square is configured — until then it says "Checkout is being set up", which is the honest fallback).
+- Vercel function logs (`vercel.com/dashboard` → your project → Logs → Functions) show no `SQUARE_* not set` errors when you click checkout.
 
-The setup script validates pasted values — see `scripts/setup-secrets.mjs` for the exact format checks. If you ever want to rotate keys, re-run the script and update the Vercel env vars.
+If you ever want to rotate keys, update the Vercel env vars and redeploy.
 
 ## Generating lesson content
 
@@ -139,7 +136,21 @@ The hub pages currently show "demo content" for each subject. To populate real l
    ```powershell
    node scripts/generate-lessons.mjs --subject calculus
    ```
-   Add `--all` to generate every subject. Output is written to `lessons/<subject>/<slug>.html`. Each generated lesson matches the existing `lesson-calc-demo.html` template — same `data-lesson-flip` and `data-mcq` markup, same footer, same header.
+   Add `--all` to generate every subject. Output is written to the project root as `lesson-<subject>-<unit>-<n>.html`. Each generated lesson matches the existing `lesson-calc-demo.html` template — same `data-lesson-flip` and `data-mcq` markup, same footer, same header.
+
+   For lessons authored offline (no API key), content JSON lives in `scripts/content/<subject>/<unit>.json` and quizzes in `scripts/content/<subject>/quizzes/<unit>.json`. Render both with:
+   ```powershell
+   node scripts/render-lessons.mjs
+   node scripts/render-quizzes.mjs
+   ```
+   Then apply the post-processing chain (nav, footer, SEO heads, cache-bust) and verify:
+   ```powershell
+   node scripts/subjects-nav-swap.mjs
+   python scripts/apply-canonical-footer.py
+   node scripts/seo-heads.mjs
+   node scripts/bust-cache.mjs
+   python scripts/verify-content.py
+   ```
 
 Approximate cost: 30 lessons × ~$0.01 per lesson ≈ **$0.30 per subject** with gpt-4o-mini. Full coverage (all 6 existing subjects) is ~$2.
 

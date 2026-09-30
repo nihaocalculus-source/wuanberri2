@@ -1,0 +1,186 @@
+[
+  {
+    "topic": "Coulomb's law and the electric field",
+    "title": "Charge, Coulomb's law, and fields",
+    "lede": "Charges push and pull across empty space, and the electric field is the bookkeeping that turns those pushes into a property of space itself.",
+    "cards": [
+      {
+        "heading": "Charge",
+        "body": "Charge comes in two signs, positive and negative, measured in coulombs. Like charges repel and opposite charges attract, and the smallest free unit is the electron charge e = 1.6e-19 C. Charge is conserved: it can move around but never appears or vanishes on its own.",
+        "math": "F = k\\frac{|q_1 q_2|}{r^2}"
+      },
+      {
+        "heading": "Superposition and field",
+        "body": "When several charges act at once, the forces add as vectors, each pair independent of the others. The electric field strips out the test charge: define E as force per unit positive charge, so a point charge q makes a field pointing away from q if it is positive and toward it if negative. The constant is k = 8.99e9 N m^2/C^2.",
+        "math": "E = \\frac{F}{q} = k\\frac{q}{r^2}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "Two positive charges sit 0.30 m apart: q1 = 2.0 microcoulombs and q2 = 5.0 microcoulombs. Coulomb's law gives F = (8.99e9)(2.0e-6)(5.0e-6)/(0.30)^2 = 0.0899/0.09, which is about 1.0 N of repulsion. The field from q1 alone at that spot is E = (8.99e9)(2.0e-6)/(0.30)^2, about 2.0e5 N/C pointing away from q1.",
+        "math": "F = \\frac{(8.99\\times 10^9)(2.0\\times 10^{-6})(5.0\\times 10^{-6})}{(0.30)^2} \\approx 1.0\\ \\text{N}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "F = k\\frac{|q_1 q_2|}{r^2}",
+        "meaning": "Coulomb's law: force between two point charges",
+        "explain": "The force magnitude falls off as the square of the separation and grows with the product of the charges. It is attractive for opposite signs and repulsive for like signs, with k = 8.99e9 N m^2/C^2."
+      },
+      {
+        "glyph": "\\vec{E} = \\frac{\\vec{F}}{q_0}",
+        "meaning": "Electric field is force per unit test charge",
+        "explain": "Dividing the force on a small positive test charge by that charge gives the field at that point, independent of the test charge. Units are newtons per coulomb, which equal volts per meter."
+      },
+      {
+        "glyph": "E = k\\frac{|q|}{r^2}",
+        "meaning": "Field of a point charge",
+        "explain": "A single point charge fills space with a radial field, pointing outward for positive charge and inward for negative. Doubling the distance cuts the field strength to a quarter."
+      }
+    ],
+    "mcq": {
+      "prompt": "A point charge of +4.0 nanocoulombs sits at the origin. What is the electric field magnitude 2.0 m away?",
+      "choices": ["18 N/C", "36 N/C", "2.2 N/C", "9.0 N/C"],
+      "answerIndex": 3,
+      "rightExplain": "E = kq/r^2 = (8.99e9)(4.0e-9)/(2.0)^2 = 35.96/4, about 9.0 N/C.",
+      "wrongExplain": "18 N/C divides by r instead of r^2, 36 N/C skips the division by r^2 entirely, and 2.2 N/C doubles the distance to 4.0 m."
+    }
+  },
+  {
+    "topic": "Electric potential and potential energy",
+    "title": "Potential energy and voltage",
+    "lede": "Potential energy tracks the work stored in charge positions, and voltage is that energy per charge — the height of the electrical hill.",
+    "cards": [
+      {
+        "heading": "Potential energy",
+        "body": "Bringing two charges together from far away stores or releases energy. The potential energy of a pair is U = kq1q2/r, negative for opposite charges (they are bound) and positive for like charges, with zero chosen at infinite separation.",
+        "math": "U = k\\frac{q_1 q_2}{r}"
+      },
+      {
+        "heading": "Potential",
+        "body": "Potential V is potential energy per unit charge: V = U/q. For a point charge, V = kq/r, positive near positive charge. The electric field always points from high potential toward low potential, so positive charges roll downhill on the voltage landscape while electrons climb it.",
+        "math": "V = \\frac{U}{q} = k\\frac{q}{r}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "Hold q1 = 3.0 microcoulombs fixed and place q2 = -2.0 microcoulombs 0.15 m away. The pair's energy is U = (8.99e9)(3.0e-6)(-2.0e-6)/0.15 = -0.36 J, negative because the pair is bound. The potential from q1 at that point is V = (8.99e9)(3.0e-6)/0.15, about 1.8e5 V — the same number you get dividing U by q2.",
+        "math": "U = \\frac{(8.99\\times 10^9)(3.0\\times 10^{-6})(-2.0\\times 10^{-6})}{0.15} \\approx -0.36\\ \\text{J}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "U = k\\frac{q_1 q_2}{r}",
+        "meaning": "Potential energy of two point charges",
+        "explain": "This is the work needed to assemble the pair from infinite separation, with zero chosen at infinity. A negative value means the charges are bound together and energy must be supplied to pull them apart."
+      },
+      {
+        "glyph": "V = \\frac{U}{q}",
+        "meaning": "Potential is potential energy per unit charge",
+        "explain": "Volts are joules per coulomb. Potential describes the landscape without committing to a specific test charge: any charge q placed at that point then has energy U = qV."
+      },
+      {
+        "glyph": "E = -\\frac{dV}{dx}",
+        "meaning": "The field points down the potential hill",
+        "explain": "The electric field is the negative slope of the potential. Where potential drops steeply the field is strong, and the field always points the way a positive charge accelerates: from high V toward low V."
+      }
+    ],
+    "mcq": {
+      "prompt": "What is the electric potential 0.50 m from a point charge of +5.0 nanocoulombs?",
+      "choices": ["90 V", "45 V", "180 V", "9.0 V"],
+      "answerIndex": 0,
+      "rightExplain": "V = kq/r = (8.99e9)(5.0e-9)/0.50 = 44.95/0.50, about 90 V.",
+      "wrongExplain": "45 V forgets to divide by r, 180 V divides by r^2 (that is the field formula), and 9.0 V misreads the distance as 5.0 m."
+    }
+  },
+  {
+    "topic": "Circuits: resistance and capacitance",
+    "title": "Resistance, capacitance, and RC",
+    "lede": "Ohm's law ties voltage to current, capacitors store charge, and together they set every circuit's timing.",
+    "cards": [
+      {
+        "heading": "Ohm's law",
+        "body": "Across a resistor, current grows in proportion to voltage: V = IR. Resistance grows with the material's resistivity and length and shrinks with cross-section, R = rho*L/A. The power dissipated is P = IV, which becomes I^2 R for a resistor.",
+        "math": "V = IR"
+      },
+      {
+        "heading": "Combinations",
+        "body": "Resistors in series add directly; in parallel the reciprocals add, so the pair is always less than the smallest resistor. A capacitor stores charge Q = CV and holds energy (1/2)CV^2. Through a resistor it charges or discharges with time constant tau = RC: after one tau it is about 63 percent of the way to its final value.",
+        "math": "\\frac{1}{R_p} = \\frac{1}{R_1} + \\frac{1}{R_2}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A 12 V battery drives two resistors in parallel: 6.0 ohms and 3.0 ohms. The parallel combination is (6.0)(3.0)/(6.0 + 3.0) = 2.0 ohms, so the battery pushes I = 12/2.0 = 6.0 A. Each branch sees the full 12 V: 2.0 A through the 6.0-ohm resistor and 4.0 A through the 3.0-ohm one, summing to 6.0 A as they must.",
+        "math": "R_p = \\frac{(6.0)(3.0)}{6.0 + 3.0} = 2.0\\ \\Omega"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "V = IR",
+        "meaning": "Ohm's law: voltage equals current times resistance",
+        "explain": "One ohm is one volt per ampere. Fix the resistance and current scales linearly with voltage; the same drop across a bigger resistance means less current."
+      },
+      {
+        "glyph": "\\frac{1}{R_p} = \\frac{1}{R_1} + \\frac{1}{R_2}",
+        "meaning": "Parallel resistors add as reciprocals",
+        "explain": "Two parallel paths conduct more than either alone, so the pair is always smaller than the smaller resistor. Two equal resistors in parallel halve the resistance."
+      },
+      {
+        "glyph": "\\tau = RC",
+        "meaning": "RC time constant",
+        "explain": "A resistor and capacitor set the natural clock of a circuit. Charging or discharging is exponential: after tau seconds the capacitor has covered about 63 percent of the change, and after five tau it is essentially done."
+      }
+    ],
+    "mcq": {
+      "prompt": "A 9.0 V battery drives 3.0 A through a resistor. What power does the resistor dissipate?",
+      "choices": ["3.0 W", "27 W", "81 W", "6.0 W"],
+      "answerIndex": 1,
+      "rightExplain": "P = IV = (3.0)(9.0) = 27 W.",
+      "wrongExplain": "3.0 W divides voltage by current instead of multiplying, 81 W squares the voltage as if the resistance were 1 ohm, and 6.0 W subtracts the two numbers instead of multiplying them."
+    }
+  },
+  {
+    "topic": "Magnetic fields and induction",
+    "title": "Magnetic forces and induction",
+    "lede": "Magnetism acts only on moving charge, and a changing magnetic flux is paid back with voltage — that trade runs every generator.",
+    "cards": [
+      {
+        "heading": "Magnetic force",
+        "body": "A charge moving through a magnetic field feels a force perpendicular to both its velocity and the field: F = qvB sin(theta), biggest when the motion is perpendicular to B and zero when parallel. A current-carrying wire gets the same treatment, F = BIL sin(theta). Point your fingers along v or the current, curl them toward B, and your thumb gives the force on positive charge — the right-hand rule.",
+        "math": "F = qvB\\sin\\theta"
+      },
+      {
+        "heading": "Faraday and Lenz",
+        "body": "Faraday's law says a changing magnetic flux through a loop drives an EMF equal to the flux change per turn times the number of turns. Lenz's law is the minus sign: the induced current flows so its own field opposes the change in flux. That opposition is why generators demand mechanical work and why induction cannot deliver free energy.",
+        "math": "\\mathcal{E} = -N\\frac{d\\Phi_B}{dt}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A 100-turn coil with area 0.010 m^2 sits in a 0.50 T field that drops to zero in 0.20 s. The flux per turn changes by (0.50)(0.010) = 5.0e-3 Wb, so the EMF is 100*(5.0e-3)/0.20 = 2.5 V while the field decays. By Lenz's law the induced current flows so its own field keeps pointing the way the external field used to — opposing the decrease.",
+        "math": "\\mathcal{E} = N\\frac{\\Delta\\Phi}{\\Delta t} = \\frac{(100)(5.0\\times 10^{-3})}{0.20} = 2.5\\ \\text{V}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "F = qvB\\sin\\theta",
+        "meaning": "Force on a moving charge in a magnetic field",
+        "explain": "The force is perpendicular to both velocity and field, which makes magnetic forces bend paths into circles but do no work. It vanishes when the charge moves along the field lines, since sin(0) = 0."
+      },
+      {
+        "glyph": "F = BIL\\sin\\theta",
+        "meaning": "Force on a current-carrying wire",
+        "explain": "Current is moving charge, so a straight wire of length L perpendicular to B feels BIL. Reversing the current or the field reverses the force, and the right-hand rule gives the direction."
+      },
+      {
+        "glyph": "\\mathcal{E} = -N\\frac{d\\Phi_B}{dt}",
+        "meaning": "Faraday's law with Lenz's minus sign",
+        "explain": "Flux is field strength times the loop area it threads, and only changes in flux induce EMF. The minus sign means the induced current opposes the change, which is energy conservation showing up as opposition."
+      }
+    ],
+    "mcq": {
+      "prompt": "A straight wire 0.50 m long carries 4.0 A perpendicular to a 0.30 T magnetic field. What force does it feel?",
+      "choices": ["1.2 N", "0.15 N", "0.60 N", "6.0 N"],
+      "answerIndex": 2,
+      "rightExplain": "F = BIL = (0.30)(4.0)(0.50) = 0.60 N.",
+      "wrongExplain": "0.15 N drops the current (multiplies B by L only), 1.2 N doubles the length to 1.0 m, and 6.0 N slips the decimal on the length to 5.0 m."
+    }
+  }
+]

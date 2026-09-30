@@ -1,0 +1,37 @@
+[
+  {
+    "prompt": "How much heat raises 2.0 kg of water from 20 C to 30 C? (c = 4186 J/(kg K))",
+    "choices": ["4.2e4 J", "8.4e4 J", "8.4e3 J", "1.7e5 J"],
+    "answerIndex": 1,
+    "rightExplain": "Q = mc*delta-T = (2.0)(4186)(10) = 83,720 J, about 8.4e4 J.",
+    "wrongExplain": "4.2e4 J uses a 5 K rise, 8.4e3 J misplaces the decimal by one, and 1.7e5 J doubles the temperature change to 20 K."
+  },
+  {
+    "prompt": "A tank holds gas at 2.0e5 Pa and 400 K in a volume of 0.50 m^3. How many moles of gas are inside?",
+    "choices": ["30 mol", "15 mol", "60 mol", "3.0 mol"],
+    "answerIndex": 0,
+    "rightExplain": "n = PV/RT = (2.0e5)(0.50)/((8.31)(400)) = 100,000/3324, about 30 mol.",
+    "wrongExplain": "15 mol halves the volume to 0.25 m^3, 60 mol doubles it to 1.0 m^3, and 3.0 mol misplaces the decimal by one."
+  },
+  {
+    "prompt": "A gas releases 300 J of heat to its surroundings while doing 100 J of work expanding. What is the change in its internal energy?",
+    "choices": ["-200 J", "+400 J", "-400 J", "+200 J"],
+    "answerIndex": 2,
+    "rightExplain": "delta-U = Q - W = (-300) - (+100) = -400 J: the gas spent 400 J of stored energy.",
+    "wrongExplain": "-200 J adds the work instead of subtracting it, +400 J flips the overall sign, and +200 J treats both the heat loss and the work as energy coming in."
+  },
+  {
+    "prompt": "An engine absorbs 800 J of heat per cycle and exhausts 600 J. What is its efficiency?",
+    "choices": ["75%", "33%", "20%", "25%"],
+    "answerIndex": 3,
+    "rightExplain": "The work per cycle is W = 800 - 600 = 200 J, so e = 200/800 = 0.25, or 25 percent.",
+    "wrongExplain": "75 percent is Qc/Qh, the rejected fraction rather than the converted one; 33 percent divides the work by the exhaust heat instead of the input heat; 20 percent divides the work by 1000 J instead of the 800 J actually absorbed."
+  },
+  {
+    "prompt": "If the absolute temperature of an ideal gas quadruples, by what factor does the rms molecular speed change?",
+    "choices": ["It doubles", "It quadruples", "It increases by a factor of 16", "It increases by a factor of 1.4"],
+    "answerIndex": 0,
+    "rightExplain": "v_rms is proportional to the square root of absolute temperature, and sqrt(4) = 2, so the speed doubles.",
+    "wrongExplain": "Quadrupling and 16x treat speed as linear or squared in temperature, while 1.4 is the factor for merely doubling the temperature, since sqrt(2) is about 1.4."
+  }
+]

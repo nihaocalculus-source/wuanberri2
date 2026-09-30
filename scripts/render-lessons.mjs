@@ -12,6 +12,9 @@
 //       "flashcards": [{glyph, meaning, explain} x3],
 //       "mcq": {prompt, choices[4], answerIndex, rightExplain, wrongExplain} }
 //
+// Units render in the manifest's unit order (course order), and each
+// lesson gets a prev/next pager across the whole subject course.
+//
 // Output: project root, lesson-<subject>-<unit-slug>-<ordinal>.html
 // (same filenames generate-lessons.mjs writes, so link-units.py works for both).
 //
@@ -25,6 +28,7 @@ import { renderLessonHTML, slugify } from './generate-lessons.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT = path.resolve(__dirname, '..');
 const CONTENT = path.join(__dirname, 'content');
+const MANIFEST = JSON.parse(fs.readFileSync(path.join(__dirname, 'lessons-manifest.json'), 'utf-8'));
 
 const LABELS = {
   calculus: 'Calculus',
@@ -42,30 +46,48 @@ if (!fs.existsSync(CONTENT)) {
 }
 
 let written = 0, failed = 0;
-for (const subject of fs.readdirSync(CONTENT)) {
-  const subjectDir = path.join(CONTENT, subject);
-  if (!fs.statSync(subjectDir).isDirectory()) continue;
+for (const [subject, cfg] of Object.entries({ ...MANIFEST.subjects, ...MANIFEST.new_subjects })) {
   if (only && subject !== only) continue;
+
+  // Course-order sequence: manifest unit order, then lesson order in each unit.
+  // Units without authored content are skipped.
+  const seq = [];
+  for (const u of cfg.units) {
+    const unitSlug = u.slug || slugify(u.title);
+    const unitFile = path.join(CONTENT, subject, `${unitSlug}.json`);
+    if (!fs.existsSync(unitFile)) continue;
+    const lessons = JSON.parse(fs.readFileSync(unitFile, 'utf-8'));
+    if (!Array.isArray(lessons) || lessons.length === 0) continue;
+    for (let i = 1; i <= lessons.length; i++) seq.push({ unitSlug, unitFile, idx: i });
+  }
+  if (seq.length === 0) {
+    console.log(`  [${subject}] no authored units — skipped`);
+    continue;
+  }
+
   const label = LABELS[subject] || subject;
-  for (const unitFile of fs.readdirSync(subjectDir).filter((f) => f.endsWith('.json'))) {
-    const unitSlug = unitFile.replace(/\.json$/, '');
-    const lessons = JSON.parse(fs.readFileSync(path.join(subjectDir, unitFile), 'utf-8'));
-    lessons.forEach((lesson, i) => {
-      const filename = `lesson-${subject}-${unitSlug}-${i + 1}.html`;
-      const quizHref = fs.existsSync(path.join(PROJECT, `quiz-${subject}-${unitSlug}.html`)) ? `quiz-${subject}-${unitSlug}.html` : null;
-      try {
-        fs.writeFileSync(
-          path.join(PROJECT, filename),
-          renderLessonHTML({ subjectSlug: subject, subjectLabel: label, lesson, quizHref }),
-          'utf-8'
-        );
-        console.log(`  wrote ${filename} — "${lesson.title}"`);
-        written++;
-      } catch (e) {
-        console.error(`  [FAIL] ${filename}: ${e.message}`);
-        failed++;
-      }
-    });
+  console.log(`\n[${label}] rendering ${seq.length} lessons`);
+  for (let i = 0; i < seq.length; i++) {
+    const item = seq[i];
+    const filename = `lesson-${subject}-${item.unitSlug}-${item.idx}.html`;
+    const quizHref = fs.existsSync(path.join(PROJECT, `quiz-${subject}-${item.unitSlug}.html`))
+      ? `quiz-${subject}-${item.unitSlug}.html`
+      : null;
+    const prevHref = i > 0 ? `lesson-${subject}-${seq[i - 1].unitSlug}-${seq[i - 1].idx}.html` : null;
+    const nextHref = i < seq.length - 1 ? `lesson-${subject}-${seq[i + 1].unitSlug}-${seq[i + 1].idx}.html` : null;
+    try {
+      const lesson = JSON.parse(fs.readFileSync(item.unitFile, 'utf-8'))[item.idx - 1];
+      fs.writeFileSync(
+        path.join(PROJECT, filename),
+        renderLessonHTML({ subjectSlug: subject, subjectLabel: label, lesson, quizHref, prevHref, nextHref }),
+        'utf-8'
+      );
+      console.log(`  wrote ${filename} — "${lesson.title}"`);
+      written++;
+    } catch (e) {
+      console.error(`  [FAIL] ${filename}: ${e.message}`);
+      failed++;
+    }
   }
 }
 console.log(`\nDone. Rendered ${written}, failed ${failed}.`);

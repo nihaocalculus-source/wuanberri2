@@ -1,0 +1,37 @@
+[
+  {
+    "prompt": "A 20 N push moves a crate 3.0 m in the direction of the push. How much work does the push do?",
+    "choices": ["60 J", "20 J", "6.7 J", "180 J"],
+    "answerIndex": 0,
+    "rightExplain": "Force and displacement are parallel, so W = Fd cos(0) = (20)(3.0)(1) = 60 J.",
+    "wrongExplain": "20 J restates the force and 180 J multiplies by the square of the distance, which no work formula contains. 6.7 J divides instead of multiplies, confusing work with the distance the force would move it in one joule."
+  },
+  {
+    "prompt": "A 2.0 kg book is released from rest and falls 1.5 m to the floor. What is its kinetic energy just before impact? Use g = 9.8 m/s^2.",
+    "choices": ["19.6 J", "29.4 J", "14.7 J", "39.2 J"],
+    "answerIndex": 1,
+    "rightExplain": "Potential energy converts fully to kinetic: KE = mgh = (2.0)(9.8)(1.5) = 29.4 J.",
+    "wrongExplain": "19.6 J is the drop over only 1 m, and 14.7 J drops the factor of two from a half-based formula mixup. 39.2 J doubles the height to 2 m, twice the stated fall."
+  },
+  {
+    "prompt": "A 100 N force pulls a sled 5.0 m at 30 degrees above the horizontal. How much work does the force do on the sled?",
+    "choices": ["250 J", "500 J", "433 J", "289 J"],
+    "answerIndex": 2,
+    "rightExplain": "W = Fd cos(30) = (100)(5.0)(0.866) = 433 J.",
+    "wrongExplain": "500 J ignores the angle entirely, and 250 J uses cos(60), the complement, measuring the angle from the wrong axis. 289 J multiplies by tan(30), a trig function that never appears in the work formula."
+  },
+  {
+    "prompt": "An 800 kg car brakes from 20 m/s to a full stop. How much work do the brakes do on the car?",
+    "choices": ["8.0 x 10^3 J", "3.2 x 10^5 J", "1.6 x 10^4 J", "1.6 x 10^5 J"],
+    "answerIndex": 3,
+    "rightExplain": "By the work-energy theorem, the brakes must remove all the kinetic energy: (1/2)(800)(20)^2 = 160,000 J, or 1.6 x 10^5 J.",
+    "wrongExplain": "3.2 x 10^5 J forgets the 1/2 in the kinetic energy formula, doubling the true value. 8.0 x 10^3 J uses v instead of v^2, and 1.6 x 10^4 J drops a factor of ten, a misplaced decimal in the same product."
+  },
+  {
+    "prompt": "A spring with k = 500 N/m is compressed 0.20 m and releases a 0.40 kg block horizontally along a frictionless track. How fast is the block moving after it leaves the spring?",
+    "choices": ["5.0 m/s", "7.1 m/s", "10 m/s", "3.5 m/s"],
+    "answerIndex": 1,
+    "rightExplain": "Spring energy converts fully to kinetic: (1/2)(500)(0.20)^2 = 10 J, so (1/2)(0.40)v^2 = 10 and v = sqrt(50) = 7.1 m/s.",
+    "wrongExplain": "10 m/s restates the spring energy as if it were a speed, and 5.0 m/s comes from dividing 10 J by twice the mass and forgetting the square root, or equivalently losing the factor of two. 3.5 m/s halves the correct speed one extra time, a stray factor-of-four in energy."
+  }
+]

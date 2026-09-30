@@ -13,11 +13,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { escapeHtml } from './generate-lessons.mjs';
+import { escapeHtml, slugify } from './generate-lessons.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const PROJECT = path.resolve(__dirname, '..');
 const CONTENT = path.resolve(__dirname, 'content');
+const MANIFEST = JSON.parse(fs.readFileSync(path.join(__dirname, 'lessons-manifest.json'), 'utf-8'));
 
 const LABELS = {
   calculus: 'Calculus',
@@ -33,6 +34,17 @@ const only = args.includes('--subject') ? args[args.indexOf('--subject') + 1] : 
 if (!fs.existsSync(CONTENT)) {
   console.error(`No content dir at ${CONTENT}`);
   process.exit(1);
+}
+
+function unitTitleFor(subject, slug) {
+  for (const pool of [MANIFEST.subjects, MANIFEST.new_subjects]) {
+    const cfg = pool[subject];
+    if (cfg && Array.isArray(cfg.units)) {
+      const hit = cfg.units.find((u) => slug === (u.slug || slugify(u.title)));
+      if (hit) return hit.title;
+    }
+  }
+  return slug;
 }
 
 function renderQuizHTML({ subjectSlug, subjectLabel, unitTitle, unitSlug, questions }) {
@@ -62,7 +74,7 @@ ${q.choices.map((c, j) => `          <button type="button" data-choice="${letter
   <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#c2410c" />
   <meta name="description" content="Five-question quiz on ${escapeHtml(unitTitle)} — Wuanberri ${escapeHtml(subjectLabel)}." />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260929c" />
 </head>
 <body>
   <header class="site-header">
@@ -89,7 +101,7 @@ ${q.choices.map((c, j) => `          <button type="button" data-choice="${letter
       <p class="lede">Five questions on ${escapeHtml(unitTitle)}. Answer all ${questions.length} to see your score.</p>
       <p id="quiz-score" class="meta" style="font-variant-numeric: tabular-nums">0 of ${questions.length} answered</p>
 ${blocks}
-      <p style="margin-top:24px"><a class="btn btn-ghost" href="calculus.html">Back to all units</a></p>
+      <p style="margin-top:24px"><a class="btn btn-ghost" href="${escapeHtml(subjectSlug)}.html">Back to all units</a></p>
     </div>
   </main>
 
@@ -97,10 +109,10 @@ ${blocks}
     <div class="wrap">
       <div>
         <a href="index.html" class="brand">Wuanberri.</a>
-        <p style="margin-top:8px">hello@wuanberri.app</p>
+        <p style="margin-top:8px">info@wuanberri.com</p>
       </div>
       <div>
-        <h5>Product</h5>
+        <h2 class="footer-head">Product</h2>
         <ul>
           <li><a href="index.html#why">Why Wuanberri</a></li>
           <li><a href="index.html#features">Features</a></li>
@@ -122,15 +134,17 @@ ${blocks}
         </ul>
       </div>
       <div>
-        <h5>Legal</h5>
+        <h2 class="footer-head">Legal</h2>
         <ul><li><a href="#">Privacy Notice</a></li><li><a href="#">Terms &amp; Conditions</a></li></ul>
       </div>
       <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
     </div>
   </footer>
 
-  <script src="assets/app.js"></script>
-  <script src="assets/quiz.js"></script>
+  <script src="assets/store.js?v=20260929c"></script>
+  <script src="assets/llm.js?v=20260929c"></script>
+  <script src="assets/app.js?v=20260929c"></script>
+  <script src="assets/quiz.js?v=20260929c"></script>
 </body>
 </html>
 `;
@@ -151,13 +165,9 @@ for (const subject of fs.readdirSync(CONTENT)) {
       console.error(`  [SKIP] ${subject}/${unitFile}: not a non-empty array`);
       continue;
     }
-    // Unit display title: derive from the lessons file (topic list order).
-    let unitTitle = unitSlug;
-    const lessonsFile = path.join(subjectDir, `${unitSlug}.json`);
-    if (fs.existsSync(lessonsFile)) {
-      const first = JSON.parse(fs.readFileSync(lessonsFile, 'utf-8'))[0];
-      if (first && first.topic) unitTitle = first.topic.split(' and ')[0].split(',')[0];
-    }
+    // Unit display title: from the manifest's unit list (slug of the title
+    // matches the content file slug). Falls back to the raw slug.
+    const unitTitle = unitTitleFor(subject, unitSlug);
     try {
       const filename = `quiz-${subject}-${unitSlug}.html`;
       fs.writeFileSync(

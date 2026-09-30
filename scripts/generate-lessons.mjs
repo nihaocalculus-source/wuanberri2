@@ -152,7 +152,7 @@ function escapeHtml(s) {
     .replace(/'/g, '&#39;');
 }
 
-function renderLessonHTML({ subjectSlug, subjectLabel, lesson, quizHref }) {
+function renderLessonHTML({ subjectSlug, subjectLabel, lesson, quizHref, prevHref, nextHref }) {
   const flashcardJson = JSON.stringify(lesson.flashcards.map((c) => ({
     glyph: c.glyph,
     meaning: c.meaning,
@@ -160,6 +160,11 @@ function renderLessonHTML({ subjectSlug, subjectLabel, lesson, quizHref }) {
   })));
   const letters = ['a', 'b', 'c', 'd'];
   const correctLetter = letters[lesson.mcq.answerIndex] || 'a';
+  const pager = `
+      <div style="display:flex;justify-content:space-between;gap:12px;margin-top:24px">
+        ${prevHref ? `<a class="btn btn-ghost" href="${escapeHtml(prevHref)}">&larr; Previous lesson</a>` : '<span></span>'}
+        ${nextHref ? `<a class="btn btn-ghost" href="${escapeHtml(nextHref)}">Next lesson &rarr;</a>` : '<span></span>'}
+      </div>`;
 
   return `<!doctype html>
 <html lang="en">
@@ -172,7 +177,7 @@ function renderLessonHTML({ subjectSlug, subjectLabel, lesson, quizHref }) {
   <link rel="manifest" href="site.webmanifest" />
   <meta name="theme-color" content="#c2410c" />
   <meta name="description" content="${escapeHtml(lesson.lede)}" />
-  <link rel="stylesheet" href="assets/styles.css" />
+  <link rel="stylesheet" href="assets/styles.css?v=20260929c" />
 </head>
 <body>
   <header class="site-header">
@@ -225,7 +230,7 @@ ${lesson.mcq.choices.map((c, i) => `          <button type="button" data-choice=
           <div class="feedback"></div>
         </form>
       </div>
-${quizHref ? `      <p style="margin-top:24px"><a class="btn btn-accent" href="${quizHref}">Take the unit quiz</a></p>\n` : ''}    </div>
+${quizHref ? `      <p style="margin-top:24px"><a class="btn btn-accent" href="${quizHref}">Take the unit quiz</a></p>\n` : ''}${pager}    </div>
   </main>
 
   <footer class="site-footer">
@@ -235,7 +240,7 @@ ${quizHref ? `      <p style="margin-top:24px"><a class="btn btn-accent" href="$
         <p style="margin-top:8px">info@wuanberri.com</p>
       </div>
       <div>
-        <h5>Product</h5>
+        <h2 class="footer-head">Product</h2>
         <ul>
           <li><a href="index.html#why">Why Wuanberri</a></li>
           <li><a href="index.html#features">Features</a></li>
@@ -257,14 +262,16 @@ ${quizHref ? `      <p style="margin-top:24px"><a class="btn btn-accent" href="$
         </ul>
       </div>
       <div>
-        <h5>Legal</h5>
+        <h2 class="footer-head">Legal</h2>
         <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
       </div>
       <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
     </div>
   </footer>
 
-  <script src="assets/app.js"></script>
+  <script src="assets/store.js?v=20260929c"></script>
+  <script src="assets/llm.js?v=20260929c"></script>
+  <script src="assets/app.js?v=20260929c"></script>
 </body>
 </html>
 `;
@@ -284,7 +291,7 @@ function plan(subjectKey, subjectCfg) {
   if (hasTopics) {
     units.forEach((u) => {
       const topics = u.topics || [];
-      topics.forEach((t, k) => plan.push({ unit: u.title, ordinal: k + 1, totalInUnit: topics.length, topic: t }));
+      topics.forEach((t, k) => plan.push({ unit: u.title, slug: u.slug || slugify(u.title), ordinal: k + 1, totalInUnit: topics.length, topic: t }));
     });
     return plan;
   }
@@ -295,7 +302,7 @@ function plan(subjectKey, subjectCfg) {
     const isLast = i === units.length - 1;
     const n = isLast ? (total - assigned) : Math.max(1, Math.round((u.weight / totalWeight) * total));
     for (let k = 0; k < n; k++) {
-      plan.push({ unit: u.title, ordinal: k + 1, totalInUnit: n });
+      plan.push({ unit: u.title, slug: u.slug || slugify(u.title), ordinal: k + 1, totalInUnit: n });
     }
     assigned += n;
   });
@@ -349,21 +356,24 @@ async function main() {
     const label = SUBJECT_LABELS[sk] || sk;
     const lessons = plan(sk, cfg);
     console.log(`\n[${label}] generating ${lessons.length} lessons`);
+    // Course-order filenames for the prev/next pager (units in manifest order).
+    const filenames = lessons.map((l) => `lesson-${sk}-${l.slug || slugify(l.unit)}-${l.ordinal}.html`);
     let i = 0;
     for (const l of lessons) {
-      i++;
-      const slug = `${sk}-${slugify(l.unit)}-${l.ordinal}`;
+      const slug = `${sk}-${l.slug || slugify(l.unit)}-${l.ordinal}`;
       const filename = `lesson-${slug}.html`;
       const out = path.join(PROJECT, filename);
-      if (!force && fs.existsSync(out)) { totalSkipped++; continue; }
+      const prevHref = i > 0 ? filenames[i - 1] : null;
+      const nextHref = i < filenames.length - 1 ? filenames[i + 1] : null;
+      if (!force && fs.existsSync(out)) { totalSkipped++; i++; continue; }
       if (dry) {
         console.log(`  [dry] ${filename} — ${l.topic || l.unit}`);
         continue;
       }
       try {
         const data = await generateLesson({ subjectKey: sk, subjectLabel: label, unit: l.unit, ordinal: l.ordinal, totalInUnit: l.totalInUnit, topic: l.topic });
-        fs.writeFileSync(out, renderLessonHTML({ subjectSlug: sk, subjectLabel: label, lesson: data }), 'utf-8');
-        console.log(`  [${i}/${lessons.length}] wrote ${filename} — "${data.title}"`);
+        fs.writeFileSync(out, renderLessonHTML({ subjectSlug: sk, subjectLabel: label, lesson: data, prevHref, nextHref }), 'utf-8');
+        console.log(`  [${i + 1}/${lessons.length}] wrote ${filename} — "${data.title}"`);
         totalWritten++;
       } catch (e) {
         console.error(`  [FAIL] ${filename}: ${e.message}`);
@@ -372,6 +382,7 @@ async function main() {
       }
       // Throttle to be polite to the API.
       await new Promise((r) => setTimeout(r, 200));
+      i++;
     }
   }
   console.log(`\nDone. Wrote ${totalWritten}, skipped ${totalSkipped}, failed ${totalFailed}.`);

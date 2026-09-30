@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Continuity and Bernoulli — Wuanberri Physics</title>
+  <link rel="canonical" href="https://wuanberri.com/lesson-physics-fluids-statics-3.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Wuanberri" />
+  <meta property="og:title" content="Continuity and Bernoulli — Wuanberri Physics" />
+  <meta property="og:description" content="What a fluid loses in cross-section it pays back in speed, and speed is bought with pressure." />
+  <meta property="og:url" content="https://wuanberri.com/lesson-physics-fluids-statics-3.html" />
+  <meta property="og:image" content="https://wuanberri.com/assets/wuanberri-logo.png" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="What a fluid loses in cross-section it pays back in speed, and speed is bought with pressure." />
+  <link rel="stylesheet" href="assets/styles.css?v=20260929c" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand brand-img"><img src="assets/wuanberri-logo.png" alt="Wuanberri"></a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+<div class="nav-dd">
+          <button class="nav-dd-btn" type="button" aria-haspopup="true" aria-expanded="false">Subjects <span class="nav-dd-caret">&#9662;</span></button>
+          <div class="nav-dd-panel" role="menu">
+            <div class="dd-col">
+              <span class="dd-col-label">Math</span>
+              <a href="algebra.html">Algebra</a>
+              <a href="geometry.html">Geometry</a>
+              <a href="calculus.html">Calculus</a>
+              <a href="linear-algebra.html">Linear Algebra</a>
+              <a href="differential-equations.html">Differential Equations</a>
+              <a href="discrete-math.html">Discrete Math</a>
+              <a href="statistics.html">Statistics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Science</span>
+              <a href="biology.html">Biology</a>
+              <a href="chemistry.html">Chemistry</a>
+              <a href="physics.html">Physics</a>
+              <a href="anatomy-physiology.html">Anatomy &amp; Physiology</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Business &amp; Economics</span>
+              <a href="intro-to-business.html">Intro to Business</a>
+              <a href="microeconomics.html">Microeconomics</a>
+              <a href="macroeconomics.html">Macroeconomics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">English</span>
+              <a href="english-composition.html">English Composition</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Engineering</span>
+              <a href="electrical-engineering.html">Electrical Engineering</a>
+              <a href="statics.html">Statics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Tools</span>
+              <a href="tutor-market.html">Tutor Market</a>
+              <a href="decks.html">AI Decks</a>
+              <a href="practice.html">Quick Practice</a>
+              <a href="library.html">Worked Examples</a>
+            </div>
+          </div>
+        </div>        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="physics.html">← Back to Physics</a>
+      <h1>Continuity and Bernoulli</h1>
+      <p class="lede">What a fluid loses in cross-section it pays back in speed, and speed is bought with pressure.</p>
+
+
+      <div class="lesson-card">
+        <h2>Continuity</h2>
+        <p>For an incompressible fluid, the volume flow rate Q = Av is conserved: what passes one cross-section each second must pass every other. Squeeze the pipe to half the area and the speed doubles. Track the flow rate in m^3/s, not the speed alone.</p>
+        <span class="math">A_1 v_1 = A_2 v_2</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Bernoulli&#39;s equation</h2>
+        <p>Along a streamline in steady, incompressible, nonviscous flow, P + (1/2)rho*v^2 + rho*g*y stays constant: pressure, speed, and height trade off. Where flow is faster, pressure is lower — that is the lift on a wing and the draw of a Venturi nozzle. The equation fails when viscosity or turbulence are significant.</p>
+        <span class="math">P + \tfrac{1}{2}\rho v^2 + \rho g y = \text{const}</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>A tank drains through a hole 5.0 m below the surface, the hole small enough that the top surface barely moves. Bernoulli between surface and exit gives v = sqrt(2gh) = sqrt(2*9.8*5.0) = sqrt(98), about 9.9 m/s — Torricelli&#39;s result, the same speed the water would gain free-falling 5.0 m. The atmospheric pressures on surface and jet cancel.</p>
+        <span class="math">v = \sqrt{2gh} = \sqrt{(2)(9.8)(5.0)} \approx 9.9\ \text{m/s}</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;Q = A_1 v_1 = A_2 v_2&quot;,&quot;meaning&quot;:&quot;Continuity: volume flow rate is conserved&quot;,&quot;explain&quot;:&quot;Incompressible fluid cannot pile up or vanish between sections, so area times speed is the same everywhere. Narrow the pipe and the fluid must speed up proportionally.&quot;},{&quot;glyph&quot;:&quot;P + \\frac{1}{2}\\rho v^2 + \\rho g y = \\text{const}&quot;,&quot;meaning&quot;:&quot;Bernoulli along a streamline&quot;,&quot;explain&quot;:&quot;Valid only for steady, incompressible, nonviscous flow. At equal height, faster flow means lower pressure — the reason a shower curtain sucks inward and an airplane wing generates lift.&quot;},{&quot;glyph&quot;:&quot;v = \\sqrt{2gh}&quot;,&quot;meaning&quot;:&quot;Torricelli&#39;s tank-drain speed&quot;,&quot;explain&quot;:&quot;With surface and exit both at atmospheric pressure and the surface speed negligible, Bernoulli reduces to free fall through depth h. The exit speed depends only on how far the water falls, not on the tank&#39;s shape.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>Q = A_1 v_1 = A_2 v_2</div>
+        <p data-flip-meaning>Continuity: volume flow rate is conserved</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Incompressible fluid cannot pile up or vanish between sections, so area times speed is the same everywhere. Narrow the pipe and the fluid must speed up proportionally.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>Water flows at 1.5 m/s through a pipe of diameter 6.0 cm, then enters a section of diameter 3.0 cm. What is its new speed?</p>
+        <form class="mcq" data-mcq="a" data-right-explain="Halving the diameter quarters the area, and speed must quadruple to keep Q constant: v = 1.5*4 = 6.0 m/s." data-wrong-explain="3.0 m/s doubles the speed for the diameter ratio without squaring, 0.75 m/s halves the speed instead of quadrupling it, and 12 m/s multiplies by eight.">
+          <button type="button" data-choice="a">6.0 m/s</button>
+          <button type="button" data-choice="b">3.0 m/s</button>
+          <button type="button" data-choice="c">0.75 m/s</button>
+          <button type="button" data-choice="d">12 m/s</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-physics-fluids-statics.html">Take the unit quiz</a></p>
+
+      <div style="display:flex;justify-content:space-between;gap:12px;margin-top:24px">
+        <a class="btn btn-ghost" href="lesson-physics-fluids-statics-2.html">&larr; Previous lesson</a>
+        <span></span>
+      </div>    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h2 class="footer-head">Product</h2>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-head">Legal</h2>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js?v=20260929c"></script>
+  <script src="assets/llm.js?v=20260929c"></script>
+  <script src="assets/app.js?v=20260930a"></script>
+</body>
+</html>

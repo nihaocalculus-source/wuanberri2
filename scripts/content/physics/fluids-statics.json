@@ -1,0 +1,140 @@
+[
+  {
+    "topic": "Pressure and hydrostatics",
+    "title": "Pressure in still fluids",
+    "lede": "Pressure is force spread over area, and in a fluid it grows with depth — nothing else about the container matters.",
+    "cards": [
+      {
+        "heading": "Pressure",
+        "body": "Pressure is force per area, P = F/A, measured in pascals (1 Pa = 1 N/m^2). Fluid pressure pushes perpendicular to every surface it touches, equally in all directions. Gauge pressure is what a tire gauge reads — the amount above atmospheric — while absolute pressure adds the 1.01e5 Pa of the atmosphere on top.",
+        "math": "P = \\frac{F}{A}"
+      },
+      {
+        "heading": "Hydrostatic pressure",
+        "body": "In a liquid at rest, pressure grows linearly with depth: P = P0 + rho*g*h, where rho is the fluid density and h is the depth below the surface. The pressure depends only on depth and fluid — not on the container's shape or the total volume of water — which is why connected tanks of any geometry fill to the same height.",
+        "math": "P = P_0 + \\rho g h"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A diver descends 10 m in fresh water (rho = 1000 kg/m^3). The gauge pressure is rho*g*h = (1000)(9.8)(10) = 98,000 Pa, about 98 kPa — roughly one atmosphere. Adding the air's 1.01e5 Pa, the absolute pressure is about 2.0e5 Pa: two atmospheres total at 10 m down.",
+        "math": "P = P_0 + \\rho g h \\approx 1.0\\times 10^5 + 9.8\\times 10^4 = 2.0\\times 10^5\\ \\text{Pa}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "P = \\frac{F}{A}",
+        "meaning": "Pressure equals force per unit area",
+        "explain": "One pascal is one newton spread over one square meter. Doubling the contact area halves the pressure for the same push, which is why snowshoes keep you on top of the drift."
+      },
+      {
+        "glyph": "P = P_0 + \\rho g h",
+        "meaning": "Hydrostatic pressure grows with depth",
+        "explain": "P0 is the pressure at the surface, usually one atmosphere. Every 10 m of water adds about 98 kPa, so depth alone fixes the pressure regardless of container shape."
+      },
+      {
+        "glyph": "P_{gauge} = \\rho g h",
+        "meaning": "Gauge pressure is the fluid's contribution only",
+        "explain": "A pressure gauge reads zero at the surface because it measures the excess over atmospheric. Absolute pressure is gauge pressure plus the roughly 101 kPa the atmosphere supplies."
+      }
+    ],
+    "mcq": {
+      "prompt": "What gauge pressure does a swimmer feel 5.0 m below the surface of a lake?",
+      "choices": ["98 kPa", "9.8 kPa", "49 kPa", "490 kPa"],
+      "answerIndex": 2,
+      "rightExplain": "P = rho*g*h = (1000)(9.8)(5.0) = 49,000 Pa = 49 kPa.",
+      "wrongExplain": "98 kPa is the pressure at twice the depth (10 m), 9.8 kPa misplaces the decimal by one, and 490 kPa treats the depth as 50 m."
+    }
+  },
+  {
+    "topic": "Buoyancy",
+    "title": "Why things float",
+    "lede": "An immersed object is pushed up by the weight of the fluid it shoves aside — Archimedes figured it out in the bath.",
+    "cards": [
+      {
+        "heading": "Archimedes' principle",
+        "body": "A submerged object feels an upward buoyant force equal to the weight of the fluid it displaces: Fb = rho_fluid * V_displaced * g. Fully submerged means V_displaced is the object's whole volume; partially submerged means only the underwater part counts.",
+        "math": "F_b = \\rho_{fluid} V_{disp}\\, g"
+      },
+      {
+        "heading": "Float or sink",
+        "body": "Compare the buoyant force at full submersion with the object's weight. If the object's density is less than the fluid's, it floats, riding just deep enough that the displaced fluid's weight matches its own — so the submerged fraction equals rho_object/rho_fluid. Denser than the fluid and it sinks; exactly equal and it hangs neutrally.",
+        "math": "\\frac{V_{sub}}{V_{total}} = \\frac{\\rho_{obj}}{\\rho_{fluid}}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A 1.5 kg block of volume 2.0e-3 m^3 (density 750 kg/m^3) floats in water. Fully wet it would feel Fb = (1000)(2.0e-3)(9.8) = 19.6 N, but it weighs only (1.5)(9.8) = 14.7 N, so it floats with 14.7/19.6 = 75 percent of its volume submerged — exactly the ratio 750/1000.",
+        "math": "\\frac{V_{sub}}{V} = \\frac{750}{1000} = 0.75"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "F_b = \\rho_f V g",
+        "meaning": "Buoyant force equals displaced fluid weight",
+        "explain": "The fluid pushes up with the weight of whatever volume the object shoved aside. A 2-liter bottle fully underwater in water feels about 19.6 N of upward push, whatever is inside it."
+      },
+      {
+        "glyph": "\\rho_{obj} < \\rho_{fluid}",
+        "meaning": "The float condition",
+        "explain": "Average density below the fluid's means the object floats; above means it sinks; equal means it hangs suspended. Ships float because their hull encloses air, keeping the average density low."
+      },
+      {
+        "glyph": "F_b = mg",
+        "meaning": "Floating object in force balance",
+        "explain": "A floating body at rest has buoyancy exactly canceling weight. The submerged volume self-adjusts until the displaced fluid's weight equals the object's weight."
+      }
+    ],
+    "mcq": {
+      "prompt": "A solid of density 600 kg/m^3 floats in water (density 1000 kg/m^3). What fraction of its volume sits below the surface?",
+      "choices": ["40%", "100%", "167%", "60%"],
+      "answerIndex": 3,
+      "rightExplain": "The submerged fraction is rho_object/rho_fluid = 600/1000, so 60 percent is underwater.",
+      "wrongExplain": "40 percent is the fraction above water, 100 percent would apply only to an object with density equal to water's, and 167 percent inverts the density ratio."
+    }
+  },
+  {
+    "topic": "Fluid dynamics: continuity and Bernoulli",
+    "title": "Continuity and Bernoulli",
+    "lede": "What a fluid loses in cross-section it pays back in speed, and speed is bought with pressure.",
+    "cards": [
+      {
+        "heading": "Continuity",
+        "body": "For an incompressible fluid, the volume flow rate Q = Av is conserved: what passes one cross-section each second must pass every other. Squeeze the pipe to half the area and the speed doubles. Track the flow rate in m^3/s, not the speed alone.",
+        "math": "A_1 v_1 = A_2 v_2"
+      },
+      {
+        "heading": "Bernoulli's equation",
+        "body": "Along a streamline in steady, incompressible, nonviscous flow, P + (1/2)rho*v^2 + rho*g*y stays constant: pressure, speed, and height trade off. Where flow is faster, pressure is lower — that is the lift on a wing and the draw of a Venturi nozzle. The equation fails when viscosity or turbulence are significant.",
+        "math": "P + \\tfrac{1}{2}\\rho v^2 + \\rho g y = \\text{const}"
+      },
+      {
+        "heading": "Worked example",
+        "body": "A tank drains through a hole 5.0 m below the surface, the hole small enough that the top surface barely moves. Bernoulli between surface and exit gives v = sqrt(2gh) = sqrt(2*9.8*5.0) = sqrt(98), about 9.9 m/s — Torricelli's result, the same speed the water would gain free-falling 5.0 m. The atmospheric pressures on surface and jet cancel.",
+        "math": "v = \\sqrt{2gh} = \\sqrt{(2)(9.8)(5.0)} \\approx 9.9\\ \\text{m/s}"
+      }
+    ],
+    "flashcards": [
+      {
+        "glyph": "Q = A_1 v_1 = A_2 v_2",
+        "meaning": "Continuity: volume flow rate is conserved",
+        "explain": "Incompressible fluid cannot pile up or vanish between sections, so area times speed is the same everywhere. Narrow the pipe and the fluid must speed up proportionally."
+      },
+      {
+        "glyph": "P + \\frac{1}{2}\\rho v^2 + \\rho g y = \\text{const}",
+        "meaning": "Bernoulli along a streamline",
+        "explain": "Valid only for steady, incompressible, nonviscous flow. At equal height, faster flow means lower pressure — the reason a shower curtain sucks inward and an airplane wing generates lift."
+      },
+      {
+        "glyph": "v = \\sqrt{2gh}",
+        "meaning": "Torricelli's tank-drain speed",
+        "explain": "With surface and exit both at atmospheric pressure and the surface speed negligible, Bernoulli reduces to free fall through depth h. The exit speed depends only on how far the water falls, not on the tank's shape."
+      }
+    ],
+    "mcq": {
+      "prompt": "Water flows at 1.5 m/s through a pipe of diameter 6.0 cm, then enters a section of diameter 3.0 cm. What is its new speed?",
+      "choices": ["6.0 m/s", "3.0 m/s", "0.75 m/s", "12 m/s"],
+      "answerIndex": 0,
+      "rightExplain": "Halving the diameter quarters the area, and speed must quadruple to keep Q constant: v = 1.5*4 = 6.0 m/s.",
+      "wrongExplain": "3.0 m/s doubles the speed for the diameter ratio without squaring, 0.75 m/s halves the speed instead of quadrupling it, and 12 m/s multiplies by eight."
+    }
+  }
+]

@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>First law and PV work — Wuanberri Physics</title>
+  <link rel="canonical" href="https://wuanberri.com/lesson-physics-thermodynamics-2.html" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Wuanberri" />
+  <meta property="og:title" content="First law and PV work — Wuanberri Physics" />
+  <meta property="og:description" content="A gas&#39;s energy changes only through heat flowing in and work being done — a checking account with exactly two transaction types." />
+  <meta property="og:url" content="https://wuanberri.com/lesson-physics-thermodynamics-2.html" />
+  <meta property="og:image" content="https://wuanberri.com/assets/wuanberri-logo.png" />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+  <link rel="manifest" href="site.webmanifest" />
+  <meta name="theme-color" content="#c2410c" />
+  <meta name="description" content="A gas&#39;s energy changes only through heat flowing in and work being done — a checking account with exactly two transaction types." />
+  <link rel="stylesheet" href="assets/styles.css?v=20260929c" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="wrap">
+      <a href="index.html" class="brand brand-img"><img src="assets/wuanberri-logo.png" alt="Wuanberri"></a>
+      <nav class="nav">
+        <a href="index.html#why">Why Wuanberri</a>
+        <a href="index.html#features">Features</a>
+        <a href="index.html#coach">The Coach</a>
+        <a href="index.html#pricing">Pricing</a>
+<div class="nav-dd">
+          <button class="nav-dd-btn" type="button" aria-haspopup="true" aria-expanded="false">Subjects <span class="nav-dd-caret">&#9662;</span></button>
+          <div class="nav-dd-panel" role="menu">
+            <div class="dd-col">
+              <span class="dd-col-label">Math</span>
+              <a href="algebra.html">Algebra</a>
+              <a href="geometry.html">Geometry</a>
+              <a href="calculus.html">Calculus</a>
+              <a href="linear-algebra.html">Linear Algebra</a>
+              <a href="differential-equations.html">Differential Equations</a>
+              <a href="discrete-math.html">Discrete Math</a>
+              <a href="statistics.html">Statistics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Science</span>
+              <a href="biology.html">Biology</a>
+              <a href="chemistry.html">Chemistry</a>
+              <a href="physics.html">Physics</a>
+              <a href="anatomy-physiology.html">Anatomy &amp; Physiology</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Business &amp; Economics</span>
+              <a href="intro-to-business.html">Intro to Business</a>
+              <a href="microeconomics.html">Microeconomics</a>
+              <a href="macroeconomics.html">Macroeconomics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">English</span>
+              <a href="english-composition.html">English Composition</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Engineering</span>
+              <a href="electrical-engineering.html">Electrical Engineering</a>
+              <a href="statics.html">Statics</a>
+            </div>
+            <div class="dd-col">
+              <span class="dd-col-label">Tools</span>
+              <a href="tutor-market.html">Tutor Market</a>
+              <a href="decks.html">AI Decks</a>
+              <a href="practice.html">Quick Practice</a>
+              <a href="library.html">Worked Examples</a>
+            </div>
+          </div>
+        </div>        <a href="partners.html">Partners</a>
+        <a href="dashboard.html">Dashboard</a>
+      </nav>
+      <a href="placement.html" class="btn btn-primary">Start free</a>
+    </div>
+  </header>
+
+  <main>
+    <div class="lesson-wrap">
+      <a class="back" href="physics.html">← Back to Physics</a>
+      <h1>First law and PV work</h1>
+      <p class="lede">A gas&#39;s energy changes only through heat flowing in and work being done — a checking account with exactly two transaction types.</p>
+
+
+      <div class="lesson-card">
+        <h2>The first law</h2>
+        <p>The internal energy of a system changes by delta-U = Q - W, where Q is heat added to the system and W is work done by the system. Both signs matter: heat leaving or work done on the gas are negative entries. This is energy conservation with heat included.</p>
+        <span class="math">\Delta U = Q - W</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Work and processes</h2>
+        <p>At constant pressure, an expanding gas does work W = P*delta-V. Isothermal: temperature pinned, so for an ideal gas delta-U = 0 and Q = W. Adiabatic: no heat exchanged, Q = 0, so delta-U = -W. Isobaric keeps the pressure fixed; isochoric keeps the volume fixed, so no work is done.</p>
+        <span class="math">W = P\,\Delta V</span>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Worked example</h2>
+        <p>A gas at constant pressure 1.0e5 Pa expands by 2.0e-3 m^3 (2.0 liters) while absorbing 600 J of heat. The work done by the gas is W = (1.0e5)(2.0e-3) = 200 J, so the internal energy rises by delta-U = 600 - 200 = 400 J. The other 200 J of heat paid for pushing the piston.</p>
+        <span class="math">\Delta U = Q - W = 600 - 200 = 400\ \text{J}</span>
+      </div>
+
+      <div class="q-flashcard" data-lesson-flip='[{&quot;glyph&quot;:&quot;\\Delta U = Q - W&quot;,&quot;meaning&quot;:&quot;First law, with work done BY the gas positive&quot;,&quot;explain&quot;:&quot;Heat added and work output are both positive entries here. Some texts flip the work sign, so check the convention before plugging in; the physics is the same either way.&quot;},{&quot;glyph&quot;:&quot;W = P\\,\\Delta V&quot;,&quot;meaning&quot;:&quot;Work during a constant-pressure expansion&quot;,&quot;explain&quot;:&quot;On a PV diagram, work is the area under the curve. At constant pressure that area is just height times width: pressure times the volume swept out by the piston.&quot;},{&quot;glyph&quot;:&quot;Q = 0&quot;,&quot;meaning&quot;:&quot;Adiabatic process: no heat exchanged&quot;,&quot;explain&quot;:&quot;With Q = 0 the first law gives delta-U = -W, so an adiabatic expansion cools the gas and compression warms it. Fast processes are roughly adiabatic because heat flow takes time.&quot;}]'>
+        <p class="hint">Flashcard</p>
+        <div class="q" data-flip-glyph>\Delta U = Q - W</div>
+        <p data-flip-meaning>First law, with work done BY the gas positive</p>
+        <div class="answer" data-flip-reveal>
+          <div class="math" data-flip-explain>Heat added and work output are both positive entries here. Some texts flip the work sign, so check the convention before plugging in; the physics is the same either way.</div>
+        </div>
+        <div class="actions">
+          <button class="btn btn-ghost" data-flip-toggle>Show explanation</button>
+          <button class="btn btn-accent" data-flip-next>Next card</button>
+        </div>
+      </div>
+
+      <div class="lesson-card">
+        <h2>Check your understanding</h2>
+        <p>An ideal gas expands isothermally and does 150 J of work on its surroundings. How much heat flows into the gas?</p>
+        <form class="mcq" data-mcq="a" data-right-explain="Isothermal means delta-U = 0 for an ideal gas, so Q = W = 150 J: all the work is paid for by heat flowing in." data-wrong-explain="0 J confuses this with a free expansion where no work is done, -150 J flips the sign convention, and 300 J adds Q and W instead of balancing them.">
+          <button type="button" data-choice="a">150 J</button>
+          <button type="button" data-choice="b">0 J</button>
+          <button type="button" data-choice="c">-150 J</button>
+          <button type="button" data-choice="d">300 J</button>
+          <div class="feedback"></div>
+        </form>
+      </div>
+      <p style="margin-top:24px"><a class="btn btn-accent" href="quiz-physics-thermodynamics.html">Take the unit quiz</a></p>
+
+      <div style="display:flex;justify-content:space-between;gap:12px;margin-top:24px">
+        <a class="btn btn-ghost" href="lesson-physics-thermodynamics-1.html">&larr; Previous lesson</a>
+        <a class="btn btn-ghost" href="lesson-physics-thermodynamics-3.html">Next lesson &rarr;</a>
+      </div>    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div>
+        <a href="index.html" class="brand">Wuanberri.</a>
+        <p style="margin-top:8px">info@wuanberri.com</p>
+      </div>
+      <div>
+        <h2 class="footer-head">Product</h2>
+        <ul>
+          <li><a href="index.html#why">Why Wuanberri</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#coach">The Coach</a></li>
+          <li><a href="index.html#pricing">Pricing</a></li>
+          <li><a href="calculus.html">Calculus</a></li>
+          <li><a href="physics.html">Physics</a></li>
+          <li><a href="linear-algebra.html">Linear Algebra</a></li>
+          <li><a href="differential-equations.html">Differential Equations</a></li>
+          <li><a href="discrete-math.html">Discrete Math</a></li>
+          <li><a href="statistics.html">Statistics</a></li>
+          <li><a href="chemistry.html">Chemistry</a></li>
+          <li><a href="biology.html">Biology</a></li>
+          <li><a href="anatomy-physiology.html">Anatomy &amp; Physiology</a></li>
+          <li><a href="microeconomics.html">Microeconomics</a></li>
+          <li><a href="macroeconomics.html">Macroeconomics</a></li>
+          <li><a href="english-composition.html">English Composition</a></li>
+          <li><a href="electrical-engineering.html">Electrical Engineering</a></li>
+          <li><a href="tutor-market.html">Tutor Market</a></li>
+          <li><a href="decks.html">AI Decks</a></li>
+          <li><a href="practice.html">Quick Practice</a></li>
+          <li><a href="library.html">Worked Examples</a></li>
+          <li><a href="solve.html">Solve a Problem</a></li>
+          <li><a href="plan.html">Study Plan</a></li>
+          <li><a href="partners.html">Study Partners</a></li>
+          <li><a href="workout.html">Sample Workout</a></li>
+        </ul>
+      </div>
+      <div>
+        <h2 class="footer-head">Legal</h2>
+        <ul><li><a href="privacy.html">Privacy Notice</a></li><li><a href="terms.html">Terms &amp; Conditions</a></li></ul>
+      </div>
+      <div class="copy">© 2026 Wuanberri. All rights reserved.</div>
+    </div>
+  </footer>
+
+  <script src="assets/store.js?v=20260929c"></script>
+  <script src="assets/llm.js?v=20260929c"></script>
+  <script src="assets/app.js?v=20260930a"></script>
+</body>
+</html>

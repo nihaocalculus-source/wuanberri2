@@ -60,15 +60,54 @@
       "demo": "lesson-phys-demo.html",
       "total": 30,
       "units": [
-        { "title": "Kinematics", "weight": 3 },
-        { "title": "Newton's laws", "weight": 4 },
-        { "title": "Work & energy", "weight": 3 },
-        { "title": "Momentum", "weight": 3 },
-        { "title": "Rotational motion", "weight": 3 },
-        { "title": "Gravitation", "weight": 3 },
-        { "title": "Oscillations & waves", "weight": 3 },
-        { "title": "Thermodynamics", "weight": 4 },
-        { "title": "Electricity & magnetism", "weight": 4 }
+        { "title": "Kinematics", "topics": [
+          "Position, velocity, and acceleration",
+          "Constant-acceleration equations",
+          "Free fall and projectile motion",
+          "Relative motion"
+        ] },
+        { "title": "Newton's laws", "slug": "newtons-laws", "topics": [
+          "Newton's first and second laws",
+          "Free-body diagrams",
+          "Friction",
+          "Circular motion dynamics"
+        ] },
+        { "title": "Work & energy", "topics": [
+          "Work and the work-energy theorem",
+          "Conservation of energy",
+          "Power and potential energy diagrams"
+        ] },
+        { "title": "Momentum & collisions", "topics": [
+          "Impulse and the impulse-momentum theorem",
+          "Conservation of momentum",
+          "Elastic and inelastic collisions"
+        ] },
+        { "title": "Rotational motion", "topics": [
+          "Angular kinematics and moment of inertia",
+          "Torque and rotational dynamics",
+          "Angular momentum and rolling"
+        ] },
+        { "title": "Waves & oscillations", "topics": [
+          "Simple harmonic motion",
+          "Energy and the simple pendulum",
+          "Traveling waves and superposition"
+        ] },
+        { "title": "Electricity & magnetism", "topics": [
+          "Coulomb's law and the electric field",
+          "Electric potential and potential energy",
+          "Circuits: resistance and capacitance",
+          "Magnetic fields and induction"
+        ] },
+        { "title": "Thermodynamics", "topics": [
+          "Temperature, heat, and kinetic theory",
+          "The first law of thermodynamics",
+          "Entropy and the second law"
+        ] },
+        { "title": "Fluids & statics", "topics": [
+          "Pressure and hydrostatics",
+          "Buoyancy",
+          "Fluid dynamics: continuity and Bernoulli"
+        ] }
       ]
     },
     "linear-algebra": {

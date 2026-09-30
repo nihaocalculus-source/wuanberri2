@@ -1,0 +1,37 @@
+[
+  {
+    "prompt": "A crate's 0.25 m^2 base presses down on the floor with a force of 500 N. What pressure does it exert?",
+    "choices": ["2000 Pa", "125 Pa", "5000 Pa", "2.0 Pa"],
+    "answerIndex": 0,
+    "rightExplain": "P = F/A = 500/0.25 = 2000 Pa.",
+    "wrongExplain": "125 Pa multiplies force by area instead of dividing, 5000 Pa uses an area of 0.10 m^2, and 2.0 Pa misplaces the decimal by three places."
+  },
+  {
+    "prompt": "What gauge pressure is there 20 m below the surface of a lake? (rho_water = 1000 kg/m^3)",
+    "choices": ["9.8e4 Pa", "2.0e4 Pa", "4.0e5 Pa", "2.0e5 Pa"],
+    "answerIndex": 3,
+    "rightExplain": "P = rho*g*h = (1000)(9.8)(20) = 196,000 Pa, about 2.0e5 Pa.",
+    "wrongExplain": "9.8e4 Pa is the pressure at only 10 m, 2.0e4 Pa misplaces the decimal by one, and 4.0e5 Pa doubles the depth to 40 m."
+  },
+  {
+    "prompt": "An object with volume 5.0e-3 m^3 is fully submerged in water. What buoyant force does it feel?",
+    "choices": ["4.9 N", "49 N", "98 N", "5.0 N"],
+    "answerIndex": 1,
+    "rightExplain": "Fb = rho*V*g = (1000)(5.0e-3)(9.8) = 49 N.",
+    "wrongExplain": "4.9 N misplaces the decimal by one, 98 N doubles the displaced volume to 0.010 m^3, and 5.0 N drops both the density and g, treating the volume as a force."
+  },
+  {
+    "prompt": "Water moving at 2.0 m/s in a pipe of cross-section 0.030 m^2 enters a narrower section of 0.010 m^2. What is its new speed?",
+    "choices": ["0.67 m/s", "3.0 m/s", "6.0 m/s", "2.0 m/s"],
+    "answerIndex": 2,
+    "rightExplain": "Q = A1*v1 = (0.030)(2.0) = 0.060 m^3/s, so v2 = Q/A2 = 0.060/0.010 = 6.0 m/s.",
+    "wrongExplain": "0.67 m/s inverts the area ratio, 3.0 m/s mistakes the area ratio itself for the new speed, and 2.0 m/s assumes the speed stays the same despite the squeeze."
+  },
+  {
+    "prompt": "A tank drains through a small hole 3.2 m below the water surface. Neglecting viscosity, what is the exit speed?",
+    "choices": ["5.6 m/s", "7.9 m/s", "62.7 m/s", "3.2 m/s"],
+    "answerIndex": 1,
+    "rightExplain": "Torricelli's result: v = sqrt(2gh) = sqrt((2)(9.8)(3.2)) = sqrt(62.7), about 7.9 m/s.",
+    "wrongExplain": "5.6 m/s drops the factor of 2 inside the root, 62.7 m/s forgets the square root entirely, and 3.2 m/s assumes the speed equals the depth."
+  }
+]

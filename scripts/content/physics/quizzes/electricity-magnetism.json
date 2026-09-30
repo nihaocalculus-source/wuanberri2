@@ -1,0 +1,37 @@
+[
+  {
+    "prompt": "Two point charges, +4.0 microcoulombs and +3.0 microcoulombs, sit 0.20 m apart. What is the magnitude of the force between them?",
+    "choices": ["0.54 N", "2.7 N", "5.4 N", "10.8 N"],
+    "answerIndex": 1,
+    "rightExplain": "F = kq1q2/r^2 = (8.99e9)(4.0e-6)(3.0e-6)/(0.20)^2 = 0.1079/0.04, about 2.7 N of repulsion.",
+    "wrongExplain": "0.54 N divides by r instead of r^2, 5.4 N doubles one of the charges, and 10.8 N halves the separation to 0.10 m."
+  },
+  {
+    "prompt": "What is the electric field magnitude 0.30 m from a point charge of +5.0 nanocoulombs?",
+    "choices": ["45 N/C", "150 N/C", "500 N/C", "5.0e4 N/C"],
+    "answerIndex": 2,
+    "rightExplain": "E = kq/r^2 = (8.99e9)(5.0e-9)/(0.30)^2 = 44.95/0.09, about 500 N/C.",
+    "wrongExplain": "45 N/C forgets to divide by r^2, 150 N/C divides by r only, and 5.0e4 N/C shrinks the distance to 0.030 m."
+  },
+  {
+    "prompt": "A 6.0 V battery drives two resistors in parallel: 4.0 ohms and 12 ohms. What total current leaves the battery?",
+    "choices": ["2.0 A", "0.38 A", "1.5 A", "6.0 A"],
+    "answerIndex": 0,
+    "rightExplain": "The parallel pair is (4.0)(12)/(4.0 + 12) = 3.0 ohms, so I = 6.0/3.0 = 2.0 A.",
+    "wrongExplain": "0.38 A treats the pair as a 16-ohm series combination (6.0/16), 1.5 A is the current through the 4.0-ohm branch alone, and 6.0 A treats the battery as shorted with no resistance at all."
+  },
+  {
+    "prompt": "How much potential energy is stored in two point charges, +2.0 microcoulombs and +3.0 microcoulombs, held 0.10 m apart?",
+    "choices": ["5.4 J", "0.054 J", "0.54 J", "0.27 J"],
+    "answerIndex": 3,
+    "rightExplain": "U = kq1q2/r = (8.99e9)(2.0e-6)(3.0e-6)/0.10 = 0.0539/0.10, about 0.54 J.",
+    "wrongExplain": "5.4 J uses a separation of 0.010 m, 0.054 J forgets to divide by r, and 0.27 J halves the charge product as if one charge were half as large."
+  },
+  {
+    "prompt": "A 50-turn coil of area 0.020 m^2 sits in a magnetic field that grows steadily from 0.10 T to 0.50 T in 0.40 s. What EMF is induced in the coil?",
+    "choices": ["0.020 V", "0.40 V", "1.0 V", "2.0 V"],
+    "answerIndex": 2,
+    "rightExplain": "The flux per turn changes by (0.40 T)(0.020 m^2) = 8.0e-3 Wb, so EMF = N*(dPhi/dt) = (50)(8.0e-3)/0.40 = 1.0 V.",
+    "wrongExplain": "0.020 V uses a single turn instead of 50, 0.40 V stops after N times dPhi without dividing by the elapsed time, and 2.0 V uses a time change of 0.20 s."
+  }
+]
