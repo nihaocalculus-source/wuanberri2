@@ -139,7 +139,7 @@
       <section class="dash-hero">
         <div class="greeting">
           <div class="avatar" id="userAvatar">S</div>
-          <span>Welcome back, <span id="userName">there</span> · last opened just now</span>
+          <span>Welcome back, <span id="userName">there</span> <span id="userEmail" style="color:var(--ink-muted)"></span></span>
         </div>
         <h1>Today's plan, calibrated to you.</h1>
         <p id="dashSub">Loading your progress…</p>
@@ -157,23 +157,23 @@
       <div class="stat-row">
         <div class="stat">
           <div class="label">Cards due</div>
-          <div class="value">3</div>
-          <div class="delta">+1 from yesterday</div>
+          <div class="value">0</div>
+          <div class="delta">Nothing due yet</div>
         </div>
         <div class="stat">
           <div class="label">Current level</div>
-          <div class="value">Calc I · U2</div>
-          <div class="delta">Derivatives</div>
+          <div class="value">—</div>
+          <div class="delta">Take the placement</div>
         </div>
         <div class="stat">
           <div class="label">Accuracy (7d)</div>
-          <div class="value">86%</div>
-          <div class="delta positive">+4 pts</div>
+          <div class="value">—</div>
+          <div class="delta">Last 7 days</div>
         </div>
         <div class="stat">
           <div class="label">Time this week</div>
-          <div class="value">2h 14m</div>
-          <div class="delta">Goal: 3h</div>
+          <div class="value">—</div>
+          <div class="delta">Not tracked yet</div>
         </div>
       </div>
 
@@ -204,47 +204,21 @@
         </div>
       </div>
 
-      <div class="continue" style="margin-bottom:24px">
-        <div class="info">
-          <div class="tag">Pick up where you left off</div>
-          <h3>What is a derivative? · Lesson 2 of 5</h3>
-          <p>Last card: "d/dx (sin x)" — you said "cos x". Correct. 2 cards left in this lesson.</p>
-        </div>
-        <a href="lesson-calc-demo.html" class="btn btn-accent">Resume</a>
-      </div>
-
       <div class="dash-grid">
         <div>
           <div class="panel" style="margin-bottom:24px">
             <h2>Due for review</h2>
             <div class="sub">Spaced-repetition queue — these will come back on the schedule your profile set.</div>
             <div class="due-list">
-              <div class="due-item">
-                <span class="badge">Calculus</span>
-                <span class="q">d/dx (x³) = ?</span>
-                <span class="meta">due 2h ago</span>
-                <a href="lesson-calc-demo.html" class="btn btn-ghost">Review</a>
-              </div>
-              <div class="due-item">
-                <span class="badge">Calculus</span>
-                <span class="q">∫ 2x dx = ?</span>
-                <span class="meta">due now</span>
-                <a href="lesson-calc-demo.html" class="btn btn-ghost">Review</a>
-              </div>
-              <div class="due-item">
-                <span class="badge">Physics</span>
-                <span class="q">F = m · a → solve for a</span>
-                <span class="meta">due now</span>
-                <a href="lesson-phys-demo.html" class="btn btn-ghost">Review</a>
-              </div>
+              <p style="color:var(--ink-muted);font-size:13px;margin:0">Nothing is due yet. Cards you review will come back here on a schedule.</p>
             </div>
-            <div class="panel-foot"><a href="lesson-calc-demo.html">Start a focused review session →</a></div>
+            <div class="panel-foot"><a href="decks.html">Make a deck →</a></div>
           </div>
 
           <div class="panel">
             <h2>Quick Practice · 5 minutes</h2>
             <div class="sub">A short capsule of problems matched to your level.</div>
-            <p style="color:var(--ink-soft);margin:0 0 16px">Today's capsule: <strong>3 derivative problems, 2 application problems</strong> — calibrated to your chain-rule gaps.</p>
+            <p style="color:var(--ink-soft);margin:0 0 16px">Today's capsule: <strong>a mix of practice problems</strong> matched to your level.</p>
             <a href="lesson-calc-demo.html" class="btn btn-accent">Start Quick Practice</a>
             <div class="panel-foot">Or try a multi-step <a href="workout.html">Workout</a> instead.</div>
           </div>
@@ -254,38 +228,19 @@
           <div class="panel" style="margin-bottom:24px">
             <h2>Streak</h2>
             <div class="streak">
-              <div class="big">7</div>
+              <div class="big">0</div>
               <div class="label">days in a row</div>
               <div class="week">
-                <span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span><span></span>
               </div>
             </div>
-            <p style="text-align:center;color:var(--ink-muted);font-size:12px;margin:12px 0 0">Keep it going — your longest streak is 12 days.</p>
+            <p id="streakNote" style="text-align:center;color:var(--ink-muted);font-size:12px;margin:12px 0 0">Study today to start your streak.</p>
           </div>
 
           <div class="panel">
             <h2>Recent activity</h2>
             <div class="activity">
-              <div class="activity-item">
-                <span class="dot"></span>
-                <span class="text"><strong>Finished lesson 1</strong> of "What is a derivative?"</span>
-                <span class="when">2h ago</span>
-              </div>
-              <div class="activity-item">
-                <span class="dot"></span>
-                <span class="text"><strong>Reviewed 12 cards</strong> in calculus — 92% accuracy</span>
-                <span class="when">yesterday</span>
-              </div>
-              <div class="activity-item">
-                <span class="dot"></span>
-                <span class="text"><strong>Coach session</strong> on chain rule (6 turns)</span>
-                <span class="when">yesterday</span>
-              </div>
-              <div class="activity-item">
-                <span class="dot"></span>
-                <span class="text"><strong>Workout:</strong> Projectile motion, all 3 parts</span>
-                <span class="when">2 days ago</span>
-              </div>
+              <p style="color:var(--ink-muted);font-size:13px;margin:0">No activity yet. Take the placement or open a lesson to start logging.</p>
             </div>
             <div class="panel-foot"><a href="partners.html">Talk to a study partner →</a></div>
           </div>
@@ -338,12 +293,12 @@
     </div>
   </footer>
 
-  <script src="assets/store.js?v=20260929c"></script>
+  <script src="assets/store.js?v=20260930b"></script>
   <script src="assets/llm.js?v=20260929c"></script>
   <script src="assets/generators.js?v=20260929c"></script>
   <script src="assets/popquiz.js?v=20260929c"></script>
   <script src="assets/warmup.js?v=20260929c"></script>
-  <script src="assets/app.js?v=20260930a"></script>
+  <script src="assets/app.js?v=20260930b"></script>
   <script src="assets/square.js?v=20260929c"></script>
   <script>
     // Checkout success bounce: ?pro=1 means we just came back from Square.
@@ -366,7 +321,9 @@
       const name = document.getElementById('userName');
       const sub = document.getElementById('dashSub');
       if (avatar) avatar.textContent = (user.name || '?')[0].toUpperCase();
-      if (name) name.textContent = user.name;
+      if (name) name.textContent = user.name || (user.email || '').split('@')[0] || 'there';
+      const emailEl = document.getElementById('userEmail');
+      if (emailEl && user.email) emailEl.textContent = '(' + user.email + ')';
 
       // Empty state for users without placement
       const placement = Store.getPlacement();
@@ -403,13 +360,17 @@
         return Number.isFinite(t) && (Date.now() - t) < 7 * 86400000;
       });
       const correct = last7.filter(r => r && r.wasCorrect).length;
-      const acc = last7.length ? Math.round((correct / last7.length) * 100) : 86;
       const accStat = document.querySelectorAll('.stat .value')[2];
-      if (accStat) accStat.textContent = acc + '%';
+      if (accStat) accStat.textContent = last7.length ? Math.round((correct / last7.length) * 100) + '%' : '—';
 
       const streak = Store.getStreak() || { count: 0 };
       const big = document.querySelector('.streak .big');
       if (big) big.textContent = streak.count || 0;
+      document.querySelectorAll('.streak .week span').forEach((dot, i) => {
+        dot.classList.toggle('on', i < Math.min(7, streak.count || 0));
+      });
+      const note = document.getElementById('streakNote');
+      if (note && streak.count) note.textContent = 'Keep it going — your longest streak is ' + (streak.longest || streak.count) + ' days.';
 
       // Activity feed from real reviews
       const activity = document.querySelector('.activity');

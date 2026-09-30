@@ -381,6 +381,7 @@
       const fmt = (s) => esc(s)
         .replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>')
         .replace(/`([^`\n]+)`/g, "<span class='math'>$1</span>")
+        .replace(/\$\$?([^$\n]+)\$\$?/g, "<span class='math'>$1</span>")
         .replace(/\n/g, '<br>');
 
       const askServer = async (pid, msgs) => {
